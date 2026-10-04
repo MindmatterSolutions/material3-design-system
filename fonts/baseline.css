@@ -2,9 +2,13 @@
  *
  * Roboto is baseline M3's own typeface -- what md.ref.typeface.plain and
  * .brand resolve to -- and is a different family from the theme's Roboto Flex,
- * so both are vendored rather than one standing in for the other. Material
- * Symbols Outlined is the icon font the Expressive components use; it is
- * font-display:block, because a half-drawn icon reads as a missing one.
+ * so both are vendored rather than one standing in for the other.
+ *
+ * Material Symbols Outlined, the icon font, is NOT here yet. Google Fonts
+ * serves it as one 'fallback' block covering every icon, which is 3.9 MB --
+ * too much to hand a browser, and too much to carry in the repo, for the
+ * handful of glyphs the components actually use. It wants a subset pass
+ * against the real icon list first; see MATERIAL_SYMBOLS below.
  *
  * Self-hosted, so the system makes no third-party request and nothing waits
  * on fonts.googleapis.com to paint. These are the woff2 files Google Fonts
@@ -50,12 +54,4 @@
   font-display: swap;
   src: url(./roboto/roboto-latin-100-900.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* material-symbols — fallback */
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 100 700;
-  font-display: block;
-  src: url(./material-symbols/material-symbols-fallback-100-700.woff2) format('woff2');
 }
