@@ -67,25 +67,52 @@ carry meaning, not brand, and Material has no role for "pending" or "review".
 | `tokens/base/typography.css` | Families, the size scale, weights, tracking, heading roles. |
 | `tokens/base/spacing.css` | The space scale, radii, control and panel metrics. |
 | `tokens/base/effects.css` | Shadows, glows, the lit-grid ground, transitions. |
-| `fonts/fonts.css` | `@font-face` for all 12 vendored faces. |
-| `fonts/<family>/` | The `.woff2` files and that family's OFL. |
+| `fonts/fonts.css` | `@font-face` for the theme's 12 vendored faces. |
+| `fonts/baseline.css` | `@font-face` for the baseline system's faces. |
+| `fonts/<family>/` | The `.woff2` files and that family's licence. |
 | `tools/fetch-fonts.py` | Re-fetches and re-vendors the fonts. |
+
+## Google's baseline Expressive system — not here yet
+
+A second system is on its way into `baseline/`: Google's **baseline** Expressive
+design system (the `#6750A4` tonal-spot scheme), with the type styles, the corner
+scale, the library shapes, the springs and the Expressive components — five button
+sizes, button groups, split button, FAB menu, loading indicator, wavy progress,
+toolbars, the flexible nav bar and rail. Its fonts are already vendored
+(`fonts/baseline.css`); the system itself still has to be pulled out of the
+Claude Design project it was authored in.
+
+**The two will never be loadable together.** Both define `--md-sys-color-*` with
+different values, so whichever loads second wins and the result is neither
+system. They get separate directories and separate entry points for exactly that
+reason — `index.css` will not import `baseline/`, and nothing should import both.
 
 ## Fonts
 
 Self-hosted, so the system makes **no third-party request at runtime** and
 nothing waits on `fonts.googleapis.com` to paint.
 
-| Family | Role | Faces |
-|---|---|---|
-| **Roboto Flex** | The Expressive sans. Carries every Material role, display to label. | 1 variable face — `opsz 8..144`, `wdth 25..151`, `wght 100..1000` |
-| **IBM Plex Mono** | Figures and instrument readouts, where tabular digits are the job. | 400, 500, 600, 700 |
-| **Inter** | The fallback behind Roboto Flex in `--font-sans`, and the base layer's own sans. | 1 variable face — `wght 400..800` |
+Two bundles, one per system, because the two must not be loaded together:
 
-All three are under the SIL Open Font License; each family's `OFL.txt` sits
-beside its files, as the licence requires.
+- `fonts/fonts.css` — the dashboard theme's faces
+- `fonts/baseline.css` — the baseline system's faces
 
-Two notes on what is *not* here:
+| Family | Bundle | Role | Faces | Licence |
+|---|---|---|---|---|
+| **Roboto Flex** | theme | The Expressive sans. Carries every Material role, display to label. | 1 variable — `opsz 8..144`, `wdth 25..151`, `wght 100..1000` | OFL |
+| **IBM Plex Mono** | theme | Figures and instrument readouts, where tabular digits are the job. | 400, 500, 600, 700 | OFL |
+| **Inter** | theme | The fallback behind Roboto Flex in `--font-sans`, and the base layer's own sans. | 1 variable — `wght 400..800` | OFL |
+| **Roboto** | baseline | Baseline M3's own typeface — what `md.ref.typeface.plain` and `.brand` resolve to. A *different family* from Roboto Flex, so both are vendored. | 2 variable — `wght 100..900`, roman + italic | Apache 2.0 |
+
+Each family's licence text sits beside its files, as both licences require.
+
+Three notes on what is *not* here:
+
+- **Material Symbols Outlined is not vendored yet.** Google Fonts serves it as
+  one block covering every icon — 3.9 MB, too much to hand a browser or carry
+  here for the handful of glyphs the components use. It needs a subset pass
+  against the real icon list; `tools/fetch-fonts.py` has the query and an empty
+  `MATERIAL_SYMBOLS_ICONS` list ready for it.
 
 - **Only the `latin` and `latin-ext` subsets are vendored.** Cyrillic, Greek and
   Vietnamese are left out, which is what keeps the whole set to ~600 KiB. If you

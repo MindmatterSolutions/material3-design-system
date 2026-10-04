@@ -1,16 +1,13 @@
-/* Self-hosted web fonts for the Material 3 Expressive design system.
- *
- * Replaces the Google Fonts @import the theme used to carry, so the system
- * renders with no third-party request and no layout shift waiting on one.
- * Faces are the woff2 files Google Fonts serves, latin and latin-ext subsets
- * only; every other subset (cyrillic, greek, vietnamese) is left out.
+/* The dashboard theme's faces (tokens/m3-expressive.css).
  *
  * Roboto Flex is the Expressive sans and carries all three axes the theme
  * drives: opsz 8..144, wdth 25..151, wght 100..1000. IBM Plex Mono stays for
  * figures and instrument readouts, where tabular digits are the job. Inter is
  * the fallback behind Roboto Flex in --font-sans.
  *
- * Regenerate with tools/fetch-fonts.py.
+ * Self-hosted, so the system makes no third-party request and nothing waits
+ * on fonts.googleapis.com to paint. These are the woff2 files Google Fonts
+ * serves. Regenerate with tools/fetch-fonts.py.
  */
 
 /* roboto-flex — latin-ext */
