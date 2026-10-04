@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="orange">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material 3 Expressive</title>
+<meta name="description" content="The token layer of the Material 3 Expressive theme — colour roles, type scale, shape, motion.">
+<link rel="stylesheet" href="./index.css">
+<style>
+  /* This page is a specimen, so it is allowed to use the tokens and nothing
+     else. Every value below is a var(); a literal here would be a bug. */
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg-grid-base);
+    color:var(--text-primary);
+    font-family:var(--font-sans);
+    font-size:var(--text-md);
+    line-height:var(--leading-normal);
+    padding:var(--page-padding);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)}
+
+  /* masthead */
+  header.mast{
+    display:flex;flex-wrap:wrap;gap:var(--space-5);
+    align-items:flex-end;justify-content:space-between;
+    padding-bottom:var(--space-5);
+    border-bottom:1px solid var(--border-default);
+  }
+  .mast p{margin:var(--space-2) 0 0;color:var(--text-secondary);max-width:62ch}
+  .accents{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .accents button{
+    height:var(--control-height);padding:0 var(--space-4);
+    border-radius:var(--radius-control);
+    border:1px solid var(--border-default);
+    background:var(--surface-card);color:var(--text-secondary);
+    font-size:var(--text-sm);cursor:pointer;
+    display:inline-flex;align-items:center;gap:var(--space-2);
+    transition:background var(--motion-duration) var(--motion-ease),
+               border-color var(--motion-duration) var(--motion-ease),
+               color var(--motion-duration) var(--motion-ease);
+  }
+  .accents button:hover{background:var(--surface-card-alt);color:var(--text-primary)}
+  .accents button[aria-pressed="true"]{
+    border-color:var(--accent-primary-line);
+    background:var(--accent-primary-soft);
+    color:var(--text-primary);
+  }
+  .accents .dot{width:10px;height:10px;border-radius:var(--radius-full);background:var(--accent-primary)}
+
+  /* panels */
+  section{
+    background:var(--surface-card);
+    border:1px solid var(--border-default);
+    border-radius:var(--radius-panel);
+    padding:var(--panel-padding);
+    box-shadow:var(--shadow-panel);
+  }
+  section > h2{margin-bottom:var(--space-2)}
+  .note{color:var(--text-secondary);font-size:var(--text-md);margin:0 0 var(--space-6);max-width:76ch}
+  .note code{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
+
+  /* swatch grids */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:var(--grid-gap)}
+  .sw{
+    border:1px solid var(--border-default);
+    border-radius:var(--radius-inset);
+    overflow:hidden;background:var(--surface-card-alt);
+  }
+  .sw .chip{height:76px;display:flex;align-items:flex-end;padding:var(--space-3)}
+  .sw .chip span{font-family:var(--font-mono);font-size:var(--text-2xs)}
+  .sw .meta{padding:var(--space-3);border-top:1px solid var(--border-default)}
+  .sw .name{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-primary);word-break:break-all}
+  .sw .val{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-1)}
+
+  /* type specimen */
+  .type-row{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;
+    gap:var(--space-5);align-items:baseline;
+    padding:var(--space-4) 0;border-top:1px solid var(--border-soft);
+  }
+  .type-row:first-of-type{border-top:0}
+  .type-row .label{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);text-align:right;white-space:nowrap}
+
+  /* shape + motion */
+  .shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--grid-gap)}
+  .shape{display:flex;flex-direction:column;align-items:center;gap:var(--space-3)}
+  .shape .box{
+    width:100%;height:84px;
+    background:var(--accent-primary-soft);
+    border:1px solid var(--accent-primary-line);
+  }
+  .shape .cap{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);text-align:center}
+
+  .motion{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:var(--grid-gap)}
+  .motion .lane{
+    border:1px solid var(--border-default);border-radius:var(--radius-inset);
+    padding:var(--space-4);background:var(--surface-card-alt);
+    display:flex;flex-direction:column;gap:var(--space-3);
+  }
+  .motion .track{height:36px;display:flex;align-items:center}
+  .motion .ball{width:28px;height:28px;border-radius:var(--radius-full);background:var(--accent-primary)}
+  .motion[data-run="1"] .ball{transform:translateX(calc(100% * 5))}
+  .motion .cap{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary)}
+  .motion .cap b{color:var(--text-secondary);font-weight:var(--weight-medium)}
+
+  /* mapping table */
+  table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+  th,td{text-align:left;padding:var(--space-3);border-bottom:1px solid var(--border-soft);vertical-align:top}
+  th{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);text-transform:uppercase;letter-spacing:var(--tracking-tight);font-weight:var(--weight-medium)}
+  td:first-child,td:nth-child(2){font-family:var(--font-mono);font-size:var(--text-xs)}
+  td:nth-child(2){color:var(--text-secondary)}
+  .scroll{overflow-x:auto}
+
+  footer{color:var(--text-quaternary);font-size:var(--text-sm);padding-bottom:var(--space-6)}
+  footer a{color:var(--link-color)}
+  footer a:hover{color:var(--link-color-hover)}
+
+  @media (max-width:640px){
+    .type-row{grid-template-columns:minmax(0,1fr);gap:var(--space-2)}
+    .type-row .label{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div>
+      <h1>Material 3 Expressive</h1>
+      <p>A theme layer that re-points one semantic token set at Material&nbsp;3's
+         system roles. Colour is Material's dark scheme generated from the seed
+         <code style="font-family:var(--font-mono)">#ff7a1a</code> with fidelity, so the
+         accent stays saturated rather than becoming a pastel. Pick an accent —
+         the ground does not move.</p>
+    </div>
+    <div class="accents" role="group" aria-label="Accent">
+      <button type="button" data-set="orange" aria-pressed="true"><i class="dot"></i>Orange</button>
+      <button type="button" data-set="violet"><i class="dot"></i>Violet</button>
+      <button type="button" data-set="teal"><i class="dot"></i>Teal</button>
+      <button type="button" data-set="blue"><i class="dot"></i>Blue</button>
+      <button type="button" data-set="green"><i class="dot"></i>Green</button>
+      <button type="button" data-set="rose"><i class="dot"></i>Rose</button>
+    </div>
+  </header>
+
+  <section>
+    <h2>Accent roles</h2>
+    <p class="note">The four key colours and their containers. Only these change
+      with the accent picker; the neutrals below are set once and no accent
+      restates them.</p>
+    <div class="swatches" id="accent-roles"></div>
+  </section>
+
+  <section>
+    <h2>Neutral roles</h2>
+    <p class="note">One near-grey palette (hue&nbsp;~300, chroma&nbsp;~2) — the tone
+      m3.material.io is itself drawn in. Surfaces, the ink on them and the
+      outlines all come from here, which is why choosing an accent recolours the
+      accent roles and leaves the page's ground exactly as it is.</p>
+    <div class="swatches" id="neutral-roles"></div>
+  </section>
+
+  <section>
+    <h2>Type scale</h2>
+    <p class="note">Roboto&nbsp;Flex is the Expressive sans, carrying every role from
+      display to label; the variable <code>wdth</code> axis is what the display and
+      card-title roles widen to&nbsp;110. The scale was moved onto Material's steps —
+      nothing is set below 11px, Material's floor for anything read.</p>
+    <div id="type-scale"></div>
+  </section>
+
+  <section>
+    <h2>Headings</h2>
+    <p class="note">Sentence case, heavier, larger. This is most of what makes a
+      page read as Material, and it is typography only — no layout moves.</p>
+    <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+      <div><h1>Display — the page's one headline</h1><div class="label" style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-2)">h1 / .ds-display · 28px · wdth 110</div></div>
+      <div><h2>Heading — a panel's title</h2><div style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-2)">h2 / .ds-heading · 16px</div></div>
+      <div><h3>Subheading — a group inside a panel</h3><div style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-2)">h3 / .ds-subheading · 14px</div></div>
+      <div><span class="ds-overline">Overline</span><div style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-2)">.ds-overline</div></div>
+      <div><span style="font-family:var(--font-mono);font-size:var(--text-2xl);font-variant-numeric:tabular-nums">124.80&nbsp;/&nbsp;140</span><div style="font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);margin-top:var(--space-2)">--font-mono · IBM Plex Mono stays for figures and instrument readouts, where tabular digits are the job</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Shape</h2>
+    <p class="note">Expressive adds the <code>-increased</code> steps. Big soft
+      containers, fully round controls — a chip takes the 8px step instead of a
+      pill, so a chip reads differently from a button.</p>
+    <div class="shapes" id="shape-scale"></div>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <p class="note">Expressive motion is springs, approximated here as
+      cubic-béziers. The spatial curves overshoot — that is the point of them —
+      and are only for transform and size. The effects curves do not overshoot,
+      and they are the ones for colour and opacity.</p>
+    <div class="motion" id="motion-lanes"></div>
+  </section>
+
+  <section>
+    <h2>The semantic layer</h2>
+    <p class="note">No component knows this theme exists. It re-points the same
+      contract the base tokens declare, so deleting the one
+      <code>@import</code> puts the system back exactly as it was.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Semantic token</th><th>Resolves to</th><th>Why</th></tr></thead>
+        <tbody id="semantic-map"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Status hues</h2>
+    <p class="note">Deliberately <em>not</em> remapped. Material has only
+      <code>error</code> among these, and no role at all for "pending" or
+      "review" — these carry meaning rather than brand, so they stay put under
+      every accent.</p>
+    <div class="swatches" id="status-hues"></div>
+  </section>
+
+  <footer>
+    Tokens and fonts are self-hosted — no third-party request at runtime.
+    Fonts are <a href="https://fonts.google.com/specimen/Roboto+Flex">Roboto&nbsp;Flex</a>,
+    <a href="https://fonts.google.com/specimen/IBM+Plex+Mono">IBM&nbsp;Plex&nbsp;Mono</a> and
+    <a href="https://fonts.google.com/specimen/Inter">Inter</a>, all under the SIL Open Font License.
+  </footer>
+
+</div>
+
+<script type="module">
+const css = getComputedStyle(document.documentElement);
+const read = n => css.getPropertyValue(n).trim();
+const el = (tag, cls, text) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+};
+
+/* A swatch reads its own value back off the cascade, so the page can never
+   disagree with the stylesheet about what a role is. */
+function swatch(token, onToken) {
+  const sw = el('div', 'sw');
+  const chip = el('div', 'chip');
+  chip.style.background = `var(${token})`;
+  if (onToken) {
+    const s = el('span', null, 'Aa');
+    s.style.color = `var(${onToken})`;
+    chip.appendChild(s);
+  }
+  const meta = el('div', 'meta');
+  meta.append(el('div', 'name', token.replace('--md-sys-color-', '').replace('--', '')),
+              el('div', 'val', read(token) || '—'));
+  sw.append(chip, meta);
+  sw.dataset.token = token;
+  return sw;
+}
+
+function fill(id, rows) {
+  const host = document.getElementById(id);
+  host.replaceChildren(...rows.map(([t, on]) => swatch(t, on)));
+}
+
+const ACCENT_ROLES = [
+  ['--md-sys-color-primary', '--md-sys-color-on-primary'],
+  ['--md-sys-color-primary-container', '--md-sys-color-on-primary-container'],
+  ['--md-sys-color-secondary', null],
+  ['--md-sys-color-secondary-container', '--md-sys-color-on-secondary-container'],
+  ['--md-sys-color-tertiary', null],
+  ['--md-sys-color-tertiary-container', '--md-sys-color-on-tertiary-container'],
+  ['--md-sys-color-error', null],
+  ['--md-sys-color-error-container', '--md-sys-color-on-primary'],
+  ['--md-sys-color-inverse-primary', null],
+];
+
+const NEUTRAL_ROLES = [
+  ['--md-sys-color-surface', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-container-lowest', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-container-low', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-container', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-container-high', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-container-highest', '--md-sys-color-on-surface'],
+  ['--md-sys-color-surface-bright', '--md-sys-color-on-surface'],
+  ['--md-sys-color-on-surface', '--md-sys-color-surface'],
+  ['--md-sys-color-on-surface-variant', '--md-sys-color-surface'],
+  ['--md-sys-color-outline', '--md-sys-color-surface'],
+  ['--md-sys-color-outline-variant', '--md-sys-color-on-surface'],
+  ['--md-sys-color-inverse-surface', '--md-sys-color-surface'],
+];
+
+const STATUS = ['danger', 'success', 'warning', 'info', 'pending', 'active', 'review', 'neutral']
+  .map(s => [`--status-${s}`, null]);
+
+fill('accent-roles', ACCENT_ROLES);
+fill('neutral-roles', NEUTRAL_ROLES);
+fill('status-hues', STATUS);
+
+/* Type scale */
+const TYPE = [
+  ['--text-4xl', 'Display small'],
+  ['--text-3xl', 'Headline small'],
+  ['--text-2xl', 'Title large'],
+  ['--text-lg',  'Title medium / body large'],
+  ['--text-md',  'Body medium / label large'],
+  ['--text-base','Body'],
+  ['--text-sm',  'Label medium / body small'],
+  ['--text-xs',  'Label small'],
+];
+document.getElementById('type-scale').replaceChildren(...TYPE.map(([token, role]) => {
+  const row = el('div', 'type-row');
+  const spec = el('div', null, 'Grumpy wizards make toxic brew');
+  spec.style.fontSize = `var(${token})`;
+  spec.style.lineHeight = 'var(--leading-tight)';
+  row.append(spec, el('div', 'label', `${token.replace('--', '')} · ${read(token)} · ${role}`));
+  return row;
+}));
+
+/* Shape scale */
+const SHAPES = [
+  '--md-sys-shape-corner-extra-small',
+  '--md-sys-shape-corner-small',
+  '--md-sys-shape-corner-medium',
+  '--md-sys-shape-corner-large',
+  '--md-sys-shape-corner-large-increased',
+  '--md-sys-shape-corner-extra-large',
+  '--md-sys-shape-corner-extra-large-increased',
+  '--md-sys-shape-corner-extra-extra-large',
+  '--md-sys-shape-corner-full',
+];
+document.getElementById('shape-scale').replaceChildren(...SHAPES.map(token => {
+  const s = el('div', 'shape');
+  const box = el('div', 'box');
+  box.style.borderRadius = `var(${token})`;
+  s.append(box, el('div', 'cap', `${token.replace('--md-sys-shape-corner-', '')} · ${read(token)}`));
+  return s;
+}));
+
+/* Motion — each lane runs its own curve on a loop so the overshoot is visible. */
+const CURVES = [
+  ['spring-fast-spatial', 'transform and size, quick'],
+  ['spring-default-spatial', 'transform and size'],
+  ['spring-fast-effects', 'colour and opacity, quick'],
+  ['spring-default-effects', 'colour and opacity'],
+];
+const lanes = document.getElementById('motion-lanes');
+lanes.replaceChildren(...CURVES.map(([name, use]) => {
+  const lane = el('div', 'lane');
+  const track = el('div', 'track');
+  const ball = el('div', 'ball');
+  const dur = read(`--md-sys-motion-${name}-duration`);
+  const ease = read(`--md-sys-motion-${name}`);
+  ball.style.transition = `transform ${dur} ${ease}`;
+  track.appendChild(ball);
+  const cap = el('div', 'cap');
+  cap.append(el('b', null, name), document.createTextNode(` · ${dur} · ${use}`));
+  lane.append(track, cap);
+  lane.dataset.ball = '1';
+  return lane;
+}));
+
+let out = false;
+const balls = () => lanes.querySelectorAll('.ball');
+setInterval(() => {
+  out = !out;
+  balls().forEach(b => {
+    b.style.transform = out ? `translateX(${b.parentElement.clientWidth - b.clientWidth}px)` : 'translateX(0)';
+  });
+}, 1400);
+
+/* Semantic mapping — read live, so it stays true if a token is re-pointed. */
+const MAP = [
+  ['--bg-page', 'The page is surface, as m3.material.io lays its own pages out'],
+  ['--bg-raised', 'One tonal step up'],
+  ['--surface-card', 'A panel sits a step above the page'],
+  ['--surface-card-alt', 'A tile inside a panel steps up again'],
+  ['--surface-overlay', 'The highest container — modals and menus'],
+  ['--surface-rail', 'The recessed well stays a step below the page'],
+  ['--border-default', 'Every hairline is outline-variant weight'],
+  ['--text-primary', 'on-surface'],
+  ['--text-secondary', 'on-surface-variant'],
+  ['--text-tertiary', 'outline — the quietest ink Material names'],
+  ['--text-quaternary', 'A literal: 4.8:1 on a panel, where outline was 3.2:1'],
+  ['--accent-primary', 'primary-container, not primary — fidelity keeps the seed'],
+  ['--accent-primary-hover', 'primary, the tone-80 lift'],
+  ['--link-color', 'tertiary — Expressive pairs the orange with a blue'],
+  ['--radius-panel', 'extra-large: big soft containers'],
+  ['--radius-control', 'full: controls are pills'],
+  ['--radius-chip', 'small, so a chip reads differently from a button'],
+  ['--font-sans', 'Roboto Flex, then Inter'],
+  ['--font-figure', 'The serif is gone; Material sets display in the same sans'],
+];
+document.getElementById('semantic-map').replaceChildren(...MAP.map(([token, why]) => {
+  const tr = el('tr');
+  tr.append(el('td', null, token), el('td', null, read(token) || '—'), el('td', null, why));
+  tr.dataset.token = token;
+  return tr;
+}));
+
+/* Accent picker — exactly what the theme expects: data-accent on <html>. */
+const buttons = [...document.querySelectorAll('.accents button')];
+function refresh() {
+  const next = getComputedStyle(document.documentElement);
+  document.querySelectorAll('.sw').forEach(sw => {
+    sw.querySelector('.val').textContent = next.getPropertyValue(sw.dataset.token).trim() || '—';
+  });
+  document.querySelectorAll('#semantic-map tr').forEach(tr => {
+    tr.children[1].textContent = next.getPropertyValue(tr.dataset.token).trim() || '—';
+  });
+}
+buttons.forEach(b => b.addEventListener('click', () => {
+  document.documentElement.dataset.accent = b.dataset.set;
+  buttons.forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+  refresh();
+}));
+</script>
+</body>
+</html>

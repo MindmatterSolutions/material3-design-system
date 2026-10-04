@@ -1,0 +1,106 @@
+:root{
+--border-hairline:1px solid var(--border-default);
+--border-hairline-soft:1px solid var(--border-soft);
+--border-accent:1.5px solid var(--accent-primary);
+
+/* One height for compact controls that sit in a row together — the masthead's
+   activity pill, its status chip, an icon button beside them. Collapsed, those
+   become squares of this size, which is what makes them read as circles rather
+   than lozenges. Three components derive from it so the row cannot drift. */
+--control-height:30px; /* @kind spacing */
+
+/* elevation — a raised surface reads as raised through a 1px inset top highlight
+   plus a soft drop shadow, not through a lighter fill. Overlays are the one
+   exception: they also step up to --surface-overlay. */
+--shadow-inset-top:inset 0 1px 0 rgba(255,255,255,.05);
+--shadow-panel:var(--shadow-inset-top),0 2px 10px rgba(10,11,13,.6);
+--shadow-raised:var(--shadow-inset-top),0 4px 18px rgba(10,11,13,.7);
+--shadow-overlay:inset 0 1px 0 rgba(255,255,255,.06),0 18px 48px rgba(0,0,0,.55);
+
+/* glass — the sticky masthead only. Nothing else in the system blurs a backdrop. */
+--glass-bg:rgba(10,11,13,.86);
+--glass-blur:blur(14px); /* @kind other */
+
+/* accent glow — status dots, active nav rows, focus rings */
+--glow-accent:0 0 6px var(--accent-primary);
+--glow-accent-strong:0 0 8px var(--accent-primary);
+--glow-accent-wide:0 0 14px rgba(255,122,26,.08);
+
+/* motion — TWO tokens, and every transition and animation derives from them. */
+--motion-duration:.24s; /* @kind other */
+--motion-ease:cubic-bezier(.22,.8,.28,1); /* @kind other */
+--transition-fast:var(--motion-duration) var(--motion-ease); /* @kind other */
+--transition-press:transform var(--motion-duration) var(--motion-ease); /* @kind other */
+
+--bg-grid-line:rgba(255,122,26,.025);
+--bg-grid-size:48px;
+/* dev-mode-OFF ground. No grid and no wash at rest — the module belongs to
+   developer mode, and the resting ground is a flat rail-toned field. Kept as a
+   token (rather than deleted) so developer mode and any page that wants a lit
+   ground still have one hook to set. */
+--bg-grid-wash:none;
+/* the tint the resting ground sits on — a touch above bg-page, as in the rail */
+--bg-grid-base:var(--black-rail);
+/* lit-grid layers — all derived from the brand orange, kept low-alpha so the grid sits behind UI */
+--bg-grid-line-lit:color-mix(in oklch,var(--accent-primary) 74%,white);
+--bg-grid-line-edge:color-mix(in oklch,var(--accent-primary) 46%,black);
+--bg-grid-line-glow:color-mix(in oklch,var(--accent-primary) 60%,transparent);
+--bg-grid-shadow:rgba(0,0,0,.6);
+--bg-grid-vignette:radial-gradient(120% 90% at 50% 45%,transparent 0%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.68) 100%);
+/* how strongly the raised grid reads — retuned soft to sit under rounded surfaces */
+--bg-grid-raised-opacity:.22;
+/* keeps the grid off the edges of the frame so it fades into the surrounding UI */
+--bg-grid-fade:radial-gradient(115% 85% at 50% 42%,#000 0%,rgba(0,0,0,.55) 55%,transparent 100%);
+/* how deep a scroll region's content dissolves at each end */
+--scroll-fade:26px;
+}
+/* the faint orange grid the app paints across its background */
+.ds-grid-bg{
+background-image:linear-gradient(var(--bg-grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--bg-grid-line) 1px,transparent 1px);
+background-size:var(--bg-grid-size) var(--bg-grid-size);
+}
+/* Raised variant — the DEVELOPER-MODE background. Page shells carry this class permanently.
+   With developer mode OFF it draws NO grid at all: the resting page is a plain ground with
+   a flat rail-toned field, and the module only appears when it is being worked on. Turning
+   developer mode on fades the lit, embossed grid in. Developer mode is a single attribute
+   on the root element:
+     document.documentElement.dataset.devMode = 'on'   (Configuration owns the toggle)
+   Lit layers are held at --bg-grid-raised-opacity and masked toward the edges by
+   --bg-grid-fade, so the grid dissolves into the page instead of ending at a hard border. */
+.ds-grid-bg-raised{position:relative;isolation:isolate;background-color:var(--bg-grid-base);background-image:var(--bg-grid-wash);background-repeat:no-repeat;background-size:100% 100%;transition:background-color var(--transition-fast)}
+/* At rest there is no bloom layer — the ground is flat. The ::before/::after
+   layers exist only under developer mode, defined below. */
+.ds-grid-bg-raised>*{position:relative;z-index:3}
+[data-dev-mode="on"] .ds-grid-bg-raised,[data-dev-mode="on"].ds-grid-bg-raised{background-image:var(--bg-grid-vignette),linear-gradient(var(--bg-grid-shadow) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--bg-grid-shadow) 1.5px,transparent 1.5px);background-size:auto,var(--bg-grid-size) var(--bg-grid-size),var(--bg-grid-size) var(--bg-grid-size);background-position:0 0,1.5px 1.5px,1.5px 1.5px}
+[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::after{content:'';position:absolute;inset:-2px;pointer-events:none;background-size:var(--bg-grid-size) var(--bg-grid-size);opacity:var(--bg-grid-raised-opacity);-webkit-mask-image:var(--bg-grid-fade);mask-image:var(--bg-grid-fade);animation:ds-dev-grid-in var(--motion-duration) var(--motion-ease) both}
+[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::before{z-index:1;filter:blur(5px);background-image:linear-gradient(var(--bg-grid-line-glow) 2px,transparent 2px),linear-gradient(90deg,var(--bg-grid-line-glow) 2px,transparent 2px)}
+[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::after{z-index:2;filter:blur(.5px);background-image:linear-gradient(var(--bg-grid-line-lit) .75px,var(--bg-grid-line-edge) .75px,transparent 1.75px),linear-gradient(90deg,var(--bg-grid-line-lit) .75px,var(--bg-grid-line-edge) .75px,transparent 1.75px)}
+@keyframes ds-dev-grid-in{from{opacity:0}to{opacity:var(--bg-grid-raised-opacity)}}
+
+/* the canonical surface: rounded, hairline-bordered, inset highlight, soft shadow */
+.ds-panel{background:var(--surface-card);border:var(--border-hairline);border-radius:var(--radius-panel);box-shadow:var(--shadow-panel)}
+/* Scroll regions. A scrolled list dissolves at both ends instead of ending on a
+   hard cut, and rides a thin hairline thumb on no track — the fade is what tells
+   you there is more, so the bar never has to. Put .ds-scroll on the scrolling
+   element itself. Use .ds-scrollbar where the last row must stay full strength
+   (modal bodies, anything ending in buttons): bar treatment, no fade. */
+.ds-scroll,.ds-scrollbar{scrollbar-width:thin;scrollbar-color:var(--border-default) transparent}
+.ds-scroll{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 var(--scroll-fade),#000 calc(100% - var(--scroll-fade)),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 var(--scroll-fade),#000 calc(100% - var(--scroll-fade)),transparent 100%)}
+.ds-scroll-x{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--scroll-fade),#000 calc(100% - var(--scroll-fade)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--scroll-fade),#000 calc(100% - var(--scroll-fade)),transparent 100%);scrollbar-width:thin;scrollbar-color:var(--border-default) transparent}
+.ds-scroll::-webkit-scrollbar,.ds-scroll-x::-webkit-scrollbar,.ds-scrollbar::-webkit-scrollbar{width:6px;height:6px}
+.ds-scroll::-webkit-scrollbar-track,.ds-scroll-x::-webkit-scrollbar-track,.ds-scrollbar::-webkit-scrollbar-track{background:transparent}
+.ds-scroll::-webkit-scrollbar-thumb,.ds-scroll-x::-webkit-scrollbar-thumb,.ds-scrollbar::-webkit-scrollbar-thumb{background:var(--border-default);border-radius:var(--radius-pill)}
+.ds-scroll::-webkit-scrollbar-thumb:hover,.ds-scroll-x::-webkit-scrollbar-thumb:hover,.ds-scrollbar::-webkit-scrollbar-thumb:hover{background:var(--gray-line-raised)}
+/* sticky masthead treatment */
+.ds-glass{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
+/* entrance motion — content arriving in place, never decoration on load */
+@keyframes ds-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes ds-drop-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes ds-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.ds-fade-in{animation:ds-fade-in var(--motion-duration) var(--motion-ease) both}
+.ds-drop-in{animation:ds-drop-in var(--motion-duration) var(--motion-ease) both}
+/* press feedback — the one motion a control is allowed on click: it shifts down
+   1px and comes back. Hover treatments stay with the component (they are
+   per-variant); this is the shared half. Disabled controls do not move. */
+.ds-press{transition:var(--transition-press),color var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast)}
+.ds-press:active:not(:disabled):not([aria-disabled="true"]){transform:translateY(1px)}

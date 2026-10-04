@@ -1,0 +1,50 @@
+:root{
+--font-mono:'IBM Plex Mono',ui-monospace,'SF Mono',monospace;
+--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+/* display serif — hero figures only (net position, portfolio value, big readouts).
+   Never body copy, never labels. */
+--font-figure:'Newsreader',Georgia,serif;
+
+/* size scale, taken verbatim from the product's HUD */
+--text-2xs:9px;
+--text-xs:10px;
+--text-sm:11px;
+--text-base:12px;
+--text-md:13px;
+--text-md-lg:13.5px;
+--text-lg:14px;
+--text-xl:15px;
+--text-2xl:20px;
+--text-3xl:26px;
+--text-4xl:34px;
+--text-5xl:46px;
+
+--tracking-tight:0.5px;
+--tracking-normal:1px;
+--tracking-wide:1.5px;
+--tracking-wider:2px;
+
+--leading-tight:1.2;
+--leading-normal:1.5;
+--leading-loose:1.9;
+
+--weight-light:300;
+--weight-regular:400;
+--weight-medium:500;
+--weight-semibold:600;
+--weight-bold:700;
+--weight-extrabold:800;
+}
+
+/* Heading scale. Semantic elements carry the styling; the .ds-* classes exist only
+   for the case where the visual level and the document level must differ. */
+h1,.ds-display{font-family:var(--font-mono);font-size:var(--text-2xl);letter-spacing:var(--tracking-wider);line-height:var(--leading-tight);font-weight:var(--weight-semibold);color:var(--text-primary);margin:0}
+h2,.ds-heading{font-family:var(--font-mono);font-size:var(--text-base);letter-spacing:var(--tracking-wider);line-height:var(--leading-tight);text-transform:uppercase;font-weight:var(--weight-semibold);color:var(--text-primary);margin:0}
+h3,.ds-subheading{font-family:var(--font-mono);font-size:var(--text-sm);letter-spacing:var(--tracking-wide);line-height:var(--leading-tight);text-transform:uppercase;font-weight:var(--weight-regular);color:var(--text-secondary);margin:0}
+/* Card/section title in the sans face — the one heading role that is prose
+   rather than an instrument label (FocusCard, panel callouts). */
+.ds-card-title{font-family:var(--font-sans);font-size:var(--text-2xl);letter-spacing:var(--tracking-tight);line-height:var(--leading-tight);text-transform:none;font-weight:var(--weight-semibold);color:var(--text-primary);margin:0}
+/* Hero figure — the one place the display serif is allowed: a single headline
+   number per panel, set large and light against the mono labels around it. */
+.ds-figure{font-family:var(--font-figure);font-size:var(--text-5xl);font-weight:var(--weight-regular);letter-spacing:-0.5px;line-height:1;color:var(--text-primary)}
+.ds-overline{font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-tertiary)}

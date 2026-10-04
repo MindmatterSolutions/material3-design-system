@@ -1,0 +1,144 @@
+:root{
+/* base palette — pulled directly from apps/web/app.css */
+--black-0:#06070a;
+--black-1:#131519;
+--black-2:#15171b;
+--black-3:#1b1e23;
+--black-4:#232830;
+--black-3-5:#1d2229;
+--gray-line:#2a2e35;
+--gray-line-soft:#212429;
+--gray-line-raised:#333a45;
+--gray-text-1:#eceef1;
+--gray-text-2:#9198a3;
+--gray-text-3:#5b6169;
+--orange-500:#ff7a1a;
+--orange-500-soft:rgba(255,122,26,.12);
+--orange-500-line:rgba(255,122,26,.35);
+/* a pressed control lit from its own glyph outward: hottest at the centre,
+   spent by the time it reaches the frame */
+--orange-500-radial:radial-gradient(circle at 50% 50%,rgba(255,122,26,.34) 0%,rgba(255,122,26,.16) 52%,rgba(255,122,26,0) 100%); /* @kind color */
+--green-500:#4ecb92;
+--green-500-soft:rgba(78,203,146,.12);
+--green-500-line:rgba(78,203,146,.35);
+--red-500:#f2726d;
+--red-500-soft:rgba(242,114,109,.12);
+--red-500-line:rgba(242,114,109,.35);
+--amber-500:#dfae43;
+--amber-500-soft:rgba(223,174,67,.12);
+--amber-500-line:rgba(223,174,67,.35);
+--blue-500:#6ba3ea;
+--blue-500-soft:rgba(107,163,234,.12);
+--blue-500-line:rgba(107,163,234,.35);
+--violet-500:#8b7cf6;
+--violet-900:#1a1230;
+--teal-500:#45b6b9;
+--orchid-500:#c08bf0;
+/* Extended status hues. Matched to the existing four on lightness and chroma
+   (L≈.73, C≈.12 in oklch) and spaced far enough in hue to tell apart at a 6px
+   dot — they are the same family, not a second palette. Deliberately NOT the
+   --violet-500/--teal-500/--orchid-500 series colours: those are tuned to be
+   distinguishable as thin lines crossing a chart, which makes them too dark and
+   too saturated to carry ink-weight status text. */
+--iris-500:#a794f2;
+--iris-500-soft:rgba(167,148,242,.12);
+--iris-500-line:rgba(167,148,242,.35);
+--cyan-500:#4fc3c6;
+--cyan-500-soft:rgba(79,195,198,.12);
+--cyan-500-line:rgba(79,195,198,.35);
+--pink-500:#ef88ae;
+--pink-500-soft:rgba(239,136,174,.12);
+--pink-500-line:rgba(239,136,174,.35);
+--slate-500:#8b95a3;
+--slate-500-soft:rgba(139,149,163,.10);
+--slate-500-line:rgba(139,149,163,.30);
+--orange-400:#ffa15c;
+--black-rail:#0f1114;
+--gray-text-4:#454b54;
+--warm-900:#26221f;
+--warm-200:#c7c1b4;
+
+/* semantic aliases */
+--bg-page:var(--black-0);
+--bg-raised:var(--black-1);
+--surface-card:var(--black-2);
+--surface-card-alt:var(--black-3);
+/* one step above surface-card-alt — modals, popovers and tooltips only */
+--surface-overlay:var(--black-4);
+--border-default:var(--gray-line);
+--border-soft:var(--gray-line-soft);
+--text-primary:var(--gray-text-1);
+--text-secondary:var(--gray-text-2);
+--text-tertiary:var(--gray-text-3);
+/* the dimmest ink in the system — overflow counts, spent meta, "+3 more" */
+--text-quaternary:var(--gray-text-4);
+--accent-primary:var(--orange-500);
+--accent-primary-hover:var(--orange-400);
+/* the navigation rail's own fill — one step off the page, darker than a card so
+   a permanent rail reads as chrome rather than as content */
+--surface-rail:var(--black-rail);
+--accent-primary-soft:var(--orange-500-soft);
+--accent-primary-line:var(--orange-500-line);
+--accent-primary-radial:var(--orange-500-radial);
+--status-success:var(--green-500);
+--status-success-soft:var(--green-500-soft);
+--status-success-line:var(--green-500-line);
+--status-danger:var(--red-500);
+--status-danger-soft:var(--red-500-soft);
+--status-danger-line:var(--red-500-line);
+--status-warning:var(--amber-500);
+--status-warning-soft:var(--amber-500-soft);
+--status-warning-line:var(--amber-500-line);
+--status-info:var(--blue-500);
+--status-info-soft:var(--blue-500-soft);
+--status-info-line:var(--blue-500-line);
+/* Four more states the core family kept collapsing into the wrong one. Each is
+   a real distinction a row has to make, not a spare colour: */
+/* waiting on someone else — queued, submitted, blocked on a reply. Not warning:
+   nothing is wrong, it simply is not yours to move. */
+--status-pending:var(--iris-500);
+--status-pending-soft:var(--iris-500-soft);
+--status-pending-line:var(--iris-500-line);
+/* running right now — a sync in flight, a timer counting, a live scrape. Info is
+   a fact about state; this is motion. */
+--status-active:var(--cyan-500);
+--status-active-soft:var(--cyan-500-soft);
+--status-active-line:var(--cyan-500-line);
+/* needs a decision from you — flagged, disputed, awaiting confirmation. Reads as
+   attention without the alarm of danger. */
+--status-review:var(--pink-500);
+--status-review-soft:var(--pink-500-soft);
+--status-review-line:var(--pink-500-line);
+/* inert but present — archived, exempt, superseded. A tinted neutral rather than
+   plain grey, so a muted row still belongs to the family. */
+--status-neutral:var(--slate-500);
+--status-neutral-soft:var(--slate-500-soft);
+--status-neutral-line:var(--slate-500-line);
+/* field surfaces — a control's fill is relative to what it sits ON, so these are
+   re-pointed per context rather than hard-coded: Modal swaps in the -overlay pair
+   on its dialog, and every field inside inherits it. Fields on the page or in a
+   panel keep the darker raised fill. */
+--field-fill:var(--bg-raised);
+--field-line:var(--border-default);
+--field-fill-overlay:var(--black-3-5);
+--field-line-overlay:var(--gray-line-raised);
+
+--link-color:var(--blue-500);
+--link-color-hover:var(--orange-500);
+
+/* comparison series — assigned in listing order by CompareChart, and the colour
+   a WatchlistRow uses to tie itself to its line. Distinguishable by hue, not by
+   lightness, so five lines stay readable crossing each other on one axis. */
+--series-1:var(--red-500);
+--series-2:var(--blue-500);
+--series-3:var(--amber-500);
+--series-4:var(--violet-500);
+--series-5:var(--green-500);
+--series-6:var(--teal-500);
+--series-7:var(--orchid-500);
+
+/* notes surface — the one warm pairing in an otherwise neutral system, so a
+   written note reads as paper against the instrument panel */
+--surface-note:var(--warm-900);
+--text-note:var(--warm-200);
+}

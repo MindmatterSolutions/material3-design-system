@@ -1,0 +1,56 @@
+:root{
+--space-1:4px;
+--space-2:6px;
+--space-3:8px;
+--space-4:10px;
+--space-5:12px;
+--space-6:14px;
+--space-7:16px;
+--space-8:18px;
+--space-9:20px;
+--space-10:22px;
+--space-11:24px;
+--space-12:28px;
+--space-14:32px;
+
+/* structural */
+--panel-padding:20px 22px 22px;
+--page-padding:28px;
+--grid-gap:18px;
+--hairline-gap:1px;
+
+/* radii — soft, rounded surfaces on a 4/8/12/16 + pill scale. 50% is reserved
+   for literal circles (status dots, avatars); 0 for edges that must sit flush. */
+--radius-xs:4px;
+--radius-sm:8px;
+--radius-md:12px;
+--radius-lg:16px;
+--radius-pill:999px;
+--radius-full:50%;
+--radius-none:0px;
+
+/* radius application map — reach for these, not the raw scale */
+--radius-panel:var(--radius-lg);    /* panels, cards, tables, chart frames */
+--radius-overlay:var(--radius-md);  /* modals, popovers, tooltips */
+--radius-inset:var(--radius-md);    /* metric cells and bands inside a panel */
+--radius-control:var(--radius-sm);  /* buttons, inputs, selects, nav rows */
+--radius-chip:var(--radius-pill);   /* badges, tags, status pills, range tabs */
+--radius-mark:10px;                 /* the Σ badge — fixed, not scaled */
+}
+
+/* Reflow, ported verbatim from the canvas (Dashboard.dc.html).
+
+   Every multi-column section grid in apps/web/src/sections/ is tagged
+   data-flow="col" precisely so this rule can find it, but the rule itself
+   only ever existed on the canvas -- so the attribute sat inert here and the
+   grids stayed two-column at every width. On a 486px viewport that left
+   Schedule's inner grid in 81px and 74px columns, with the page overflowing
+   sideways by 63px.
+
+   A media query is the one thing the inline styles those sections are built
+   from cannot express, which is why it lives in a stylesheet and why the
+   canvas says the same of itself. */
+@media (max-width:900px){
+  [data-flow="col"]{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto!important;min-height:0!important}
+  [data-flow="col"]>*{grid-column:1!important;grid-row:auto!important}
+}

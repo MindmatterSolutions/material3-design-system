@@ -1,0 +1,18 @@
+/* The whole design system, in load order. Import this one file.
+ *
+ * Order is the contract, not a convenience: the base layer below declares the
+ * semantic tokens (--bg-page, --text-primary, --accent-primary and the rest),
+ * and m3-expressive.css re-points them at Material 3's system roles. Loading
+ * the theme first, or leaving it out, gives you the base "Midnight" tokens
+ * instead — which is the intended escape hatch, not a failure.
+ *
+ * Fonts come first so a face is declared before anything asks for it.
+ */
+@import url('./fonts/fonts.css');
+
+@import url('./tokens/base/colors.css');
+@import url('./tokens/base/typography.css');
+@import url('./tokens/base/spacing.css');
+@import url('./tokens/base/effects.css');
+
+@import url('./tokens/m3-expressive.css');

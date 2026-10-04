@@ -1,0 +1,7 @@
+# Nothing here is generated at build time — the fonts under fonts/ are vendored
+# on purpose and must stay tracked. This file exists for editor and OS litter.
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,274 @@
+/* Material 3 Expressive — a theme layer over the SigmaOS tokens.
+ *
+ * Synced from the "SigmaOS Design System — M3 Expressive" Claude Design
+ * project, the fork where this theme was designed. The pinned "SigmaOS Design
+ * System" project is untouched by it.
+ *
+ * Loaded LAST (see index.css), so it re-points the semantic layer and nothing
+ * else: no component knows it exists, the same contract tokens/moods.css
+ * keeps. Delete the import and the site is back to Midnight exactly.
+ *
+ * Colour is Material's dark scheme generated from the SigmaOS seed #ff7a1a
+ * (material-color-utilities, SchemeFidelity). Fidelity keeps the seed itself
+ * as the primary container, so the accent stays SigmaOS's orange, not the
+ * pastel peach that TonalSpot makes of it. It also pairs the orange with a
+ * blue tertiary, which Expressive uses for contrast accents. The status hues
+ * are not remapped: they carry meaning, and Material has no role for
+ * "pending" or "review".
+ *
+ * The neutrals are NOT the orange scheme's. Every surface, the ink on it and
+ * the outlines come from one near-grey palette (hue ~300, chroma ~2), the
+ * tone m3.material.io itself is drawn in: #141314 behind everything, #1c1b1d
+ * for a panel, #211f21 a step above it. They are set once, here, and no accent
+ * restates them, so choosing violet or teal recolours the accent roles and
+ * leaves the page's ground exactly as it is.
+ */
+:root{
+/* ---- M3 system colour roles (dark, seed #ff7a1a, fidelity) ---- */
+--md-sys-color-primary:#ffb68e;
+--md-sys-color-on-primary:#542200;
+--md-sys-color-primary-container:#ff7a1a;
+--md-sys-color-on-primary-container:#5e2700;
+--md-sys-color-secondary:#ffb68e;
+--md-sys-color-secondary-container:#733914;
+--md-sys-color-on-secondary-container:#f7a577;
+--md-sys-color-tertiary:#8aceff;
+--md-sys-color-tertiary-container:#00aaf2;
+--md-sys-color-on-tertiary-container:#003b57;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-inverse-primary:#9c4500;
+
+/* ---- M3 neutral roles: one palette under every accent ----
+   Tones of the neutral palette at hue ~300, chroma ~2 (material-color-utilities
+   TonalPalette): surface 6, low 10, container 12, high 17, highest 22,
+   bright 24, lowest 4; on-surface 90. The variant roles take chroma 4:
+   on-surface-variant 80, outline 60, outline-variant 30. The three the page
+   is mostly made of are the sampled m3.material.io values exactly. */
+--md-sys-color-surface:#141314;
+--md-sys-color-surface-bright:#3a393a;
+--md-sys-color-surface-container-lowest:#0f0e0f;
+--md-sys-color-surface-container-low:#1c1b1d;
+--md-sys-color-surface-container:#211f21;
+--md-sys-color-surface-container-high:#2b292b;
+--md-sys-color-surface-container-highest:#363436;
+--md-sys-color-on-surface:#e6e1e3;
+--md-sys-color-on-surface-variant:#c9c5ca;
+--md-sys-color-outline:#939094;
+--md-sys-color-outline-variant:#48464a;
+--md-sys-color-inverse-surface:#e6e1e3;
+
+/* ---- M3 shape scale (Expressive adds the -increased steps) ---- */
+--md-sys-shape-corner-extra-small:4px;
+--md-sys-shape-corner-small:8px;
+--md-sys-shape-corner-medium:12px;
+--md-sys-shape-corner-large:16px;
+--md-sys-shape-corner-large-increased:20px;
+--md-sys-shape-corner-extra-large:28px;
+--md-sys-shape-corner-extra-large-increased:32px;
+--md-sys-shape-corner-extra-extra-large:48px;
+--md-sys-shape-corner-full:999px;
+
+/* ---- M3 Expressive motion: springs, approximated as cubic-beziers ----
+   Spatial curves overshoot, which is the point of Expressive. Only use them
+   for transform and size. Effects curves don't overshoot, and they are the
+   ones for colour and opacity. */
+--md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9);
+--md-sys-motion-spring-fast-spatial-duration:350ms;
+--md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1);
+--md-sys-motion-spring-default-spatial-duration:500ms;
+--md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1);
+--md-sys-motion-spring-fast-effects-duration:150ms;
+--md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1);
+--md-sys-motion-spring-default-effects-duration:200ms;
+
+/* ---- the SigmaOS semantic layer, re-pointed ---- */
+/* The page is surface and a panel is surface-container-low, one tonal step
+   up, as m3.material.io lays its own pages out. A tile inside a panel steps
+   up to -high; the recessed well (--surface-rail, see components/Card.jsx)
+   stays a step below the page. */
+--bg-page:var(--md-sys-color-surface);
+--bg-raised:var(--md-sys-color-surface-container-low);
+--surface-card:var(--md-sys-color-surface-container-low);
+--surface-card-alt:var(--md-sys-color-surface-container-high);
+--surface-overlay:var(--md-sys-color-surface-container-highest);
+--surface-rail:var(--md-sys-color-surface-container-lowest);
+--border-default:var(--md-sys-color-outline-variant);
+--border-soft:#313032;
+--text-primary:var(--md-sys-color-on-surface);
+--text-secondary:var(--md-sys-color-on-surface-variant);
+--text-tertiary:var(--md-sys-color-outline);
+/* The quietest ink still has to be read: hints, "+N more", graph labels at
+   11px. #6c6a6e was 3.2:1 on a panel; this is 4.8:1 there and 4.5:1 on the
+   step above, and stays a shade under --text-tertiary. */
+--text-quaternary:#88868a;
+--accent-primary:var(--md-sys-color-primary-container);
+--accent-primary-hover:var(--md-sys-color-primary);
+--link-color:var(--md-sys-color-tertiary);
+--link-color-hover:var(--md-sys-color-primary);
+--field-fill:var(--md-sys-color-surface-container-highest);
+--field-line:var(--md-sys-color-outline);
+--field-fill-overlay:var(--md-sys-color-surface-bright);
+--field-line-overlay:var(--md-sys-color-outline);
+--surface-note:#3a2a1c;
+--text-note:#f1dcc4;
+
+/* shape: big soft containers, fully round controls. Chips go to M3's 8px
+   rather than a pill, so a chip reads differently from a button */
+--radius-panel:var(--md-sys-shape-corner-extra-large);
+--radius-overlay:var(--md-sys-shape-corner-extra-large);
+--radius-inset:var(--md-sys-shape-corner-large-increased);
+--radius-control:var(--md-sys-shape-corner-full);
+--radius-chip:var(--md-sys-shape-corner-small);
+--radius-mark:var(--md-sys-shape-corner-large);
+--control-height:36px;
+--panel-padding:24px 24px 26px;
+--grid-gap:16px;
+
+/* elevation in M3 dark is tonal: the surface-container step already says
+   "raised", so shadows are small and only there to separate */
+--shadow-inset-top:none;
+--shadow-panel:0 1px 2px rgba(0,0,0,.3);
+--shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15);
+--shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3);
+--glass-bg:rgba(20,19,20,.86);
+/* The ground html and body paint (shell.css). It is the page's surface, not
+   a step below it, so the space between panels is the #141314 of the
+   reference rather than a near-black the panels float over. */
+--bg-grid-base:var(--md-sys-color-surface);
+
+/* motion: colour and border transitions take the effects curve; press takes
+   the spring */
+--motion-duration:var(--md-sys-motion-spring-default-effects-duration);
+--motion-ease:var(--md-sys-motion-spring-default-effects);
+--transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+
+/* type: Roboto Flex is the Expressive sans. Mono stays for figures and
+   instrument readouts, where tabular digits are the job */
+--font-sans:'Roboto Flex','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+/* One family for every role M3 names, display to label. The serif was a
+   second voice for panel titles and hero numbers; M3's display and headline
+   roles are the same sans at a larger size and a heavier weight, which is what
+   the primitives in components/Card.jsx now set. */
+--font-figure:var(--font-sans);
+
+/* The type scale, moved onto M3's steps. The instrument scale ran 10–12px for
+   most of the page, under M3's 12sp floor for anything read (body-small) and
+   11sp for labels, so the density came at the cost of legibility:
+   text-xs 11 label-small · text-sm 12 label-medium/body-small ·
+   text-base 13 · text-md 14 body-medium/label-large · text-lg 16 body-large/
+   title-medium · text-2xl 22 title-large · text-3xl 28 headline-small ·
+   text-4xl 36 display-small. text-2xs (9px) is lifted to label-small too:
+   nothing M3 sets is smaller than 11sp. */
+--text-2xs:11px;
+--text-xs:11px;
+--text-sm:12px;
+--text-base:13px;
+--text-md:14px;
+--text-md-lg:14px;
+--text-lg:16px;
+--text-xl:16px;
+--text-2xl:22px;
+--text-3xl:28px;
+--text-4xl:36px;
+
+/* M3's layout grid for an expanded window: 24dp margins, and 24dp between
+   panes. Cards inside a pane keep the 16dp spacer. */
+--page-padding:24px;
+
+/* the accent's tints, derived rather than written out, so the accent choices
+   below only have to restate the M3 roles and every tint follows them */
+--accent-primary-soft:color-mix(in srgb,var(--md-sys-color-primary-container) 12%,transparent);
+--accent-primary-line:color-mix(in srgb,var(--md-sys-color-primary-container) 35%,transparent);
+--accent-primary-radial:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--md-sys-color-primary-container) 34%,transparent) 0%,color-mix(in srgb,var(--md-sys-color-primary-container) 16%,transparent) 52%,transparent 100%);
+--glow-accent-wide:0 0 14px color-mix(in srgb,var(--md-sys-color-primary-container) 8%,transparent);
+}
+
+/* ---- accent choices ----
+   The masthead's accent picker sets data-accent on <html> (lib/accent.js).
+   No attribute, or "orange", is the SigmaOS orange above. Each choice is the
+   M3 dark scheme generated from its seed with the seed kept as the primary
+   container, the same fidelity rule the orange uses, so the accent stays
+   saturated. Only the accent roles (primary, secondary, tertiary and the
+   inverse primary) change: the surfaces, their ink, the outlines and the
+   three literals beside them stay the one neutral palette in :root. M3 would
+   tint its neutrals toward each seed; here the ground is meant to read the
+   same whatever the accent. Status hues are untouched — they carry meaning,
+   not brand. */
+:root[data-accent="violet"]{
+--md-sys-color-primary:#cabeff;--md-sys-color-on-primary:#31009a;
+--md-sys-color-primary-container:#8f74ff;--md-sys-color-on-primary-container:#12004a;
+--md-sys-color-secondary:#cabeff;--md-sys-color-secondary-container:#493f6e;--md-sys-color-on-secondary-container:#e6deff;
+--md-sys-color-tertiary:#ffb0cd;--md-sys-color-tertiary-container:#6e2a4b;--md-sys-color-on-tertiary-container:#ffd9e5;
+--md-sys-color-inverse-primary:#5b3fd6;
+}
+:root[data-accent="teal"]{
+--md-sys-color-primary:#4fdbc6;--md-sys-color-on-primary:#003731;
+--md-sys-color-primary-container:#00a896;--md-sys-color-on-primary-container:#00201c;
+--md-sys-color-secondary:#b1ccc6;--md-sys-color-secondary-container:#334b47;--md-sys-color-on-secondary-container:#cce8e2;
+--md-sys-color-tertiary:#aecbfa;--md-sys-color-tertiary-container:#2e4a70;--md-sys-color-on-tertiary-container:#d5e3ff;
+--md-sys-color-inverse-primary:#006b5f;
+}
+:root[data-accent="blue"]{
+--md-sys-color-primary:#adc6ff;--md-sys-color-on-primary:#002e69;
+--md-sys-color-primary-container:#4a8dff;--md-sys-color-on-primary-container:#001a41;
+--md-sys-color-secondary:#bec6dc;--md-sys-color-secondary-container:#3e4759;--md-sys-color-on-secondary-container:#dae2f9;
+--md-sys-color-tertiary:#dcbce0;--md-sys-color-tertiary-container:#573e5c;--md-sys-color-on-tertiary-container:#f9d8fd;
+--md-sys-color-inverse-primary:#2a5ea8;
+}
+:root[data-accent="green"]{
+--md-sys-color-primary:#83da9c;--md-sys-color-on-primary:#003919;
+--md-sys-color-primary-container:#3fb96b;--md-sys-color-on-primary-container:#00210c;
+--md-sys-color-secondary:#b5ccb9;--md-sys-color-secondary-container:#354b3b;--md-sys-color-on-secondary-container:#d0e8d5;
+--md-sys-color-tertiary:#a2cedb;--md-sys-color-tertiary-container:#214d57;--md-sys-color-on-tertiary-container:#bdeaf7;
+--md-sys-color-inverse-primary:#1b6d3c;
+}
+:root[data-accent="rose"]{
+--md-sys-color-primary:#ffb1c5;--md-sys-color-on-primary:#650030;
+--md-sys-color-primary-container:#f0628c;--md-sys-color-on-primary-container:#3c0019;
+--md-sys-color-secondary:#e3bdc6;--md-sys-color-secondary-container:#5b3f47;--md-sys-color-on-secondary-container:#ffd9e1;
+--md-sys-color-tertiary:#f0bd8f;--md-sys-color-tertiary-container:#5f411e;--md-sys-color-on-tertiary-container:#ffdcbd;
+--md-sys-color-inverse-primary:#a2325a;
+}
+
+/* Headings move off the uppercase mono label onto M3's title roles: sentence
+   case, heavier, larger. This is most of what makes the page read as
+   Material, and it is typography only, so no layout moves. */
+h1,.ds-display{font-family:var(--font-sans);font-size:28px;letter-spacing:0;font-weight:var(--weight-bold);font-variation-settings:'wdth' 110}
+h2,.ds-heading{font-family:var(--font-sans);font-size:var(--text-lg);letter-spacing:.1px;text-transform:none;font-weight:var(--weight-semibold)}
+h3,.ds-subheading{font-family:var(--font-sans);font-size:var(--text-md);letter-spacing:.1px;text-transform:none;font-weight:var(--weight-medium)}
+.ds-card-title{font-weight:var(--weight-bold);letter-spacing:0;font-variation-settings:'wdth' 110}
+.ds-overline{font-family:var(--font-sans);letter-spacing:.5px;font-weight:var(--weight-medium)}
+
+/* A multiline field is not a control. Input's multiline variant and Textarea
+   draw their corners from --radius-control like every other field, and a
+   fully round corner on a box several lines tall cuts into the text at both
+   ends. Re-pointed on the element itself, so the inline
+   `border-radius:var(--radius-control)` those components set resolves to a
+   rounded rectangle here and to the pill everywhere else. */
+textarea{--radius-control:var(--md-sys-shape-corner-large)}
+
+/* Buttons take M3's label-large role: the sans, 500, sentence case, 0.1px
+   tracking. The vendored Button, AddButton and the masthead pills set an
+   uppercase mono label inline, which is the instrument panel's voice and the
+   one thing on a control M3 is explicit about. `!important` because those are
+   inline styles and there is no other way to reach them without forking
+   src/design-system/, which is vendored; font-size and colour are left to each
+   control. */
+button{font-family:var(--font-sans)!important;text-transform:none!important;letter-spacing:.1px!important;font-weight:var(--weight-medium)}
+
+/* Keyboard focus. Nothing drew it: components set `outline:none` inline to
+   lose the browser's ring on click and put nothing back, so a Tab through the
+   rail, the skill tree or a gradebook landed nowhere visible. :focus-visible
+   keeps the ring off pointer clicks; `!important` because the overrides it
+   has to beat are inline. Text fields are left out — the caret and their own
+   accent line already say where focus is. */
+:where(button,a[href],summary,select,[role="button"],[role="tab"],[role="link"],[role="checkbox"],[role="switch"],[role="option"],[role="menuitem"],[tabindex]:not([tabindex="-1"]),input[type="time"],input[type="date"],input[type="checkbox"],input[type="radio"]):focus-visible{outline:2px solid var(--md-sys-color-primary)!important;outline-offset:2px!important}
+
+@media (prefers-reduced-motion:reduce){
+:root{--transition-press:none}
+/* Every animation and transition, inline ones included: the live dot's pulse,
+   the drawer's slide, the rail's width. Run to their end state at once rather
+   than removed, so anything waiting on animationend still hears it. */
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
