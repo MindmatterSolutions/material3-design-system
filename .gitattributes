@@ -1,0 +1,11 @@
+# Keep the stylesheets, markup and scripts LF in the repo whatever the checkout
+# platform does locally — these ship to browsers, not to editors.
+*.css  text eol=lf
+*.html text eol=lf
+*.js   text eol=lf
+*.py   text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+
+# Vendored faces are binary; never touch line endings or try to diff them.
+*.woff2 binary
