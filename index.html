@@ -48,7 +48,10 @@
     background:var(--accent-primary-soft);
     color:var(--text-primary);
   }
-  .accents .dot{width:10px;height:10px;border-radius:var(--radius-full);background:var(--accent-primary)}
+  /* Each dot previews its own accent, not the current one — the colour is read
+     off the stylesheet at load (see swatchAccents) rather than restated here,
+     so the picker can never disagree with what it selects. */
+  .accents .dot{width:10px;height:10px;border-radius:var(--radius-full);background:var(--dot,var(--accent-primary))}
 
   /* panels */
   section{
@@ -275,7 +278,9 @@ const ACCENT_ROLES = [
   ['--md-sys-color-tertiary', null],
   ['--md-sys-color-tertiary-container', '--md-sys-color-on-tertiary-container'],
   ['--md-sys-color-error', null],
-  ['--md-sys-color-error-container', '--md-sys-color-on-primary'],
+  // No on-error-container in this theme — the status hues carry their own ink —
+  // so the swatch shows no sample rather than borrowing a role that isn't its pair.
+  ['--md-sys-color-error-container', null],
   ['--md-sys-color-inverse-primary', null],
 ];
 
@@ -402,8 +407,23 @@ document.getElementById('semantic-map').replaceChildren(...MAP.map(([token, why]
   return tr;
 }));
 
-/* Accent picker — exactly what the theme expects: data-accent on <html>. */
+/* Accent picker — exactly what the theme expects: data-accent on <html>.
+   Before wiring it up, give each button's dot the colour it selects. The
+   accents are declared as :root[data-accent="…"] rules, so the only way to
+   learn one without hard-coding it here is to put the attribute on, read the
+   value back, and move on. Done once, synchronously, before first paint
+   matters. */
 const buttons = [...document.querySelectorAll('.accents button')];
+(function swatchAccents() {
+  const root = document.documentElement;
+  const had = root.dataset.accent;
+  for (const b of buttons) {
+    root.dataset.accent = b.dataset.set;
+    b.querySelector('.dot').style.background =
+      getComputedStyle(root).getPropertyValue('--accent-primary').trim();
+  }
+  if (had === undefined) delete root.dataset.accent; else root.dataset.accent = had;
+})();
 function refresh() {
   const next = getComputedStyle(document.documentElement);
   document.querySelectorAll('.sw').forEach(sw => {
