@@ -84,6 +84,11 @@ MATERIAL_SYMBOLS_ICONS = [
     "play_arrow", "redo", "replay_10", "restart_alt", "school", "search",
     "send", "settings", "share", "signal_cellular_alt", "skip_next",
     "skip_previous", "star", "tab", "thumb_up", "today", "undo", "wifi",
+    # Not named by baseline/, so tools/icon-names.py won't print these: the
+    # @material/web Expressive set (labs/gb) draws them from its own CSS -- the
+    # split button's chevron, the radio's two states, the indeterminate
+    # checkbox. Keep them when pasting a fresh list in.
+    "arrow_drop_down", "radio_button_checked", "radio_button_unchecked", "remove",
 ]
 BUNDLES["baseline.css"][1].append((
     "Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
