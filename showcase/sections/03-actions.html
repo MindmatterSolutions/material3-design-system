@@ -1,0 +1,299 @@
+<section class="panel" id="actions" data-title="Buttons, FABs &amp; chips">
+<h2>Buttons, FABs &amp; chips</h2>
+<p class="note">The stable action set: five common buttons, four icon-button styles,
+  FABs, the four chip types and the labs segmented button. Every one of them is the
+  stock <code>@material/web</code> element with no per-component overrides: emphasis comes from
+  <code>--md-sys-color-primary</code>, <code>secondary-container</code>, <code>tertiary-container</code>
+  and the surface roles the theme supplies, so the accent picker repaints the lot.</p>
+
+<style>
+  #actions .matrix{--cols:5}
+  #actions .matrix > *{justify-self:start}
+  #actions .matrix .mh.top{align-self:end}
+  #actions .tight{gap:var(--space-2)}
+  #actions .brand-mark{width:36px;height:36px}
+</style>
+
+<h3>Common buttons</h3>
+<div class="kicker">Five emphasis levels × common states</div>
+<div class="matrix">
+  <span class="mh"></span>
+  <span class="mh top">plain</span>
+  <span class="mh top">has-icon</span>
+  <span class="mh top">trailing-icon</span>
+  <span class="mh top">disabled</span>
+  <span class="mh top">href (link)</span>
+
+  <span class="mh">md-filled-button</span>
+  <md-filled-button>Publish</md-filled-button>
+  <md-filled-button has-icon><md-icon slot="icon">send</md-icon>Send</md-filled-button>
+  <md-filled-button has-icon trailing-icon>Next<md-icon slot="icon">arrow_forward</md-icon></md-filled-button>
+  <md-filled-button disabled>Publish</md-filled-button>
+  <md-filled-button href="#actions">Open report</md-filled-button>
+
+  <span class="mh">md-filled-tonal-button</span>
+  <md-filled-tonal-button>Save draft</md-filled-tonal-button>
+  <md-filled-tonal-button has-icon><md-icon slot="icon">download</md-icon>Export</md-filled-tonal-button>
+  <md-filled-tonal-button has-icon trailing-icon>Filters<md-icon slot="icon">keyboard_arrow_down</md-icon></md-filled-tonal-button>
+  <md-filled-tonal-button disabled>Save draft</md-filled-tonal-button>
+  <md-filled-tonal-button href="#actions">View invoice</md-filled-tonal-button>
+
+  <span class="mh">md-elevated-button</span>
+  <md-elevated-button>Follow</md-elevated-button>
+  <md-elevated-button has-icon><md-icon slot="icon">add</md-icon>New project</md-elevated-button>
+  <md-elevated-button has-icon trailing-icon>Share<md-icon slot="icon">share</md-icon></md-elevated-button>
+  <md-elevated-button disabled>Follow</md-elevated-button>
+  <md-elevated-button href="#actions">Changelog</md-elevated-button>
+
+  <span class="mh">md-outlined-button</span>
+  <md-outlined-button>Preview</md-outlined-button>
+  <md-outlined-button has-icon><md-icon slot="icon">edit</md-icon>Edit</md-outlined-button>
+  <md-outlined-button has-icon trailing-icon>Directions<md-icon slot="icon">directions</md-icon></md-outlined-button>
+  <md-outlined-button disabled>Preview</md-outlined-button>
+  <md-outlined-button href="#actions">Pricing</md-outlined-button>
+
+  <span class="mh">md-text-button</span>
+  <md-text-button>Cancel</md-text-button>
+  <md-text-button has-icon><md-icon slot="icon">undo</md-icon>Undo</md-text-button>
+  <md-text-button has-icon trailing-icon>See all<md-icon slot="icon">chevron_right</md-icon></md-text-button>
+  <md-text-button disabled>Cancel</md-text-button>
+  <md-text-button href="#actions">Learn more</md-text-button>
+</div>
+
+<div class="demos wide" style="margin-top:var(--space-5)">
+  <div class="demo">
+    <div class="stage" style="justify-content:flex-end">
+      <md-text-button>Discard</md-text-button>
+      <md-outlined-button>Save as draft</md-outlined-button>
+      <md-filled-button has-icon><md-icon slot="icon">send</md-icon>Send invoice</md-filled-button>
+    </div>
+    <div class="cap"><b>In context</b> — one filled button per surface; lower emphasis for the alternatives</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-filled-tonal-button has-icon><md-icon slot="icon">calendar_month</md-icon>Reschedule</md-filled-tonal-button>
+      <md-text-button has-icon><md-icon slot="icon">close</md-icon>Decline</md-text-button>
+      <md-filled-button soft-disabled>Confirm</md-filled-button>
+    </div>
+    <div class="cap"><b>soft-disabled</b> — looks disabled but stays focusable, so a tooltip or reason can still be reached</div>
+  </div>
+</div>
+
+<h3>Icon buttons</h3>
+<div class="matrix" style="--cols:4">
+  <span class="mh"></span>
+  <span class="mh top">plain</span>
+  <span class="mh top">toggle</span>
+  <span class="mh top">toggle selected</span>
+  <span class="mh top">disabled</span>
+
+  <span class="mh">md-icon-button</span>
+  <md-icon-button aria-label="More options"><md-icon>more_vert</md-icon></md-icon-button>
+  <md-icon-button toggle aria-label="Add to favourites" aria-label-selected="Remove from favourites"><md-icon>favorite</md-icon><md-icon slot="selected">favorite</md-icon></md-icon-button>
+  <md-icon-button toggle selected aria-label="Add to favourites" aria-label-selected="Remove from favourites"><md-icon>favorite</md-icon><md-icon slot="selected">favorite</md-icon></md-icon-button>
+  <md-icon-button disabled aria-label="More options"><md-icon>more_vert</md-icon></md-icon-button>
+
+  <span class="mh">md-filled-icon-button</span>
+  <md-filled-icon-button aria-label="Play"><md-icon>play_arrow</md-icon></md-filled-icon-button>
+  <md-filled-icon-button toggle aria-label="Play" aria-label-selected="Pause"><md-icon>play_arrow</md-icon><md-icon slot="selected">pause</md-icon></md-filled-icon-button>
+  <md-filled-icon-button toggle selected aria-label="Play" aria-label-selected="Pause"><md-icon>play_arrow</md-icon><md-icon slot="selected">pause</md-icon></md-filled-icon-button>
+  <md-filled-icon-button disabled aria-label="Play"><md-icon>play_arrow</md-icon></md-filled-icon-button>
+
+  <span class="mh">md-filled-tonal-icon-button</span>
+  <md-filled-tonal-icon-button aria-label="Notifications"><md-icon>notifications</md-icon></md-filled-tonal-icon-button>
+  <md-filled-tonal-icon-button toggle aria-label="Bookmark" aria-label-selected="Remove bookmark"><md-icon>bookmark</md-icon><md-icon slot="selected">bookmark</md-icon></md-filled-tonal-icon-button>
+  <md-filled-tonal-icon-button toggle selected aria-label="Bookmark" aria-label-selected="Remove bookmark"><md-icon>bookmark</md-icon><md-icon slot="selected">bookmark</md-icon></md-filled-tonal-icon-button>
+  <md-filled-tonal-icon-button disabled aria-label="Notifications"><md-icon>notifications</md-icon></md-filled-tonal-icon-button>
+
+  <span class="mh">md-outlined-icon-button</span>
+  <md-outlined-icon-button aria-label="Settings"><md-icon>settings</md-icon></md-outlined-icon-button>
+  <md-outlined-icon-button toggle aria-label="Mute microphone" aria-label-selected="Unmute microphone"><md-icon>mic</md-icon><md-icon slot="selected">mic</md-icon></md-outlined-icon-button>
+  <md-outlined-icon-button toggle selected aria-label="Mute microphone" aria-label-selected="Unmute microphone"><md-icon>mic</md-icon><md-icon slot="selected">mic</md-icon></md-outlined-icon-button>
+  <md-outlined-icon-button disabled aria-label="Settings"><md-icon>settings</md-icon></md-outlined-icon-button>
+</div>
+
+<div class="demos" style="margin-top:var(--space-5)">
+  <div class="demo">
+    <div class="stage tight">
+      <md-icon-button toggle selected aria-label="Bold"><md-icon>format_bold</md-icon></md-icon-button>
+      <md-icon-button toggle aria-label="Italic"><md-icon>format_italic</md-icon></md-icon-button>
+      <md-icon-button toggle aria-label="Underline"><md-icon>format_underlined</md-icon></md-icon-button>
+      <md-icon-button aria-label="Undo"><md-icon>undo</md-icon></md-icon-button>
+      <md-icon-button aria-label="Redo"><md-icon>redo</md-icon></md-icon-button>
+    </div>
+    <div class="cap"><b>md-icon-button toggle</b> — click to toggle; one icon serves both states when no <b>slot="selected"</b> is given</div>
+  </div>
+  <div class="demo">
+    <div class="stage tight">
+      <md-icon-button aria-label="Back 10 seconds"><md-icon>replay_10</md-icon></md-icon-button>
+      <md-icon-button aria-label="Previous track"><md-icon>skip_previous</md-icon></md-icon-button>
+      <md-filled-icon-button toggle aria-label="Play" aria-label-selected="Pause"><md-icon>play_arrow</md-icon><md-icon slot="selected">pause</md-icon></md-filled-icon-button>
+      <md-icon-button aria-label="Next track"><md-icon>skip_next</md-icon></md-icon-button>
+      <md-icon-button aria-label="Forward 10 seconds"><md-icon>forward_10</md-icon></md-icon-button>
+    </div>
+    <div class="cap"><b>md-filled-icon-button toggle</b> + <b>slot="selected"</b> — a different glyph for the selected state</div>
+  </div>
+  <div class="demo">
+    <div class="stage tight">
+      <md-outlined-icon-button href="#actions" aria-label="Back to top"><md-icon>arrow_back</md-icon></md-outlined-icon-button>
+      <md-filled-tonal-icon-button href="#actions" aria-label="Home"><md-icon>home</md-icon></md-filled-tonal-icon-button>
+      <md-icon-button soft-disabled aria-label="Delete (no permission)"><md-icon>delete</md-icon></md-icon-button>
+    </div>
+    <div class="cap"><b>href</b> renders an anchor; <b>soft-disabled</b> stays focusable</div>
+  </div>
+</div>
+
+<h3>Floating action buttons</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage">
+      <md-fab aria-label="Edit"><md-icon slot="icon">edit</md-icon></md-fab>
+      <md-fab variant="primary" aria-label="Edit"><md-icon slot="icon">edit</md-icon></md-fab>
+      <md-fab variant="secondary" aria-label="Edit"><md-icon slot="icon">edit</md-icon></md-fab>
+      <md-fab variant="tertiary" aria-label="Edit"><md-icon slot="icon">edit</md-icon></md-fab>
+    </div>
+    <div class="cap"><b>md-fab</b> variant= surface (default) · primary · secondary · tertiary</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-fab size="small" variant="primary" aria-label="Add"><md-icon slot="icon">add</md-icon></md-fab>
+      <md-fab variant="primary" aria-label="Add"><md-icon slot="icon">add</md-icon></md-fab>
+      <md-fab size="large" variant="primary" aria-label="Add"><md-icon slot="icon">add</md-icon></md-fab>
+    </div>
+    <div class="cap"><b>md-fab</b> size= small · medium (default) · large</div>
+  </div>
+  <div class="demo">
+    <div class="stage col" style="align-items:flex-start">
+      <md-fab variant="primary" label="Compose"><md-icon slot="icon">edit</md-icon></md-fab>
+      <md-fab variant="tertiary" label="Navigate"><md-icon slot="icon">navigation</md-icon></md-fab>
+      <md-fab label="Reply all"></md-fab>
+    </div>
+    <div class="cap"><b>md-fab label="…"</b> — extended, with or without an icon</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-fab lowered aria-label="New message"><md-icon slot="icon">mail</md-icon></md-fab>
+      <md-fab lowered variant="secondary" label="New event"><md-icon slot="icon">event</md-icon></md-fab>
+    </div>
+    <div class="cap"><b>md-fab lowered</b> — less elevation, for a FAB sitting on a busy surface</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-branded-fab aria-label="Add">
+        <svg slot="icon" class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+          <path style="fill:var(--md-sys-color-tertiary)" d="M16 16v14h4V20z"/>
+          <path style="fill:var(--md-sys-color-primary)" d="M30 16H20l-4 4h14z"/>
+          <path style="fill:var(--md-sys-color-secondary)" d="M6 16v4h10l4-4z"/>
+          <path style="fill:var(--md-sys-color-error)" d="M20 16V6h-4v14z"/>
+        </svg>
+      </md-branded-fab>
+      <md-branded-fab label="Create">
+        <svg slot="icon" class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+          <path style="fill:var(--md-sys-color-tertiary)" d="M16 16v14h4V20z"/>
+          <path style="fill:var(--md-sys-color-primary)" d="M30 16H20l-4 4h14z"/>
+          <path style="fill:var(--md-sys-color-secondary)" d="M6 16v4h10l4-4z"/>
+          <path style="fill:var(--md-sys-color-error)" d="M20 16V6h-4v14z"/>
+        </svg>
+      </md-branded-fab>
+    </div>
+    <div class="cap"><b>md-branded-fab</b> — a multi-colour logo in <b>slot="icon"</b>; here the mark is drawn from the theme's roles</div>
+  </div>
+</div>
+
+<h3>Chips</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage">
+      <md-chip-set>
+        <md-assist-chip label="Add to calendar"><md-icon slot="icon">event</md-icon></md-assist-chip>
+        <md-assist-chip label="Get directions"><md-icon slot="icon">directions</md-icon></md-assist-chip>
+        <md-assist-chip label="Call venue" elevated><md-icon slot="icon">call</md-icon></md-assist-chip>
+        <md-assist-chip label="Open menu" href="#actions"></md-assist-chip>
+        <md-assist-chip label="Share" disabled><md-icon slot="icon">share</md-icon></md-assist-chip>
+      </md-chip-set>
+    </div>
+    <div class="cap"><b>md-assist-chip</b> — slot="icon" · elevated · href · disabled</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-chip-set>
+        <md-filter-chip label="Open now" selected></md-filter-chip>
+        <md-filter-chip label="Wi-Fi" selected><md-icon slot="icon">wifi</md-icon></md-filter-chip>
+        <md-filter-chip label="Outdoor seating"></md-filter-chip>
+        <md-filter-chip label="Top rated" elevated><md-icon slot="icon">star</md-icon></md-filter-chip>
+        <md-filter-chip label="Under R150" removable selected></md-filter-chip>
+        <md-filter-chip label="Delivery" disabled></md-filter-chip>
+      </md-chip-set>
+    </div>
+    <div class="cap"><b>md-filter-chip</b> — click toggles <b>selected</b> · elevated · removable · disabled</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-chip-set>
+        <md-input-chip label="Thandi Mokoena" avatar><md-icon slot="icon">person</md-icon></md-input-chip>
+        <md-input-chip label="Design team"><md-icon slot="icon">groups</md-icon></md-input-chip>
+        <md-input-chip label="Cape Town"><md-icon slot="icon">location_on</md-icon></md-input-chip>
+        <md-input-chip label="Q3-review.pdf" selected></md-input-chip>
+        <md-input-chip label="Pinned" remove-only></md-input-chip>
+        <md-input-chip label="Archived" disabled></md-input-chip>
+      </md-chip-set>
+    </div>
+    <div class="cap"><b>md-input-chip</b> — × removes it · avatar · selected · remove-only · disabled</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-chip-set>
+        <md-suggestion-chip label="Sounds good"></md-suggestion-chip>
+        <md-suggestion-chip label="Can we move it to Friday?"></md-suggestion-chip>
+        <md-suggestion-chip label="Send the agenda" elevated><md-icon slot="icon">checklist</md-icon></md-suggestion-chip>
+        <md-suggestion-chip label="Not this week" disabled></md-suggestion-chip>
+      </md-chip-set>
+    </div>
+    <div class="cap"><b>md-suggestion-chip</b> — plain · slot="icon" · elevated · disabled</div>
+  </div>
+</div>
+
+<h3>Segmented buttons</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage">
+      <md-outlined-segmented-button-set aria-label="Calendar view">
+        <md-outlined-segmented-button label="Day"><md-icon slot="icon">today</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="Week" selected><md-icon slot="icon">calendar_month</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="Month"><md-icon slot="icon">event</md-icon></md-outlined-segmented-button>
+      </md-outlined-segmented-button-set>
+    </div>
+    <div class="cap"><b>md-outlined-segmented-button-set</b> — single-select; the selected segment swaps its icon for a checkmark</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-outlined-segmented-button-set multiselect aria-label="Notify me by">
+        <md-outlined-segmented-button label="Email" selected><md-icon slot="icon">mail</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="SMS"><md-icon slot="icon">call</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="Push" selected><md-icon slot="icon">notifications</md-icon></md-outlined-segmented-button>
+      </md-outlined-segmented-button-set>
+    </div>
+    <div class="cap"><b>multiselect</b> — any number of segments can be on</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-outlined-segmented-button-set multiselect aria-label="Text style">
+        <md-outlined-segmented-button no-checkmark selected aria-label="Bold"><md-icon slot="icon">format_bold</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button no-checkmark aria-label="Italic"><md-icon slot="icon">format_italic</md-icon></md-outlined-segmented-button>
+        <md-outlined-segmented-button no-checkmark aria-label="Underline"><md-icon slot="icon">format_underlined</md-icon></md-outlined-segmented-button>
+      </md-outlined-segmented-button-set>
+    </div>
+    <div class="cap"><b>no-checkmark</b> — icon-only segments keep their glyph when selected</div>
+  </div>
+  <div class="demo">
+    <div class="stage">
+      <md-outlined-segmented-button-set aria-label="Delivery speed">
+        <md-outlined-segmented-button label="Standard" selected></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="Express"></md-outlined-segmented-button>
+        <md-outlined-segmented-button label="Same day"></md-outlined-segmented-button>
+      </md-outlined-segmented-button-set>
+    </div>
+    <div class="cap"><b>md-outlined-segmented-button</b> — label only, no icon slot; the checkmark still marks the choice</div>
+  </div>
+</div>
+</section>

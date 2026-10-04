@@ -1,13 +1,15 @@
 # Material 3 Expressive
 
 Two Material Design 3 Expressive systems, self-contained, with their fonts
-vendored. They live in separate directories and **must never be loaded on the
+vendored — plus Google's official component library, bundled and wearing the
+theme. They live in separate directories and **must never be loaded on the
 same page** — both spell `--md-sys-color-*` with different values, so whichever
 loaded second would win and the result would be neither system.
 
 | | What it is | Entry point |
 |---|---|---|
 | **The theme** | A dark instrument-panel theme: Material's system roles generated from the seed `#ff7a1a` with fidelity, six swappable accents, one near-grey ground. **Tokens only** — no components. | [`index.css`](index.css) |
+| **The components** | Google's official [`@material/web`](https://github.com/material-components/material-web) 2.5.0 — every stable element, the labs set (cards, navigation, segmented buttons, badge) and the Expressive `md-gb-*` set — bundled into one script and themed by the theme above through [`components/theme-bridge.css`](components/theme-bridge.css). | [`showcase/index.html`](showcase/index.html) |
 | **The baseline** | Google's own baseline Expressive system: the `#6750A4` tonal-spot scheme in light and dark, 15 type styles plus emphasized twins, the 10-step corner scale, 24 morphable shapes, spring motion, **and a full component layer**. | [`baseline/styles.css`](baseline/styles.css) |
 
 Open [`index.html`](index.html) for the theme's specimen, or
@@ -57,6 +59,46 @@ once and restated by no accent. Choosing violet recolours the accent and leaves
 the page's ground exactly where it was. The status hues are untouched too: they
 carry meaning, not brand, and Material has no role for "pending" or "review".
 
+## The components
+
+`@material/web` styles itself from Material's system roles —
+`--md-sys-color-*`, `--md-ref-typeface-*` — which is exactly the vocabulary the
+theme declares. So the components need no restyling; they need the theme, plus
+a bridge for the roles the theme leaves unset (the fixed roles, `on-secondary`,
+`scrim` and the like), each derived from a role the theme does set so every
+accent carries through.
+
+```html
+<html data-accent="orange">
+<link rel="stylesheet" href="path/to/index.css">
+<link rel="stylesheet" href="path/to/components/m3-system.css">
+<link rel="stylesheet" href="path/to/components/theme-bridge.css">
+<script src="path/to/components/material-web.js"></script>
+
+<md-gb-button color="filled" size="md">Send</md-gb-button>
+<md-outlined-text-field label="Subject"></md-outlined-text-field>
+```
+
+`material-web.js` is a classic script, not a module, so pages work straight
+from `file://`. It is generated but committed, like the fonts, so nothing needs
+building to use it. To update it:
+
+```sh
+npm install
+npm run build:components   # components/material-web.js, m3-system.css, LICENSE
+npm run build:showcase     # showcase/index.html from showcase/sections/*.html
+```
+
+`components/m3-system.css` is the Expressive system stylesheet that ships with
+`labs/gb`; every rule in it sits in an `@layer`, so the theme's unlayered roles
+win without `!important`. Icons use the same Material Symbols subset as
+`baseline/` — an icon outside it renders as its ligature text.
+
+The showcase page is built from one fragment per section under
+`showcase/sections/`; `tools/shot.mjs` screenshots a page in headless Chrome.
+`tools/stage-claude-design.mjs` stages it as a self-contained folder for the
+Claude Design project.
+
 ## The baseline system
 
 Google's baseline Expressive, extracted from the Claude Design project it was
@@ -91,6 +133,12 @@ instructions all live there.
 | `fonts/fonts.css` | `@font-face` for the theme's 12 faces. |
 | `fonts/baseline.css` | `@font-face` for the baseline's 9 faces. |
 | `fonts/<family>/` | The `.woff2` files and that family's licence. |
+| `components/material-web.js` | Every `@material/web` element in one classic script (generated, committed). |
+| `components/theme-bridge.css` | Applies the theme to the components: the missing roles, the faces, the icon font. |
+| `components/m3-system.css` | The Expressive system stylesheet from `@material/web/labs/gb` (generated, committed). |
+| `showcase/index.html` | Every component, themed (generated from `showcase/sections/`). |
+| `tools/build-components.mjs` | Rebuilds the three generated files in `components/`. |
+| `tools/build-showcase.mjs` | Stitches the showcase sections into `showcase/index.html`. |
 | `tools/fetch-fonts.py` | Re-fetches and re-vendors every font. |
 | `tools/icon-names.py` | Prints the icon ligatures `baseline/` uses, for the Symbols subset. |
 

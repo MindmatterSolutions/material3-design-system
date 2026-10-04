@@ -1,0 +1,331 @@
+<section class="panel" id="expressive-actions" data-title="Expressive actions">
+<style>
+  #expressive-actions .matrix{padding-bottom:var(--space-2)}
+  #expressive-actions .matrix > .cell{display:flex;align-items:center}
+  #expressive-actions .pair{display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+  #expressive-actions .pair .cap{margin-top:0}
+  #expressive-actions .demo + .demos{margin-top:var(--grid-gap)}
+</style>
+<div class="kicker">labs/gb · md-gb-*</div>
+<h2>Expressive actions</h2>
+<p class="note">The Expressive set lives under <code>@material/web/labs/gb</code>. Buttons, icon
+  buttons and split buttons share one five-step size scale, <code>xs</code> to <code>xl</code>.
+  They are round by default and <code>square</code> on request. Press one and its corners tighten.
+  Selected toggles morph from round to square. Every colour on this page is a Material system
+  role supplied by the theme, so the accent picker restyles all of them.</p>
+
+<h3>Button: colour × size</h3>
+<div class="demo">
+  <div class="matrix" style="--cols:5">
+    <span class="mh"></span><span class="mh">xs</span><span class="mh">sm</span><span class="mh">md</span><span class="mh">lg</span><span class="mh">xl</span>
+
+    <span class="mh">filled</span>
+    <div class="cell"><md-gb-button color="filled" size="xs">Send</md-gb-button></div>
+    <div class="cell"><md-gb-button color="filled" size="sm">Send</md-gb-button></div>
+    <div class="cell"><md-gb-button color="filled" size="md">Send</md-gb-button></div>
+    <div class="cell"><md-gb-button color="filled" size="lg">Send</md-gb-button></div>
+    <div class="cell"><md-gb-button color="filled" size="xl">Send</md-gb-button></div>
+
+    <span class="mh">elevated</span>
+    <div class="cell"><md-gb-button color="elevated" size="xs">Reply</md-gb-button></div>
+    <div class="cell"><md-gb-button color="elevated" size="sm">Reply</md-gb-button></div>
+    <div class="cell"><md-gb-button color="elevated" size="md">Reply</md-gb-button></div>
+    <div class="cell"><md-gb-button color="elevated" size="lg">Reply</md-gb-button></div>
+    <div class="cell"><md-gb-button color="elevated" size="xl">Reply</md-gb-button></div>
+
+    <span class="mh">tonal</span>
+    <div class="cell"><md-gb-button color="tonal" size="xs">Save</md-gb-button></div>
+    <div class="cell"><md-gb-button color="tonal" size="sm">Save</md-gb-button></div>
+    <div class="cell"><md-gb-button color="tonal" size="md">Save</md-gb-button></div>
+    <div class="cell"><md-gb-button color="tonal" size="lg">Save</md-gb-button></div>
+    <div class="cell"><md-gb-button color="tonal" size="xl">Save</md-gb-button></div>
+
+    <span class="mh">outlined</span>
+    <div class="cell"><md-gb-button color="outlined" size="xs">Share</md-gb-button></div>
+    <div class="cell"><md-gb-button color="outlined" size="sm">Share</md-gb-button></div>
+    <div class="cell"><md-gb-button color="outlined" size="md">Share</md-gb-button></div>
+    <div class="cell"><md-gb-button color="outlined" size="lg">Share</md-gb-button></div>
+    <div class="cell"><md-gb-button color="outlined" size="xl">Share</md-gb-button></div>
+
+    <span class="mh">text</span>
+    <div class="cell"><md-gb-button color="text" size="xs">Edit</md-gb-button></div>
+    <div class="cell"><md-gb-button color="text" size="sm">Edit</md-gb-button></div>
+    <div class="cell"><md-gb-button color="text" size="md">Edit</md-gb-button></div>
+    <div class="cell"><md-gb-button color="text" size="lg">Edit</md-gb-button></div>
+    <div class="cell"><md-gb-button color="text" size="xl">Edit</md-gb-button></div>
+  </div>
+  <div class="cap"><b>md-gb-button</b> color="filled|elevated|tonal|outlined|text" size="xs|sm|md|lg|xl". The defaults are text and sm.</div>
+</div>
+
+<h3>Button: shape, toggle, state</h3>
+<div class="demos">
+  <div class="demo">
+    <div class="stage center">
+      <div class="pair"><md-gb-button color="filled" size="md">Publish</md-gb-button><span class="cap">round</span></div>
+      <div class="pair"><md-gb-button color="filled" size="md" square>Publish</md-gb-button><span class="cap">square</span></div>
+    </div>
+    <div class="cap"><b>md-gb-button</b> square. Hold either one down to see the press morph.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <div class="row"><md-gb-button color="filled" type="toggle">Follow</md-gb-button><md-gb-button color="filled" type="toggle" selected>Follow</md-gb-button></div>
+      <div class="row"><md-gb-button color="tonal" type="toggle">Pin</md-gb-button><md-gb-button color="tonal" type="toggle" selected>Pin</md-gb-button></div>
+      <div class="row"><md-gb-button color="elevated" type="toggle">Mute</md-gb-button><md-gb-button color="elevated" type="toggle" selected>Mute</md-gb-button></div>
+      <div class="row"><md-gb-button color="outlined" type="toggle">Watch</md-gb-button><md-gb-button color="outlined" type="toggle" selected>Watch</md-gb-button></div>
+    </div>
+    <div class="cap"><b>md-gb-button</b> type="toggle", unselected then selected, in filled, tonal, elevated and outlined. A selected toggle squares off. Click one to flip it.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <div class="row"><md-gb-button color="filled" disabled>Submit</md-gb-button><md-gb-button color="outlined" disabled>Discard</md-gb-button></div>
+      <div class="row"><md-gb-button color="filled" soft-disabled>Submit</md-gb-button><md-gb-button color="outlined" soft-disabled>Discard</md-gb-button></div>
+    </div>
+    <div class="cap"><b>md-gb-button</b> disabled (top row) and soft-disabled (bottom row). They look the same, but soft-disabled stays focusable.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <md-gb-button color="filled"><md-icon>send</md-icon>Send</md-gb-button>
+      <md-gb-button color="tonal"><md-icon>download</md-icon>Download</md-gb-button>
+      <md-gb-button color="outlined"><md-icon>add</md-icon>New event</md-gb-button>
+      <md-gb-button color="text"><md-icon>edit</md-icon>Rename</md-gb-button>
+    </div>
+    <div class="cap"><b>md-gb-button</b> with &lt;md-icon&gt; placed before the label in the default slot. The button sets the icon's size and colour.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <md-gb-button color="tonal" href="#expressive-actions"><md-icon>arrow_forward</md-icon>View details</md-gb-button>
+      <md-gb-button color="text" href="#expressive-actions">Back to top</md-gb-button>
+    </div>
+    <div class="cap"><b>md-gb-button</b> href="#…" renders an &lt;a&gt;, and type becomes "link". The target and download attributes pass through.</div>
+  </div>
+</div>
+
+<h3>Icon button</h3>
+<div class="demo">
+  <div class="matrix" style="--cols:5">
+    <span class="mh"></span><span class="mh">xs</span><span class="mh">sm</span><span class="mh">md</span><span class="mh">lg</span><span class="mh">xl</span>
+
+    <span class="mh">standard</span>
+    <div class="cell"><md-gb-icon-button size="xs" aria-label="Search"><md-icon>search</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button size="sm" aria-label="Search"><md-icon>search</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button size="md" aria-label="Search"><md-icon>search</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button size="lg" aria-label="Search"><md-icon>search</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button size="xl" aria-label="Search"><md-icon>search</md-icon></md-gb-icon-button></div>
+
+    <span class="mh">filled</span>
+    <div class="cell"><md-gb-icon-button color="filled" size="xs" aria-label="Play"><md-icon>play_arrow</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="filled" size="sm" aria-label="Play"><md-icon>play_arrow</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="filled" size="md" aria-label="Play"><md-icon>play_arrow</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="filled" size="lg" aria-label="Play"><md-icon>play_arrow</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="filled" size="xl" aria-label="Play"><md-icon>play_arrow</md-icon></md-gb-icon-button></div>
+
+    <span class="mh">tonal</span>
+    <div class="cell"><md-gb-icon-button color="tonal" size="xs" aria-label="Microphone"><md-icon>mic</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="tonal" size="sm" aria-label="Microphone"><md-icon>mic</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="tonal" size="md" aria-label="Microphone"><md-icon>mic</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="tonal" size="lg" aria-label="Microphone"><md-icon>mic</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="tonal" size="xl" aria-label="Microphone"><md-icon>mic</md-icon></md-gb-icon-button></div>
+
+    <span class="mh">outlined</span>
+    <div class="cell"><md-gb-icon-button color="outlined" size="xs" aria-label="Settings"><md-icon>settings</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="outlined" size="sm" aria-label="Settings"><md-icon>settings</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="outlined" size="md" aria-label="Settings"><md-icon>settings</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="outlined" size="lg" aria-label="Settings"><md-icon>settings</md-icon></md-gb-icon-button></div>
+    <div class="cell"><md-gb-icon-button color="outlined" size="xl" aria-label="Settings"><md-icon>settings</md-icon></md-gb-icon-button></div>
+  </div>
+  <div class="cap"><b>md-gb-icon-button</b> color="standard|filled|tonal|outlined" size="xs|sm|md|lg|xl". Standard is the default colour.</div>
+</div>
+
+<div class="demos">
+  <div class="demo">
+    <div class="stage center">
+      <div class="pair"><md-gb-icon-button color="tonal" size="md" width="narrow" aria-label="Previous track"><md-icon>skip_previous</md-icon></md-gb-icon-button><span class="cap">narrow</span></div>
+      <div class="pair"><md-gb-icon-button color="filled" size="md" aria-label="Pause"><md-icon>pause</md-icon></md-gb-icon-button><span class="cap">default</span></div>
+      <div class="pair"><md-gb-icon-button color="tonal" size="md" width="wide" aria-label="Next track"><md-icon>skip_next</md-icon></md-gb-icon-button><span class="cap">wide</span></div>
+    </div>
+    <div class="cap"><b>md-gb-icon-button</b> width="narrow|wide". Without it the button is square-proportioned.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage center">
+      <div class="pair"><md-gb-icon-button color="filled" size="md" aria-label="Share"><md-icon>share</md-icon></md-gb-icon-button><span class="cap">round</span></div>
+      <div class="pair"><md-gb-icon-button color="filled" size="md" square aria-label="Share"><md-icon>share</md-icon></md-gb-icon-button><span class="cap">square</span></div>
+      <div class="pair"><md-gb-icon-button color="outlined" size="md" square aria-label="Delete"><md-icon>delete</md-icon></md-gb-icon-button><span class="cap">square</span></div>
+    </div>
+    <div class="cap"><b>md-gb-icon-button</b> square</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <md-gb-icon-button type="toggle" aria-label="Favourite"><md-icon>favorite</md-icon></md-gb-icon-button>
+      <md-gb-icon-button type="toggle" selected aria-label="Favourite"><md-icon>favorite</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="filled" type="toggle" aria-label="Bookmark"><md-icon>bookmark</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="filled" type="toggle" selected aria-label="Bookmark"><md-icon>bookmark</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="tonal" type="toggle" aria-label="Notifications"><md-icon>notifications</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="tonal" type="toggle" selected aria-label="Notifications"><md-icon>notifications</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="outlined" type="toggle" aria-label="Star"><md-icon>star</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="outlined" type="toggle" selected aria-label="Star"><md-icon>star</md-icon></md-gb-icon-button>
+    </div>
+    <div class="cap"><b>md-gb-icon-button</b> type="toggle". Each pair shows unselected, then selected.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <md-gb-icon-button color="filled" disabled aria-label="Send"><md-icon>send</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="tonal" disabled aria-label="Edit"><md-icon>edit</md-icon></md-gb-icon-button>
+      <md-gb-icon-button color="outlined" soft-disabled aria-label="Delete"><md-icon>delete</md-icon></md-gb-icon-button>
+      <md-gb-icon-button soft-disabled aria-label="More options"><md-icon>more_vert</md-icon></md-gb-icon-button>
+    </div>
+    <div class="cap"><b>md-gb-icon-button</b> disabled (first two) and soft-disabled (last two)</div>
+  </div>
+</div>
+
+<h3>Split button</h3>
+<div class="demo">
+  <div class="matrix" style="--cols:5">
+    <span class="mh"></span><span class="mh">xs</span><span class="mh">sm</span><span class="mh">md</span><span class="mh">lg</span><span class="mh">xl</span>
+
+    <span class="mh">filled</span>
+    <div class="cell"><md-gb-split-button color="filled" size="xs"><button slot="leading">Send</button><button slot="trailing" aria-label="Send options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="filled" size="sm"><button slot="leading">Send</button><button slot="trailing" aria-label="Send options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="filled" size="md"><button slot="leading">Send</button><button slot="trailing" aria-label="Send options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="filled" size="lg"><button slot="leading">Send</button><button slot="trailing" aria-label="Send options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="filled" size="xl"><button slot="leading">Send</button><button slot="trailing" aria-label="Send options"></button></md-gb-split-button></div>
+
+    <span class="mh">elevated</span>
+    <div class="cell"><md-gb-split-button color="elevated" size="xs"><button slot="leading">Copy</button><button slot="trailing" aria-label="Copy options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="elevated" size="sm"><button slot="leading">Copy</button><button slot="trailing" aria-label="Copy options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="elevated" size="md"><button slot="leading">Copy</button><button slot="trailing" aria-label="Copy options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="elevated" size="lg"><button slot="leading">Copy</button><button slot="trailing" aria-label="Copy options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="elevated" size="xl"><button slot="leading">Copy</button><button slot="trailing" aria-label="Copy options"></button></md-gb-split-button></div>
+
+    <span class="mh">tonal</span>
+    <div class="cell"><md-gb-split-button color="tonal" size="xs"><button slot="leading">Save</button><button slot="trailing" aria-label="Save options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="tonal" size="sm"><button slot="leading">Save</button><button slot="trailing" aria-label="Save options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="tonal" size="md"><button slot="leading">Save</button><button slot="trailing" aria-label="Save options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="tonal" size="lg"><button slot="leading">Save</button><button slot="trailing" aria-label="Save options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="tonal" size="xl"><button slot="leading">Save</button><button slot="trailing" aria-label="Save options"></button></md-gb-split-button></div>
+
+    <span class="mh">outlined</span>
+    <div class="cell"><md-gb-split-button color="outlined" size="xs"><button slot="leading">Print</button><button slot="trailing" aria-label="Print options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="outlined" size="sm"><button slot="leading">Print</button><button slot="trailing" aria-label="Print options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="outlined" size="md"><button slot="leading">Print</button><button slot="trailing" aria-label="Print options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="outlined" size="lg"><button slot="leading">Print</button><button slot="trailing" aria-label="Print options"></button></md-gb-split-button></div>
+    <div class="cell"><md-gb-split-button color="outlined" size="xl"><button slot="leading">Print</button><button slot="trailing" aria-label="Print options"></button></md-gb-split-button></div>
+  </div>
+  <div class="cap"><b>md-gb-split-button</b> color="filled|elevated|tonal|outlined" size="xs|sm|md|lg|xl", with a &lt;button slot="leading"&gt; and a &lt;button slot="trailing"&gt;. The defaults are filled and sm.</div>
+</div>
+
+<div class="demos">
+  <div class="demo">
+    <div class="stage">
+      <md-gb-split-button color="filled" size="md">
+        <button slot="leading"><md-icon>send</md-icon>Send</button>
+        <button slot="trailing" popovertarget="xa-send-menu" aria-label="More send options"></button>
+        <md-gb-menu id="xa-send-menu">
+          <md-gb-menu-item><md-icon slot="leading">calendar_month</md-icon>Schedule send</md-gb-menu-item>
+          <md-gb-menu-item><md-icon slot="leading">edit</md-icon>Save as draft</md-gb-menu-item>
+          <md-gb-menu-item><md-icon slot="leading">delete</md-icon>Discard</md-gb-menu-item>
+        </md-gb-menu>
+      </md-gb-split-button>
+    </div>
+    <div class="cap"><b>md-gb-split-button</b> with an icon in the leading button. The trailing button has popovertarget pointing at an &lt;md-gb-menu&gt; in the default slot. Open it to rotate the chevron.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <md-gb-split-button color="tonal" size="md">
+        <button slot="leading">Save draft</button>
+        <button slot="trailing" aria-label="Save options"></button>
+      </md-gb-split-button>
+      <md-gb-split-button color="tonal" size="md" selected>
+        <button slot="leading">Save draft</button>
+        <button slot="trailing" aria-label="Save options"></button>
+      </md-gb-split-button>
+    </div>
+    <div class="cap"><b>md-gb-split-button</b> selected. The trailing half goes fully round and the chevron flips, which is the state shown while the menu is open.</div>
+  </div>
+</div>
+
+<h3>FAB</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="matrix" style="--cols:3">
+      <span class="mh"></span><span class="mh">default</span><span class="mh">md</span><span class="mh">lg</span>
+
+      <span class="mh">primary-container</span>
+      <div class="cell"><md-gb-fab><md-icon>edit</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab size="md"><md-icon>edit</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab size="lg"><md-icon>edit</md-icon></md-gb-fab></div>
+
+      <span class="mh">primary</span>
+      <div class="cell"><md-gb-fab color="primary"><md-icon>add</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="primary" size="md"><md-icon>add</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="primary" size="lg"><md-icon>add</md-icon></md-gb-fab></div>
+
+      <span class="mh">secondary-container</span>
+      <div class="cell"><md-gb-fab color="secondary-container"><md-icon>favorite</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="secondary-container" size="md"><md-icon>favorite</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="secondary-container" size="lg"><md-icon>favorite</md-icon></md-gb-fab></div>
+
+      <span class="mh">secondary</span>
+      <div class="cell"><md-gb-fab color="secondary"><md-icon>photo_camera</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="secondary" size="md"><md-icon>photo_camera</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="secondary" size="lg"><md-icon>photo_camera</md-icon></md-gb-fab></div>
+
+      <span class="mh">tertiary-container</span>
+      <div class="cell"><md-gb-fab color="tertiary-container"><md-icon>mic</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="tertiary-container" size="md"><md-icon>mic</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="tertiary-container" size="lg"><md-icon>mic</md-icon></md-gb-fab></div>
+
+      <span class="mh">tertiary</span>
+      <div class="cell"><md-gb-fab color="tertiary"><md-icon>music_note</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="tertiary" size="md"><md-icon>music_note</md-icon></md-gb-fab></div>
+      <div class="cell"><md-gb-fab color="tertiary" size="lg"><md-icon>music_note</md-icon></md-gb-fab></div>
+    </div>
+    <div class="cap"><b>md-gb-fab</b> color="primary-container|primary|secondary-container|secondary|tertiary-container|tertiary" size="default|md|lg". The defaults are primary-container and default.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <div class="row"><md-gb-fab><md-icon>edit</md-icon>Compose</md-gb-fab></div>
+      <div class="row"><md-gb-fab color="secondary-container" size="md"><md-icon>directions</md-icon>Start route</md-gb-fab></div>
+      <div class="row"><md-gb-fab color="tertiary" size="lg"><md-icon>add</md-icon>New list</md-gb-fab></div>
+    </div>
+    <div class="cap"><b>md-gb-fab</b> with an icon and a label in the default slot. This is the extended FAB. Its shape and padding follow size.</div>
+  </div>
+</div>
+
+<h3>Icon</h3>
+<div class="demos">
+  <div class="demo">
+    <div class="stage center">
+      <div class="pair"><md-icon>favorite</md-icon><span class="cap">md-icon</span></div>
+      <div class="pair"><md-gb-icon>favorite</md-gb-icon><span class="cap">md-gb-icon</span></div>
+    </div>
+    <div class="cap"><b>md-gb-icon</b> is the classic &lt;md-icon&gt; with the Expressive icon styles added. It reads --md-icon-font, --md-icon-size and --md-icon-color.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage center">
+      <div class="pair"><md-gb-icon style="--md-icon-wght:200">bolt</md-gb-icon><span class="cap">wght 200</span></div>
+      <div class="pair"><md-gb-icon style="--md-icon-wght:400">bolt</md-gb-icon><span class="cap">wght 400</span></div>
+      <div class="pair"><md-gb-icon style="--md-icon-wght:700">bolt</md-gb-icon><span class="cap">wght 700</span></div>
+    </div>
+    <div class="cap"><b>md-gb-icon</b> --md-icon-wght, plus the opsz, FILL and GRAD axes. Only the axes the icon font ships have any effect.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage center">
+      <md-gb-button color="tonal"><md-gb-icon>mail</md-gb-icon>Inbox</md-gb-button>
+      <md-gb-icon-button color="filled" aria-label="Home"><md-gb-icon>home</md-gb-icon></md-gb-icon-button>
+      <md-gb-fab color="secondary-container"><md-gb-icon>check</md-gb-icon></md-gb-fab>
+    </div>
+    <div class="cap"><b>md-gb-icon</b> inside md-gb-button, md-gb-icon-button and md-gb-fab picks up the host's --md-icon-size and --md-icon-color.</div>
+  </div>
+</div>
+</section>

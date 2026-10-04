@@ -1,0 +1,61 @@
+/* Page chrome for the showcase. Like index.html, it may use the theme's
+   tokens and nothing else — a literal here is a bug. Components style
+   themselves; this file only lays the page out around them. */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg-grid-base);
+  color:var(--text-primary);
+  font-family:var(--font-sans);
+  font-size:var(--text-md);
+  line-height:var(--leading-normal);
+  padding:var(--page-padding);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)}
+
+/* masthead + accent picker (same pattern as index.html) */
+header.mast{display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:flex-end;justify-content:space-between;padding-bottom:var(--space-5);border-bottom:1px solid var(--border-default)}
+.mast p{margin:var(--space-2) 0 0;color:var(--text-secondary);max-width:68ch}
+.mast code,.note code{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-primary)}
+.accents{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.accents button{height:var(--control-height);padding:0 var(--space-4);border-radius:var(--radius-control);border:1px solid var(--border-default);background:var(--surface-card);color:var(--text-secondary);font-size:var(--text-sm);cursor:pointer;display:inline-flex;align-items:center;gap:var(--space-2);transition:background var(--motion-duration) var(--motion-ease),border-color var(--motion-duration) var(--motion-ease),color var(--motion-duration) var(--motion-ease)}
+.accents button:hover{background:var(--surface-card-alt);color:var(--text-primary)}
+.accents button[aria-pressed="true"]{border-color:var(--accent-primary-line);background:var(--accent-primary-soft);color:var(--text-primary)}
+.accents .dot{width:10px;height:10px;border-radius:var(--radius-full);background:var(--dot,var(--accent-primary))}
+
+/* table of contents */
+nav.toc{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+nav.toc a{font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;padding:var(--space-1) var(--space-3);border:1px solid var(--border-default);border-radius:var(--radius-pill);background:var(--surface-card)}
+nav.toc a:hover{color:var(--text-primary);border-color:var(--accent-primary-line)}
+
+/* --- Section vocabulary (what section fragments may use) ------------------ */
+/* <section class="panel" id="…" data-title="…"> — one per fragment */
+section.panel{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-panel);padding:var(--panel-padding);box-shadow:var(--shadow-panel);scroll-margin-top:var(--space-6)}
+section.panel > h2{margin:0 0 var(--space-2)}
+section.panel h3{margin:var(--space-7) 0 var(--space-3)}
+section.panel h3:first-of-type{margin-top:var(--space-5)}
+.note{color:var(--text-secondary);margin:0 0 var(--space-5);max-width:76ch}
+.kicker{font-family:var(--font-mono);font-size:var(--text-2xs);letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--accent-primary);margin-bottom:var(--space-2)}
+
+/* .demos: auto-fill grid of .demo tiles */
+.demos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(var(--demo-min,260px),100%),1fr));gap:var(--grid-gap)}
+.demos.wide{--demo-min:420px}
+.demo{background:var(--surface-card-alt);border:1px solid var(--border-default);border-radius:var(--radius-inset);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
+.demo.flush{padding:0;overflow:hidden}
+.demo .stage{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;min-height:56px}
+.demo .stage.col{flex-direction:column;align-items:stretch}
+.demo .stage.center{justify-content:center}
+/* caption under a demo: the tag and the attributes that matter */
+.cap{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);line-height:var(--leading-normal);margin-top:auto}
+.cap b{color:var(--text-secondary);font-weight:var(--weight-medium)}
+
+/* .row: a plain wrapping flex row outside a tile */
+.row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+
+/* .matrix: label column + cells, for size × colour sweeps */
+.matrix{display:grid;grid-template-columns:auto repeat(var(--cols,5),minmax(max-content,1fr));gap:var(--space-3) var(--space-4);align-items:center;overflow-x:auto}
+.matrix .mh{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary);white-space:nowrap}
+
+footer{color:var(--text-quaternary);font-size:var(--text-sm);padding-bottom:var(--space-6)}
+footer a{color:var(--link-color)}

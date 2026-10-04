@@ -1,0 +1,82 @@
+/* Applies the theme (index.css) to Google's @material/web components.
+ *
+ * Load order is the contract:
+ *
+ *   <link rel="stylesheet" href="index.css">                    the theme
+ *   <link rel="stylesheet" href="components/m3-system.css">     Expressive system defaults
+ *   <link rel="stylesheet" href="components/theme-bridge.css">  this file
+ *   <script src="components/material-web.js"></script>          the elements
+ *
+ * m3-system.css declares every role inside @layer md.sys.*, so the theme's
+ * unlayered roles already win. What the theme does not declare would fall
+ * through to Google's baseline purple, so this file closes those gaps. Each
+ * one is derived from a role the theme does set, so all six accents carry
+ * through without restating anything per accent.
+ *
+ * This is NOT the baseline system (baseline/). That one is a separate CSS
+ * component layer and still must not share a page with the theme.
+ */
+
+/* The icon font. Same subset baseline/ uses: an icon not in
+   tools/fetch-fonts.py's MATERIAL_SYMBOLS_ICONS renders as its ligature text. */
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(../fonts/material-symbols/material-symbols-fallback-100-700.woff2) format('woff2');
+}
+
+:root {
+  /* --- colour roles the theme leaves unset -------------------------------- */
+  /* Ink on an accent: tone ~20 of that accent. */
+  --md-sys-color-on-secondary: color-mix(in oklab, var(--md-sys-color-secondary) 28%, #000);
+  --md-sys-color-on-tertiary: color-mix(in oklab, var(--md-sys-color-tertiary) 28%, #000);
+  /* Material's dark error pair. */
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-on-error-container: #ffdad6;
+
+  /* The ground. One neutral palette, as the theme intends. */
+  --md-sys-color-background: var(--md-sys-color-surface);
+  --md-sys-color-on-background: var(--md-sys-color-on-surface);
+  --md-sys-color-surface-dim: var(--md-sys-color-surface);
+  --md-sys-color-surface-variant: var(--md-sys-color-surface-container-highest);
+  --md-sys-color-inverse-on-surface: color-mix(in oklab, var(--md-sys-color-inverse-surface) 22%, #000);
+  --md-sys-color-scrim: #000;
+  --md-sys-color-shadow: #000;
+
+  /* Fixed roles: the same in light and dark, tone 90 / 80 / 10 / 30. */
+  --md-sys-color-primary-fixed: color-mix(in oklab, var(--md-sys-color-primary) 55%, #fff);
+  --md-sys-color-primary-fixed-dim: var(--md-sys-color-primary);
+  --md-sys-color-on-primary-fixed: color-mix(in oklab, var(--md-sys-color-on-primary) 60%, #000);
+  --md-sys-color-on-primary-fixed-variant: color-mix(in oklab, var(--md-sys-color-inverse-primary) 75%, #000);
+  --md-sys-color-secondary-fixed: color-mix(in oklab, var(--md-sys-color-secondary) 55%, #fff);
+  --md-sys-color-secondary-fixed-dim: var(--md-sys-color-secondary);
+  --md-sys-color-on-secondary-fixed: color-mix(in oklab, var(--md-sys-color-secondary-container) 45%, #000);
+  --md-sys-color-on-secondary-fixed-variant: var(--md-sys-color-secondary-container);
+  --md-sys-color-tertiary-fixed: color-mix(in oklab, var(--md-sys-color-tertiary) 55%, #fff);
+  --md-sys-color-tertiary-fixed-dim: var(--md-sys-color-tertiary);
+  --md-sys-color-on-tertiary-fixed: color-mix(in oklab, var(--md-sys-color-tertiary-container) 45%, #000);
+  --md-sys-color-on-tertiary-fixed-variant: var(--md-sys-color-tertiary-container);
+
+  /* The theme is dark only; m3-system.css says light dark. */
+  color-scheme: dark;
+
+  /* --- type --------------------------------------------------------------- */
+  /* Material's brand and plain faces are both the theme's sans. */
+  --md-ref-typeface-brand: var(--font-sans);
+  --md-ref-typeface-plain: var(--font-sans);
+
+  /* --- component tokens with no system-role fallback ---------------------- */
+  /* The labs drawer falls back to #fff / #000 rather than to a role. */
+  --md-navigation-drawer-container-color: var(--md-sys-color-surface-container-low);
+  --md-navigation-drawer-divider-color: var(--md-sys-color-outline-variant);
+  /* The labs segmented button paints its disabled state at full on-surface;
+     Material's disabled state is 12% outline, 38% ink. */
+  --md-outlined-segmented-button-disabled-outline-color: color-mix(in oklab, var(--md-sys-color-on-surface) 12%, transparent);
+  --md-outlined-segmented-button-disabled-label-text-color: color-mix(in oklab, var(--md-sys-color-on-surface) 38%, transparent);
+  --md-outlined-segmented-button-disabled-icon-color: color-mix(in oklab, var(--md-sys-color-on-surface) 38%, transparent);
+
+  /* --- icons -------------------------------------------------------------- */
+  --md-icon-font: 'Material Symbols Rounded';
+}

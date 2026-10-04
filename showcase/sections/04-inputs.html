@@ -1,0 +1,313 @@
+<section class="panel" id="inputs" data-title="Inputs & selection">
+  <style>
+    #inputs .stage.col > md-filled-text-field,
+    #inputs .stage.col > md-outlined-text-field,
+    #inputs .stage.col > md-filled-select,
+    #inputs .stage.col > md-outlined-select,
+    #inputs .stage.col > md-slider { width: 100%; }
+    #inputs .choices { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+    #inputs .choices label { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--text-primary); font-size: var(--text-sm); cursor: pointer; }
+    #inputs .choices label.off { color: var(--text-quaternary); cursor: default; }
+    #inputs .slider-label { display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-secondary); }
+    #inputs .slider-label output { font-family: var(--font-mono); color: var(--text-primary); }
+    #inputs form.demo { max-width: 760px; }
+    #inputs .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--space-4); }
+    #inputs .fields > * { width: 100%; min-width: 0; }
+    #inputs .fields .full { grid-column: 1 / -1; }
+    #inputs .form-foot { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: flex-end; }
+    #inputs .form-foot .status { margin-right: auto; font-size: var(--text-sm); color: var(--text-secondary); }
+  </style>
+
+  <h2>Inputs &amp; selection</h2>
+  <p class="note">Every control below is a stock <code>@material/web</code> form element — text fields, selects, checkboxes, radios, switches and sliders. None of them carries a style of its own here: containers, outlines, focus indicators, error red and the active accent all come from the theme's <code>--md-sys-*</code> roles, so changing the accent above recolours every handle, track and caret at once. They are form-associated, so they submit with a plain <code>&lt;form&gt;</code>.</p>
+
+  <!-- ===================================================== text fields -->
+  <h3>Text fields</h3>
+  <div class="demos">
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Full name" value="Amara Okafor"></md-filled-text-field>
+        <md-outlined-text-field label="Full name" value="Amara Okafor"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>md-filled-text-field</b> · <b>md-outlined-text-field</b><br>label · value</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Work email" type="email" placeholder="name@company.com" supporting-text="Receipts are sent here"></md-filled-text-field>
+        <md-outlined-text-field label="Phone" type="tel" placeholder="+27 82 555 0143" supporting-text="Only used for delivery updates"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>type</b>="email|tel" · placeholder · supporting-text</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Postal code" value="80A1" error error-text="Use four digits, e.g. 8001"></md-filled-text-field>
+        <md-outlined-text-field label="Password" type="password" value="hunter" required error error-text="At least 12 characters"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>error</b> · error-text · required</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Search orders" value="Order #48213">
+          <md-icon slot="leading-icon">search</md-icon>
+          <md-icon slot="trailing-icon">close</md-icon>
+        </md-filled-text-field>
+        <md-outlined-text-field label="Delivery address" value="14 Bree St, Cape Town">
+          <md-icon slot="leading-icon">location_on</md-icon>
+        </md-outlined-text-field>
+      </div>
+      <div class="cap"><b>md-icon</b> slot="leading-icon" · slot="trailing-icon"</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Unit price" inputmode="decimal" value="249.00" prefix-text="R "></md-filled-text-field>
+        <md-outlined-text-field label="Parcel weight" inputmode="decimal" value="2.4" suffix-text="kg"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>prefix-text</b> · suffix-text · inputmode="decimal"</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Display name" value="Amara from Bree St Studio" maxlength="32"></md-filled-text-field>
+        <md-outlined-text-field label="Gift message" value="Happy birthday, Thabo!" maxlength="60" supporting-text="Printed on the card"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>maxlength</b> → character counter</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field type="textarea" rows="3" label="Delivery instructions" value="Ring the bell at the side gate. If no one answers, leave it with reception." maxlength="200"></md-filled-text-field>
+        <md-outlined-text-field type="textarea" rows="2" label="Notes for the team" placeholder="Anything the packers should know"></md-outlined-text-field>
+      </div>
+      <div class="cap"><b>type</b>="textarea" · rows · maxlength</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-text-field label="Account ID" value="MM-20419" disabled></md-filled-text-field>
+        <md-outlined-text-field label="Billing currency" value="ZAR (rand)" disabled>
+          <md-icon slot="leading-icon">settings</md-icon>
+        </md-outlined-text-field>
+      </div>
+      <div class="cap"><b>disabled</b></div>
+    </div>
+  </div>
+
+  <!-- ===================================================== selects -->
+  <h3>Selects</h3>
+  <div class="demos">
+    <div class="demo">
+      <div class="stage col">
+        <md-filled-select label="Country">
+          <md-select-option value="bw"><div slot="headline">Botswana</div></md-select-option>
+          <md-select-option value="ke"><div slot="headline">Kenya</div></md-select-option>
+          <md-select-option value="na"><div slot="headline">Namibia</div></md-select-option>
+          <md-select-option value="za" selected><div slot="headline">South Africa</div></md-select-option>
+          <md-select-option value="zm"><div slot="headline">Zambia</div></md-select-option>
+        </md-filled-select>
+      </div>
+      <div class="cap"><b>md-filled-select</b> · label<br><b>md-select-option</b> selected</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-outlined-select label="Shipping speed" value="express" supporting-text="Express arrives in 1–2 working days">
+          <md-select-option value="standard"><div slot="headline">Standard</div></md-select-option>
+          <md-select-option value="express"><div slot="headline">Express</div></md-select-option>
+          <md-select-option value="same-day"><div slot="headline">Same day</div></md-select-option>
+          <md-select-option value="collect" disabled><div slot="headline">Collect in store</div></md-select-option>
+        </md-outlined-select>
+      </div>
+      <div class="cap"><b>md-outlined-select</b> · value · supporting-text<br>option disabled</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <md-outlined-select label="Size" required error error-text="Choose a size to continue">
+          <md-select-option value=""></md-select-option>
+          <md-select-option value="s"><div slot="headline">Small</div></md-select-option>
+          <md-select-option value="m"><div slot="headline">Medium</div></md-select-option>
+          <md-select-option value="l"><div slot="headline">Large</div></md-select-option>
+        </md-outlined-select>
+        <md-filled-select label="Warehouse" disabled>
+          <md-select-option value="cpt" selected><div slot="headline">Cape Town</div></md-select-option>
+          <md-select-option value="jhb"><div slot="headline">Johannesburg</div></md-select-option>
+        </md-filled-select>
+      </div>
+      <div class="cap"><b>error</b> · error-text · required · <b>disabled</b></div>
+    </div>
+  </div>
+
+  <!-- ===================================================== selection controls -->
+  <h3>Checkbox, radio &amp; switch</h3>
+  <div class="demos">
+    <div class="demo">
+      <div class="stage">
+        <div class="choices">
+          <label><md-checkbox touch-target="wrapper" aria-label="Select all items" indeterminate></md-checkbox>Select all items</label>
+          <label><md-checkbox touch-target="wrapper" aria-label="Linen shirt" checked></md-checkbox>Linen shirt</label>
+          <label><md-checkbox touch-target="wrapper" aria-label="Canvas tote"></md-checkbox>Canvas tote</label>
+          <label class="off"><md-checkbox touch-target="wrapper" aria-label="Gift wrap" disabled></md-checkbox>Gift wrap (unavailable)</label>
+          <label class="off"><md-checkbox touch-target="wrapper" aria-label="Insurance" checked disabled></md-checkbox>Insurance (included)</label>
+        </div>
+      </div>
+      <div class="cap"><b>md-checkbox</b> · checked · indeterminate · disabled · touch-target="wrapper"</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage">
+        <div class="choices" role="radiogroup" aria-label="Delivery window">
+          <label><md-radio touch-target="wrapper" name="window" value="morning" aria-label="Morning, 8–12"></md-radio>Morning, 8–12</label>
+          <label><md-radio touch-target="wrapper" name="window" value="afternoon" aria-label="Afternoon, 12–17" checked></md-radio>Afternoon, 12–17</label>
+          <label><md-radio touch-target="wrapper" name="window" value="evening" aria-label="Evening, 17–20"></md-radio>Evening, 17–20</label>
+          <label class="off"><md-radio touch-target="wrapper" name="window-x" value="weekend" aria-label="Weekend" disabled></md-radio>Weekend (fully booked)</label>
+        </div>
+      </div>
+      <div class="cap"><b>md-radio</b> · name · value · checked · disabled</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage">
+        <div class="choices">
+          <label><md-switch aria-label="Order updates by email" selected></md-switch>Order updates by email</label>
+          <label><md-switch aria-label="Marketing emails"></md-switch>Marketing emails</label>
+          <label><md-switch icons aria-label="Two-step sign-in" selected></md-switch>Two-step sign-in</label>
+          <label><md-switch icons show-only-selected-icon aria-label="Save card for later"></md-switch>Save card for later</label>
+          <label class="off"><md-switch aria-label="Beta features" disabled></md-switch>Beta features</label>
+          <label class="off"><md-switch icons aria-label="Encrypted backups" selected disabled></md-switch>Encrypted backups</label>
+        </div>
+      </div>
+      <div class="cap"><b>md-switch</b> · selected · icons · show-only-selected-icon · disabled</div>
+    </div>
+  </div>
+
+  <!-- ===================================================== sliders -->
+  <h3>Sliders</h3>
+  <div class="demos">
+    <div class="demo">
+      <div class="stage col">
+        <div class="slider-label"><span>Speaker volume</span><output id="inputs-vol">40%</output></div>
+        <md-slider id="inputs-vol-slider" value="40" aria-label="Speaker volume"></md-slider>
+      </div>
+      <div class="cap"><b>md-slider</b> · value (continuous)</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <div class="slider-label"><span>Spice level</span></div>
+        <md-slider min="0" max="5" step="1" value="3" ticks labeled aria-label="Spice level"></md-slider>
+      </div>
+      <div class="cap"><b>step</b> · ticks · labeled (discrete)</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <div class="slider-label"><span>Price range</span><output id="inputs-price">R200 – R1,400</output></div>
+        <md-slider id="inputs-price-slider" range min="0" max="2000" step="50" value-start="200" value-end="1400" labeled value-label-start="R200" value-label-end="R1.4k" aria-label-start="Minimum price" aria-label-end="Maximum price"></md-slider>
+      </div>
+      <div class="cap"><b>range</b> · value-start · value-end · value-label-start/end</div>
+    </div>
+
+    <div class="demo">
+      <div class="stage col">
+        <div class="slider-label"><span>Brightness (locked)</span></div>
+        <md-slider value="65" disabled aria-label="Brightness"></md-slider>
+      </div>
+      <div class="cap"><b>md-slider</b> · disabled</div>
+    </div>
+  </div>
+
+  <!-- ===================================================== composed form -->
+  <h3>Composed: create an event</h3>
+  <form class="demo" id="inputs-form" autocomplete="off">
+    <div class="kicker">New event</div>
+    <div class="fields">
+      <md-filled-text-field class="full" name="title" label="Event name" value="Quarterly design review" required maxlength="60"></md-filled-text-field>
+      <md-outlined-text-field name="date" label="Date" value="Thu 22 Oct 2026">
+        <md-icon slot="leading-icon">calendar_month</md-icon>
+      </md-outlined-text-field>
+      <md-outlined-select name="duration" label="Duration" value="90">
+        <md-select-option value="30"><div slot="headline">30 minutes</div></md-select-option>
+        <md-select-option value="60"><div slot="headline">1 hour</div></md-select-option>
+        <md-select-option value="90"><div slot="headline">1 hour 30</div></md-select-option>
+        <md-select-option value="180"><div slot="headline">Half day</div></md-select-option>
+      </md-outlined-select>
+      <md-outlined-text-field class="full" name="where" label="Location" value="Studio 3, 14 Bree Street" supporting-text="Room or video link">
+        <md-icon slot="leading-icon">location_on</md-icon>
+      </md-outlined-text-field>
+      <md-outlined-text-field class="full" name="agenda" type="textarea" rows="3" label="Agenda" value="Walk through the Expressive theme, review accent contrast, agree the Q1 component backlog." maxlength="280"></md-outlined-text-field>
+      <md-filled-select name="calendar" label="Calendar">
+        <md-select-option value="team" selected><div slot="headline">Design team</div></md-select-option>
+        <md-select-option value="company"><div slot="headline">Company-wide</div></md-select-option>
+        <md-select-option value="personal"><div slot="headline">Personal</div></md-select-option>
+      </md-filled-select>
+      <md-filled-select name="reminder" label="Reminder">
+        <md-select-option value="0"><div slot="headline">None</div></md-select-option>
+        <md-select-option value="10" selected><div slot="headline">10 minutes before</div></md-select-option>
+        <md-select-option value="60"><div slot="headline">1 hour before</div></md-select-option>
+        <md-select-option value="1440"><div slot="headline">1 day before</div></md-select-option>
+      </md-filled-select>
+      <div class="choices" role="radiogroup" aria-label="Visibility">
+        <span class="slider-label">Visibility</span>
+        <label><md-radio touch-target="wrapper" name="visibility" value="busy" aria-label="Show as busy" checked></md-radio>Show as busy</label>
+        <label><md-radio touch-target="wrapper" name="visibility" value="private" aria-label="Private"></md-radio>Private</label>
+      </div>
+      <div class="choices">
+        <span class="slider-label">Options</span>
+        <label><md-switch name="recording" aria-label="Record the session" selected icons></md-switch>Record the session</label>
+        <label><md-checkbox touch-target="wrapper" name="notify" aria-label="Email the guests" checked></md-checkbox>Email the guests</label>
+      </div>
+      <div class="full">
+        <div class="slider-label"><span>Seats</span><output id="inputs-seats">24</output></div>
+        <md-slider id="inputs-seats-slider" name="seats" min="4" max="60" step="4" value="24" ticks labeled aria-label="Seats" style="width:100%"></md-slider>
+      </div>
+    </div>
+    <div class="form-foot">
+      <span class="status" id="inputs-status" role="status">Draft — not saved yet</span>
+      <md-text-button type="reset">Discard</md-text-button>
+      <md-filled-button type="submit"><md-icon slot="icon">event</md-icon>Create event</md-filled-button>
+    </div>
+    <div class="cap"><b>&lt;form&gt;</b> + form-associated fields · <b>md-filled-button</b> type="submit" · submit is intercepted, nothing navigates</div>
+  </form>
+
+  <script>
+    var root = document.getElementById('inputs');
+    if (!root) return;
+
+    var vol = root.querySelector('#inputs-vol-slider');
+    var volOut = root.querySelector('#inputs-vol');
+    if (vol) vol.addEventListener('input', function () { volOut.textContent = Math.round(vol.value) + '%'; });
+
+    function rand(v) { return 'R' + Number(v).toLocaleString('en-ZA').replace(/\s/g, ','); }
+    function short(v) { return v >= 1000 ? 'R' + (v / 1000).toFixed(v % 1000 ? 1 : 0) + 'k' : 'R' + v; }
+    var price = root.querySelector('#inputs-price-slider');
+    var priceOut = root.querySelector('#inputs-price');
+    if (price) price.addEventListener('input', function () {
+      price.valueLabelStart = short(price.valueStart);
+      price.valueLabelEnd = short(price.valueEnd);
+      priceOut.textContent = rand(price.valueStart) + ' – ' + rand(price.valueEnd);
+    });
+
+    var seats = root.querySelector('#inputs-seats-slider');
+    var seatsOut = root.querySelector('#inputs-seats');
+    if (seats) seats.addEventListener('input', function () { seatsOut.textContent = seats.value; });
+
+    var form = root.querySelector('#inputs-form');
+    var status = root.querySelector('#inputs-status');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var title = data.get('title') || 'Untitled event';
+        status.textContent = '“' + title + '” created for ' + (data.get('seats') || seats.value) + ' seats';
+      });
+      form.addEventListener('reset', function () {
+        status.textContent = 'Draft — not saved yet';
+        setTimeout(function () { if (seats) seatsOut.textContent = seats.value; }, 0);
+      });
+    }
+  </script>
+</section>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="orange">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Web Showcase</title>
+<meta name="description" content="Google's official @material/web components, Expressive set included, wearing the Material 3 Expressive theme.">
+<link rel="stylesheet" href="../index.css">
+<link rel="stylesheet" href="../components/m3-system.css">
+<link rel="stylesheet" href="../components/theme-bridge.css">
+<link rel="stylesheet" href="./showcase.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div>
+      <h1>Material Web, themed</h1>
+      <p>Google's official <code>@material/web</code> components, the Expressive
+         <code>md-gb-*</code> set included, wearing this repo's theme. No component
+         was restyled: they read Material's system roles, and the theme supplies
+         them. Pick an accent and every component follows.</p>
+    </div>
+    <div class="accents" role="group" aria-label="Accent">
+      <button type="button" data-set="orange" aria-pressed="true"><i class="dot"></i>Orange</button>
+      <button type="button" data-set="violet"><i class="dot"></i>Violet</button>
+      <button type="button" data-set="teal"><i class="dot"></i>Teal</button>
+      <button type="button" data-set="blue"><i class="dot"></i>Blue</button>
+      <button type="button" data-set="green"><i class="dot"></i>Green</button>
+      <button type="button" data-set="rose"><i class="dot"></i>Rose</button>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sections"><!--toc--></nav>
+
+<!--sections-->
+
+  <footer>
+    Components: <a href="https://github.com/material-components/material-web">@material/web</a>
+    (Apache-2.0), bundled into <code>components/material-web.js</code>. Theme:
+    <code>index.css</code> + <code>components/theme-bridge.css</code>. Everything is
+    self-hosted — no third-party request at runtime.
+  </footer>
+</div>
+
+<script>
+/* Accent picker: data-accent on <html>, exactly what the theme expects. Each
+   dot is read off the stylesheet so it can never disagree with its accent. */
+(function () {
+  const root = document.documentElement;
+  const buttons = [...document.querySelectorAll('.accents button')];
+  const had = root.dataset.accent;
+  for (const b of buttons) {
+    root.dataset.accent = b.dataset.set;
+    b.querySelector('.dot').style.background =
+      getComputedStyle(root).getPropertyValue('--accent-primary').trim();
+  }
+  root.dataset.accent = had;
+  buttons.forEach(b => b.addEventListener('click', () => {
+    root.dataset.accent = b.dataset.set;
+    buttons.forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+  }));
+})();
+</script>
+<!-- The elements register after the page is parsed, so each one upgrades
+     with its children already in place (a select sees its selected option).
+     Section scripts run after, against defined elements. -->
+<script src="../components/material-web.js"></script>
+<!--scripts-->
+</body>
+</html>

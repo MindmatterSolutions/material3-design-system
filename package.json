@@ -1,0 +1,13 @@
+{
+  "name": "material3-design-system",
+  "private": true,
+  "description": "Material 3 Expressive theme, baseline system, and Google's official @material/web components bundled for buildless use.",
+  "scripts": {
+    "build:components": "node tools/build-components.mjs",
+    "build:showcase": "node tools/build-showcase.mjs"
+  },
+  "devDependencies": {
+    "@material/web": "2.5.0",
+    "esbuild": "^0.25.0"
+  }
+}

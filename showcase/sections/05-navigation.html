@@ -1,0 +1,445 @@
+<section class="panel" id="navigation" data-title="Navigation, containment & feedback">
+<style>
+  /* Containment only: every phone frame, drawer and menu host is a box the
+     component lives inside, so nothing pins itself to the viewport. */
+  #navigation .phone{position:relative;width:100%;max-width:360px;height:340px;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-inset);background:var(--md-sys-color-surface)}
+  #navigation .phone .screen{flex:1;display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);min-height:0}
+  #navigation .phone .screen h4{margin:0;font-size:var(--text-lg)}
+  #navigation .phone .screen p{margin:0;color:var(--text-secondary);font-size:var(--text-sm)}
+  #navigation .drawer-host{position:relative;display:flex;height:380px;overflow:hidden;border:1px solid var(--border-default);border-radius:var(--radius-inset);background:var(--md-sys-color-surface);
+    --md-navigation-drawer-container-width:240px;
+    --md-navigation-drawer-container-shape:0 var(--radius-inset) var(--radius-inset) 0}
+  #navigation .drawer-host md-list{--md-list-container-color:transparent;padding:var(--space-2)}
+  #navigation .drawer-host .drawer-title{padding:var(--space-4) var(--space-5) var(--space-2);font-size:var(--text-sm);color:var(--text-secondary);font-weight:var(--weight-medium)}
+  #navigation .drawer-host .main{flex:1;min-width:0;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+  #navigation .drawer-host .main p{margin:0;color:var(--text-secondary);font-size:var(--text-sm)}
+  #navigation .tabpanel{padding:var(--space-4) var(--space-1) 0;color:var(--text-secondary);font-size:var(--text-sm);min-height:48px}
+  #navigation md-tabs{max-width:100%}
+  #navigation .menu-host{position:relative;min-height:330px;align-items:flex-start}
+  #navigation #nav-menu-static{min-width:240px}
+  #navigation .menu-host > span{position:relative}
+  #navigation md-list{border-radius:var(--radius-inset)}
+  #navigation .card-body{padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+  #navigation .card-body h4{margin:0;font-size:var(--text-lg)}
+  #navigation .card-body p{margin:0;color:var(--text-secondary);font-size:var(--text-sm)}
+  #navigation .card-body .row{margin-top:var(--space-2)}
+  #navigation md-elevated-card,#navigation md-filled-card,#navigation md-outlined-card{height:100%}
+  #navigation .elev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--grid-gap)}
+  #navigation .elev{position:relative;height:96px;border-radius:var(--radius-inset);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-1);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-secondary)}
+  #navigation .elev b{font-family:var(--font-sans);font-size:var(--text-md);color:var(--text-primary)}
+  #navigation .elev.s1{background:var(--md-sys-color-surface-container-low)}
+  #navigation .elev.s2{background:var(--md-sys-color-surface-container)}
+  #navigation .elev.s3{background:var(--md-sys-color-surface-container-high)}
+  #navigation .elev.s4{background:var(--md-sys-color-surface-container-highest)}
+  #navigation .elev.s5{background:var(--md-sys-color-primary-container);color:var(--md-sys-color-on-primary-container)}
+  #navigation .elev.s5 b{color:var(--md-sys-color-on-primary-container)}
+  #navigation .badged{position:relative;display:inline-flex;padding:var(--space-2)}
+  #navigation md-linear-progress{width:100%}
+  #navigation .prog-label{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-quaternary)}
+</style>
+
+<h2>Navigation, containment &amp; feedback</h2>
+<p class="note">Tabs, the labs navigation bar and drawer, lists, menus, dialogs, labs cards,
+  elevation, badges and progress indicators, as <code>@material/web</code> ships them.
+  The bar and drawer live inside their own tiles here instead of fixed to the window.
+  One menu is held open so you can see it; the others open from their buttons. The
+  dialogs are modal, so press a button to open one.</p>
+
+<!-- ───────────────────────── Tabs ───────────────────────── -->
+<h3>Tabs</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage col">
+      <md-tabs aria-label="Library" data-panels="nav-lib">
+        <md-primary-tab id="nav-lib-t0" aria-controls="nav-lib-p0" active><md-icon slot="icon">music_note</md-icon>Music</md-primary-tab>
+        <md-primary-tab id="nav-lib-t1" aria-controls="nav-lib-p1"><md-icon slot="icon">photo_camera</md-icon>Photos</md-primary-tab>
+        <md-primary-tab id="nav-lib-t2" aria-controls="nav-lib-p2"><md-icon slot="icon">bookmark</md-icon>Saved</md-primary-tab>
+      </md-tabs>
+      <div class="tabpanel" id="nav-lib-p0" role="tabpanel" aria-labelledby="nav-lib-t0">214 tracks · 3 playlists synced this week.</div>
+      <div class="tabpanel" id="nav-lib-p1" role="tabpanel" aria-labelledby="nav-lib-t1" hidden>1,082 photos · last import from the Cape Town trip.</div>
+      <div class="tabpanel" id="nav-lib-p2" role="tabpanel" aria-labelledby="nav-lib-t2" hidden>12 saved articles waiting to be read.</div>
+    </div>
+    <div class="cap"><b>md-tabs</b> › <b>md-primary-tab</b> + <b>md-icon slot="icon"</b> — icon stacked over label; click a tab to switch panels</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-tabs aria-label="Inbox" data-panels="nav-inbox">
+        <md-primary-tab id="nav-inbox-t0" aria-controls="nav-inbox-p0" inline-icon active><md-icon slot="icon">mail</md-icon>Primary</md-primary-tab>
+        <md-primary-tab id="nav-inbox-t1" aria-controls="nav-inbox-p1" inline-icon><md-icon slot="icon">groups</md-icon>Social</md-primary-tab>
+        <md-primary-tab id="nav-inbox-t2" aria-controls="nav-inbox-p2" inline-icon><md-icon slot="icon">notifications</md-icon>Updates</md-primary-tab>
+      </md-tabs>
+      <div class="tabpanel" id="nav-inbox-p0" role="tabpanel" aria-labelledby="nav-inbox-t0">8 unread · invoices and the Thursday design review.</div>
+      <div class="tabpanel" id="nav-inbox-p1" role="tabpanel" aria-labelledby="nav-inbox-t1" hidden>3 new comments on the community thread.</div>
+      <div class="tabpanel" id="nav-inbox-p2" role="tabpanel" aria-labelledby="nav-inbox-t2" hidden>Your order ships tomorrow morning.</div>
+    </div>
+    <div class="cap"><b>md-primary-tab</b> inline-icon — icon beside the label</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-tabs aria-label="Project" data-panels="nav-proj">
+        <md-secondary-tab id="nav-proj-t0" aria-controls="nav-proj-p0" active>Overview</md-secondary-tab>
+        <md-secondary-tab id="nav-proj-t1" aria-controls="nav-proj-p1">Tasks</md-secondary-tab>
+        <md-secondary-tab id="nav-proj-t2" aria-controls="nav-proj-p2">Files</md-secondary-tab>
+        <md-secondary-tab id="nav-proj-t3" aria-controls="nav-proj-p3">Activity</md-secondary-tab>
+      </md-tabs>
+      <div class="tabpanel" id="nav-proj-p0" role="tabpanel" aria-labelledby="nav-proj-t0">Website refresh · due 14 November · 62% complete.</div>
+      <div class="tabpanel" id="nav-proj-p1" role="tabpanel" aria-labelledby="nav-proj-t1" hidden>9 open tasks, 2 blocked on copy review.</div>
+      <div class="tabpanel" id="nav-proj-p2" role="tabpanel" aria-labelledby="nav-proj-t2" hidden>24 files · brand kit updated yesterday.</div>
+      <div class="tabpanel" id="nav-proj-p3" role="tabpanel" aria-labelledby="nav-proj-t3" hidden>Thandi moved “Hero copy” to Done.</div>
+    </div>
+    <div class="cap"><b>md-tabs</b> › <b>md-secondary-tab</b> — a secondary level under a primary one</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-tabs aria-label="View">
+        <md-secondary-tab active><md-icon slot="icon">today</md-icon>Day</md-secondary-tab>
+        <md-secondary-tab><md-icon slot="icon">calendar_month</md-icon>Month</md-secondary-tab>
+        <md-secondary-tab><md-icon slot="icon">event</md-icon>Agenda</md-secondary-tab>
+      </md-tabs>
+    </div>
+    <div class="cap"><b>md-secondary-tab</b> + <b>md-icon slot="icon"</b> — secondary tabs take an inline icon</div>
+  </div>
+</div>
+
+<!-- ───────────────────── Navigation bar & drawer ───────────────────── -->
+<h3>Navigation bar &amp; drawer <span class="kicker">labs</span></h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="phone">
+      <div class="screen">
+        <div class="kicker">Today</div>
+        <h4 id="nav-bar-title">Home</h4>
+        <p id="nav-bar-copy">Three things need you this morning. Tap a destination below.</p>
+      </div>
+      <md-navigation-bar id="nav-bar" active-index="0" aria-label="Main">
+        <md-navigation-tab label="Home"><md-icon slot="active-icon">home</md-icon><md-icon slot="inactive-icon">home</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Explore"><md-icon slot="active-icon">explore</md-icon><md-icon slot="inactive-icon">explore</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Inbox" show-badge badge-value="12"><md-icon slot="active-icon">mail</md-icon><md-icon slot="inactive-icon">mail</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Alerts" show-badge><md-icon slot="active-icon">notifications</md-icon><md-icon slot="inactive-icon">notifications</md-icon></md-navigation-tab>
+      </md-navigation-bar>
+    </div>
+    <div class="cap"><b>md-navigation-bar</b> active-index="0" › <b>md-navigation-tab</b> label, slot="active-icon" / "inactive-icon", show-badge badge-value="12" (empty value = small dot)</div>
+  </div>
+
+  <div class="demo">
+    <div class="phone">
+      <div class="screen">
+        <div class="kicker">Labels on the active tab only</div>
+        <h4>Library</h4>
+        <p>Inactive destinations show only their icon.</p>
+      </div>
+      <md-navigation-bar active-index="1" hide-inactive-labels aria-label="Media">
+        <md-navigation-tab label="Music"><md-icon slot="active-icon">music_note</md-icon><md-icon slot="inactive-icon">music_note</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Library"><md-icon slot="active-icon">folder</md-icon><md-icon slot="inactive-icon">folder</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Search"><md-icon slot="active-icon">search</md-icon><md-icon slot="inactive-icon">search</md-icon></md-navigation-tab>
+        <md-navigation-tab label="Profile"><md-icon slot="active-icon">person</md-icon><md-icon slot="inactive-icon">person</md-icon></md-navigation-tab>
+      </md-navigation-bar>
+    </div>
+    <div class="cap"><b>md-navigation-bar</b> hide-inactive-labels</div>
+  </div>
+
+  <div class="demo">
+    <div class="drawer-host">
+      <md-navigation-drawer opened aria-label="Mail folders">
+        <div class="drawer-title">Mail</div>
+        <md-list>
+          <md-list-item type="button"><md-icon slot="start">mail</md-icon>Inbox<span slot="trailing-supporting-text">24</span></md-list-item>
+          <md-list-item type="button"><md-icon slot="start">send</md-icon>Sent</md-list-item>
+          <md-list-item type="button"><md-icon slot="start">star</md-icon>Starred<span slot="trailing-supporting-text">3</span></md-list-item>
+          <md-list-item type="button"><md-icon slot="start">delete</md-icon>Bin</md-list-item>
+          <md-divider></md-divider>
+          <md-list-item type="button"><md-icon slot="start">settings</md-icon>Settings</md-list-item>
+        </md-list>
+      </md-navigation-drawer>
+      <div class="main">
+        <div class="kicker">Inbox</div>
+        <p>The standard drawer sits beside the content, inside this tile. The button toggles <code>opened</code>.</p>
+        <div class="row"><md-outlined-icon-button id="nav-drawer-toggle" aria-label="Toggle drawer"><md-icon>menu_open</md-icon></md-outlined-icon-button></div>
+      </div>
+    </div>
+    <div class="cap"><b>md-navigation-drawer</b> opened › <b>md-list</b> of <b>md-list-item</b> type="button"</div>
+  </div>
+</div>
+
+<!-- ───────────────────────── Lists ───────────────────────── -->
+<h3>Lists</h3>
+<div class="demos wide">
+  <div class="demo flush">
+    <md-list aria-label="Contacts">
+      <md-list-item>
+        <md-icon slot="start">person</md-icon>
+        <div slot="headline">Lerato Mokoena</div>
+        <div slot="supporting-text">Product design · Johannesburg</div>
+        <md-icon slot="end">call</md-icon>
+      </md-list-item>
+      <md-divider inset-start></md-divider>
+      <md-list-item>
+        <md-icon slot="start">person</md-icon>
+        <div slot="headline">Pieter van der Merwe</div>
+        <div slot="supporting-text">Engineering · Stellenbosch</div>
+        <md-icon slot="end">call</md-icon>
+      </md-list-item>
+      <md-divider inset-start></md-divider>
+      <md-list-item>
+        <md-icon slot="start">person</md-icon>
+        <div slot="overline">Away until Monday</div>
+        <div slot="headline">Aisha Patel</div>
+        <div slot="supporting-text">Marketing · Durban</div>
+        <md-icon slot="end">mail</md-icon>
+      </md-list-item>
+    </md-list>
+    <div class="cap" style="padding:0 var(--space-5) var(--space-4)"><b>md-list-item</b> slot="start" / "overline" / "headline" / "supporting-text" / "end" · <b>md-divider</b> inset-start</div>
+  </div>
+
+  <div class="demo flush">
+    <md-list aria-label="Settings">
+      <md-list-item type="button">
+        <md-icon slot="start">wifi</md-icon>
+        <div slot="headline">Wi-Fi</div>
+        <div slot="supporting-text">Studio-5G</div>
+        <md-icon slot="end">chevron_right</md-icon>
+      </md-list-item>
+      <md-list-item type="button">
+        <md-icon slot="start">notifications</md-icon>
+        <div slot="headline">Notifications</div>
+        <div slot="supporting-text">Quiet hours 22:00–07:00</div>
+        <md-icon slot="end">chevron_right</md-icon>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item type="button">
+        <md-icon slot="start">battery_full</md-icon>
+        <div slot="headline">Battery</div>
+        <span slot="trailing-supporting-text">86%</span>
+      </md-list-item>
+      <md-list-item type="button" disabled>
+        <md-icon slot="start">location_on</md-icon>
+        <div slot="headline">Location</div>
+        <div slot="supporting-text">Managed by your organisation</div>
+      </md-list-item>
+    </md-list>
+    <div class="cap" style="padding:0 var(--space-5) var(--space-4)"><b>md-list-item</b> type="button" (ripple + focus), slot="trailing-supporting-text", disabled · full-width <b>md-divider</b></div>
+  </div>
+</div>
+
+<!-- ───────────────────────── Menus ───────────────────────── -->
+<h3>Menus</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage menu-host">
+      <span>
+        <md-filled-tonal-button id="nav-menu-static-anchor"><md-icon slot="icon">more_vert</md-icon>Document</md-filled-tonal-button>
+        <md-menu id="nav-menu-static" anchor="nav-menu-static-anchor" positioning="absolute" open stay-open-on-outside-click stay-open-on-focusout default-focus="none" quick aria-label="Document actions">
+          <md-menu-item><md-icon slot="start">edit</md-icon><div slot="headline">Rename</div></md-menu-item>
+          <md-menu-item><md-icon slot="start">share</md-icon><div slot="headline">Share</div><div slot="supporting-text">3 people have access</div></md-menu-item>
+          <md-menu-item><md-icon slot="start">download</md-icon><div slot="headline">Download</div></md-menu-item>
+          <md-divider role="separator" tabindex="-1"></md-divider>
+          <md-menu-item disabled><md-icon slot="start">delete</md-icon><div slot="headline">Delete</div></md-menu-item>
+        </md-menu>
+      </span>
+    </div>
+    <div class="cap"><b>md-menu</b> positioning="absolute" open stay-open-on-outside-click stay-open-on-focusout default-focus="none" · <b>md-menu-item</b> slot="start" / "supporting-text", disabled — held open for display</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage">
+      <span style="position:relative">
+        <md-outlined-button id="nav-menu-sort-anchor"><md-icon slot="icon">keyboard_arrow_down</md-icon><span id="nav-menu-sort-label">Sort: Newest</span></md-outlined-button>
+        <md-menu id="nav-menu-sort" anchor="nav-menu-sort-anchor" positioning="popover" aria-label="Sort order">
+          <md-menu-item data-label="Newest"><md-icon slot="start">today</md-icon><div slot="headline">Newest first</div></md-menu-item>
+          <md-menu-item data-label="Oldest"><md-icon slot="start">event</md-icon><div slot="headline">Oldest first</div></md-menu-item>
+          <md-menu-item data-label="Starred"><md-icon slot="start">star</md-icon><div slot="headline">Starred</div></md-menu-item>
+        </md-menu>
+      </span>
+      <span style="position:relative">
+        <md-icon-button id="nav-menu-more-anchor" aria-label="More options"><md-icon>more_vert</md-icon></md-icon-button>
+        <md-menu id="nav-menu-more" anchor="nav-menu-more-anchor" positioning="popover" anchor-corner="end-end" menu-corner="start-end" aria-label="More options">
+          <md-menu-item><md-icon slot="start">settings</md-icon><div slot="headline">Settings</div></md-menu-item>
+          <md-menu-item><md-icon slot="start">share</md-icon><div slot="headline">Share</div></md-menu-item>
+          <md-menu-item><md-icon slot="start">restart_alt</md-icon><div slot="headline">Reset view</div></md-menu-item>
+        </md-menu>
+      </span>
+    </div>
+    <div class="cap"><b>md-menu</b> positioning="popover" anchor="…" · second menu anchor-corner="end-end" menu-corner="start-end" — click to open; picking a sort order relabels the button</div>
+  </div>
+</div>
+
+<!-- ───────────────────────── Dialogs ───────────────────────── -->
+<h3>Dialogs</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage">
+      <md-filled-button id="nav-dialog-open"><md-icon slot="icon">event</md-icon>Schedule meeting</md-filled-button>
+      <md-outlined-button id="nav-dialog-alert-open"><md-icon slot="icon">delete</md-icon>Delete draft</md-outlined-button>
+    </div>
+    <div class="cap"><b>md-dialog</b> slot="headline" / "content" / "actions" with <code>&lt;form method="dialog"&gt;</code> · second: type="alert" + slot="icon"</div>
+  </div>
+</div>
+
+<md-dialog id="nav-dialog">
+  <div slot="headline">Schedule a meeting</div>
+  <form slot="content" id="nav-dialog-form" method="dialog">
+    <p style="margin:0">Design review with Lerato and Pieter on Thursday, 14:00–14:45. A calendar invite goes to both, with the agenda attached.</p>
+  </form>
+  <div slot="actions">
+    <md-text-button form="nav-dialog-form" value="cancel">Cancel</md-text-button>
+    <md-filled-tonal-button form="nav-dialog-form" value="send" autofocus>Send invite</md-filled-tonal-button>
+  </div>
+</md-dialog>
+
+<md-dialog id="nav-dialog-alert" type="alert">
+  <md-icon slot="icon">delete</md-icon>
+  <div slot="headline">Delete this draft?</div>
+  <form slot="content" id="nav-dialog-alert-form" method="dialog">Your notes for “Quarterly plan” will be removed. This can’t be undone.</form>
+  <div slot="actions">
+    <md-text-button form="nav-dialog-alert-form" value="cancel" autofocus>Keep</md-text-button>
+    <md-text-button form="nav-dialog-alert-form" value="delete">Delete</md-text-button>
+  </div>
+</md-dialog>
+
+<!-- ───────────────────────── Cards ───────────────────────── -->
+<h3>Cards <span class="kicker">labs</span></h3>
+<div class="demos">
+  <div class="demo">
+    <md-elevated-card>
+      <div class="card-body">
+        <div class="kicker">Workshop</div>
+        <h4>Design tokens in practice</h4>
+        <p>Two hours on naming, layering and theming. Bring a component you want to re-skin.</p>
+        <div class="row"><md-filled-tonal-button>Reserve seat</md-filled-tonal-button></div>
+      </div>
+    </md-elevated-card>
+    <div class="cap"><b>md-elevated-card</b> — surface-container-low, level 1</div>
+  </div>
+  <div class="demo">
+    <md-filled-card>
+      <div class="card-body">
+        <div class="kicker">Weekly summary</div>
+        <h4>12 tasks closed</h4>
+        <p>Up from 8 last week. Copy review is the one thing still holding the launch.</p>
+        <div class="row"><md-text-button>Open report</md-text-button></div>
+      </div>
+    </md-filled-card>
+    <div class="cap"><b>md-filled-card</b> — surface-container-highest</div>
+  </div>
+  <div class="demo">
+    <md-outlined-card>
+      <div class="card-body">
+        <div class="kicker">Trip</div>
+        <h4>Cape Town · 3 nights</h4>
+        <p>Check-in Friday 15:00. Your boarding passes are in the Saved tab.</p>
+        <div class="row"><md-outlined-button><md-icon slot="icon">directions</md-icon>Directions</md-outlined-button></div>
+      </div>
+    </md-outlined-card>
+    <div class="cap"><b>md-outlined-card</b> — outline-variant border</div>
+  </div>
+</div>
+
+<!-- ───────────────────────── Elevation ───────────────────────── -->
+<h3>Elevation</h3>
+<div class="demo">
+  <div class="elev-grid">
+    <div class="elev s1" style="--md-elevation-level:0"><md-elevation></md-elevation><b>Level 0</b>surface-container-low</div>
+    <div class="elev s1" style="--md-elevation-level:1"><md-elevation></md-elevation><b>Level 1</b>surface-container-low</div>
+    <div class="elev s2" style="--md-elevation-level:2"><md-elevation></md-elevation><b>Level 2</b>surface-container</div>
+    <div class="elev s3" style="--md-elevation-level:3"><md-elevation></md-elevation><b>Level 3</b>surface-container-high</div>
+    <div class="elev s4" style="--md-elevation-level:4"><md-elevation></md-elevation><b>Level 4</b>surface-container-highest</div>
+    <div class="elev s5" style="--md-elevation-level:5"><md-elevation></md-elevation><b>Level 5</b>primary-container</div>
+  </div>
+  <div class="cap"><b>md-elevation</b> inside a position:relative parent, <b>--md-elevation-level</b> 0–5; shadow uses --md-sys-color-shadow</div>
+</div>
+
+<!-- ───────────────────────── Badges ───────────────────────── -->
+<h3>Badges <span class="kicker">labs</span></h3>
+<div class="demos">
+  <div class="demo">
+    <div class="stage center">
+      <span class="badged"><md-icon>notifications</md-icon><md-badge></md-badge></span>
+      <span class="badged"><md-icon>mail</md-icon><md-badge value="3"></md-badge></span>
+      <span class="badged"><md-icon>groups</md-icon><md-badge value="24"></md-badge></span>
+      <span class="badged"><md-icon>checklist</md-icon><md-badge value="999+"></md-badge></span>
+    </div>
+    <div class="cap"><b>md-badge</b> (dot) · value="3" · value="24" · value="999+" — positions against the nearest relative parent</div>
+  </div>
+</div>
+
+<!-- ───────────────────────── Progress ───────────────────────── -->
+<h3>Progress</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="stage center">
+      <md-circular-progress value="0.25" aria-label="Upload 25%"></md-circular-progress>
+      <md-circular-progress value="0.6" aria-label="Upload 60%"></md-circular-progress>
+      <md-circular-progress value="1" aria-label="Upload complete"></md-circular-progress>
+      <md-circular-progress indeterminate aria-label="Loading"></md-circular-progress>
+      <md-circular-progress indeterminate four-color aria-label="Loading"></md-circular-progress>
+    </div>
+    <div class="cap"><b>md-circular-progress</b> value="0.25" · "0.6" · "1" (max defaults to 1) · indeterminate · indeterminate four-color</div>
+  </div>
+  <div class="demo">
+    <div class="stage col">
+      <span class="prog-label">value="0.4"</span>
+      <md-linear-progress value="0.4" aria-label="Sync 40%"></md-linear-progress>
+      <span class="prog-label">value="0.4" buffer="0.75"</span>
+      <md-linear-progress value="0.4" buffer="0.75" aria-label="Streaming 40%"></md-linear-progress>
+      <span class="prog-label">value="7" max="10"</span>
+      <md-linear-progress value="7" max="10" aria-label="Step 7 of 10"></md-linear-progress>
+      <span class="prog-label">indeterminate</span>
+      <md-linear-progress indeterminate aria-label="Loading"></md-linear-progress>
+      <span class="prog-label">indeterminate four-color</span>
+      <md-linear-progress indeterminate four-color aria-label="Loading"></md-linear-progress>
+    </div>
+    <div class="cap"><b>md-linear-progress</b> value · buffer · max · indeterminate · four-color</div>
+  </div>
+</div>
+</section>
+
+<script>
+  var root = document.getElementById('navigation');
+
+  // Tabs: show the panel named by the active tab's aria-controls.
+  root.querySelectorAll('md-tabs[data-panels]').forEach(function (tabs) {
+    tabs.addEventListener('change', function () {
+      tabs.tabs.forEach(function (tab) {
+        var panel = document.getElementById(tab.getAttribute('aria-controls'));
+        if (panel) panel.hidden = tab !== tabs.activeTab;
+      });
+    });
+  });
+
+  // Navigation bar: the bar moves its own indicator; mirror the destination.
+  var copy = {
+    Home: 'Three things need you this morning. Tap a destination below.',
+    Explore: 'Workshops and talks near you this month.',
+    Inbox: '12 unread messages, two flagged as urgent.',
+    Alerts: 'Your build finished and a teammate mentioned you.'
+  };
+  var bar = document.getElementById('nav-bar');
+  bar.addEventListener('navigation-bar-activated', function (e) {
+    var label = e.detail.tab.label;
+    document.getElementById('nav-bar-title').textContent = label;
+    document.getElementById('nav-bar-copy').textContent = copy[label] || '';
+  });
+
+  // Drawer: toggling `opened` animates its width inside the tile.
+  var drawer = root.querySelector('md-navigation-drawer');
+  document.getElementById('nav-drawer-toggle').addEventListener('click', function () {
+    drawer.opened = !drawer.opened;
+  });
+
+  // Menus: anchor buttons toggle their menu; a sort choice relabels its button.
+  [['nav-menu-sort-anchor', 'nav-menu-sort'], ['nav-menu-more-anchor', 'nav-menu-more']].forEach(function (pair) {
+    var menu = document.getElementById(pair[1]);
+    document.getElementById(pair[0]).addEventListener('click', function () { menu.open = !menu.open; });
+  });
+  document.getElementById('nav-menu-sort').addEventListener('close-menu', function (e) {
+    var item = e.detail.initiator;
+    if (item && item.dataset.label) document.getElementById('nav-menu-sort-label').textContent = 'Sort: ' + item.dataset.label;
+  });
+
+  // Dialogs: md-dialog is modal; show() opens it in the top layer.
+  document.getElementById('nav-dialog-open').addEventListener('click', function () { document.getElementById('nav-dialog').show(); });
+  document.getElementById('nav-dialog-alert-open').addEventListener('click', function () { document.getElementById('nav-dialog-alert').show(); });
+</script>

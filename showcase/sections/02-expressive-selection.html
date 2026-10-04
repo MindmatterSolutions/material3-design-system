@@ -1,0 +1,376 @@
+<section class="panel" id="expressive-selection" data-title="Expressive selection &amp; containment">
+<style>
+  #expressive-selection label.opt{display:flex;align-items:center;gap:var(--space-3);cursor:pointer}
+  #expressive-selection label.opt.split{justify-content:space-between}
+  #expressive-selection label.opt small{display:block;color:var(--text-tertiary);font-size:var(--text-sm)}
+  #expressive-selection fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-3);min-width:0}
+  #expressive-selection legend{padding:0;margin-bottom:var(--space-2);color:var(--text-secondary);font-size:var(--text-sm)}
+  #expressive-selection .matrix .cell{display:flex;align-items:center;gap:var(--space-2)}
+  #expressive-selection md-gb-card{width:100%}
+  #expressive-selection .card-body{padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3)}
+  #expressive-selection .card-body h4{margin:0;font:var(--md-sys-typescale-title-md)}
+  #expressive-selection .card-body p{margin:0;font:var(--md-sys-typescale-body-md);color:var(--md-sys-color-on-surface-variant)}
+  #expressive-selection .card-head{display:flex;align-items:center;gap:var(--space-3)}
+  #expressive-selection .card-head .meta{font:var(--md-sys-typescale-label-md);color:var(--md-sys-color-on-surface-variant)}
+  #expressive-selection .card-actions{display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:flex-end}
+  #expressive-selection .media{height:132px;display:grid;place-items:center;background:var(--md-sys-color-tertiary-container);color:var(--md-sys-color-on-tertiary-container);--md-icon-size:48px}
+  #expressive-selection md-gb-list{width:100%}
+  #expressive-selection .menu-stage{display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:flex-start}
+  #expressive-selection .menu-stage md-gb-menu{min-width:220px;max-width:100%}
+  #expressive-selection .badged{position:relative;display:inline-flex}
+  #expressive-selection .badged > md-gb-badge{position:absolute;top:0;inset-inline-end:0}
+  #expressive-selection .badged > md-gb-badge.count{top:-4px;inset-inline-end:auto;inset-inline-start:12px}
+  #expressive-selection .badge-row{display:flex;flex-wrap:wrap;gap:var(--space-7);align-items:center}
+  #expressive-selection .badge-row figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:var(--space-2);font-size:var(--text-xs);color:var(--text-tertiary)}
+  #expressive-selection .toolbar{display:flex;align-items:stretch;gap:var(--space-2);height:var(--control-height)}
+  #expressive-selection .toolbar > *{align-self:center}
+  #expressive-selection .toolbar > md-gb-divider{align-self:stretch}
+  #expressive-selection .prose{display:flex;flex-direction:column;gap:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)}
+  #expressive-selection p.say{margin:0;font-size:var(--text-sm);color:var(--text-secondary)}
+  #expressive-selection p.say code{font-family:var(--font-mono);color:var(--text-primary)}
+  #expressive-selection .prose b{color:var(--text-primary);font-weight:var(--weight-medium)}
+</style>
+
+<h2>Expressive selection &amp; containment</h2>
+<p class="note">The rest of the labs <code>md-gb-*</code> set: selection controls, cards, lists, menus,
+  badges and dividers. Each one is Google's element as shipped. It reads Material's system roles
+  (<code>--md-sys-color-*</code>, <code>--md-sys-shape-*</code>, <code>--md-sys-typescale-*</code>),
+  and the theme fills those roles in, so changing the accent recolours every control below. The
+  controls are form-associated, so a plain <code>&lt;label&gt;</code> wrapped around one works as its label.</p>
+
+<!-- ======================================================= selection -->
+<h3>Checkbox, radio &amp; switch</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="kicker">States</div>
+    <div class="matrix" style="--cols:5">
+      <span></span>
+      <span class="mh">off</span><span class="mh">on</span><span class="mh">mixed / icons</span><span class="mh">disabled off</span><span class="mh">disabled on</span>
+
+      <span class="mh">checkbox</span>
+      <md-gb-checkbox aria-label="Unchecked"></md-gb-checkbox>
+      <md-gb-checkbox checked aria-label="Checked"></md-gb-checkbox>
+      <md-gb-checkbox indeterminate aria-label="Indeterminate"></md-gb-checkbox>
+      <md-gb-checkbox disabled aria-label="Disabled"></md-gb-checkbox>
+      <md-gb-checkbox disabled checked aria-label="Disabled, checked"></md-gb-checkbox>
+
+      <span class="mh">radio</span>
+      <md-gb-radio name="xs-state-a" aria-label="Unselected"></md-gb-radio>
+      <md-gb-radio name="xs-state-b" checked aria-label="Selected"></md-gb-radio>
+      <span class="mh">—</span>
+      <md-gb-radio name="xs-state-c" disabled aria-label="Disabled"></md-gb-radio>
+      <md-gb-radio name="xs-state-d" disabled checked aria-label="Disabled, selected"></md-gb-radio>
+
+      <span class="mh">switch</span>
+      <md-gb-switch aria-label="Off"></md-gb-switch>
+      <md-gb-switch selected aria-label="On"></md-gb-switch>
+      <md-gb-switch selected aria-label="On, with icons"><md-gb-icon slot="off-icon">close</md-gb-icon><md-gb-icon slot="on-icon">check</md-gb-icon></md-gb-switch>
+      <md-gb-switch disabled aria-label="Disabled"></md-gb-switch>
+      <md-gb-switch disabled selected aria-label="Disabled, on"></md-gb-switch>
+    </div>
+    <div class="cap"><b>md-gb-checkbox</b> checked · indeterminate · disabled · error — <b>md-gb-radio</b> checked · name — <b>md-gb-switch</b> selected · slots off-icon / on-icon</div>
+  </div>
+
+  <div class="demo">
+    <div class="kicker">Inbox filters</div>
+    <div class="stage col">
+      <fieldset>
+        <legend>Show messages that are</legend>
+        <label class="opt"><md-gb-checkbox checked></md-gb-checkbox>Unread</label>
+        <label class="opt"><md-gb-checkbox checked></md-gb-checkbox>Starred</label>
+        <label class="opt"><md-gb-checkbox></md-gb-checkbox>Has attachments</label>
+        <label class="opt"><md-gb-checkbox indeterminate></md-gb-checkbox>From my team (some members)</label>
+        <label class="opt"><md-gb-checkbox error required></md-gb-checkbox>I agree to the retention policy</label>
+      </fieldset>
+    </div>
+    <div class="cap"><b>md-gb-checkbox</b> inside <b>&lt;label&gt;</b> · last one <b>error required</b></div>
+  </div>
+
+  <div class="demo">
+    <div class="kicker">Delivery speed</div>
+    <div class="stage col">
+      <fieldset>
+        <legend>Choose one</legend>
+        <label class="opt"><md-gb-radio name="xs-delivery" value="standard" checked></md-gb-radio><span>Standard<small>3–5 working days · free</small></span></label>
+        <label class="opt"><md-gb-radio name="xs-delivery" value="express"></md-gb-radio><span>Express<small>Next working day · R95</small></span></label>
+        <label class="opt"><md-gb-radio name="xs-delivery" value="same-day" disabled></md-gb-radio><span>Same day<small>Not available for your area</small></span></label>
+      </fieldset>
+    </div>
+    <div class="cap"><b>md-gb-radio</b> name="xs-delivery" value · one <b>disabled</b> — arrow keys move within the group</div>
+  </div>
+
+  <div class="demo">
+    <div class="kicker">Notifications</div>
+    <div class="stage col">
+      <label class="opt split"><span>Push notifications<small>Alerts on this device</small></span><md-gb-switch selected><md-gb-icon slot="off-icon">close</md-gb-icon><md-gb-icon slot="on-icon">check</md-gb-icon></md-gb-switch></label>
+      <label class="opt split"><span>Email digest<small>Every Monday at 08:00</small></span><md-gb-switch></md-gb-switch></label>
+      <label class="opt split"><span>Do not disturb<small>Managed by your organisation</small></span><md-gb-switch disabled selected></md-gb-switch></label>
+    </div>
+    <div class="cap"><b>md-gb-switch</b> selected · disabled · <b>md-gb-icon</b> in slot="on-icon" / "off-icon"</div>
+  </div>
+</div>
+
+<!-- ======================================================= cards -->
+<h3>Cards</h3>
+<div class="demos">
+  <div class="demo">
+    <div class="stage col">
+      <md-gb-card color="elevated">
+        <div class="card-body">
+          <div class="card-head"><md-gb-icon>mail</md-gb-icon><span class="meta">Inbox · 09:42</span></div>
+          <h4>Quarterly review moved to Thursday</h4>
+          <p>Lerato: the board pack is ready, but the venue clashes. Can we meet at 14:00 instead?</p>
+          <div class="card-actions">
+            <md-gb-button color="text" type="button">Archive</md-gb-button>
+            <md-gb-button color="filled" type="button"><md-gb-icon>send</md-gb-icon>Reply</md-gb-button>
+          </div>
+        </div>
+      </md-gb-card>
+    </div>
+    <div class="cap"><b>md-gb-card</b> color="elevated" + <b>md-gb-button</b> text / filled</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-gb-card color="filled">
+        <div class="media" aria-hidden="true"><md-gb-icon>music_note</md-gb-icon></div>
+        <div class="card-body">
+          <h4>Late-night focus</h4>
+          <p>24 tracks · 1 h 38 min · updated today</p>
+          <div class="card-actions">
+            <md-gb-button color="tonal" type="button"><md-gb-icon>share</md-gb-icon>Share</md-gb-button>
+            <md-gb-button color="filled" type="button"><md-gb-icon>play_arrow</md-gb-icon>Play</md-gb-button>
+          </div>
+        </div>
+      </md-gb-card>
+    </div>
+    <div class="cap"><b>md-gb-card</b> color="filled" · media block is a token fill</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-gb-card color="outlined">
+        <div class="card-body">
+          <div class="card-head"><md-gb-icon>event</md-gb-icon><span class="meta">Tomorrow · 10:00–11:00</span></div>
+          <h4>Design critique</h4>
+          <p>Room 3 and online. Bring the onboarding flow and the new settings screens.</p>
+          <md-gb-divider></md-gb-divider>
+          <div class="card-actions">
+            <md-gb-button color="outlined" type="button">Decline</md-gb-button>
+            <md-gb-button color="tonal" type="button"><md-gb-icon>check</md-gb-icon>Accept</md-gb-button>
+          </div>
+        </div>
+      </md-gb-card>
+    </div>
+    <div class="cap"><b>md-gb-card</b> color="outlined" (default) + <b>md-gb-divider</b></div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <md-gb-card color="elevated" interactive aria-label="Open trip: Cape Town to Durban">
+        <div class="card-body">
+          <div class="card-head"><md-gb-icon>directions</md-gb-icon><span class="meta">Trip · 3 stops</span></div>
+          <h4>Cape Town → Durban</h4>
+          <p>The whole card is one button: hover lifts it, press ripples.</p>
+        </div>
+      </md-gb-card>
+      <md-gb-card color="filled" interactive disabled aria-label="Archived trip">
+        <div class="card-body">
+          <div class="card-head"><md-gb-icon>folder</md-gb-icon><span class="meta">Archived</span></div>
+          <h4>Johannesburg → Gqeberha</h4>
+          <p>Disabled: no hover, no press, faded container.</p>
+        </div>
+      </md-gb-card>
+    </div>
+    <div class="cap"><b>md-gb-card</b> interactive · interactive disabled</div>
+  </div>
+</div>
+
+<!-- ======================================================= lists -->
+<h3>Lists</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="kicker">Standard · playlist</div>
+    <div class="stage col">
+      <md-gb-list aria-label="Up next">
+        <md-gb-list-item checked>
+          <span slot="avatar">NA</span>
+          <span slot="overline">Now playing</span>
+          Midnight Drive
+          <span slot="supporting-text">Nomvula Ash · Coastline</span>
+          <span slot="trailing-text">3:42</span>
+          <md-gb-icon slot="trailing">pause</md-gb-icon>
+        </md-gb-list-item>
+        <md-gb-list-item>
+          <span slot="avatar">TK</span>
+          Paper Lanterns
+          <span slot="supporting-text">The Kites · Afterglow</span>
+          <span slot="trailing-text">4:05</span>
+          <md-gb-icon slot="trailing">more_vert</md-gb-icon>
+        </md-gb-list-item>
+        <md-gb-list-item>
+          <md-gb-icon slot="leading">library_music</md-gb-icon>
+          Slow Tide
+          <span slot="supporting-text">Ilse Marais</span>
+          <span slot="trailing-text">5:17</span>
+          <md-gb-icon slot="trailing">more_vert</md-gb-icon>
+        </md-gb-list-item>
+        <md-gb-list-item disabled>
+          <md-gb-icon slot="leading">music_note</md-gb-icon>
+          Harbour Lights
+          <span slot="supporting-text">Not available in your region</span>
+          <span slot="trailing-text">3:58</span>
+        </md-gb-list-item>
+      </md-gb-list>
+    </div>
+    <div class="cap"><b>md-gb-list</b> › <b>md-gb-list-item</b> checked · disabled — slots avatar · leading · overline · supporting-text · trailing-text · trailing</div>
+  </div>
+
+  <div class="demo">
+    <div class="kicker">Segmented · settings</div>
+    <div class="stage col">
+      <md-gb-list segmented aria-label="Settings">
+        <md-gb-list-item>
+          <md-gb-icon slot="leading">wifi</md-gb-icon>
+          Network &amp; internet
+          <span slot="supporting-text">Mindmatter-5G</span>
+          <md-gb-icon slot="trailing">chevron_right</md-gb-icon>
+        </md-gb-list-item>
+        <md-gb-list-item>
+          <md-gb-icon slot="leading">battery_full</md-gb-icon>
+          Battery
+          <span slot="supporting-text">82% · about 14 h left</span>
+          <md-gb-icon slot="trailing">chevron_right</md-gb-icon>
+        </md-gb-list-item>
+        <md-gb-list-item static>
+          <md-gb-icon slot="leading">notifications</md-gb-icon>
+          Notifications
+          <span slot="supporting-text">Static row hosts its own control</span>
+          <md-gb-switch slot="trailing" selected aria-label="Notifications"></md-gb-switch>
+        </md-gb-list-item>
+        <md-gb-list-item>
+          <md-gb-icon slot="leading">settings</md-gb-icon>
+          System
+          <span slot="trailing-text">v14.2</span>
+          <md-gb-icon slot="trailing">chevron_right</md-gb-icon>
+        </md-gb-list-item>
+      </md-gb-list>
+    </div>
+    <div class="cap"><b>md-gb-list segmented</b> · one <b>md-gb-list-item static</b> with an <b>md-gb-switch</b> in slot="trailing"</div>
+  </div>
+</div>
+
+<!-- ======================================================= menus -->
+<h3>Menus</h3>
+<div class="demos wide">
+  <div class="demo">
+    <div class="kicker">Open, in place</div>
+    <div class="menu-stage">
+      <md-gb-menu class="xs-static" aria-label="Message actions">
+        <md-gb-menu-group>
+          <md-gb-menu-item><md-gb-icon slot="leading">send</md-gb-icon>Reply<span slot="trailing-text">R</span></md-gb-menu-item>
+          <md-gb-menu-item><md-gb-icon slot="leading">share</md-gb-icon>Forward<span slot="trailing-text">F</span></md-gb-menu-item>
+          <md-gb-menu-item><md-gb-icon slot="leading">bookmark</md-gb-icon>Save for later<span slot="supporting-text">Back in your inbox tomorrow</span></md-gb-menu-item>
+        </md-gb-menu-group>
+        <md-gb-divider class="divider"></md-gb-divider>
+        <md-gb-menu-group checkable="single">
+          <md-gb-menu-item checked>Sort by date</md-gb-menu-item>
+          <md-gb-menu-item>Sort by sender</md-gb-menu-item>
+        </md-gb-menu-group>
+        <md-gb-divider class="divider"></md-gb-divider>
+        <md-gb-menu-item disabled><md-gb-icon slot="leading">delete</md-gb-icon>Delete</md-gb-menu-item>
+      </md-gb-menu>
+
+      <md-gb-menu class="xs-static" color="vibrant" aria-label="Show">
+        <md-gb-menu-group checkable="multiple">
+          <md-gb-menu-item checked>Unread</md-gb-menu-item>
+          <md-gb-menu-item checked>Starred</md-gb-menu-item>
+          <md-gb-menu-item>Attachments</md-gb-menu-item>
+        </md-gb-menu-group>
+        <md-gb-divider class="divider"></md-gb-divider>
+        <md-gb-menu-item><md-gb-icon slot="leading">restart_alt</md-gb-icon>Reset filters</md-gb-menu-item>
+      </md-gb-menu>
+    </div>
+    <div class="cap"><b>md-gb-menu</b> color="standard" / "vibrant" › <b>md-gb-menu-group</b> checkable="single" / "multiple" › <b>md-gb-menu-item</b> checked · disabled — slots leading · supporting-text · trailing-text. Rendered in flow (popover attribute removed) so it stays open.</div>
+  </div>
+
+  <div class="demo">
+    <div class="kicker">As a popover</div>
+    <div class="stage">
+      <md-gb-button id="xs-menu-trigger" color="tonal" type="button" aria-haspopup="menu" aria-expanded="false"><md-gb-icon>more_vert</md-gb-icon>Note options</md-gb-button>
+      <md-gb-menu id="xs-menu" aria-label="Note options">
+        <md-gb-menu-item><md-gb-icon slot="leading">edit</md-gb-icon>Edit</md-gb-menu-item>
+        <md-gb-menu-item><md-gb-icon slot="leading">star</md-gb-icon>Pin to top</md-gb-menu-item>
+        <md-gb-menu-item><md-gb-icon slot="leading">download</md-gb-icon>Export as PDF</md-gb-menu-item>
+        <md-gb-divider class="divider"></md-gb-divider>
+        <md-gb-menu-item><md-gb-icon slot="leading">delete</md-gb-icon>Move to bin</md-gb-menu-item>
+      </md-gb-menu>
+    </div>
+    <p class="say">The element sets <code>popover="auto"</code> on itself: Esc and outside clicks close it,
+      arrow keys move between items, and choosing one closes it. It anchors to the button that opened it
+      (<code>showPopover({source})</code>).</p>
+    <div class="cap"><b>md-gb-menu</b> + <b>md-gb-button</b> aria-haspopup="menu" · opened with showPopover()</div>
+  </div>
+</div>
+
+<!-- ======================================================= badges & dividers -->
+<h3>Badges &amp; dividers</h3>
+<div class="demos">
+  <div class="demo">
+    <div class="stage">
+      <div class="badge-row">
+        <figure><span class="badged"><md-gb-icon>notifications</md-gb-icon><md-gb-badge aria-label="New activity"></md-gb-badge></span>dot</figure>
+        <figure><span class="badged"><md-gb-icon>mail</md-gb-icon><md-gb-badge class="count">3</md-gb-badge></span>count</figure>
+        <figure><span class="badged"><md-gb-icon>groups</md-gb-icon><md-gb-badge class="count">99+</md-gb-badge></span>overflow</figure>
+        <figure><span class="badged"><md-gb-icon-button aria-label="Downloads"><md-gb-icon>download</md-gb-icon></md-gb-icon-button><md-gb-badge></md-gb-badge></span>on a button</figure>
+      </div>
+    </div>
+    <div class="cap"><b>md-gb-badge</b> empty → 6px dot · with text → large count. The element has no placement of its own; the wrapper positions it.</div>
+  </div>
+
+  <div class="demo">
+    <div class="stage col">
+      <div class="prose">
+        <span><b>Horizontal</b> — fills its row</span>
+        <md-gb-divider></md-gb-divider>
+        <span><b>Vertical</b> — fills its container's height</span>
+      </div>
+      <div class="toolbar">
+        <md-gb-icon-button aria-label="Bold"><md-gb-icon>format_bold</md-gb-icon></md-gb-icon-button>
+        <md-gb-icon-button aria-label="Italic"><md-gb-icon>format_italic</md-gb-icon></md-gb-icon-button>
+        <md-gb-icon-button aria-label="Underline"><md-gb-icon>format_underlined</md-gb-icon></md-gb-icon-button>
+        <md-gb-divider vertical></md-gb-divider>
+        <md-gb-icon-button aria-label="Undo"><md-gb-icon>undo</md-gb-icon></md-gb-icon-button>
+        <md-gb-icon-button aria-label="Redo"><md-gb-icon>redo</md-gb-icon></md-gb-icon-button>
+      </div>
+    </div>
+    <div class="cap"><b>md-gb-divider</b> · <b>md-gb-divider vertical</b></div>
+  </div>
+</div>
+</section>
+
+<script>
+  const root = document.getElementById('expressive-selection');
+  if (!root) return;
+  customElements.whenDefined('md-gb-menu').then(() => {
+    // The element makes itself popover="auto" on connect. Removing that turns
+    // the demo menus into ordinary in-flow boxes that stay open.
+    root.querySelectorAll('md-gb-menu.xs-static').forEach(m => m.removeAttribute('popover'));
+
+    const btn = root.querySelector('#xs-menu-trigger');
+    const menu = root.querySelector('#xs-menu');
+    if (!btn || !menu) return;
+    let closedAt = 0;
+    menu.addEventListener('toggle', e => {
+      const open = e.newState === 'open';
+      btn.setAttribute('aria-expanded', String(open));
+      if (!open) closedAt = performance.now();
+    });
+    btn.addEventListener('click', () => {
+      // Light dismiss closes the menu on pointerdown, before this click lands:
+      // don't reopen what the same press just closed.
+      if (menu.matches(':popover-open') || performance.now() - closedAt < 300) return;
+      try { menu.showPopover({ source: btn }); } catch (_) { menu.showPopover(); }
+    });
+  });
+</script>
