@@ -1,0 +1,18 @@
+/* Material 3 Expressive — fonts.
+   Google Sans Flex is the M3 Expressive brand face; Roboto Flex is the open
+   variable face it falls back to (same axes: wght, wdth, opsz, GRAD, ROND).
+   Material Symbols Rounded is the icon font.
+
+   The Google Fonts @import this carried upstream is replaced by the repo's
+   self-hosted faces; see ../../fonts/baseline.css. */
+@import url('../../fonts/baseline.css');
+
+:root {
+  --md-ref-typeface-brand: "Google Sans Flex", "Roboto Flex", Roboto, system-ui, sans-serif;
+  --md-ref-typeface-plain: "Roboto Flex", Roboto, system-ui, sans-serif;
+  --md-ref-typeface-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --md-ref-typeface-icon: "Material Symbols Rounded";
+  --md-ref-typeface-weight-regular: 400;
+  --md-ref-typeface-weight-medium: 500;
+  --md-ref-typeface-weight-bold: 700;
+}

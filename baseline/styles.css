@@ -1,0 +1,13 @@
+/* ============================================================
+   Material 3 Expressive — global entry point.
+   Link THIS file from every page. Tokens first, then the
+   component layer that reads only from them.
+   ============================================================ */
+@import url('./tokens/fonts.css');
+@import url('./tokens/colors.css');
+@import url('./tokens/typography.css');
+@import url('./tokens/shape.css');
+@import url('./tokens/motion.css');
+@import url('./tokens/elevation.css');
+@import url('./tokens/spacing.css');
+@import url('./tokens/components.css');

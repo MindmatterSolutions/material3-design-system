@@ -1,0 +1,27 @@
+/* Material 3 Expressive — spacing & layout.
+   A 4dp base grid. Window size classes drive layout (compact → extra-large);
+   margins and pane gaps follow the class. */
+:root {
+  --md-sys-spacing-0: 0px;
+  --md-sys-spacing-1: 4px;
+  --md-sys-spacing-2: 8px;
+  --md-sys-spacing-3: 12px;
+  --md-sys-spacing-4: 16px;
+  --md-sys-spacing-5: 20px;
+  --md-sys-spacing-6: 24px;
+  --md-sys-spacing-8: 32px;
+  --md-sys-spacing-10: 40px;
+  --md-sys-spacing-12: 48px;
+  --md-sys-spacing-16: 64px;
+
+  --md-sys-layout-window-compact: 600px;      /* < 600 */
+  --md-sys-layout-window-medium: 840px;       /* 600–839 */
+  --md-sys-layout-window-expanded: 1200px;    /* 840–1199 */
+  --md-sys-layout-window-large: 1600px;       /* 1200–1599 */
+                                              /* extra-large ≥ 1600 */
+  --md-sys-layout-margin-compact: 16px;
+  --md-sys-layout-margin-medium: 24px;
+  --md-sys-layout-margin-expanded: 24px;
+  --md-sys-layout-pane-gap: 24px;
+  --md-sys-layout-touch-target: 48px;
+}
