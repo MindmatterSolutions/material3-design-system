@@ -1,0 +1,36 @@
+<!-- @dsCard group="Foundations" name="Typography" subtitle="15 baseline styles and their emphasized twins — Google Sans Flex over Roboto Flex" viewport="640x760" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Typography</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+.ts { display:grid; grid-template-columns: 76px 1fr 1fr; gap: 12px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+.ts > span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ts.head { border: 0; padding-bottom: 0; }
+.meta { font-size: 11px; color: var(--md-sys-color-on-surface-variant); text-transform: capitalize; }
+.em { color: var(--md-sys-color-primary); }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Type scale · baseline and emphasized</div>
+<div class="ts head"><span class="meta"></span><span class="meta">Baseline</span><span class="meta">Emphasized</span></div>
+<div class="ts"><span class="meta">display S</span><span class="md-typescale-display-small">Expressive</span><span class="md-typescale-display-small-emphasized em">Expressive</span></div><div class="ts"><span class="meta">headline L</span><span class="md-typescale-headline-large">Shape &amp; motion</span><span class="md-typescale-headline-large-emphasized em">Shape &amp; motion</span></div><div class="ts"><span class="meta">headline M</span><span class="md-typescale-headline-medium">Shape &amp; motion</span><span class="md-typescale-headline-medium-emphasized em">Shape &amp; motion</span></div><div class="ts"><span class="meta">headline S</span><span class="md-typescale-headline-small">Shape &amp; motion</span><span class="md-typescale-headline-small-emphasized em">Shape &amp; motion</span></div><div class="ts"><span class="meta">title L</span><span class="md-typescale-title-large">Shapes carry emotion</span><span class="md-typescale-title-large-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">title M</span><span class="md-typescale-title-medium">Shapes carry emotion</span><span class="md-typescale-title-medium-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">title S</span><span class="md-typescale-title-small">Shapes carry emotion</span><span class="md-typescale-title-small-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">body L</span><span class="md-typescale-body-large">Shapes carry emotion</span><span class="md-typescale-body-large-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">body M</span><span class="md-typescale-body-medium">Shapes carry emotion</span><span class="md-typescale-body-medium-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">body S</span><span class="md-typescale-body-small">Shapes carry emotion</span><span class="md-typescale-body-small-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">label L</span><span class="md-typescale-label-large">Shapes carry emotion</span><span class="md-typescale-label-large-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">label M</span><span class="md-typescale-label-medium">Shapes carry emotion</span><span class="md-typescale-label-medium-emphasized em">Shapes carry emotion</span></div><div class="ts"><span class="meta">label S</span><span class="md-typescale-label-small">Shapes carry emotion</span><span class="md-typescale-label-small-emphasized em">Shapes carry emotion</span></div>
+<p class="note">Display, headline and title set in <b>Google Sans Flex</b> (Roboto Flex fallback); body and label in Roboto Flex. M3 Expressive adds an emphasized twin for every style — heavier weight at the same size — for the one moment on a screen that should lead: a selected item, a hero number, the primary label. Display Large (57) and Medium (45) follow the same pattern.</p>
+</main>
+</body>
+</html>

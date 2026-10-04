@@ -1,0 +1,26 @@
+{
+  "name": "Material 3 Expressive",
+  "source": "Google Material Design 3 Expressive (m3.material.io), 2025 update",
+  "palette": {
+    "seed": "#6750A4",
+    "scheme": "tonal-spot",
+    "modes": ["light", "dark"],
+    "light": { "primary": "#6750A4", "secondary": "#625B71", "tertiary": "#7D5260", "error": "#B3261E", "surface": "#FEF7FF", "onSurface": "#1D1B20" },
+    "dark":  { "primary": "#D0BCFF", "secondary": "#CCC2DC", "tertiary": "#EFB8C8", "error": "#F2B8B5", "surface": "#141218", "onSurface": "#E6E0E9" }
+  },
+  "fonts": {
+    "brand": { "family": "Google Sans Flex", "fallback": "Roboto Flex", "use": ["display", "headline", "title"] },
+    "plain": { "family": "Roboto Flex", "use": ["body", "label"] },
+    "icons": { "family": "Material Symbols Rounded", "fill": "0 at rest, 1 when selected" },
+    "emphasized": true
+  },
+  "shape": { "cornerScale": [0, 4, 8, 12, 16, 20, 28, 32, 48, "full"], "library": 24, "morphable": true },
+  "motion": { "system": "springs", "defaultScheme": "expressive",
+    "expressive": { "spatial": { "fast": [0.6, 800], "default": [0.8, 380], "slow": [0.8, 200] } },
+    "standard":   { "spatial": { "fast": [0.9, 1400], "default": [0.9, 700], "slow": [0.9, 300] } },
+    "effects":    { "fast": [1, 3800], "default": [1, 1600], "slow": [1, 800] } },
+  "density": 1.0,
+  "grid": 4,
+  "iconSet": "material-symbols-rounded",
+  "buttonSizes": { "xs": 32, "s": 40, "m": 56, "l": 96, "xl": 136 }
+}

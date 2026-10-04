@@ -1,0 +1,56 @@
+<!-- @dsCard group="Components" name="Button groups & split button" subtitle="Standard groups that flex on press, connected single-select groups, split buttons" viewport="640x560" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Button groups & split button</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Standard group — press one, its neighbours give way</div>
+<div class="md-button-group md-button-group--m" style="max-width:420px">
+<button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Previous"><span class="md-icon" aria-hidden="true">skip_previous</span></button>
+<button class="md-icon-button md-icon-button--m md-icon-button--filled md-icon-button--wide md-icon-button--square" aria-label="Play"><span class="md-icon md-icon--filled" aria-hidden="true">play_arrow</span></button>
+<button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Next"><span class="md-icon" aria-hidden="true">skip_next</span></button>
+</div>
+<div class="md-button-group md-button-group--s" style="margin-top:12px; max-width: 420px">
+<button class="md-button md-button--tonal"><span class="md-icon" aria-hidden="true">thumb_up</span>Like</button>
+<button class="md-button md-button--tonal"><span class="md-icon" aria-hidden="true">share</span>Share</button>
+<button class="md-button md-button--filled"><span class="md-icon" aria-hidden="true">download</span>Save</button>
+</div>
+<div class="demo-head">Connected group — single select</div>
+<div class="md-button-group md-button-group--connected" role="radiogroup" style="max-width:420px">
+<button class="md-button md-button--tonal" aria-pressed="false">Day</button>
+<button class="md-button md-button--tonal" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>Week</button>
+<button class="md-button md-button--tonal" aria-pressed="false">Month</button>
+<button class="md-button md-button--tonal" aria-pressed="false">Year</button>
+</div>
+<div class="md-button-group md-button-group--connected" style="margin-top:12px">
+<button class="md-icon-button md-icon-button--tonal md-icon-button--wide" aria-pressed="true" aria-label="Bold"><span class="md-icon" aria-hidden="true">format_bold</span></button>
+<button class="md-icon-button md-icon-button--tonal md-icon-button--wide" aria-pressed="false" aria-label="Italic"><span class="md-icon" aria-hidden="true">format_italic</span></button>
+<button class="md-icon-button md-icon-button--tonal md-icon-button--wide" aria-pressed="true" aria-label="Underline"><span class="md-icon" aria-hidden="true">format_underlined</span></button>
+</div>
+<div class="demo-head">Split button</div>
+<div class="row">
+<div class="md-split-button"><button class="md-button md-button--filled"><span class="md-icon" aria-hidden="true">edit</span>Compose</button><button class="md-button md-button--filled" aria-expanded="false" aria-label="More"><span class="md-icon" aria-hidden="true">keyboard_arrow_down</span></button></div>
+<div class="md-split-button"><button class="md-button md-button--tonal">Export</button><button class="md-button md-button--tonal" aria-expanded="true" aria-label="More"><span class="md-icon" aria-hidden="true">keyboard_arrow_down</span></button></div>
+<div class="md-split-button"><button class="md-button md-button--outlined">Share</button><button class="md-button md-button--outlined" aria-expanded="false" aria-label="More"><span class="md-icon" aria-hidden="true">keyboard_arrow_down</span></button></div>
+</div>
+<p class="note">Button groups replace segmented buttons. In a <b>standard</b> group, pressing a button widens it on the spatial spring while its neighbours compress. A <b>connected</b> group seams its buttons 2px apart with small inner corners; the selected one goes fully round. The <b>split button</b> pairs a primary action with a menu trigger that turns round and flips its chevron when open (<code>aria-expanded</code>).</p>
+</main>
+</body>
+</html>

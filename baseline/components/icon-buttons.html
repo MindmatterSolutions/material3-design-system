@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" name="Icon buttons" subtitle="Four colors, three widths, five sizes; toggles fill and change shape" viewport="640x520" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Icon buttons</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+.align-end{align-items:flex-end}
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Colors · default width</div>
+<div class="row">
+<button class="md-icon-button" aria-label="Menu"><span class="md-icon" aria-hidden="true">menu</span></button>
+<button class="md-icon-button md-icon-button--filled" aria-label="Add"><span class="md-icon" aria-hidden="true">add</span></button>
+<button class="md-icon-button md-icon-button--tonal" aria-label="Edit"><span class="md-icon" aria-hidden="true">edit</span></button>
+<button class="md-icon-button md-icon-button--outlined" aria-label="Share"><span class="md-icon" aria-hidden="true">share</span></button>
+<span style="width:12px"></span>
+<button class="md-icon-button md-icon-button--standard" aria-pressed="true" aria-label="Favorite"><span class="md-icon" aria-hidden="true">favorite</span></button>
+<button class="md-icon-button md-icon-button--filled" aria-pressed="false" aria-label="Star"><span class="md-icon" aria-hidden="true">star</span></button>
+<button class="md-icon-button md-icon-button--filled" aria-pressed="true" aria-label="Star"><span class="md-icon" aria-hidden="true">star</span></button>
+<button class="md-icon-button md-icon-button--tonal" aria-pressed="true" aria-label="Bookmark"><span class="md-icon" aria-hidden="true">bookmark</span></button>
+</div>
+<div class="demo-head">Widths · narrow, default, wide</div>
+<div class="row">
+<button class="md-icon-button md-icon-button--m md-icon-button--tonal md-icon-button--narrow" aria-label="Back"><span class="md-icon" aria-hidden="true">arrow_back</span></button>
+<button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Pause"><span class="md-icon" aria-hidden="true">pause</span></button>
+<button class="md-icon-button md-icon-button--m md-icon-button--filled md-icon-button--wide" aria-label="Forward"><span class="md-icon" aria-hidden="true">arrow_forward</span></button>
+</div>
+<div class="demo-head">Sizes · round and square</div>
+<div class="row align-end">
+<button class="md-icon-button md-icon-button--xs md-icon-button--filled" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--s md-icon-button--filled" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--m md-icon-button--filled" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--l md-icon-button--filled" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button>
+<button class="md-icon-button md-icon-button--xs md-icon-button--square md-icon-button--tonal" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--s md-icon-button--square md-icon-button--tonal" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--m md-icon-button--square md-icon-button--tonal" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button><button class="md-icon-button md-icon-button--l md-icon-button--square md-icon-button--tonal" aria-label="Play"><span class="md-icon" aria-hidden="true">play_arrow</span></button>
+</div>
+<p class="note">Icon buttons share the button size scale (32–136) and add three widths — narrow, default, wide — so a row can give its key action more room. Toggle state (<code>aria-pressed</code>) fills the icon and flips round ⇄ square.</p>
+</main>
+</body>
+</html>

@@ -48,40 +48,68 @@ BUNDLES = {
     "baseline.css": (
         """Google's baseline Expressive system's faces (baseline/).
  *
- * Roboto is baseline M3's own typeface -- what md.ref.typeface.plain and
- * .brand resolve to -- and is a different family from the theme's Roboto Flex,
- * so both are vendored rather than one standing in for the other.
+ * Google Sans Flex is the Expressive brand face, used by display, headline and
+ * title. Roboto Flex is the open face it falls back to, and is also this
+ * system's plain face for body and label, so it is declared here as well as in
+ * the theme's bundle -- same vendored files, written once on disk, because the
+ * two bundles are never loaded on one page. Roboto (a different family from
+ * Roboto Flex) is the next fallback after that.
  *
- * Material Symbols Outlined, the icon font, is NOT here yet. Google Fonts
- * serves it as one 'fallback' block covering every icon, which is 3.9 MB --
- * too much to hand a browser, and too much to carry in the repo, for the
- * handful of glyphs the components actually use. It wants a subset pass
- * against the real icon list first; see MATERIAL_SYMBOLS below.""",
+ * Material Symbols ROUNDED -- not Outlined -- is the icon font, subsetted to
+ * the glyphs baseline/ actually names.""",
         [
+            ("Google+Sans+Flex:opsz,wght@6..144,1..1000", "google-sans-flex", LATIN),
+            ("Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000", "roboto-flex", LATIN),
             ("Roboto:ital,wght@0,100..900;1,100..900", "roboto", LATIN),
         ],
     ),
 }
 
-# The icon font, pending a subset. Google Fonts takes an `icon_names=` list and
-# serves only those glyphs, which turns 3.9 MB into a few KiB. Fill this in with
-# the icons baseline/ actually references (grep its components for the ligature
-# names), add it to the baseline bundle above, and re-run. It keeps subset
-# {"fallback"} -- Symbols is served as one block, not per-script -- and
-# font-display:block, because a half-drawn icon reads as a missing one.
-MATERIAL_SYMBOLS = (
-    "Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
+# The icon font's glyph list. Unsubsetted, Google Fonts serves Symbols as one
+# block covering every icon -- 3.9 MB, far more than the components need -- so
+# the request carries an `icon_names=` list and gets back only these. It keeps
+# subset {"fallback"} because Symbols is served as one block rather than
+# per-script, and font-display:block, because a half-drawn icon reads as a
+# missing one. To regenerate after editing baseline/, re-run:
+#   python3 tools/icon-names.py
+MATERIAL_SYMBOLS_ICONS = [
+    "add", "arrow_back", "arrow_forward", "battery_full", "bolt", "bookmark",
+    "brush", "calendar_month", "call", "check", "check_box", "check_circle",
+    "checklist", "chevron_right", "close", "delete", "directions", "download",
+    "edit", "event", "explore", "favorite", "folder", "format_bold",
+    "format_italic", "format_underlined", "forward_10", "groups", "home",
+    "image", "insights", "keyboard_arrow_down", "library_music", "location_on",
+    "mail", "menu", "menu_open", "mic", "more_vert", "music_note",
+    "navigation", "notifications", "pause", "person", "photo_camera",
+    "play_arrow", "redo", "replay_10", "restart_alt", "school", "search",
+    "send", "settings", "share", "signal_cellular_alt", "skip_next",
+    "skip_previous", "star", "tab", "thumb_up", "today", "undo", "wifi",
+]
+BUNDLES["baseline.css"][1].append((
+    "Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    "&icon_names=" + ",".join(MATERIAL_SYMBOLS_ICONS),
     "material-symbols",
     {"fallback"},
-)
-MATERIAL_SYMBOLS_ICONS: list[str] = []   # e.g. ["home", "settings", "search"]
+))
 
 BLOCK = re.compile(r"/\*\s*([a-z0-9-]+)\s*\*/\s*(@font-face\s*\{.*?\})", re.S)
+# A subsetted request (icon_names=) comes back as a bare @font-face with no
+# /* subset */ comment above it, so the commented pattern finds nothing. These
+# faces are labelled "fallback", which is what Symbols' own subset is called.
+BARE = re.compile(r"(@font-face\s*\{.*?\})", re.S)
 
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     return urllib.request.urlopen(req, timeout=60).read()
+
+
+def faces(css):
+    """(subset, block) for each @font-face, commented or bare."""
+    found = BLOCK.findall(css)
+    if found:
+        return found
+    return [("fallback", block) for block in BARE.findall(css)]
 
 
 def vendor(query, slug, keep):
@@ -91,7 +119,7 @@ def vendor(query, slug, keep):
     css = fetch(f"https://fonts.googleapis.com/css2?family={query}&display={display}").decode()
     (FONTS / slug).mkdir(parents=True, exist_ok=True)
     out, seen = [], set()
-    for subset, block in BLOCK.findall(css):
+    for subset, block in faces(css):
         if subset not in keep:
             continue
         url = re.search(r"url\((https://[^)]+)\)", block).group(1)

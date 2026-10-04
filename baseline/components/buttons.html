@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" name="Buttons" subtitle="Five sizes × round/square × five colors; press morphs shape, toggles swap it" viewport="640x640" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Buttons</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+.align-end{align-items:flex-end}
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Colors · small</div>
+<div class="row">
+<button class="md-button md-button--elevated"><span class="md-icon" aria-hidden="true">add</span>Elevated</button>
+<button class="md-button md-button--filled"><span class="md-icon" aria-hidden="true">add</span>Filled</button>
+<button class="md-button md-button--tonal"><span class="md-icon" aria-hidden="true">add</span>Tonal</button>
+<button class="md-button md-button--outlined"><span class="md-icon" aria-hidden="true">add</span>Outlined</button>
+<button class="md-button md-button--text">Text</button>
+</div>
+<div class="demo-head">Sizes · round and square</div>
+<div class="row align-end">
+<button class="md-button md-button--xs"><span class="md-icon" aria-hidden="true">edit</span>XS</button><button class="md-button md-button--s"><span class="md-icon" aria-hidden="true">edit</span>S</button><button class="md-button md-button--m"><span class="md-icon" aria-hidden="true">edit</span>M</button>
+</div>
+<div class="row align-end" style="margin-top:8px">
+<button class="md-button md-button--xs md-button--square md-button--tonal"><span class="md-icon" aria-hidden="true">edit</span>XS</button><button class="md-button md-button--s md-button--square md-button--tonal"><span class="md-icon" aria-hidden="true">edit</span>S</button><button class="md-button md-button--m md-button--square md-button--tonal"><span class="md-icon" aria-hidden="true">edit</span>M</button>
+</div>
+<div class="row" style="margin-top:8px"><button class="md-button md-button--l"><span class="md-icon" aria-hidden="true">send</span>Large</button><button class="md-button md-button--l md-button--square md-button--tonal"><span class="md-icon" aria-hidden="true">send</span>Large</button></div>
+<div class="demo-head">Toggle buttons — shape flips when selected</div>
+<div class="row">
+<button class="md-button md-button--filled" aria-pressed="false"><span class="md-icon" aria-hidden="true">bookmark</span>Save</button>
+<button class="md-button md-button--filled" aria-pressed="true"><span class="md-icon" aria-hidden="true">bookmark</span>Saved</button>
+<button class="md-button md-button--tonal" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>Tonal</button>
+<button class="md-button md-button--outlined" aria-pressed="true">Outlined</button>
+<button class="md-button md-button--filled" disabled>Disabled</button>
+</div>
+<p class="note">Five sizes from XS (32) to XL (136); each has a round (full) and a square shape, and pressing morphs the corners toward square on the fast spatial spring. A toggle button swaps shapes when selected — round becomes square, square becomes round — and fills its icon. Classes: <code>.md-button</code> + <code>--xs/--s/--m/--l/--xl</code>, <code>--square</code>, <code>--filled/--tonal/--elevated/--outlined/--text</code>; <code>aria-pressed</code> makes it a toggle.</p>
+</main>
+</body>
+</html>

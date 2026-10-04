@@ -1,0 +1,38 @@
+<!-- @dsCard group="Foundations" name="Motion" subtitle="Spring tokens — spatial springs overshoot, effects springs never do" viewport="640x560" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Motion</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+.mr { display:grid; grid-template-columns: 140px 1fr; gap: 12px; align-items:center; margin-bottom: 8px; }
+.ml { display:flex; flex-direction:column; font-size: 12px; line-height: 16px; color: var(--md-sys-color-on-surface-variant); } .ml b { color: var(--md-sys-color-on-surface); font-weight: 500; text-transform: capitalize; }
+.lane { height: 40px; border-radius: var(--md-sys-shape-corner-full); background: var(--md-sys-color-surface-container); position: relative; }
+.lane i { position:absolute; top: 4px; left: 4px; width: 32px; height: 32px; border-radius: 50%; background: var(--md-sys-color-primary); }
+@keyframes slide { from { left: 4px; } to { left: calc(100% - 36px); } }
+@keyframes fade { from { opacity: .1; left: calc(50% - 16px);} to { opacity: 1; left: calc(50% - 16px); } }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Springs</div>
+<div class="mr"><div class="ml"><b>expressive · fast</b><span>spatial</span></div><div class="lane"><i style="animation: slide 1.8s var(--md-motion-spring-expressive-fast-spatial) infinite alternate"></i></div></div><div class="mr"><div class="ml"><b>expressive · default</b><span>spatial</span></div><div class="lane"><i style="animation: slide 1.8s var(--md-motion-spring-expressive-default-spatial) infinite alternate"></i></div></div><div class="mr"><div class="ml"><b>expressive · slow</b><span>spatial</span></div><div class="lane"><i style="animation: slide 1.8s var(--md-motion-spring-expressive-slow-spatial) infinite alternate"></i></div></div><div class="mr"><div class="ml"><b>standard · default</b><span>spatial</span></div><div class="lane"><i style="animation: slide 1.8s var(--md-motion-spring-standard-default-spatial) infinite alternate"></i></div></div><div class="mr"><div class="ml"><b>expressive · default</b><span>effects</span></div><div class="lane"><i style="animation: fade 1.8s var(--md-motion-spring-expressive-default-effects) infinite alternate"></i></div></div>
+<div class="demo-head">Shape morph on press</div>
+<div class="row"><button class="md-button md-button--m">Press &amp; hold</button><button class="md-button md-button--m md-button--square md-button--tonal">Square</button><button class="md-icon-button md-icon-button--m md-icon-button--filled"><span class="md-icon" aria-hidden="true">favorite</span></button></div>
+<p class="note">Motion is physics: a spring is a damping ratio and a stiffness, not a duration. <b>Spatial</b> springs move position, size and shape and may overshoot; <b>effects</b> springs change color and opacity and never do. The expressive scheme (damping 0.6–0.8) is the default; the standard scheme (0.9) is for calmer, utilitarian products. Each token is a CSS <code>linear()</code> curve with a matching <code>-duration</code>. The lanes above loop each curve stretched to 1.8s so the shape is visible.</p>
+</main>
+</body>
+</html>

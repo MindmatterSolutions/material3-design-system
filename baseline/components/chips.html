@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" name="Chips, badges & snackbar" subtitle="Assist, filter, input and suggestion chips; badges; snackbar" viewport="640x480" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Chips, badges & snackbar</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Assist</div>
+<div class="row"><button class="md-chip"><span class="md-icon" aria-hidden="true">event</span>Add to calendar</button><button class="md-chip md-chip--elevated"><span class="md-icon" aria-hidden="true">directions</span>Directions</button></div>
+<div class="demo-head">Filter</div>
+<div class="row"><button class="md-chip" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>Unread</button><button class="md-chip" aria-pressed="false">Starred</button><button class="md-chip" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>Attachments</button><button class="md-chip" aria-pressed="false">Muted</button></div>
+<div class="demo-head">Input & suggestion</div>
+<div class="row"><span class="md-chip" style="padding-right:8px"><span class="md-avatar" style="width:24px;height:24px;font-size:12px;margin-left:-12px">N</span>Neall<span class="md-icon" aria-hidden="true">close</span></span><button class="md-chip">Sounds good</button><button class="md-chip">On my way</button></div>
+<div class="demo-head">Badges & snackbar</div>
+<div class="row" style="gap:24px"><span style="position:relative"><span class="md-icon" aria-hidden="true">notifications</span><span class="md-badge" style="position:absolute;top:-4px;right:-10px">3</span></span><span style="position:relative"><span class="md-icon" aria-hidden="true">mail</span><span class="md-badge md-badge--dot" style="position:absolute;top:0;right:-2px"></span></span>
+<div class="md-snackbar">Message archived<button class="md-button md-button--text md-button--xs">Undo</button><button class="md-icon-button md-icon-button--xs" aria-label="Dismiss"><span class="md-icon" aria-hidden="true">close</span></button></div></div>
+<p class="note">Chips keep the small (8dp) corner; filter chips fill with secondary-container and gain a check when selected. Badges are error-colored, either a count or a 6dp dot. The snackbar is inverse-surface with an inverse-primary action.</p>
+</main>
+</body>
+</html>

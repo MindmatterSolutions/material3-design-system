@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" name="Toolbars" subtitle="Floating (standard and vibrant, with FAB) and docked toolbars" viewport="640x520" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Toolbars</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Floating toolbar — standard, with FAB</div>
+<div class="md-toolbar-dock">
+<div class="md-toolbar md-toolbar--floating">
+<button class="md-icon-button" aria-label="Checklist"><span class="md-icon" aria-hidden="true">check_box</span></button>
+<button class="md-icon-button" aria-pressed="true" aria-label="Brush"><span class="md-icon" aria-hidden="true">brush</span></button>
+<button class="md-icon-button" aria-label="Voice"><span class="md-icon" aria-hidden="true">mic</span></button>
+<button class="md-icon-button" aria-label="Image"><span class="md-icon" aria-hidden="true">image</span></button>
+</div>
+<button class="md-fab md-fab--secondary" style="--_r: var(--md-sys-shape-corner-large)" aria-label="New"><span class="md-icon" aria-hidden="true">add</span></button>
+</div>
+<div class="demo-head">Floating toolbar — vibrant</div>
+<div class="md-toolbar md-toolbar--floating md-toolbar--vibrant">
+<button class="md-icon-button" aria-label="Undo"><span class="md-icon" aria-hidden="true">undo</span></button>
+<button class="md-icon-button" aria-label="Redo"><span class="md-icon" aria-hidden="true">redo</span></button>
+<button class="md-icon-button" aria-pressed="true" aria-label="Bold"><span class="md-icon" aria-hidden="true">format_bold</span></button>
+<button class="md-icon-button" aria-label="Italic"><span class="md-icon" aria-hidden="true">format_italic</span></button>
+<button class="md-button md-button--filled" style="margin-left:4px"><span class="md-icon" aria-hidden="true">send</span>Send</button>
+</div>
+<div class="demo-head">Docked toolbar</div>
+<div class="md-toolbar" style="border-radius: var(--md-sys-shape-corner-large)">
+<button class="md-icon-button" aria-label="Back"><span class="md-icon" aria-hidden="true">arrow_back</span></button>
+<button class="md-icon-button" aria-label="Forward"><span class="md-icon" aria-hidden="true">arrow_forward</span></button>
+<button class="md-icon-button md-icon-button--filled md-icon-button--wide" aria-label="Add"><span class="md-icon" aria-hidden="true">add</span></button>
+<button class="md-icon-button" aria-label="Tabs"><span class="md-icon" aria-hidden="true">tab</span></button>
+<button class="md-icon-button" aria-label="More"><span class="md-icon" aria-hidden="true">more_vert</span></button>
+</div>
+<p class="note">Toolbars replace the bottom app bar. The <b>floating</b> toolbar is a pill at level-3 elevation that can sit beside a FAB, run vertically, and switch to the <b>vibrant</b> (primary-container) color for a stronger voice. The <b>docked</b> toolbar spans the window edge at 64dp and holds global actions; it can host a centered filled icon button in place of a FAB.</p>
+</main>
+</body>
+</html>

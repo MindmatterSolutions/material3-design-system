@@ -1,20 +1,60 @@
 /* Google's baseline Expressive system's faces (baseline/).
  *
- * Roboto is baseline M3's own typeface -- what md.ref.typeface.plain and
- * .brand resolve to -- and is a different family from the theme's Roboto Flex,
- * so both are vendored rather than one standing in for the other.
+ * Google Sans Flex is the Expressive brand face, used by display, headline and
+ * title. Roboto Flex is the open face it falls back to, and is also this
+ * system's plain face for body and label, so it is declared here as well as in
+ * the theme's bundle -- same vendored files, written once on disk, because the
+ * two bundles are never loaded on one page. Roboto (a different family from
+ * Roboto Flex) is the next fallback after that.
  *
- * Material Symbols Outlined, the icon font, is NOT here yet. Google Fonts
- * serves it as one 'fallback' block covering every icon, which is 3.9 MB --
- * too much to hand a browser, and too much to carry in the repo, for the
- * handful of glyphs the components actually use. It wants a subset pass
- * against the real icon list first; see MATERIAL_SYMBOLS below.
+ * Material Symbols ROUNDED -- not Outlined -- is the icon font, subsetted to
+ * the glyphs baseline/ actually names.
  *
  * Self-hosted, so the system makes no third-party request and nothing waits
  * on fonts.googleapis.com to paint. These are the woff2 files Google Fonts
  * serves. Regenerate with tools/fetch-fonts.py.
  */
 
+/* google-sans-flex — latin-ext */
+@font-face {
+  font-family: 'Google Sans Flex';
+  font-style: normal;
+  font-weight: 1 1000;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(./google-sans-flex/google-sans-flex-latin-ext-1-1000.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* google-sans-flex — latin */
+@font-face {
+  font-family: 'Google Sans Flex';
+  font-style: normal;
+  font-weight: 1 1000;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(./google-sans-flex/google-sans-flex-latin-1-1000.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* roboto-flex — latin-ext */
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-display: swap;
+  src: url(./roboto-flex/roboto-flex-latin-ext-100-1000.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* roboto-flex — latin */
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-display: swap;
+  src: url(./roboto-flex/roboto-flex-latin-100-1000.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 /* roboto — latin-ext-italic */
 @font-face {
   font-family: 'Roboto';
@@ -54,4 +94,12 @@
   font-display: swap;
   src: url(./roboto/roboto-latin-100-900.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* material-symbols — fallback */
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(./material-symbols/material-symbols-fallback-100-700.woff2) format('woff2');
 }

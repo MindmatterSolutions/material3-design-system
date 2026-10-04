@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — App screen</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+/* Page composition only — every component and value comes from the system. */
+body { display: grid; place-items: center; min-height: 100vh; background: var(--md-sys-color-surface-container); padding: 24px; box-sizing: border-box; gap: 24px; grid-auto-flow: column; }
+.phone { width: 390px; height: 820px; border-radius: 44px; overflow: hidden; position: relative; display: flex; flex-direction: column;
+  background: var(--md-sys-color-surface); box-shadow: var(--md-sys-elevation-level3), 0 0 0 10px var(--md-sys-color-inverse-surface); }
+.status { height: 40px; display:flex; align-items:center; justify-content:space-between; padding: 0 28px; font-size: 14px; font-weight: 500; }
+.status .md-icon { --md-icon-size: 18px; }
+.top { display:flex; align-items:center; gap: 8px; padding: 8px 16px 4px 16px; }
+.top h1 { flex:1; margin:0; }
+.scroll { flex:1; overflow: auto; padding: 8px 16px 120px; display:flex; flex-direction:column; gap: 16px; }
+.hero { display:grid; grid-template-columns: 1fr auto; align-items:end; gap: 8px; min-height: 180px; }
+.hero .art { width: 120px; height: 120px; background: var(--md-sys-color-tertiary); clip-path: var(--md-shape-path-cookie-9); display:grid; place-items:center; color: var(--md-sys-color-on-tertiary); --md-icon-size: 48px; }
+.chips { display:flex; gap: 8px; overflow:auto; margin: 0 -16px; padding: 0 16px; }
+.chips::-webkit-scrollbar { display:none; }
+.tiles { display:grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tile { border-radius: var(--md-sys-shape-corner-extra-large); padding: 16px; min-height: 120px; display:flex; flex-direction:column; justify-content:space-between; }
+.tile .shape { width: 44px; height: 44px; background: currentColor; }
+.fab-slot { position:absolute; right: 16px; bottom: 80px; }
+.phone .md-navbar { position:absolute; left:0; right:0; bottom:0; }
+.muted { color: var(--md-sys-color-on-surface-variant); }
+</style>
+</head>
+<body>
+
+<div class="phone" data-theme="light">
+  <div class="status"><span>9:41</span><span><span class="md-icon" aria-hidden="true">signal_cellular_alt</span><span class="md-icon" aria-hidden="true">wifi</span><span class="md-icon" aria-hidden="true">battery_full</span></span></div>
+  <div class="top"><h1 class="md-typescale-headline-medium-emphasized">Good morning</h1><button class="md-icon-button" aria-label="Search"><span class="md-icon" aria-hidden="true">search</span></button><span class="md-avatar">N</span></div>
+  <div class="scroll">
+    <div class="md-card md-card--hero hero">
+      <div><div class="md-typescale-label-large-emphasized">Today's focus</div><div class="md-typescale-display-medium-emphasized">3h 20m</div><div class="md-typescale-body-medium">2 sessions left · on track</div></div>
+      <div class="art"><span class="md-icon md-icon--filled" aria-hidden="true">bolt</span></div>
+    </div>
+    <div class="chips"><button class="md-chip" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>All</button><button class="md-chip">Study</button><button class="md-chip">Work</button><button class="md-chip">Health</button><button class="md-chip">Admin</button></div>
+    <div class="md-button-group md-button-group--m">
+      <button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Previous"><span class="md-icon" aria-hidden="true">replay_10</span></button>
+      <button class="md-button md-button--m md-button--filled md-button--square"><span class="md-icon md-icon--filled" aria-hidden="true">play_arrow</span>Start session</button>
+      <button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Skip"><span class="md-icon" aria-hidden="true">forward_10</span></button>
+    </div>
+    <div class="tiles">
+      <div class="tile" style="background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)"><div class="shape" style="clip-path:var(--md-shape-path-clover-4)"></div><div><div class="md-typescale-title-medium-emphasized">Reading</div><div class="md-typescale-body-small">48 of 120 pages</div></div></div>
+      <div class="tile" style="background:var(--md-sys-color-tertiary-container);color:var(--md-sys-color-on-tertiary-container)"><div class="shape" style="clip-path:var(--md-shape-path-sunny)"></div><div><div class="md-typescale-title-medium-emphasized">Workout</div><div class="md-typescale-body-small">Leg day · 45 min</div></div></div>
+    </div>
+    <div>
+      <div class="md-typescale-title-small-emphasized muted" style="margin:4px 4px 8px">Up next</div>
+      <ul class="md-list md-list--segmented">
+        <li class="md-list-item"><span class="md-icon" aria-hidden="true">school</span><div class="md-list-item__text"><span class="md-list-item__headline">Signals &amp; Systems</span><span class="md-list-item__supporting">Lecture · 10:30</span></div><span class="md-list-item__trailing">in 49m</span></li>
+        <li class="md-list-item"><span class="md-icon" aria-hidden="true">groups</span><div class="md-list-item__text"><span class="md-list-item__headline">Project sync</span><span class="md-list-item__supporting">Meet · 14:00</span></div><span class="md-list-item__trailing">4h</span></li>
+      </ul>
+    </div>
+    <div class="md-progress-linear" style="--_value:66%"><div class="md-progress-linear__active"></div><div class="md-progress-linear__track"></div><div class="md-progress-linear__stop"></div></div>
+  </div>
+  <div class="fab-slot"><button class="md-fab md-fab--medium md-fab--tertiary" aria-label="New"><span class="md-icon" aria-hidden="true">add</span></button></div>
+  <nav class="md-navbar">
+    <button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">today</span></span>Today</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">calendar_month</span></span>Plan</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">insights</span></span>Insights</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span></span>You</button>
+  </nav>
+</div>
+<div class="phone" data-theme="dark">
+  <div class="status"><span>9:41</span><span><span class="md-icon" aria-hidden="true">signal_cellular_alt</span><span class="md-icon" aria-hidden="true">wifi</span><span class="md-icon" aria-hidden="true">battery_full</span></span></div>
+  <div class="top"><h1 class="md-typescale-headline-medium-emphasized">Good morning</h1><button class="md-icon-button" aria-label="Search"><span class="md-icon" aria-hidden="true">search</span></button><span class="md-avatar">N</span></div>
+  <div class="scroll">
+    <div class="md-card md-card--hero hero">
+      <div><div class="md-typescale-label-large-emphasized">Today's focus</div><div class="md-typescale-display-medium-emphasized">3h 20m</div><div class="md-typescale-body-medium">2 sessions left · on track</div></div>
+      <div class="art"><span class="md-icon md-icon--filled" aria-hidden="true">bolt</span></div>
+    </div>
+    <div class="chips"><button class="md-chip" aria-pressed="true"><span class="md-icon" aria-hidden="true">check</span>All</button><button class="md-chip">Study</button><button class="md-chip">Work</button><button class="md-chip">Health</button><button class="md-chip">Admin</button></div>
+    <div class="md-button-group md-button-group--m">
+      <button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Previous"><span class="md-icon" aria-hidden="true">replay_10</span></button>
+      <button class="md-button md-button--m md-button--filled md-button--square"><span class="md-icon md-icon--filled" aria-hidden="true">play_arrow</span>Start session</button>
+      <button class="md-icon-button md-icon-button--m md-icon-button--tonal" aria-label="Skip"><span class="md-icon" aria-hidden="true">forward_10</span></button>
+    </div>
+    <div class="tiles">
+      <div class="tile" style="background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)"><div class="shape" style="clip-path:var(--md-shape-path-clover-4)"></div><div><div class="md-typescale-title-medium-emphasized">Reading</div><div class="md-typescale-body-small">48 of 120 pages</div></div></div>
+      <div class="tile" style="background:var(--md-sys-color-tertiary-container);color:var(--md-sys-color-on-tertiary-container)"><div class="shape" style="clip-path:var(--md-shape-path-sunny)"></div><div><div class="md-typescale-title-medium-emphasized">Workout</div><div class="md-typescale-body-small">Leg day · 45 min</div></div></div>
+    </div>
+    <div>
+      <div class="md-typescale-title-small-emphasized muted" style="margin:4px 4px 8px">Up next</div>
+      <ul class="md-list md-list--segmented">
+        <li class="md-list-item"><span class="md-icon" aria-hidden="true">school</span><div class="md-list-item__text"><span class="md-list-item__headline">Signals &amp; Systems</span><span class="md-list-item__supporting">Lecture · 10:30</span></div><span class="md-list-item__trailing">in 49m</span></li>
+        <li class="md-list-item"><span class="md-icon" aria-hidden="true">groups</span><div class="md-list-item__text"><span class="md-list-item__headline">Project sync</span><span class="md-list-item__supporting">Meet · 14:00</span></div><span class="md-list-item__trailing">4h</span></li>
+      </ul>
+    </div>
+    <div class="md-progress-linear" style="--_value:66%"><div class="md-progress-linear__active"></div><div class="md-progress-linear__track"></div><div class="md-progress-linear__stop"></div></div>
+  </div>
+  <div class="fab-slot"><button class="md-fab md-fab--medium md-fab--tertiary" aria-label="New"><span class="md-icon" aria-hidden="true">add</span></button></div>
+  <nav class="md-navbar">
+    <button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">today</span></span>Today</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">calendar_month</span></span>Plan</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">insights</span></span>Insights</button>
+    <button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span></span>You</button>
+  </nav>
+</div>
+</body>
+</html>

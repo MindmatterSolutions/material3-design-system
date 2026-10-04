@@ -1,0 +1,43 @@
+<!-- @dsCard group="Foundations" name="Elevation, states & spacing" subtitle="Six elevation levels, state-layer opacities and the 4dp spacing grid" viewport="640x600" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Elevation, states & spacing</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+.lvs { display:grid; grid-template-columns: repeat(6,1fr); gap: 12px; }
+.lv { height: 72px; border-radius: var(--md-sys-shape-corner-medium); background: var(--md-sys-color-surface-container-low); padding: 8px; display:flex; flex-direction:column; justify-content:flex-end; font-size: 11px; color: var(--md-sys-color-on-surface-variant); }
+.lv b { color: var(--md-sys-color-on-surface); font-weight: 500; }
+.sts { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.stc { display:flex; flex-direction:column; gap:6px; font-size: 11px; color: var(--md-sys-color-on-surface-variant); }
+.stb { height: 48px; border-radius: var(--md-sys-shape-corner-full); background: var(--md-sys-color-primary); position:relative; overflow:hidden; }
+.stb::after { content:""; position:absolute; inset:0; background: var(--md-sys-color-on-primary); opacity: var(--o); }
+.spc { display:grid; gap: 4px; } .spc div { display:flex; align-items:center; gap: 12px; font-size: 11px; color: var(--md-sys-color-on-surface-variant); }
+.spc i { height: 12px; background: var(--md-sys-color-tertiary); border-radius: 2px; display:block; }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Elevation levels</div>
+<div class="lvs"><div class="lv" style="box-shadow:var(--md-sys-elevation-level0)"><b>Level 0</b><span>0dp</span></div><div class="lv" style="box-shadow:var(--md-sys-elevation-level1)"><b>Level 1</b><span>1dp</span></div><div class="lv" style="box-shadow:var(--md-sys-elevation-level2)"><b>Level 2</b><span>3dp</span></div><div class="lv" style="box-shadow:var(--md-sys-elevation-level3)"><b>Level 3</b><span>6dp</span></div><div class="lv" style="box-shadow:var(--md-sys-elevation-level4)"><b>Level 4</b><span>8dp</span></div><div class="lv" style="box-shadow:var(--md-sys-elevation-level5)"><b>Level 5</b><span>12dp</span></div></div>
+<div class="demo-head">State layers</div>
+<div class="sts"><div class="stc"><div class="stb" style="--o:var(--md-sys-state-hover-opacity)"></div><span>hover<br><b>8%</b></span></div><div class="stc"><div class="stb" style="--o:var(--md-sys-state-focus-opacity)"></div><span>focus<br><b>10%</b></span></div><div class="stc"><div class="stb" style="--o:var(--md-sys-state-pressed-opacity)"></div><span>pressed<br><b>10%</b></span></div><div class="stc"><div class="stb" style="--o:var(--md-sys-state-dragged-opacity)"></div><span>dragged<br><b>16%</b></span></div></div>
+<div class="demo-head">Spacing — 4dp grid</div>
+<div class="spc"><div><i style="width:var(--md-sys-spacing-1)"></i><span>1 · 4</span></div><div><i style="width:var(--md-sys-spacing-2)"></i><span>2 · 8</span></div><div><i style="width:var(--md-sys-spacing-3)"></i><span>3 · 12</span></div><div><i style="width:var(--md-sys-spacing-4)"></i><span>4 · 16</span></div><div><i style="width:var(--md-sys-spacing-6)"></i><span>6 · 24</span></div><div><i style="width:var(--md-sys-spacing-8)"></i><span>8 · 32</span></div><div><i style="width:var(--md-sys-spacing-12)"></i><span>12 · 48</span></div><div><i style="width:var(--md-sys-spacing-16)"></i><span>16 · 64</span></div></div>
+<p class="note">Shadows are reserved for things that truly float over content (FABs, menus, elevated buttons and cards, dialogs). Everything else elevates tonally. Interaction is an overlay of the content color at a fixed opacity; disabled content drops to 38%, disabled containers to 12%.</p>
+</main>
+</body>
+</html>

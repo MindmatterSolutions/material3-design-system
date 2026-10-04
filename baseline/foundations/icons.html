@@ -1,0 +1,36 @@
+<!-- @dsCard group="Foundations" name="Icons" subtitle="Material Symbols Rounded — outline at rest, filled when selected" viewport="640x480" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Icons</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+
+.ics { display:grid; grid-template-columns: repeat(8,1fr); gap: 14px 8px; }
+.ic { display:flex; flex-direction:column; align-items:center; gap:4px; color: var(--md-sys-color-on-surface-variant); }
+.ic span:last-child { font-size: 9px; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100%; }
+.row .md-icon { --md-icon-size: 32px; color: var(--md-sys-color-primary); }
+
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Material Symbols Rounded</div>
+<div class="ics"><div class="ic"><span class="md-icon" aria-hidden="true">home</span><span>home</span></div><div class="ic"><span class="md-icon" aria-hidden="true">search</span><span>search</span></div><div class="ic"><span class="md-icon" aria-hidden="true">favorite</span><span>favorite</span></div><div class="ic"><span class="md-icon" aria-hidden="true">settings</span><span>settings</span></div><div class="ic"><span class="md-icon" aria-hidden="true">star</span><span>star</span></div><div class="ic"><span class="md-icon" aria-hidden="true">add</span><span>add</span></div><div class="ic"><span class="md-icon" aria-hidden="true">edit</span><span>edit</span></div><div class="ic"><span class="md-icon" aria-hidden="true">delete</span><span>delete</span></div><div class="ic"><span class="md-icon" aria-hidden="true">share</span><span>share</span></div><div class="ic"><span class="md-icon" aria-hidden="true">bookmark</span><span>bookmark</span></div><div class="ic"><span class="md-icon" aria-hidden="true">mail</span><span>mail</span></div><div class="ic"><span class="md-icon" aria-hidden="true">call</span><span>call</span></div><div class="ic"><span class="md-icon" aria-hidden="true">photo_camera</span><span>photo_camera</span></div><div class="ic"><span class="md-icon" aria-hidden="true">music_note</span><span>music_note</span></div><div class="ic"><span class="md-icon" aria-hidden="true">play_arrow</span><span>play_arrow</span></div><div class="ic"><span class="md-icon" aria-hidden="true">pause</span><span>pause</span></div><div class="ic"><span class="md-icon" aria-hidden="true">calendar_month</span><span>calendar_month</span></div><div class="ic"><span class="md-icon" aria-hidden="true">location_on</span><span>location_on</span></div><div class="ic"><span class="md-icon" aria-hidden="true">person</span><span>person</span></div><div class="ic"><span class="md-icon" aria-hidden="true">notifications</span><span>notifications</span></div><div class="ic"><span class="md-icon" aria-hidden="true">check_circle</span><span>check_circle</span></div><div class="ic"><span class="md-icon" aria-hidden="true">close</span><span>close</span></div><div class="ic"><span class="md-icon" aria-hidden="true">menu</span><span>menu</span></div><div class="ic"><span class="md-icon" aria-hidden="true">more_vert</span><span>more_vert</span></div></div>
+<div class="demo-head">Fill as state</div>
+<div class="row"><span class="md-icon" aria-hidden="true">favorite</span><span class="md-icon md-icon--filled" aria-hidden="true">favorite</span><span style="width:16px"></span><span class="md-icon" aria-hidden="true">bookmark</span><span class="md-icon md-icon--filled" aria-hidden="true">bookmark</span><span style="width:16px"></span><span class="md-icon" aria-hidden="true">star</span><span class="md-icon md-icon--filled" aria-hidden="true">star</span></div>
+<p class="note">Material Symbols <b>Rounded</b> matches M3 Expressive's soft geometry. Use the ligature name as text inside <code>.md-icon</code>. Outline by default; the <code>FILL</code> axis switches to 1 for the selected/active state (toggle buttons and nav items do this automatically). Sizes: 20 (xs/s buttons), 24 (default), 32 and 40 (large controls).</p>
+</main>
+</body>
+</html>

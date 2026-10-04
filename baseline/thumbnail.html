@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Material 3 Expressive — thumbnail</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* Thumbnail (1280×854): wordmark left, a stack of library shapes right. */
+html, body { height: 100%; }
+body { margin: 0; display: grid; grid-template-columns: 1fr 42%; background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+.mark { display: flex; flex-direction: column; justify-content: flex-end; padding: 64px; gap: 16px; }
+.mark h1 { margin: 0; font-family: var(--md-ref-typeface-brand); font-weight: 500; font-size: 124px; line-height: .95; letter-spacing: -0.03em; }
+.mark p { margin: 0; font-family: var(--md-ref-typeface-brand); font-size: 32px; font-weight: 500; opacity: .8; }
+.shapes { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 24px; padding: 48px 48px 48px 0; }
+.shapes i { display: block; }
+.a { background: var(--md-sys-color-primary); clip-path: var(--md-shape-path-cookie-9); }
+.b { background: var(--md-sys-color-tertiary); border-radius: var(--md-sys-shape-corner-full); }
+.c { background: var(--md-sys-color-secondary); clip-path: var(--md-shape-path-clover-4); }
+.d { background: var(--md-sys-color-tertiary-container); clip-path: var(--md-shape-path-sunny); box-shadow: none; }
+.e { background: var(--md-sys-color-on-primary-container); clip-path: var(--md-shape-path-pentagon); }
+.f { background: var(--md-sys-color-primary); border-radius: var(--md-sys-shape-corner-extra-extra-large); }
+</style>
+</head>
+<body>
+<div class="mark"><p>Material 3</p><h1>Expressive</h1></div>
+<div class="shapes"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><i class="e"></i><i class="f"></i></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" name="Navigation" subtitle="Flexible navigation bar (vertical/horizontal items) and the collapsible navigation rail" viewport="640x830" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Navigation</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+.rails{align-items:flex-start;gap:16px}.rails nav{border-radius:var(--md-sys-shape-corner-extra-large);background:var(--md-sys-color-surface-container-low);height:auto}
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Navigation bar — vertical items (compact)</div>
+<div class="md-navbar" style="border-radius: var(--md-sys-shape-corner-large)"><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">home</span></span>Home</button><button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">explore</span></span>Explore</button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">library_music</span></span>Library</button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span></span>You</button></div>
+<div class="demo-head">Navigation bar — horizontal items (medium)</div>
+<div class="md-navbar md-navbar--horizontal" style="border-radius: var(--md-sys-shape-corner-large)"><button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">home</span>Home</span></button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">explore</span>Explore</span></button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">library_music</span>Library</span></button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span>You</span></button></div>
+<div class="demo-head">Navigation rail — collapsed and expanded</div>
+<div class="row rails">
+<nav class="md-navrail"><div class="md-navrail__header"><button class="md-icon-button" aria-label="Menu"><span class="md-icon" aria-hidden="true">menu</span></button><button class="md-fab md-fab--secondary" aria-label="New"><span class="md-icon" aria-hidden="true">edit</span></button></div><button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">home</span></span>Home</button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">explore</span></span>Explore</button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">library_music</span></span>Library</button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span></span>You</button></nav>
+<nav class="md-navrail md-navrail--expanded"><div class="md-navrail__header"><button class="md-icon-button" aria-label="Menu"><span class="md-icon" aria-hidden="true">menu_open</span></button><button class="md-fab md-fab--secondary md-fab--extended"><span class="md-icon" aria-hidden="true">edit</span>Compose</button></div><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">home</span>Home</span></button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">explore</span>Explore</span></button><button class="md-nav-item" aria-current="page"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">library_music</span>Library</span></button><button class="md-nav-item"><span class="md-nav-item__indicator"><span class="md-icon" aria-hidden="true">person</span>You</span></button></nav>
+</div>
+<p class="note">The <b>flexible navigation bar</b> is 64dp (shorter than M3's 80) and puts icon and label side by side on medium windows. The <b>navigation rail</b> collapses to 96dp and expands to a labelled 220dp+ column that replaces the navigation drawer; its active indicator stretches with the item. The indicator pill springs in on selection, and the active icon fills.</p>
+</main>
+</body>
+</html>

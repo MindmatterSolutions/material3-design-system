@@ -1,0 +1,54 @@
+<!-- @dsCard group="Components" name="FAB & FAB menu" subtitle="FAB 56 / medium 80 / large 96, extended FABs, and the FAB menu" viewport="640x620" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — FAB & FAB menu</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+.align-end{align-items:flex-end} .fab-stage{display:flex;justify-content:flex-end;padding:8px 8px 0;}
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Sizes — FAB, medium, large</div>
+<div class="row align-end">
+<button class="md-fab" aria-label="Edit"><span class="md-icon" aria-hidden="true">edit</span></button>
+<button class="md-fab md-fab--medium md-fab--secondary" aria-label="Edit"><span class="md-icon" aria-hidden="true">edit</span></button>
+<button class="md-fab md-fab--large md-fab--tertiary" aria-label="Edit"><span class="md-icon" aria-hidden="true">edit</span></button>
+<span style="width:12px"></span>
+<button class="md-fab md-fab--primary" aria-label="Add"><span class="md-icon" aria-hidden="true">add</span></button>
+<button class="md-fab md-fab--tonal-secondary" aria-label="Add"><span class="md-icon" aria-hidden="true">add</span></button>
+<button class="md-fab md-fab--tonal-tertiary" aria-label="Add"><span class="md-icon" aria-hidden="true">add</span></button>
+</div>
+<div class="demo-head">Extended FABs</div>
+<div class="row align-end">
+<button class="md-fab md-fab--extended"><span class="md-icon" aria-hidden="true">edit</span>Compose</button>
+<button class="md-fab md-fab--medium md-fab--extended md-fab--primary"><span class="md-icon" aria-hidden="true">navigation</span>Navigate</button>
+</div>
+<div class="demo-head">FAB menu — open</div>
+<div class="fab-stage">
+<div class="md-fab-menu">
+<div class="md-fab-menu__items">
+<button class="md-fab-menu__item"><span class="md-icon" aria-hidden="true">photo_camera</span>Camera</button>
+<button class="md-fab-menu__item"><span class="md-icon" aria-hidden="true">image</span>Photo</button>
+<button class="md-fab-menu__item"><span class="md-icon" aria-hidden="true">mic</span>Voice memo</button>
+<button class="md-fab-menu__item"><span class="md-icon" aria-hidden="true">checklist</span>Checklist</button>
+</div>
+<button class="md-fab md-fab-menu__close" aria-label="Close menu"><span class="md-icon" aria-hidden="true">close</span></button>
+</div>
+</div>
+<p class="note">FABs come in 56, 80 and 96 (the small FAB is retired). Colors: primary-container (default), secondary-/tertiary-container, and the tonal primary/secondary/tertiary fills. The <b>FAB menu</b> replaces speed-dial: the FAB morphs into a round close button and up to six labelled pill items spring up above it, staggered.</p>
+</main>
+</body>
+</html>

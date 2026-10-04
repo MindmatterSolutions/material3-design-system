@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" name="Cards & lists" subtitle="Elevated, filled, outlined and hero cards; the segmented expressive list" viewport="640x640" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Material 3 Expressive — Cards & lists</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+/* Demo scaffolding only — everything visual comes from ../styles.css. */
+.demo { max-width: 620px; margin: 0 auto; padding: 24px 16px 32px; }
+.demo-head { font-family: var(--md-ref-typeface-plain); font-size: var(--md-sys-typescale-label-medium-size); font-weight: var(--md-sys-typescale-emphasized-label-weight);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin: 24px 0 12px; }
+.demo-head:first-child { margin-top: 0; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stack { display: grid; gap: 12px; }
+.note { font-size: var(--md-sys-typescale-body-small-size); line-height: var(--md-sys-typescale-body-small-line); color: var(--md-sys-color-on-surface-variant); max-width: 62ch; margin: 16px 0 0; }
+code { font-family: var(--md-ref-typeface-mono); font-size: .92em; }
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.cards .md-card--hero{grid-row:span 3;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}.muted{color:var(--md-sys-color-on-surface-variant)}
+</style>
+</head>
+<body>
+<main class="demo">
+<div class="demo-head">Cards</div>
+<div class="cards">
+<div class="md-card md-card--hero"><div class="md-typescale-label-large-emphasized">This week</div><div class="md-typescale-display-small-emphasized">12h 40m</div><div class="md-typescale-body-medium">Focus time, up 18% on last week</div></div>
+<div class="md-card md-card--elevated md-card--interactive"><div class="md-typescale-title-medium">Elevated</div><div class="md-typescale-body-medium muted">Surface-container-low at level 1.</div></div>
+<div class="md-card md-card--filled md-card--interactive"><div class="md-typescale-title-medium">Filled</div><div class="md-typescale-body-medium muted">Highest container, no shadow.</div></div>
+<div class="md-card md-card--outlined md-card--interactive"><div class="md-typescale-title-medium">Outlined</div><div class="md-typescale-body-medium muted">A 1px outline-variant edge.</div></div>
+</div>
+<div class="demo-head">Segmented list</div>
+<ul class="md-list md-list--segmented">
+<li class="md-list-item"><span class="md-avatar">A</span><div class="md-list-item__text"><span class="md-list-item__headline">Ada Lovelace</span><span class="md-list-item__supporting">Notes on the Analytical Engine</span></div><span class="md-list-item__trailing">9:41</span></li>
+<li class="md-list-item" aria-selected="true"><span class="md-avatar" style="background:var(--md-sys-color-tertiary-container);color:var(--md-sys-color-on-tertiary-container)">G</span><div class="md-list-item__text"><span class="md-list-item__headline">Grace Hopper</span><span class="md-list-item__supporting">Compiler draft, second pass</span></div><span class="md-list-item__trailing">Yesterday</span></li>
+<li class="md-list-item"><span class="md-icon" aria-hidden="true">folder</span><div class="md-list-item__text"><span class="md-list-item__headline">Shared drafts</span><span class="md-list-item__supporting">4 files</span></div><span class="md-icon" aria-hidden="true">chevron_right</span></li>
+</ul>
+<p class="note">Cards: elevated, filled and outlined, plus an expressive <b>hero</b> card in primary-container at the extra-large corner for the one number that matters. Interactive cards soften their corners on press. <b>Segmented lists</b> give each row its own surface, 2px apart, with large outer corners; the selected row goes fully rounded in secondary-container.</p>
+</main>
+</body>
+</html>
