@@ -77,6 +77,39 @@
   --md-outlined-segmented-button-disabled-label-text-color: color-mix(in oklab, var(--md-sys-color-on-surface) 38%, transparent);
   --md-outlined-segmented-button-disabled-icon-color: color-mix(in oklab, var(--md-sys-color-on-surface) 38%, transparent);
 
+  /* The theme's on-primary-container is dark (its primary-container is the
+     saturated seed), so a selected switch's icon would sit dark-on-dark on
+     the on-primary handle. Primary is the light tone that reads on it. */
+  --md-switch-selected-icon-color: var(--md-sys-color-primary);
+  --md-switch-selected-hover-icon-color: var(--md-sys-color-primary);
+  --md-switch-selected-focus-icon-color: var(--md-sys-color-primary);
+  --md-switch-selected-pressed-icon-color: var(--md-sys-color-primary);
+
   /* --- icons -------------------------------------------------------------- */
   --md-icon-font: 'Material Symbols Rounded';
+}
+
+/* The Expressive switch keeps its icon colour private, so the slotted icon is
+   coloured directly, for the same reason as above. */
+md-gb-switch:not([disabled]) > [slot="on-icon"] {
+  color: var(--md-sys-color-primary);
+}
+
+/* m3-system.css drives the icon axes (--md-icon-fill, -wght, -opsz, -grad)
+   only for the Expressive .md-icon class. <md-icon> inherits
+   font-variation-settings, so give it the same axes: `--md-icon-fill: 1`
+   fills an icon either way. */
+md-icon {
+  font-variation-settings: "opsz" var(--md-icon-opsz), "wght" var(--md-icon-wght),
+    "FILL" var(--md-icon-fill), "GRAD" var(--md-icon-grad);
+}
+
+/* The theme is dark only, so the page itself is the dark ground. Without this
+   a page that sets no background puts the theme's light ink on white, and
+   every surface-less component (text buttons, lists, fields) disappears.
+   `html body` outranks a host page's plain `body { background }`. */
+html, html body {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-sans);
 }
