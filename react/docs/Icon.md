@@ -6,7 +6,7 @@ An icon element. Renders Google's `<md-icon>` (@material/web); colours, type and
 
 ## Composition
 
-Text content is a Material Symbols Rounded ligature, e.g. `<Icon>favorite</Icon>`. Only the vendored subset exists (see README); anything else renders as its literal name.
+Text content is any Material Symbols ligature (all 4,299 names in fonts.google.com/icons), e.g. `<Icon>favorite</Icon>`. Rounded is the default style; `className="icon-outlined"` or `"icon-sharp"` (on the icon or any ancestor) switches it. Size with `--md-icon-size`, fill with `--md-icon-fill: 1`, weight with `--md-icon-wght` (100–700) — as CSS custom properties in `style`.
 
 ## Slots
 

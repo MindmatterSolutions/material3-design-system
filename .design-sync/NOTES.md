@@ -14,7 +14,7 @@ run the converter from the repo root.
 
 ## Theme / previews
 - The theme is dark only. cfg.provider = `ThemeRoot` (react/src/theme-root.tsx) paints the surface; the bridge also paints `html, html body` so designs without ThemeRoot aren't light-on-white.
-- Icons: only the vendored Material Symbols subset (tools/fetch-fonts.py MATERIAL_SYMBOLS_ICONS) exists; others render as ligature text.
+- Icons: the synced package ships the FULL Material Symbols fonts (Rounded default, Outlined, Sharp; 4,299 names) from fonts/material-symbols-full/ via components/icons-full.css — ~12.9 MB of woff2 in the upload. react/tools/build.mjs drops the bridge's 67-icon subset face so only the full fonts ship. The repo's own pages still use the subset (fonts/material-symbols/).
 
 ## Known render warns
 - `[TOKENS_MISSING] --md-icon-*`: registered with @property initial values in components/m3-system.css; not a gap.
@@ -33,6 +33,6 @@ run the converter from the repo root.
 ## Re-sync risks
 - `react/src/index.ts` and `react/docs/` are generated from node_modules/@material/web — bumping @material/web changes props/slots; re-run `npm run build` in react/ and re-verify.
 - `react/dist/styles.css` is assembled from repo files (fonts/, tokens/, components/*.css): any theme edit needs `cd react && npm run build` before syncing.
-- The Material Symbols subset is fixed; previews using an icon outside it render text. Extending it means `python3 tools/fetch-fonts.py` (network).
+- Full Material Symbols are pinned to one google/material-design-icons commit (tools/fetch-symbols.py COMMIT); bump and re-run to pick up new icons, then rebuild react/. The repo pages' subset (tools/fetch-fonts.py) is separate.
 - The project also holds the CSS-only baseline system and `templates/material-web-showcase/` from before this sync — see the upload notes in the session that first synced.
 - First sync (2026-10-05) went into the existing "Material 3 Expressive" project (re-adopted on the user's ask). The CSS-only baseline pages that project held (components/*.html, foundations/, templates/app, tokens/*.css, readme.md, theme.json, thumbnail.html) were deleted with the user's OK — the baseline lives on in the repo under baseline/. `templates/material-web-showcase/` is a separately uploaded static page (tools/stage-claude-design.mjs), not part of the sync; re-stage it by hand when the theme changes.

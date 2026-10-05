@@ -1,0 +1,39 @@
+/* The complete Material Symbols set — every icon, in all three styles.
+ *
+ * Load after components/theme-bridge.css. The bridge declares a 67-icon subset
+ * of the Rounded style (what the repo's own pages use); this replaces it with
+ * the full Rounded font and adds Outlined and Sharp. Fetched by
+ * tools/fetch-symbols.py from google/material-design-icons (Apache-2.0).
+ *
+ *   <Icon>home</Icon>                         Rounded, the theme's style
+ *   <Icon className="icon-outlined">home</Icon>
+ *   <Icon className="icon-sharp">home</Icon>
+ *
+ * A class on any ancestor switches every icon inside it. The style rides on
+ * --md-icon-font, which every @material/web icon reads. */
+
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(../fonts/material-symbols-full/material-symbols-rounded.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(../fonts/material-symbols-full/material-symbols-outlined.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Sharp';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url(../fonts/material-symbols-full/material-symbols-sharp.woff2) format('woff2');
+}
+
+.icon-rounded { --md-icon-font: 'Material Symbols Rounded'; }
+.icon-outlined { --md-icon-font: 'Material Symbols Outlined'; }
+.icon-sharp { --md-icon-font: 'Material Symbols Sharp'; }

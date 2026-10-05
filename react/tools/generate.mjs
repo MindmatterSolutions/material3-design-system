@@ -151,7 +151,7 @@ const COMPOSE = {
   Badge: '`value` for a count, empty for a dot. Position it yourself over the icon it annotates.',
   CircularProgress: '`value` 0..1 (or set `max`); `indeterminate` spins; `fourColor` cycles the accent roles.',
   LinearProgress: '`value` 0..1, `buffer` for a buffer bar, `indeterminate`, `fourColor`.',
-  Icon: 'Text content is a Material Symbols Rounded ligature, e.g. `<Icon>favorite</Icon>`. Only the vendored subset exists (see README); anything else renders as its literal name.',
+  Icon: 'Text content is any Material Symbols ligature (all 4,299 names in fonts.google.com/icons), e.g. `<Icon>favorite</Icon>`. Rounded is the default style; `className="icon-outlined"` or `"icon-sharp"` (on the icon or any ancestor) switches it. Size with `--md-icon-size`, fill with `--md-icon-fill: 1`, weight with `--md-icon-wght` (100–700) — as CSS custom properties in `style`.',
 };
 for (const [a, b] of [['FilledTonalButton','FilledButton'],['ElevatedButton','FilledButton'],['OutlinedButton','FilledButton'],['TextButton','FilledButton'],
   ['FilledIconButton','IconButton'],['FilledTonalIconButton','IconButton'],['OutlinedIconButton','IconButton'],['BrandedFab','Fab'],

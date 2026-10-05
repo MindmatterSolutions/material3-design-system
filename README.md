@@ -139,6 +139,9 @@ instructions all live there.
 | `showcase/index.html` | Every component, themed (generated from `showcase/sections/`). |
 | `tools/build-components.mjs` | Rebuilds the three generated files in `components/`. |
 | `tools/build-showcase.mjs` | Stitches the showcase sections into `showcase/index.html`. |
+| `components/icons-full.css` | The complete Material Symbols fonts (Rounded, Outlined, Sharp) and the `icon-*` style classes. Opt-in; the React package always uses it. |
+| `fonts/material-symbols-full/` | Every Material Symbols icon (4,299) in all three styles, with each style's `.codepoints` name index. |
+| `tools/fetch-symbols.py` | Re-fetches `fonts/material-symbols-full/` from google/material-design-icons at a pinned commit. |
 | `tools/fetch-fonts.py` | Re-fetches and re-vendors every font. |
 | `tools/icon-names.py` | Prints the icon ligatures `baseline/` uses, for the Symbols subset. |
 
@@ -168,6 +171,11 @@ Three things worth knowing:
   `MATERIAL_SYMBOLS_ICONS` in `tools/fetch-fonts.py`, then re-vendor; an icon
   that is used but not vendored renders as its literal ligature text, which is
   the tell.
+- **The full icon set is vendored separately.** `fonts/material-symbols-full/`
+  holds every icon in Rounded, Outlined and Sharp (~12.6 MB of woff2), fetched
+  from [google/material-design-icons](https://github.com/google/material-design-icons)
+  by `python3 tools/fetch-symbols.py`. Link `components/icons-full.css` after the
+  bridge to use it; the React package and its Claude Design sync always do.
 - **Only the `latin` and `latin-ext` subsets are vendored.** Cyrillic, Greek and
   Vietnamese are left out, which is what keeps the whole set near 1 MB. Widen a
   family's subset set in `tools/fetch-fonts.py` if you need them.

@@ -32,8 +32,7 @@ dark only — there is no light mode. `accent` is one of `orange` (default) `vio
 
 ## 4. Icons
 
-`<Icon>name</Icon>` renders a **Material Symbols Rounded** ligature, and only this subset exists — anything else shows as its literal name:
-add arrow_back arrow_drop_down arrow_forward battery_full bolt bookmark brush calendar_month call check check_box check_circle checklist chevron_right close delete directions download edit event explore favorite folder format_bold format_italic format_underlined forward_10 groups home image insights keyboard_arrow_down library_music location_on mail menu menu_open mic more_vert music_note navigation notifications pause person photo_camera play_arrow radio_button_checked radio_button_unchecked redo remove replay_10 restart_alt school search send settings share signal_cellular_alt skip_next skip_previous star tab thumb_up today undo wifi
+`<Icon>name</Icon>` renders any **Material Symbols** ligature — the full set, 4,299 names (the names on fonts.google.com/icons, e.g. `home`, `shopping_cart`, `calendar_month`, `arrow_forward`). Three styles ship; **Rounded** is the theme's default. Switch with a class on the icon or any ancestor: `className="icon-outlined"` or `className="icon-sharp"` (`icon-rounded` switches back). Axes are CSS custom properties: `style={{ '--md-icon-size': '32px', '--md-icon-fill': 1, '--md-icon-wght': 500 }}`. Filled icons (`--md-icon-fill: 1`) suit selected/active states.
 
 ## 5. Your own layout: tokens only, never literals
 
