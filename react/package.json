@@ -1,0 +1,29 @@
+{
+  "name": "@mindmatter/material-web-react",
+  "version": "0.1.0",
+  "private": true,
+  "description": "React components for Google's @material/web, Expressive set included — thin @lit/react wrappers with typed props.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "scripts": {
+    "generate": "node tools/generate.mjs",
+    "build": "node tools/generate.mjs && node tools/build.mjs"
+  },
+  "peerDependencies": { "react": ">=18" },
+  "dependencies": {
+    "@lit/react": "^1.0.7",
+    "@material/web": "2.5.0",
+    "lit": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "esbuild": "^0.25.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ts-morph": "^25.0.0",
+    "typescript": "^5.8.0"
+  }
+}

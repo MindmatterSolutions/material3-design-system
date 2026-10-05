@@ -1,0 +1,29 @@
+{
+  "projectId": "ff2e7874-585d-4756-951e-f228bd6a4b9c",
+  "shape": "package",
+  "pkg": "@mindmatter/material-web-react",
+  "globalName": "MaterialWeb",
+  "buildCmd": "cd react && npm install && npm run build",
+  "cssEntry": "dist/styles.css",
+  "docsDir": "docs",
+  "provider": {
+    "component": "ThemeRoot"
+  },
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Dialog": {
+      "cardMode": "single",
+      "viewport": "720x520"
+    },
+    "Menu": {
+      "cardMode": "column"
+    },
+    "Icon": {
+      "cardMode": "column"
+    },
+    "Slider": {
+      "cardMode": "column"
+    }
+  },
+  "guidelinesGlob": []
+}
