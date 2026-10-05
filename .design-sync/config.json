@@ -23,6 +23,30 @@
     },
     "Slider": {
       "cardMode": "column"
+    },
+    "MenuItem": {
+      "cardMode": "column"
+    },
+    "SubMenu": {
+      "cardMode": "column"
+    },
+    "SelectOption": {
+      "cardMode": "column"
+    },
+    "FilledTonalIconButton": {
+      "cardMode": "column"
+    },
+    "SegmentedButton": {
+      "cardMode": "column"
+    },
+    "Elevation": {
+      "cardMode": "column"
+    },
+    "ExpressiveDivider": {
+      "cardMode": "column"
+    },
+    "ExpressiveRadio": {
+      "cardMode": "column"
     }
   },
   "guidelinesGlob": []

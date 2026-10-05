@@ -17,6 +17,7 @@ run the converter from the repo root.
 - Icons: the synced package ships the FULL Material Symbols fonts (Rounded default, Outlined, Sharp; 4,299 names) from fonts/material-symbols-full/ via components/icons-full.css — ~12.9 MB of woff2 in the upload. react/tools/build.mjs drops the bridge's 67-icon subset face so only the full fonts ship. The repo's own pages still use the subset (fonts/material-symbols/).
 
 ## Known render warns
+- `[RENDER] root empty` on ONE random card per validate run since the full icon fonts (~12 MB) ship: the card's screenshot has content (pngBytes > 20 KB), the checker read the root before React mounted. Re-run validate/the driver; a clean run follows within 1–2 tries. A card flagged on two consecutive runs is a real failure.
 - `[TOKENS_MISSING] --md-icon-*`: registered with @property initial values in components/m3-system.css; not a gap.
 - `[RENDER_THIN] Slider` floor card: sliders paint no text; resolved by an authored preview.
 
@@ -27,7 +28,14 @@ run the converter from the repo root.
 - `ThemeRoot` previews use the default accent only: `accent` sets `<html data-accent>` (one accent per page). Captures (`?story=`) isolate cells, so a leak only shows on the real multi-cell card page.
 - Never name a story export `Error` (shadows the global).
 - `ElevatedCard`/`ExpressiveCard` have no padding: wrap content in a padded div. `LinearProgress` needs `width:100%`.
-- Interaction-only states are not previewed: slider value bubbles (`labeled`), select option list, split-button menu, hover/press, `fourColor` (only differs over time).
+- Interaction-only states are not previewed: slider value bubbles (`labeled`), split-button menu, hover/press, `fourColor` (only differs over time).
+- Select option list held open statically: ref on the select, `showPicker()` in a useEffect (~50 ms timeout), `quick menuPositioning="absolute"`, explicit `style={{width:320}}`, host `position:relative; minHeight:380`. The selected option shows a focus outline (showPicker focuses it) — inherent.
+- SubMenu held open: parent `Menu` needs `hasOverflow`; nested `<Menu slot="menu">` gets `anchor="<slot=item MenuItem id>" anchorCorner="start-end" menuCorner="start-start" hasOverflow` + the static-open Menu props; the item gets `selected`. cfg.overrides MenuItem/SubMenu/SelectOption = column (open menus would overlap in a grid card).
+- NavigationDrawerModal: panel + scrim are position:absolute, so a `position:relative; overflow:hidden` host contains them. Its container/scrim colours come from the bridge (fixed in the second preview wave).
+- Elevation shadows are faint on this dark ground: show levels on a `surface-bright` stage with equal `surface-container-highest` tiles.
+- Badges: `Badge` (labs) self-positions against a `position:relative` parent; `ExpressiveBadge` has no positioning — the wrapper places it.
+- BrandedFab: never size the slotted mark inline (the FAB sizes it); `size="small"` isn't a branded size. NavigationTab `disabled` has no visual; `hideInactiveLabel` is driven by the bar's `hideInactiveLabels`.
+- Selection in Expressive menus renders in tertiary-container (blue) — the theme, not a bug.
 - Fixed globally in components/theme-bridge.css during this sync: selected switch icon contrast (theme's on-primary-container is dark), `md-icon` font-variation axes so `--md-icon-fill` works on `<Icon>`.
 
 ## Re-sync risks
