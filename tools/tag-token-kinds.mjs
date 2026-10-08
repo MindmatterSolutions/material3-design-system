@@ -43,6 +43,7 @@ export const SPEC = {
   'components/m3-system.css': [
     [/^--md-sys-motion-/, 'other'],
     [/^--md-ref-typeface-/, 'font'],
+    [/^--md-sys-typescale-.*-axes$/, 'font'],
   ],
   'components/theme-bridge.css': [
     [/^--md-ref-typeface-/, 'font'],
