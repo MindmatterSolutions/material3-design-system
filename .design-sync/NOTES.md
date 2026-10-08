@@ -17,7 +17,7 @@ run the converter from the repo root.
 - Icons: the synced package ships the FULL Material Symbols fonts (Rounded default, Outlined, Sharp; 4,299 names) from fonts/material-symbols-full/ via components/icons-full.css — ~12.9 MB of woff2 in the upload. react/tools/build.mjs drops the bridge's 67-icon subset face so only the full fonts ship. The repo's own pages still use the subset (fonts/material-symbols/).
 
 ## Known render warns
-- `[RENDER] root empty` on ONE random card per validate run since the full icon fonts (~12 MB) ship: the card's screenshot has content (pngBytes > 20 KB), the checker read the root before React mounted. Re-run validate/the driver; a clean run follows within 1–2 tries. A card flagged on two consecutive runs is a real failure.
+- `[RENDER] root empty` on one random card per validate run was seen during the first sync (2026-10-05), after the full icon fonts (~12 MB) started shipping: the card's screenshot had content, so the checker read the root before React mounted. It did not reproduce on 2026-10-08 (two consecutive full render checks, 65/65 clean, converter re-staged from Claude Code 2.1.293). If it returns, re-run once; a card flagged on two consecutive runs is a real failure.
 - `[TOKENS_MISSING] --md-icon-*`: registered with @property initial values in components/m3-system.css; not a gap.
 - `[RENDER_THIN] Slider` floor card: sliders paint no text; resolved by an authored preview.
 
