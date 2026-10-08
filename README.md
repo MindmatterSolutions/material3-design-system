@@ -96,8 +96,9 @@ win without `!important`. Icons use the same Material Symbols subset as
 
 The showcase page is built from one fragment per section under
 `showcase/sections/`; `tools/shot.mjs` screenshots a page in headless Chrome.
-`tools/stage-claude-design.mjs` stages it as a self-contained folder for the
-Claude Design project.
+`tools/stage-claude-design.mjs` stages it as a self-contained static folder
+(`dist/claude-design/`). The Claude Design project no longer carries it: its
+components come from `/design-sync` instead.
 
 ## The baseline system
 
