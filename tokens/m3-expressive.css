@@ -73,45 +73,45 @@
    Spatial curves overshoot, which is the point of Expressive. Only use them
    for transform and size. Effects curves don't overshoot, and they are the
    ones for colour and opacity. */
---md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9);
---md-sys-motion-spring-fast-spatial-duration:350ms;
---md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1);
---md-sys-motion-spring-default-spatial-duration:500ms;
---md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1);
---md-sys-motion-spring-fast-effects-duration:150ms;
---md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1);
---md-sys-motion-spring-default-effects-duration:200ms;
+--md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9) /* @kind other */;
+--md-sys-motion-spring-fast-spatial-duration:350ms /* @kind other */;
+--md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1) /* @kind other */;
+--md-sys-motion-spring-default-spatial-duration:500ms /* @kind other */;
+--md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1) /* @kind other */;
+--md-sys-motion-spring-fast-effects-duration:150ms /* @kind other */;
+--md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
+--md-sys-motion-spring-default-effects-duration:200ms /* @kind other */;
 
 /* ---- the SigmaOS semantic layer, re-pointed ---- */
 /* The page is surface and a panel is surface-container-low, one tonal step
    up, as m3.material.io lays its own pages out. A tile inside a panel steps
    up to -high; the recessed well (--surface-rail, see components/Card.jsx)
    stays a step below the page. */
---bg-page:var(--md-sys-color-surface);
---bg-raised:var(--md-sys-color-surface-container-low);
+--bg-page:var(--md-sys-color-surface) /* @kind color */;
+--bg-raised:var(--md-sys-color-surface-container-low) /* @kind color */;
 --surface-card:var(--md-sys-color-surface-container-low);
 --surface-card-alt:var(--md-sys-color-surface-container-high);
 --surface-overlay:var(--md-sys-color-surface-container-highest);
 --surface-rail:var(--md-sys-color-surface-container-lowest);
---border-default:var(--md-sys-color-outline-variant);
---border-soft:#313032;
+--border-default:var(--md-sys-color-outline-variant) /* @kind color */;
+--border-soft:#313032 /* @kind color */;
 --text-primary:var(--md-sys-color-on-surface);
 --text-secondary:var(--md-sys-color-on-surface-variant);
 --text-tertiary:var(--md-sys-color-outline);
 /* The quietest ink still has to be read: hints, "+N more", graph labels at
    11px. #6c6a6e was 3.2:1 on a panel; this is 4.8:1 there and 4.5:1 on the
    step above, and stays a shade under --text-tertiary. */
---text-quaternary:#88868a;
+--text-quaternary:#88868a /* @kind color */;
 --accent-primary:var(--md-sys-color-primary-container);
 --accent-primary-hover:var(--md-sys-color-primary);
 --link-color:var(--md-sys-color-tertiary);
 --link-color-hover:var(--md-sys-color-primary);
---field-fill:var(--md-sys-color-surface-container-highest);
---field-line:var(--md-sys-color-outline);
---field-fill-overlay:var(--md-sys-color-surface-bright);
---field-line-overlay:var(--md-sys-color-outline);
+--field-fill:var(--md-sys-color-surface-container-highest) /* @kind color */;
+--field-line:var(--md-sys-color-outline) /* @kind color */;
+--field-fill-overlay:var(--md-sys-color-surface-bright) /* @kind color */;
+--field-line-overlay:var(--md-sys-color-outline) /* @kind color */;
 --surface-note:#3a2a1c;
---text-note:#f1dcc4;
+--text-note:#f1dcc4 /* @kind color */;
 
 /* shape: big soft containers, fully round controls. Chips go to M3's 8px
    rather than a pill, so a chip reads differently from a button */
@@ -135,13 +135,13 @@
 /* The ground html and body paint (shell.css). It is the page's surface, not
    a step below it, so the space between panels is the #141314 of the
    reference rather than a near-black the panels float over. */
---bg-grid-base:var(--md-sys-color-surface);
+--bg-grid-base:var(--md-sys-color-surface) /* @kind color */;
 
 /* motion: colour and border transitions take the effects curve; press takes
    the spring */
---motion-duration:var(--md-sys-motion-spring-default-effects-duration);
---motion-ease:var(--md-sys-motion-spring-default-effects);
---transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+--motion-duration:var(--md-sys-motion-spring-default-effects-duration) /* @kind other */;
+--motion-ease:var(--md-sys-motion-spring-default-effects) /* @kind other */;
+--transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
 
 /* type: Roboto Flex is the Expressive sans. Mono stays for figures and
    instrument readouts, where tabular digits are the job */
@@ -266,7 +266,7 @@ button{font-family:var(--font-sans)!important;text-transform:none!important;lett
 :where(button,a[href],summary,select,[role="button"],[role="tab"],[role="link"],[role="checkbox"],[role="switch"],[role="option"],[role="menuitem"],[tabindex]:not([tabindex="-1"]),input[type="time"],input[type="date"],input[type="checkbox"],input[type="radio"]):focus-visible{outline:2px solid var(--md-sys-color-primary)!important;outline-offset:2px!important}
 
 @media (prefers-reduced-motion:reduce){
-:root{--transition-press:none}
+:root{--transition-press:none /* @kind other */}
 /* Every animation and transition, inline ones included: the live dot's pulse,
    the drawer's slide, the rail's width. Run to their end state at once rather
    than removed, so anything waiting on animationend still hears it. */

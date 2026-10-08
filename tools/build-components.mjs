@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 import { copyFileSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { createRequire } from 'node:module';
+import { tagFile } from './tag-token-kinds.mjs';
 
 const require = createRequire(import.meta.url);
 const pkgDir = require.resolve('@material/web/package.json').replace(/package\.json$/, '');
@@ -45,5 +46,8 @@ await build({
 // The Expressive system stylesheet. Every rule sits in an @layer, so the
 // theme's unlayered tokens win without !important.
 copyFileSync(`${pkgDir}labs/gb/styles/m3.css`, 'components/m3-system.css');
+// Its motion and typeface tokens carry no inferable kind; re-tag them for
+// Claude Design every time the file is re-copied (tools/tag-token-kinds.mjs).
+tagFile('components/m3-system.css');
 copyFileSync(`${pkgDir}LICENSE`, 'components/LICENSE');
 console.log(`@material/web ${version} → components/material-web.js, components/m3-system.css`);

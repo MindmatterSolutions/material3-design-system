@@ -1,7 +1,7 @@
 :root{
---border-hairline:1px solid var(--border-default);
---border-hairline-soft:1px solid var(--border-soft);
---border-accent:1.5px solid var(--accent-primary);
+--border-hairline:1px solid var(--border-default) /* @kind color */;
+--border-hairline-soft:1px solid var(--border-soft) /* @kind color */;
+--border-accent:1.5px solid var(--accent-primary) /* @kind color */;
 
 /* One height for compact controls that sit in a row together — the masthead's
    activity pill, its status chip, an icon button beside them. Collapsed, those
@@ -27,10 +27,10 @@
 --glow-accent-wide:0 0 14px rgba(255,122,26,.08);
 
 /* motion — TWO tokens, and every transition and animation derives from them. */
---motion-duration:.24s; /* @kind other */
---motion-ease:cubic-bezier(.22,.8,.28,1); /* @kind other */
---transition-fast:var(--motion-duration) var(--motion-ease); /* @kind other */
---transition-press:transform var(--motion-duration) var(--motion-ease); /* @kind other */
+--motion-duration:.24s /* @kind other */;
+--motion-ease:cubic-bezier(.22,.8,.28,1) /* @kind other */;
+--transition-fast:var(--motion-duration) var(--motion-ease) /* @kind other */;
+--transition-press:transform var(--motion-duration) var(--motion-ease) /* @kind other */;
 
 --bg-grid-line:rgba(255,122,26,.025);
 --bg-grid-size:48px;
@@ -38,9 +38,9 @@
    developer mode, and the resting ground is a flat rail-toned field. Kept as a
    token (rather than deleted) so developer mode and any page that wants a lit
    ground still have one hook to set. */
---bg-grid-wash:none;
+--bg-grid-wash:none /* @kind other */;
 /* the tint the resting ground sits on — a touch above bg-page, as in the rail */
---bg-grid-base:var(--black-rail);
+--bg-grid-base:var(--black-rail) /* @kind color */;
 /* lit-grid layers — all derived from the brand orange, kept low-alpha so the grid sits behind UI */
 --bg-grid-line-lit:color-mix(in oklch,var(--accent-primary) 74%,white);
 --bg-grid-line-edge:color-mix(in oklch,var(--accent-primary) 46%,black);
@@ -48,7 +48,7 @@
 --bg-grid-shadow:rgba(0,0,0,.6);
 --bg-grid-vignette:radial-gradient(120% 90% at 50% 45%,transparent 0%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.68) 100%);
 /* how strongly the raised grid reads — retuned soft to sit under rounded surfaces */
---bg-grid-raised-opacity:.22;
+--bg-grid-raised-opacity:.22 /* @kind other */;
 /* keeps the grid off the edges of the frame so it fades into the surrounding UI */
 --bg-grid-fade:radial-gradient(115% 85% at 50% 42%,#000 0%,rgba(0,0,0,.55) 55%,transparent 100%);
 /* how deep a scroll region's content dissolves at each end */

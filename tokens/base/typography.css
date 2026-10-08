@@ -24,16 +24,16 @@
 --tracking-wide:1.5px;
 --tracking-wider:2px;
 
---leading-tight:1.2;
---leading-normal:1.5;
---leading-loose:1.9;
+--leading-tight:1.2 /* @kind other */;
+--leading-normal:1.5 /* @kind other */;
+--leading-loose:1.9 /* @kind other */;
 
---weight-light:300;
---weight-regular:400;
---weight-medium:500;
---weight-semibold:600;
---weight-bold:700;
---weight-extrabold:800;
+--weight-light:300 /* @kind font */;
+--weight-regular:400 /* @kind font */;
+--weight-medium:500 /* @kind font */;
+--weight-semibold:600 /* @kind font */;
+--weight-bold:700 /* @kind font */;
+--weight-extrabold:800 /* @kind font */;
 }
 
 /* Heading scale. Semantic elements carry the styling; the .ds-* classes exist only
