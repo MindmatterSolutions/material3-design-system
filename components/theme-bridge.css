@@ -64,8 +64,8 @@
 
   /* --- type --------------------------------------------------------------- */
   /* Material's brand and plain faces are both the theme's sans. */
-  --md-ref-typeface-brand: var(--font-sans);
-  --md-ref-typeface-plain: var(--font-sans);
+  --md-ref-typeface-brand: var(--font-sans) /* @kind font */;
+  --md-ref-typeface-plain: var(--font-sans) /* @kind font */;
 
   /* --- component tokens with no system-role fallback ---------------------- */
   /* The labs drawers fall back to #fff / #000 rather than to a role. */
@@ -75,7 +75,7 @@
   --md-navigation-drawer-modal-container-color: var(--md-sys-color-surface-container-low);
   --md-navigation-drawer-modal-divider-color: var(--md-sys-color-outline-variant);
   --md-navigation-drawer-modal-scrim-color: var(--md-sys-color-scrim);
-  --md-navigation-drawer-modal-scrim-opacity: 0.32;
+  --md-navigation-drawer-modal-scrim-opacity: 0.32 /* @kind other */;
   /* The labs segmented button paints its disabled state at full on-surface;
      Material's disabled state is 12% outline, 38% ink. */
   --md-outlined-segmented-button-disabled-outline-color: color-mix(in oklab, var(--md-sys-color-on-surface) 12%, transparent);

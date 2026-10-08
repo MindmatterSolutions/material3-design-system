@@ -59,19 +59,19 @@
 --warm-200:#c7c1b4;
 
 /* semantic aliases */
---bg-page:var(--black-0);
---bg-raised:var(--black-1);
+--bg-page:var(--black-0) /* @kind color */;
+--bg-raised:var(--black-1) /* @kind color */;
 --surface-card:var(--black-2);
 --surface-card-alt:var(--black-3);
 /* one step above surface-card-alt — modals, popovers and tooltips only */
 --surface-overlay:var(--black-4);
---border-default:var(--gray-line);
---border-soft:var(--gray-line-soft);
+--border-default:var(--gray-line) /* @kind color */;
+--border-soft:var(--gray-line-soft) /* @kind color */;
 --text-primary:var(--gray-text-1);
 --text-secondary:var(--gray-text-2);
 --text-tertiary:var(--gray-text-3);
 /* the dimmest ink in the system — overflow counts, spent meta, "+3 more" */
---text-quaternary:var(--gray-text-4);
+--text-quaternary:var(--gray-text-4) /* @kind color */;
 --accent-primary:var(--orange-500);
 --accent-primary-hover:var(--orange-400);
 /* the navigation rail's own fill — one step off the page, darker than a card so
@@ -80,48 +80,48 @@
 --accent-primary-soft:var(--orange-500-soft);
 --accent-primary-line:var(--orange-500-line);
 --accent-primary-radial:var(--orange-500-radial);
---status-success:var(--green-500);
---status-success-soft:var(--green-500-soft);
---status-success-line:var(--green-500-line);
---status-danger:var(--red-500);
---status-danger-soft:var(--red-500-soft);
---status-danger-line:var(--red-500-line);
---status-warning:var(--amber-500);
---status-warning-soft:var(--amber-500-soft);
---status-warning-line:var(--amber-500-line);
---status-info:var(--blue-500);
---status-info-soft:var(--blue-500-soft);
---status-info-line:var(--blue-500-line);
+--status-success:var(--green-500) /* @kind color */;
+--status-success-soft:var(--green-500-soft) /* @kind color */;
+--status-success-line:var(--green-500-line) /* @kind color */;
+--status-danger:var(--red-500) /* @kind color */;
+--status-danger-soft:var(--red-500-soft) /* @kind color */;
+--status-danger-line:var(--red-500-line) /* @kind color */;
+--status-warning:var(--amber-500) /* @kind color */;
+--status-warning-soft:var(--amber-500-soft) /* @kind color */;
+--status-warning-line:var(--amber-500-line) /* @kind color */;
+--status-info:var(--blue-500) /* @kind color */;
+--status-info-soft:var(--blue-500-soft) /* @kind color */;
+--status-info-line:var(--blue-500-line) /* @kind color */;
 /* Four more states the core family kept collapsing into the wrong one. Each is
    a real distinction a row has to make, not a spare colour: */
 /* waiting on someone else — queued, submitted, blocked on a reply. Not warning:
    nothing is wrong, it simply is not yours to move. */
---status-pending:var(--iris-500);
---status-pending-soft:var(--iris-500-soft);
---status-pending-line:var(--iris-500-line);
+--status-pending:var(--iris-500) /* @kind color */;
+--status-pending-soft:var(--iris-500-soft) /* @kind color */;
+--status-pending-line:var(--iris-500-line) /* @kind color */;
 /* running right now — a sync in flight, a timer counting, a live scrape. Info is
    a fact about state; this is motion. */
---status-active:var(--cyan-500);
---status-active-soft:var(--cyan-500-soft);
---status-active-line:var(--cyan-500-line);
+--status-active:var(--cyan-500) /* @kind color */;
+--status-active-soft:var(--cyan-500-soft) /* @kind color */;
+--status-active-line:var(--cyan-500-line) /* @kind color */;
 /* needs a decision from you — flagged, disputed, awaiting confirmation. Reads as
    attention without the alarm of danger. */
---status-review:var(--pink-500);
---status-review-soft:var(--pink-500-soft);
---status-review-line:var(--pink-500-line);
+--status-review:var(--pink-500) /* @kind color */;
+--status-review-soft:var(--pink-500-soft) /* @kind color */;
+--status-review-line:var(--pink-500-line) /* @kind color */;
 /* inert but present — archived, exempt, superseded. A tinted neutral rather than
    plain grey, so a muted row still belongs to the family. */
---status-neutral:var(--slate-500);
---status-neutral-soft:var(--slate-500-soft);
---status-neutral-line:var(--slate-500-line);
+--status-neutral:var(--slate-500) /* @kind color */;
+--status-neutral-soft:var(--slate-500-soft) /* @kind color */;
+--status-neutral-line:var(--slate-500-line) /* @kind color */;
 /* field surfaces — a control's fill is relative to what it sits ON, so these are
    re-pointed per context rather than hard-coded: Modal swaps in the -overlay pair
    on its dialog, and every field inside inherits it. Fields on the page or in a
    panel keep the darker raised fill. */
---field-fill:var(--bg-raised);
---field-line:var(--border-default);
---field-fill-overlay:var(--black-3-5);
---field-line-overlay:var(--gray-line-raised);
+--field-fill:var(--bg-raised) /* @kind color */;
+--field-line:var(--border-default) /* @kind color */;
+--field-fill-overlay:var(--black-3-5) /* @kind color */;
+--field-line-overlay:var(--gray-line-raised) /* @kind color */;
 
 --link-color:var(--blue-500);
 --link-color-hover:var(--orange-500);
@@ -129,16 +129,16 @@
 /* comparison series — assigned in listing order by CompareChart, and the colour
    a WatchlistRow uses to tie itself to its line. Distinguishable by hue, not by
    lightness, so five lines stay readable crossing each other on one axis. */
---series-1:var(--red-500);
---series-2:var(--blue-500);
---series-3:var(--amber-500);
---series-4:var(--violet-500);
---series-5:var(--green-500);
---series-6:var(--teal-500);
---series-7:var(--orchid-500);
+--series-1:var(--red-500) /* @kind color */;
+--series-2:var(--blue-500) /* @kind color */;
+--series-3:var(--amber-500) /* @kind color */;
+--series-4:var(--violet-500) /* @kind color */;
+--series-5:var(--green-500) /* @kind color */;
+--series-6:var(--teal-500) /* @kind color */;
+--series-7:var(--orchid-500) /* @kind color */;
 
 /* notes surface — the one warm pairing in an otherwise neutral system, so a
    written note reads as paper against the instrument panel */
 --surface-note:var(--warm-900);
---text-note:var(--warm-200);
+--text-note:var(--warm-200) /* @kind color */;
 }
