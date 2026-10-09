@@ -76,18 +76,44 @@
 --md-sys-shape-corner-extra-extra-large:48px;
 --md-sys-shape-corner-full:999px;
 
-/* ---- M3 Expressive motion: springs, approximated as cubic-beziers ----
-   Spatial curves overshoot, which is the point of Expressive. Only use them
-   for transform and size. Effects curves don't overshoot, and they are the
-   ones for colour and opacity. */
+/* ---- M3 motion ----
+   The duration scale and the easing set from m3.material.io/styles/motion,
+   then Expressive's springs, approximated as cubic-beziers. Spatial curves
+   overshoot, which is the point of Expressive. Only use them for transform,
+   size and shape. Effects curves don't overshoot, and they are the ones for
+   colour and opacity. Three speeds: fast for a control answering a press,
+   default for a component moving (a rail, a popover, a pill unfolding), slow
+   for something large arriving. */
+--md-sys-motion-duration-short1:50ms;
+--md-sys-motion-duration-short2:100ms;
+--md-sys-motion-duration-short3:150ms;
+--md-sys-motion-duration-short4:200ms;
+--md-sys-motion-duration-medium1:250ms;
+--md-sys-motion-duration-medium2:300ms;
+--md-sys-motion-duration-medium3:350ms;
+--md-sys-motion-duration-medium4:400ms;
+--md-sys-motion-duration-long1:450ms;
+--md-sys-motion-duration-long2:500ms;
+--md-sys-motion-duration-long3:550ms;
+--md-sys-motion-duration-long4:600ms;
+--md-sys-motion-easing-standard:cubic-bezier(.2,0,0,1);
+--md-sys-motion-easing-standard-decelerate:cubic-bezier(0,0,0,1);
+--md-sys-motion-easing-standard-accelerate:cubic-bezier(.3,0,1,1);
+--md-sys-motion-easing-emphasized:cubic-bezier(.2,0,0,1);
+--md-sys-motion-easing-emphasized-decelerate:cubic-bezier(.05,.7,.1,1);
+--md-sys-motion-easing-emphasized-accelerate:cubic-bezier(.3,0,.8,.15);
 --md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9) /* @kind other */;
 --md-sys-motion-spring-fast-spatial-duration:350ms /* @kind other */;
 --md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1) /* @kind other */;
 --md-sys-motion-spring-default-spatial-duration:500ms /* @kind other */;
+--md-sys-motion-spring-slow-spatial:cubic-bezier(.3,1.1,.2,1);
+--md-sys-motion-spring-slow-spatial-duration:650ms;
 --md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1) /* @kind other */;
 --md-sys-motion-spring-fast-effects-duration:150ms /* @kind other */;
 --md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
 --md-sys-motion-spring-default-effects-duration:200ms /* @kind other */;
+--md-sys-motion-spring-slow-effects:cubic-bezier(.34,.8,.34,1);
+--md-sys-motion-spring-slow-effects-duration:300ms;
 
 /* ---- the SigmaOS semantic layer, re-pointed ---- */
 /* The page is surface and a panel is surface-container-low, one tonal step
@@ -141,11 +167,16 @@
    rather than a near-black the panels float over. */
 --bg-grid-base:var(--md-sys-color-surface) /* @kind color */;
 
-/* motion: colour and border transitions take the effects curve; press takes
-   the spring */
+/* motion: colour and border transitions take the effects curve; a press, a
+   move and a change of shape take the springs, which is where Expressive
+   lives. The splash and a page arriving take Material's long duration on the
+   emphasized decelerate: in fast and settling, not a linear fade. */
 --motion-duration:var(--md-sys-motion-spring-default-effects-duration) /* @kind other */;
 --motion-ease:var(--md-sys-motion-spring-default-effects) /* @kind other */;
 --transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
+--transition-move:var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial);
+--transition-shape:var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+--motion-duration-long:var(--md-sys-motion-duration-long2);
 
 /* type: Roboto Flex is the Expressive sans. Mono stays for figures and
    instrument readouts, where tabular digits are the job */
@@ -760,6 +791,22 @@ textarea{--radius-control:var(--md-sys-shape-corner-large)}
    src/design-system/, which is vendored; font-size and colour are left to each
    control. */
 button{font-family:var(--font-sans)!important;text-transform:none!important;letter-spacing:.1px!important;font-weight:var(--weight-medium)}
+
+/* Expressive's press: a control squares off and shrinks a touch under the
+   finger on the fast spatial spring, and springs back. The shape move is
+   what makes a pill read as pressed rather than merely darker; a control
+   already drawn with a small corner barely changes. Applied through the
+   element rather than .ds-press, because most controls on the page never
+   took that class, and with `!important` for the reason the font rule above
+   has it: sixty-odd controls set their own `transition` inline, each a list
+   of two or three colour properties, and inline wins — the first cut of this
+   rule reached 84 buttons of 151. The system decides how a control moves,
+   not each control, so the list here is every property a button on the page
+   animates: colour and shadow on the effects curve, size and spacing on the
+   move spring, the press and the corner on the fast one. Disabled controls
+   do not move; nor does anything under reduced motion. */
+button{transition:background var(--transition-fast),background-color var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast),box-shadow var(--transition-fast),opacity var(--transition-fast),filter var(--transition-fast),padding var(--transition-move),gap var(--transition-move),width var(--transition-move),height var(--transition-move),max-width var(--transition-move),var(--transition-press),border-radius var(--transition-shape)!important}
+button:not(:disabled):not([aria-disabled="true"]):active{transform:scale(.96);border-radius:var(--md-sys-shape-corner-medium)!important}
 
 /* Keyboard focus. Nothing drew it: components set `outline:none` inline to
    lose the browser's ring on click and put nothing back, so a Tab through the
