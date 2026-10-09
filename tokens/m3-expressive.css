@@ -1,62 +1,69 @@
 /* Material 3 Expressive — a theme layer over the SigmaOS tokens.
  *
- * Synced from the "SigmaOS Design System — M3 Expressive" Claude Design
- * project, the fork where this theme was designed. The pinned "SigmaOS Design
- * System" project is untouched by it.
- *
  * Loaded LAST (see index.css), so it re-points the semantic layer and nothing
  * else: no component knows it exists, the same contract tokens/moods.css
  * keeps. Delete the import and the site is back to Midnight exactly.
  *
- * Colour is Material's dark scheme generated from the SigmaOS seed #ff7a1a
- * (material-color-utilities, SchemeFidelity). Fidelity keeps the seed itself
- * as the primary container, so the accent stays SigmaOS's orange, not the
- * pastel peach that TonalSpot makes of it. It also pairs the orange with a
- * blue tertiary, which Expressive uses for contrast accents. The status hues
- * are not remapped: they carry meaning, and Material has no role for
- * "pending" or "review".
+ * Colour is Material's dynamic scheme generated from a seed with
+ * material-color-utilities' SchemeFidelity, which keeps the seed itself as the
+ * primary container so the accent stays as saturated as the brand drew it.
+ * The default seed is the NWU purple, #6c3d91 (Pantone 2603 C), with the
+ * university's turquoise, #00889c (3145 C), as the tertiary palette; the
+ * orange that was the brand before is kept as an accent choice. The scheme's
+ * role tokens are GENERATED — see the 2026-10-09 entry in .design-sync/NOTES.md
+ * for the script — and the blocks between the "generated" markers are not to
+ * be edited by hand.
  *
- * The neutrals are NOT the orange scheme's. Every surface, the ink on it and
- * the outlines come from one near-grey palette (hue ~300, chroma ~2), the
- * tone m3.material.io itself is drawn in: #141314 behind everything, #1c1b1d
- * for a panel, #211f21 a step above it. They are set once, here, and no accent
- * restates them, so choosing violet or teal recolours the accent roles and
- * leaves the page's ground exactly as it is.
+ * Two modes. Dark is the default and lives in :root; light is
+ * `:root[data-theme="light"]`, which lib/theme.js sets from the saved choice
+ * (dark, light, or the system's). Every accent carries both, and each accent
+ * block restates the surfaces, their ink and the outlines as well as the
+ * accent roles: the ground is TINTED by the seed (the neutral palette at
+ * chroma 6–10), which is what makes a page read as Material rather than as
+ * a grey panel with a coloured button on it. The status hues are not
+ * remapped by the accent: they carry meaning, and Material has no role for
+ * "pending" or "review". They do get a darker set in light mode, where the
+ * dark theme's pastel status colours would not read on white.
  */
 :root{
-/* ---- M3 system colour roles (dark, seed #ff7a1a, fidelity) ---- */
---md-sys-color-primary:#ffb68e;
---md-sys-color-on-primary:#542200;
---md-sys-color-primary-container:#ff7a1a;
---md-sys-color-on-primary-container:#5e2700;
---md-sys-color-secondary:#ffb68e;
---md-sys-color-secondary-container:#733914;
---md-sys-color-on-secondary-container:#f7a577;
---md-sys-color-tertiary:#8aceff;
---md-sys-color-tertiary-container:#00aaf2;
---md-sys-color-on-tertiary-container:#003b57;
+/* ---- generated: M3 system colour roles, NWU purple, dark ---- */
+--md-sys-color-primary:#e1b6ff;
+--md-sys-color-on-primary:#47166c;
+--md-sys-color-primary-container:#6c3d91;
+--md-sys-color-on-primary-container:#e1b6ff;
+--md-sys-color-secondary:#d7bde6;
+--md-sys-color-on-secondary:#3b2949;
+--md-sys-color-secondary-container:#523f61;
+--md-sys-color-on-secondary-container:#c5acd4;
+--md-sys-color-tertiary:#71d4ea;
+--md-sys-color-on-tertiary:#00363f;
+--md-sys-color-tertiary-container:#005b69;
+--md-sys-color-on-tertiary-container:#71d4ea;
 --md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
 --md-sys-color-error-container:#93000a;
---md-sys-color-inverse-primary:#9c4500;
-
-/* ---- M3 neutral roles: one palette under every accent ----
-   Tones of the neutral palette at hue ~300, chroma ~2 (material-color-utilities
-   TonalPalette): surface 6, low 10, container 12, high 17, highest 22,
-   bright 24, lowest 4; on-surface 90. The variant roles take chroma 4:
-   on-surface-variant 80, outline 60, outline-variant 30. The three the page
-   is mostly made of are the sampled m3.material.io values exactly. */
---md-sys-color-surface:#141314;
---md-sys-color-surface-bright:#3a393a;
---md-sys-color-surface-container-lowest:#0f0e0f;
---md-sys-color-surface-container-low:#1c1b1d;
---md-sys-color-surface-container:#211f21;
---md-sys-color-surface-container-high:#2b292b;
---md-sys-color-surface-container-highest:#363436;
---md-sys-color-on-surface:#e6e1e3;
---md-sys-color-on-surface-variant:#c9c5ca;
---md-sys-color-outline:#939094;
---md-sys-color-outline-variant:#48464a;
---md-sys-color-inverse-surface:#e6e1e3;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#78499e;
+--md-sys-color-surface:#161218;
+--md-sys-color-surface-dim:#161218;
+--md-sys-color-surface-bright:#3c383e;
+--md-sys-color-surface-container-lowest:#100d12;
+--md-sys-color-surface-container-low:#1e1a20;
+--md-sys-color-surface-container:#221e24;
+--md-sys-color-surface-container-high:#2d282e;
+--md-sys-color-surface-container-highest:#383339;
+--md-sys-color-on-surface:#e9e0e8;
+--md-sys-color-on-surface-variant:#cec3d1;
+--md-sys-color-outline:#978d9b;
+--md-sys-color-outline-variant:#4c4450;
+--md-sys-color-inverse-surface:#e9e0e8;
+--md-sys-color-inverse-on-surface:#332f35;
+--md-sys-color-surface-tint:#e1b6ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#332f35 /* @kind color */;
+--text-quaternary:#8a818e /* @kind color */;
+--glass-bg:rgba(22,18,24,.86);
+/* ---- end generated ---- */
 
 /* ---- M3 shape scale (Expressive adds the -increased steps) ---- */
 --md-sys-shape-corner-extra-small:4px;
@@ -94,14 +101,9 @@
 --surface-overlay:var(--md-sys-color-surface-container-highest);
 --surface-rail:var(--md-sys-color-surface-container-lowest);
 --border-default:var(--md-sys-color-outline-variant) /* @kind color */;
---border-soft:#313032 /* @kind color */;
 --text-primary:var(--md-sys-color-on-surface);
 --text-secondary:var(--md-sys-color-on-surface-variant);
 --text-tertiary:var(--md-sys-color-outline);
-/* The quietest ink still has to be read: hints, "+N more", graph labels at
-   11px. #6c6a6e was 3.2:1 on a panel; this is 4.8:1 there and 4.5:1 on the
-   step above, and stays a shade under --text-tertiary. */
---text-quaternary:#88868a /* @kind color */;
 --accent-primary:var(--md-sys-color-primary-container);
 --accent-primary-hover:var(--md-sys-color-primary);
 --link-color:var(--md-sys-color-tertiary);
@@ -121,9 +123,12 @@
 --radius-control:var(--md-sys-shape-corner-full);
 --radius-chip:var(--md-sys-shape-corner-small);
 --radius-mark:var(--md-sys-shape-corner-large);
---control-height:36px;
---panel-padding:24px 24px 26px;
---grid-gap:16px;
+/* Space. M3's expanded-window grid: 24dp margins and 24dp between panes;
+   panels pad 28 and sit 20 apart, up from 24 and 16, which read as a wall of
+   tiles once the Academics page grew. Controls take M3's 40dp. */
+--control-height:40px;
+--panel-padding:26px 28px 28px;
+--grid-gap:20px;
 
 /* elevation in M3 dark is tonal: the surface-container step already says
    "raised", so shadows are small and only there to separate */
@@ -131,10 +136,9 @@
 --shadow-panel:0 1px 2px rgba(0,0,0,.3);
 --shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15);
 --shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3);
---glass-bg:rgba(20,19,20,.86);
 /* The ground html and body paint (shell.css). It is the page's surface, not
-   a step below it, so the space between panels is the #141314 of the
-   reference rather than a near-black the panels float over. */
+   a step below it, so the space between panels is the surface of the scheme
+   rather than a near-black the panels float over. */
 --bg-grid-base:var(--md-sys-color-surface) /* @kind color */;
 
 /* motion: colour and border transitions take the effects curve; press takes
@@ -184,52 +188,552 @@
 --glow-accent-wide:0 0 14px color-mix(in srgb,var(--md-sys-color-primary-container) 8%,transparent);
 }
 
-/* ---- accent choices ----
-   The masthead's accent picker sets data-accent on <html> (lib/accent.js).
-   No attribute, or "orange", is the SigmaOS orange above. Each choice is the
-   M3 dark scheme generated from its seed with the seed kept as the primary
-   container, the same fidelity rule the orange uses, so the accent stays
-   saturated. Only the accent roles (primary, secondary, tertiary and the
-   inverse primary) change: the surfaces, their ink, the outlines and the
-   three literals beside them stay the one neutral palette in :root. M3 would
-   tint its neutrals toward each seed; here the ground is meant to read the
-   same whatever the accent. Status hues are untouched — they carry meaning,
-   not brand. */
+/* ---- accent choices, dark ----
+   The accent picker on config.html sets data-accent on <html> (lib/accent.js).
+   No attribute, or "nwu", is the NWU purple above. Each choice is the M3 dark
+   scheme generated from its seed with the seed kept as the primary container,
+   the same fidelity rule the default uses, and its own tinted ground. */
+/* ---- generated ---- */
+:root[data-accent="orange"]{
+--md-sys-color-primary:#ffb68e;
+--md-sys-color-on-primary:#542200;
+--md-sys-color-primary-container:#ff7a1a;
+--md-sys-color-on-primary-container:#5e2700;
+--md-sys-color-secondary:#ffb68e;
+--md-sys-color-on-secondary:#542200;
+--md-sys-color-secondary-container:#733914;
+--md-sys-color-on-secondary-container:#f7a577;
+--md-sys-color-tertiary:#8aceff;
+--md-sys-color-on-tertiary:#00344e;
+--md-sys-color-tertiary-container:#00aaf2;
+--md-sys-color-on-tertiary-container:#003b57;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#9c4500;
+--md-sys-color-surface:#1c110b;
+--md-sys-color-surface-dim:#1c110b;
+--md-sys-color-surface-bright:#45362f;
+--md-sys-color-surface-container-lowest:#160c06;
+--md-sys-color-surface-container-low:#251912;
+--md-sys-color-surface-container:#291d16;
+--md-sys-color-surface-container-high:#342720;
+--md-sys-color-surface-container-highest:#40322a;
+--md-sys-color-on-surface:#f5ded3;
+--md-sys-color-on-surface-variant:#e0c0b1;
+--md-sys-color-outline:#a78b7d;
+--md-sys-color-outline-variant:#584236;
+--md-sys-color-inverse-surface:#f5ded3;
+--md-sys-color-inverse-on-surface:#3b2d26;
+--md-sys-color-surface-tint:#ffb68e;
+--md-sys-color-scrim:#000000;
+--border-soft:#3b2d26 /* @kind color */;
+--text-quaternary:#997e70 /* @kind color */;
+--glass-bg:rgba(28,17,11,.86);
+}
 :root[data-accent="violet"]{
---md-sys-color-primary:#cabeff;--md-sys-color-on-primary:#31009a;
---md-sys-color-primary-container:#8f74ff;--md-sys-color-on-primary-container:#12004a;
---md-sys-color-secondary:#cabeff;--md-sys-color-secondary-container:#493f6e;--md-sys-color-on-secondary-container:#e6deff;
---md-sys-color-tertiary:#ffb0cd;--md-sys-color-tertiary-container:#6e2a4b;--md-sys-color-on-tertiary-container:#ffd9e5;
---md-sys-color-inverse-primary:#5b3fd6;
+--md-sys-color-primary:#cbbeff;
+--md-sys-color-on-primary:#320099;
+--md-sys-color-primary-container:#957cff;
+--md-sys-color-on-primary-container:#250077;
+--md-sys-color-secondary:#cbbefe;
+--md-sys-color-on-secondary:#32285d;
+--md-sys-color-secondary-container:#4b4178;
+--md-sys-color-on-secondary-container:#bcb0ef;
+--md-sys-color-tertiary:#ffb952;
+--md-sys-color-on-tertiary:#452b00;
+--md-sys-color-tertiary-container:#c4830c;
+--md-sys-color-on-tertiary-container:#341f00;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#6244cf;
+--md-sys-color-surface:#14121a;
+--md-sys-color-surface-dim:#14121a;
+--md-sys-color-surface-bright:#3a3841;
+--md-sys-color-surface-container-lowest:#0f0d15;
+--md-sys-color-surface-container-low:#1c1a23;
+--md-sys-color-surface-container:#201e27;
+--md-sys-color-surface-container-high:#2b2932;
+--md-sys-color-surface-container-highest:#36333d;
+--md-sys-color-on-surface:#e6e0ec;
+--md-sys-color-on-surface-variant:#cac4d6;
+--md-sys-color-outline:#938e9f;
+--md-sys-color-outline-variant:#484554;
+--md-sys-color-inverse-surface:#e6e0ec;
+--md-sys-color-inverse-on-surface:#312f38;
+--md-sys-color-surface-tint:#cbbeff;
+--md-sys-color-scrim:#000000;
+--border-soft:#312f38 /* @kind color */;
+--text-quaternary:#868192 /* @kind color */;
+--glass-bg:rgba(20,18,26,.86);
 }
 :root[data-accent="teal"]{
---md-sys-color-primary:#4fdbc6;--md-sys-color-on-primary:#003731;
---md-sys-color-primary-container:#00a896;--md-sys-color-on-primary-container:#00201c;
---md-sys-color-secondary:#b1ccc6;--md-sys-color-secondary-container:#334b47;--md-sys-color-on-secondary-container:#cce8e2;
---md-sys-color-tertiary:#aecbfa;--md-sys-color-tertiary-container:#2e4a70;--md-sys-color-on-tertiary-container:#d5e3ff;
+--md-sys-color-primary:#59dbc7;
+--md-sys-color-on-primary:#003731;
+--md-sys-color-primary-container:#00a896;
+--md-sys-color-on-primary-container:#00352e;
+--md-sys-color-secondary:#a2d0c6;
+--md-sys-color-on-secondary:#053731;
+--md-sys-color-secondary-container:#245049;
+--md-sys-color-on-secondary-container:#94c1b8;
+--md-sys-color-tertiary:#ffb59e;
+--md-sys-color-on-tertiary:#5d1801;
+--md-sys-color-tertiary-container:#df7a59;
+--md-sys-color-on-tertiary-container:#5a1600;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
 --md-sys-color-inverse-primary:#006b5f;
+--md-sys-color-surface:#0e1513;
+--md-sys-color-surface-dim:#0e1513;
+--md-sys-color-surface-bright:#343a39;
+--md-sys-color-surface-container-lowest:#090f0e;
+--md-sys-color-surface-container-low:#171d1b;
+--md-sys-color-surface-container:#1b211f;
+--md-sys-color-surface-container-high:#252b2a;
+--md-sys-color-surface-container-highest:#303634;
+--md-sys-color-on-surface:#dee4e1;
+--md-sys-color-on-surface-variant:#bbcac5;
+--md-sys-color-outline:#869490;
+--md-sys-color-outline-variant:#3c4946;
+--md-sys-color-inverse-surface:#dee4e1;
+--md-sys-color-inverse-on-surface:#2b3230;
+--md-sys-color-surface-tint:#59dbc7;
+--md-sys-color-scrim:#000000;
+--border-soft:#2b3230 /* @kind color */;
+--text-quaternary:#798783 /* @kind color */;
+--glass-bg:rgba(14,21,19,.86);
 }
 :root[data-accent="blue"]{
---md-sys-color-primary:#adc6ff;--md-sys-color-on-primary:#002e69;
---md-sys-color-primary-container:#4a8dff;--md-sys-color-on-primary-container:#001a41;
---md-sys-color-secondary:#bec6dc;--md-sys-color-secondary-container:#3e4759;--md-sys-color-on-secondary-container:#dae2f9;
---md-sys-color-tertiary:#dcbce0;--md-sys-color-tertiary-container:#573e5c;--md-sys-color-on-tertiary-container:#f9d8fd;
---md-sys-color-inverse-primary:#2a5ea8;
+--md-sys-color-primary:#adc6ff;
+--md-sys-color-on-primary:#002e69;
+--md-sys-color-primary-container:#4c8eff;
+--md-sys-color-on-primary-container:#00275b;
+--md-sys-color-secondary:#b1c6f8;
+--md-sys-color-on-secondary:#193058;
+--md-sys-color-secondary-container:#334973;
+--md-sys-color-on-secondary-container:#a3b8e9;
+--md-sys-color-tertiary:#ffb77d;
+--md-sys-color-on-tertiary:#4d2600;
+--md-sys-color-tertiary-container:#da7702;
+--md-sys-color-on-tertiary-container:#422000;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#005ac2;
+--md-sys-color-surface:#11131a;
+--md-sys-color-surface-dim:#11131a;
+--md-sys-color-surface-bright:#363941;
+--md-sys-color-surface-container-lowest:#0b0e15;
+--md-sys-color-surface-container-low:#191b22;
+--md-sys-color-surface-container:#1d2027;
+--md-sys-color-surface-container-high:#272a31;
+--md-sys-color-surface-container-highest:#32353c;
+--md-sys-color-on-surface:#e1e2ec;
+--md-sys-color-on-surface-variant:#c2c6d6;
+--md-sys-color-outline:#8c909f;
+--md-sys-color-outline-variant:#424753;
+--md-sys-color-inverse-surface:#e1e2ec;
+--md-sys-color-inverse-on-surface:#2e3038;
+--md-sys-color-surface-tint:#adc6ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#2e3038 /* @kind color */;
+--text-quaternary:#7f8392 /* @kind color */;
+--glass-bg:rgba(17,19,26,.86);
 }
 :root[data-accent="green"]{
---md-sys-color-primary:#83da9c;--md-sys-color-on-primary:#003919;
---md-sys-color-primary-container:#3fb96b;--md-sys-color-on-primary-container:#00210c;
---md-sys-color-secondary:#b5ccb9;--md-sys-color-secondary-container:#354b3b;--md-sys-color-on-secondary-container:#d0e8d5;
---md-sys-color-tertiary:#a2cedb;--md-sys-color-tertiary-container:#214d57;--md-sys-color-on-tertiary-container:#bdeaf7;
---md-sys-color-inverse-primary:#1b6d3c;
+--md-sys-color-primary:#66dd8b;
+--md-sys-color-on-primary:#003919;
+--md-sys-color-primary-container:#3fb96b;
+--md-sys-color-on-primary-container:#00431f;
+--md-sys-color-secondary:#a3d2aa;
+--md-sys-color-on-secondary:#0c381c;
+--md-sys-color-secondary-container:#285233;
+--md-sys-color-on-secondary-container:#95c39d;
+--md-sys-color-tertiary:#ffb2bd;
+--md-sys-color-on-tertiary:#670025;
+--md-sys-color-tertiary-container:#fd7993;
+--md-sys-color-on-tertiary-container:#730c2d;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#006d36;
+--md-sys-color-surface:#0f150f;
+--md-sys-color-surface-dim:#0f150f;
+--md-sys-color-surface-bright:#343b34;
+--md-sys-color-surface-container-lowest:#09100a;
+--md-sys-color-surface-container-low:#171d17;
+--md-sys-color-surface-container:#1b211b;
+--md-sys-color-surface-container-high:#252c25;
+--md-sys-color-surface-container-highest:#303630;
+--md-sys-color-on-surface:#dee4db;
+--md-sys-color-on-surface-variant:#bdcabc;
+--md-sys-color-outline:#879487;
+--md-sys-color-outline-variant:#3e4a3f;
+--md-sys-color-inverse-surface:#dee4db;
+--md-sys-color-inverse-on-surface:#2b322c;
+--md-sys-color-surface-tint:#66dd8b;
+--md-sys-color-scrim:#000000;
+--border-soft:#2b322c /* @kind color */;
+--text-quaternary:#7a877a /* @kind color */;
+--glass-bg:rgba(15,21,15,.86);
 }
 :root[data-accent="rose"]{
---md-sys-color-primary:#ffb1c5;--md-sys-color-on-primary:#650030;
---md-sys-color-primary-container:#f0628c;--md-sys-color-on-primary-container:#3c0019;
---md-sys-color-secondary:#e3bdc6;--md-sys-color-secondary-container:#5b3f47;--md-sys-color-on-secondary-container:#ffd9e1;
---md-sys-color-tertiary:#f0bd8f;--md-sys-color-tertiary-container:#5f411e;--md-sys-color-on-tertiary-container:#ffdcbd;
---md-sys-color-inverse-primary:#a2325a;
+--md-sys-color-primary:#ffb1c2;
+--md-sys-color-on-primary:#66002c;
+--md-sys-color-primary-container:#f0628c;
+--md-sys-color-on-primary-container:#5d0027;
+--md-sys-color-secondary:#ffb1c2;
+--md-sys-color-on-secondary:#541e2e;
+--md-sys-color-secondary-container:#723646;
+--md-sys-color-on-secondary-container:#f2a2b4;
+--md-sys-color-tertiary:#66df74;
+--md-sys-color-on-tertiary:#00390f;
+--md-sys-color-tertiary-container:#2aa946;
+--md-sys-color-on-tertiary-container:#00340d;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#ab2d58;
+--md-sys-color-surface:#1b1013;
+--md-sys-color-surface-dim:#1b1013;
+--md-sys-color-surface-bright:#443638;
+--md-sys-color-surface-container-lowest:#160b0e;
+--md-sys-color-surface-container-low:#24181b;
+--md-sys-color-surface-container:#291c1f;
+--md-sys-color-surface-container-high:#342729;
+--md-sys-color-surface-container-highest:#3f3134;
+--md-sys-color-on-surface:#f3dde0;
+--md-sys-color-on-surface-variant:#ddbfc4;
+--md-sys-color-outline:#a58a8f;
+--md-sys-color-outline-variant:#574145;
+--md-sys-color-inverse-surface:#f3dde0;
+--md-sys-color-inverse-on-surface:#3a2d2f;
+--md-sys-color-surface-tint:#ffb1c2;
+--md-sys-color-scrim:#000000;
+--border-soft:#3a2d2f /* @kind color */;
+--text-quaternary:#977d82 /* @kind color */;
+--glass-bg:rgba(27,16,19,.86);
 }
+/* ---- end generated ---- */
+
+/* ---- light ----
+   lib/theme.js sets data-theme="light" on <html> for a saved choice of light,
+   or of "system" on a light OS. The same roles, Material's light scheme from
+   the same seed. The things dark gets from tone alone are restated: shadows
+   do the separating that the surface steps did, the status hues are the
+   darker set that reads on white, and a note is paper rather than a lamp. */
+:root[data-theme="light"]{
+color-scheme:light;
+/* ---- generated: NWU purple, light ---- */
+--md-sys-color-primary:#532478;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#6c3d91;
+--md-sys-color-on-primary-container:#e1b6ff;
+--md-sys-color-secondary:#6b567a;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#eed3fd;
+--md-sys-color-on-secondary-container:#6e597c;
+--md-sys-color-tertiary:#00424d;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#005b69;
+--md-sys-color-on-tertiary-container:#71d4ea;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#e1b6ff;
+--md-sys-color-surface:#fff7fd;
+--md-sys-color-surface-dim:#e0d7e0;
+--md-sys-color-surface-bright:#fff7fd;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#faf1f9;
+--md-sys-color-surface-container:#f4ebf3;
+--md-sys-color-surface-container-high:#eee6ee;
+--md-sys-color-surface-container-highest:#e9e0e8;
+--md-sys-color-on-surface:#1e1a20;
+--md-sys-color-on-surface-variant:#4c4450;
+--md-sys-color-outline:#7d7481;
+--md-sys-color-outline-variant:#cec3d1;
+--md-sys-color-inverse-surface:#332f35;
+--md-sys-color-inverse-on-surface:#f7eef6;
+--md-sys-color-surface-tint:#78499e;
+--md-sys-color-scrim:#000000;
+--border-soft:#e9e0e8 /* @kind color */;
+--text-quaternary:#706874 /* @kind color */;
+--glass-bg:rgba(255,247,253,.86);
+/* ---- end generated ---- */
+--surface-note:#f7ebd2;
+--text-note:#4a3812 /* @kind color */;
+--shadow-panel:0 1px 2px rgba(31,20,40,.08);
+--shadow-raised:0 1px 3px rgba(31,20,40,.14),0 4px 8px 3px rgba(31,20,40,.08);
+--shadow-overlay:0 4px 8px 3px rgba(31,20,40,.1),0 1px 3px rgba(31,20,40,.16);
+--status-success:#1f8a55;
+--status-success-soft:color-mix(in srgb,#1f8a55 12%,transparent);
+--status-success-line:color-mix(in srgb,#1f8a55 40%,transparent);
+--status-danger:#b8342d;
+--status-danger-soft:color-mix(in srgb,#b8342d 12%,transparent);
+--status-danger-line:color-mix(in srgb,#b8342d 40%,transparent);
+--status-warning:#8a6100;
+--status-warning-soft:color-mix(in srgb,#8a6100 12%,transparent);
+--status-warning-line:color-mix(in srgb,#8a6100 40%,transparent);
+--status-info:#2a63c9;
+--status-info-soft:color-mix(in srgb,#2a63c9 12%,transparent);
+--status-info-line:color-mix(in srgb,#2a63c9 40%,transparent);
+--status-pending:#5b48c9;
+--status-pending-soft:color-mix(in srgb,#5b48c9 12%,transparent);
+--status-pending-line:color-mix(in srgb,#5b48c9 40%,transparent);
+--status-active:#0f8a8d;
+--status-active-soft:color-mix(in srgb,#0f8a8d 12%,transparent);
+--status-active-line:color-mix(in srgb,#0f8a8d 40%,transparent);
+--status-review:#b03a6a;
+--status-review-soft:color-mix(in srgb,#b03a6a 12%,transparent);
+--status-review-line:color-mix(in srgb,#b03a6a 40%,transparent);
+--status-neutral:#5e6875;
+--status-neutral-soft:color-mix(in srgb,#5e6875 10%,transparent);
+--status-neutral-line:color-mix(in srgb,#5e6875 30%,transparent);
+/* the graph's categorical hues, darkened the same way so a dot reads on white */
+--series-1:#b8342d;--series-2:#2a63c9;--series-3:#8a6100;--series-4:#5b48c9;--series-5:#1f8a55;--series-6:#0f8a8d;--series-7:#8d4bb5;
+}
+
+/* ---- accent choices, light ---- */
+/* ---- generated ---- */
+:root[data-accent="orange"][data-theme="light"]{
+--md-sys-color-primary:#9c4500;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#ff7a1a;
+--md-sys-color-on-primary-container:#5e2700;
+--md-sys-color-secondary:#8d4e27;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#feab7c;
+--md-sys-color-on-secondary-container:#783d17;
+--md-sys-color-tertiary:#006491;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#00aaf2;
+--md-sys-color-on-tertiary-container:#003b57;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffb68e;
+--md-sys-color-surface:#fff8f6;
+--md-sys-color-surface-dim:#edd5cb;
+--md-sys-color-surface-bright:#fff8f6;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fff1eb;
+--md-sys-color-surface-container:#ffeae0;
+--md-sys-color-surface-container-high:#fbe3d8;
+--md-sys-color-surface-container-highest:#f5ded3;
+--md-sys-color-on-surface:#251912;
+--md-sys-color-on-surface-variant:#584236;
+--md-sys-color-outline:#8c7264;
+--md-sys-color-outline-variant:#e0c0b1;
+--md-sys-color-inverse-surface:#3b2d26;
+--md-sys-color-inverse-on-surface:#ffede5;
+--md-sys-color-surface-tint:#9c4500;
+--md-sys-color-scrim:#000000;
+--border-soft:#f5ded3 /* @kind color */;
+--text-quaternary:#7f6558 /* @kind color */;
+--glass-bg:rgba(255,248,246,.86);
+}
+:root[data-accent="violet"][data-theme="light"]{
+--md-sys-color-primary:#5f41cc;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#795de7;
+--md-sys-color-on-primary-container:#fffbff;
+--md-sys-color-secondary:#61578e;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#cbbefe;
+--md-sys-color-on-secondary-container:#554b82;
+--md-sys-color-tertiary:#7f5300;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#a06900;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#cbbeff;
+--md-sys-color-surface:#fdf8ff;
+--md-sys-color-surface-dim:#ddd8e4;
+--md-sys-color-surface-bright:#fdf8ff;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f7f1fe;
+--md-sys-color-surface-container:#f1ecf8;
+--md-sys-color-surface-container-high:#ece6f2;
+--md-sys-color-surface-container-highest:#e6e0ec;
+--md-sys-color-on-surface:#1c1a23;
+--md-sys-color-on-surface-variant:#484554;
+--md-sys-color-outline:#797585;
+--md-sys-color-outline-variant:#cac4d6;
+--md-sys-color-inverse-surface:#312f38;
+--md-sys-color-inverse-on-surface:#f4eefb;
+--md-sys-color-surface-tint:#6244cf;
+--md-sys-color-scrim:#000000;
+--border-soft:#e6e0ec /* @kind color */;
+--text-quaternary:#6c6879 /* @kind color */;
+--glass-bg:rgba(253,248,255,.86);
+}
+:root[data-accent="teal"][data-theme="light"]{
+--md-sys-color-primary:#006b5f;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#00a896;
+--md-sys-color-on-primary-container:#00352e;
+--md-sys-color-secondary:#3b665e;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#bdece2;
+--md-sys-color-on-secondary-container:#416c64;
+--md-sys-color-tertiary:#9a4528;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#df7a59;
+--md-sys-color-on-tertiary-container:#5a1600;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#59dbc7;
+--md-sys-color-surface:#f5fbf8;
+--md-sys-color-surface-dim:#d5dbd9;
+--md-sys-color-surface-bright:#f5fbf8;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#eff5f2;
+--md-sys-color-surface-container:#e9efec;
+--md-sys-color-surface-container-high:#e3eae7;
+--md-sys-color-surface-container-highest:#dee4e1;
+--md-sys-color-on-surface:#171d1b;
+--md-sys-color-on-surface-variant:#3c4946;
+--md-sys-color-outline:#6c7a76;
+--md-sys-color-outline-variant:#bbcac5;
+--md-sys-color-inverse-surface:#2b3230;
+--md-sys-color-inverse-on-surface:#ecf2ef;
+--md-sys-color-surface-tint:#006b5f;
+--md-sys-color-scrim:#000000;
+--border-soft:#dee4e1 /* @kind color */;
+--text-quaternary:#606d6a /* @kind color */;
+--glass-bg:rgba(245,251,248,.86);
+}
+:root[data-accent="blue"][data-theme="light"]{
+--md-sys-color-primary:#0058bd;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#2371e1;
+--md-sys-color-on-primary-container:#fefcff;
+--md-sys-color-secondary:#495e89;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#b7ccfe;
+--md-sys-color-on-secondary-container:#415681;
+--md-sys-color-tertiary:#8d4b00;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#b15f00;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#adc6ff;
+--md-sys-color-surface:#f9f9ff;
+--md-sys-color-surface-dim:#d8d9e3;
+--md-sys-color-surface-bright:#f9f9ff;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f2f3fd;
+--md-sys-color-surface-container:#ecedf7;
+--md-sys-color-surface-container-high:#e6e7f1;
+--md-sys-color-surface-container-highest:#e1e2ec;
+--md-sys-color-on-surface:#191b22;
+--md-sys-color-on-surface-variant:#424753;
+--md-sys-color-outline:#727785;
+--md-sys-color-outline-variant:#c2c6d6;
+--md-sys-color-inverse-surface:#2e3038;
+--md-sys-color-inverse-on-surface:#eff0fa;
+--md-sys-color-surface-tint:#005ac2;
+--md-sys-color-scrim:#000000;
+--border-soft:#e1e2ec /* @kind color */;
+--text-quaternary:#666a78 /* @kind color */;
+--glass-bg:rgba(249,249,255,.86);
+}
+:root[data-accent="green"][data-theme="light"]{
+--md-sys-color-primary:#006d36;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#3fb96b;
+--md-sys-color-on-primary-container:#00431f;
+--md-sys-color-secondary:#3d6747;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#bcebc2;
+--md-sys-color-on-secondary-container:#416c4b;
+--md-sys-color-tertiary:#a63650;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#fd7993;
+--md-sys-color-on-tertiary-container:#730c2d;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#66dd8b;
+--md-sys-color-surface:#f5fbf1;
+--md-sys-color-surface-dim:#d5dcd2;
+--md-sys-color-surface-bright:#f5fbf1;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#eff6ec;
+--md-sys-color-surface-container:#e9f0e6;
+--md-sys-color-surface-container-high:#e3eae0;
+--md-sys-color-surface-container-highest:#dee4db;
+--md-sys-color-on-surface:#171d17;
+--md-sys-color-on-surface-variant:#3e4a3f;
+--md-sys-color-outline:#6e7a6e;
+--md-sys-color-outline-variant:#bdcabc;
+--md-sys-color-inverse-surface:#2b322c;
+--md-sys-color-inverse-on-surface:#ecf3e9;
+--md-sys-color-surface-tint:#006d36;
+--md-sys-color-scrim:#000000;
+--border-soft:#dee4db /* @kind color */;
+--text-quaternary:#616e62 /* @kind color */;
+--glass-bg:rgba(245,251,241,.86);
+}
+:root[data-accent="rose"][data-theme="light"]{
+--md-sys-color-primary:#ab2d58;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#f0628c;
+--md-sys-color-on-primary-container:#5d0027;
+--md-sys-color-secondary:#8b4b5b;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#ffadbf;
+--md-sys-color-on-secondary-container:#7b3d4d;
+--md-sys-color-tertiary:#006e25;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#2aa946;
+--md-sys-color-on-tertiary-container:#00340d;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffb1c2;
+--md-sys-color-surface:#fff8f7;
+--md-sys-color-surface-dim:#ebd5d8;
+--md-sys-color-surface-bright:#fff8f7;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fff0f1;
+--md-sys-color-surface-container:#ffe8ec;
+--md-sys-color-surface-container-high:#f9e3e6;
+--md-sys-color-surface-container-highest:#f3dde0;
+--md-sys-color-on-surface:#24181b;
+--md-sys-color-on-surface-variant:#574145;
+--md-sys-color-outline:#8a7175;
+--md-sys-color-outline-variant:#ddbfc4;
+--md-sys-color-inverse-surface:#3a2d2f;
+--md-sys-color-inverse-on-surface:#ffecee;
+--md-sys-color-surface-tint:#ab2d58;
+--md-sys-color-scrim:#000000;
+--border-soft:#f3dde0 /* @kind color */;
+--text-quaternary:#7d6469 /* @kind color */;
+--glass-bg:rgba(255,248,247,.86);
+}
+/* ---- end generated ---- */
 
 /* Headings move off the uppercase mono label onto M3's title roles: sentence
    case, heavier, larger. This is most of what makes the page read as
@@ -266,7 +770,7 @@ button{font-family:var(--font-sans)!important;text-transform:none!important;lett
 :where(button,a[href],summary,select,[role="button"],[role="tab"],[role="link"],[role="checkbox"],[role="switch"],[role="option"],[role="menuitem"],[tabindex]:not([tabindex="-1"]),input[type="time"],input[type="date"],input[type="checkbox"],input[type="radio"]):focus-visible{outline:2px solid var(--md-sys-color-primary)!important;outline-offset:2px!important}
 
 @media (prefers-reduced-motion:reduce){
-:root{--transition-press:none /* @kind other */}
+:root{--transition-press:none}
 /* Every animation and transition, inline ones included: the live dot's pulse,
    the drawer's slide, the rail's width. Run to their end state at once rather
    than removed, so anything waiting on animationend still hears it. */
