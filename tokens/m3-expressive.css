@@ -62,7 +62,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#332f35 /* @kind color */;
 --text-quaternary:#8a818e /* @kind color */;
---glass-bg:rgba(22,18,24,.86);
+--glass-bg:rgba(22,18,24,.86) /* @kind color */;
 /* ---- end generated ---- */
 
 /* ---- M3 shape scale (Expressive adds the -increased steps) ---- */
@@ -84,36 +84,36 @@
    colour and opacity. Three speeds: fast for a control answering a press,
    default for a component moving (a rail, a popover, a pill unfolding), slow
    for something large arriving. */
---md-sys-motion-duration-short1:50ms;
---md-sys-motion-duration-short2:100ms;
---md-sys-motion-duration-short3:150ms;
---md-sys-motion-duration-short4:200ms;
---md-sys-motion-duration-medium1:250ms;
---md-sys-motion-duration-medium2:300ms;
---md-sys-motion-duration-medium3:350ms;
---md-sys-motion-duration-medium4:400ms;
---md-sys-motion-duration-long1:450ms;
---md-sys-motion-duration-long2:500ms;
---md-sys-motion-duration-long3:550ms;
---md-sys-motion-duration-long4:600ms;
---md-sys-motion-easing-standard:cubic-bezier(.2,0,0,1);
---md-sys-motion-easing-standard-decelerate:cubic-bezier(0,0,0,1);
---md-sys-motion-easing-standard-accelerate:cubic-bezier(.3,0,1,1);
---md-sys-motion-easing-emphasized:cubic-bezier(.2,0,0,1);
---md-sys-motion-easing-emphasized-decelerate:cubic-bezier(.05,.7,.1,1);
---md-sys-motion-easing-emphasized-accelerate:cubic-bezier(.3,0,.8,.15);
+--md-sys-motion-duration-short1:50ms /* @kind other */;
+--md-sys-motion-duration-short2:100ms /* @kind other */;
+--md-sys-motion-duration-short3:150ms /* @kind other */;
+--md-sys-motion-duration-short4:200ms /* @kind other */;
+--md-sys-motion-duration-medium1:250ms /* @kind other */;
+--md-sys-motion-duration-medium2:300ms /* @kind other */;
+--md-sys-motion-duration-medium3:350ms /* @kind other */;
+--md-sys-motion-duration-medium4:400ms /* @kind other */;
+--md-sys-motion-duration-long1:450ms /* @kind other */;
+--md-sys-motion-duration-long2:500ms /* @kind other */;
+--md-sys-motion-duration-long3:550ms /* @kind other */;
+--md-sys-motion-duration-long4:600ms /* @kind other */;
+--md-sys-motion-easing-standard:cubic-bezier(.2,0,0,1) /* @kind other */;
+--md-sys-motion-easing-standard-decelerate:cubic-bezier(0,0,0,1) /* @kind other */;
+--md-sys-motion-easing-standard-accelerate:cubic-bezier(.3,0,1,1) /* @kind other */;
+--md-sys-motion-easing-emphasized:cubic-bezier(.2,0,0,1) /* @kind other */;
+--md-sys-motion-easing-emphasized-decelerate:cubic-bezier(.05,.7,.1,1) /* @kind other */;
+--md-sys-motion-easing-emphasized-accelerate:cubic-bezier(.3,0,.8,.15) /* @kind other */;
 --md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9) /* @kind other */;
 --md-sys-motion-spring-fast-spatial-duration:350ms /* @kind other */;
 --md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1) /* @kind other */;
 --md-sys-motion-spring-default-spatial-duration:500ms /* @kind other */;
---md-sys-motion-spring-slow-spatial:cubic-bezier(.3,1.1,.2,1);
---md-sys-motion-spring-slow-spatial-duration:650ms;
+--md-sys-motion-spring-slow-spatial:cubic-bezier(.3,1.1,.2,1) /* @kind other */;
+--md-sys-motion-spring-slow-spatial-duration:650ms /* @kind other */;
 --md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1) /* @kind other */;
 --md-sys-motion-spring-fast-effects-duration:150ms /* @kind other */;
 --md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
 --md-sys-motion-spring-default-effects-duration:200ms /* @kind other */;
---md-sys-motion-spring-slow-effects:cubic-bezier(.34,.8,.34,1);
---md-sys-motion-spring-slow-effects-duration:300ms;
+--md-sys-motion-spring-slow-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
+--md-sys-motion-spring-slow-effects-duration:300ms /* @kind other */;
 
 /* ---- the SigmaOS semantic layer, re-pointed ---- */
 /* The page is surface and a panel is surface-container-low, one tonal step
@@ -138,7 +138,7 @@
 --field-line:var(--md-sys-color-outline) /* @kind color */;
 --field-fill-overlay:var(--md-sys-color-surface-bright) /* @kind color */;
 --field-line-overlay:var(--md-sys-color-outline) /* @kind color */;
---surface-note:#3a2a1c;
+--surface-note:#3a2a1c /* @kind color */;
 --text-note:#f1dcc4 /* @kind color */;
 
 /* shape: big soft containers, fully round controls. Chips go to M3's 8px
@@ -158,10 +158,10 @@
 
 /* elevation in M3 dark is tonal: the surface-container step already says
    "raised", so shadows are small and only there to separate */
---shadow-inset-top:none;
---shadow-panel:0 1px 2px rgba(0,0,0,.3);
---shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15);
---shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3);
+--shadow-inset-top:none /* @kind other */;
+--shadow-panel:0 1px 2px rgba(0,0,0,.3) /* @kind other */;
+--shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15) /* @kind other */;
+--shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3) /* @kind other */;
 /* The ground html and body paint (shell.css). It is the page's surface, not
    a step below it, so the space between panels is the surface of the scheme
    rather than a near-black the panels float over. */
@@ -174,9 +174,9 @@
 --motion-duration:var(--md-sys-motion-spring-default-effects-duration) /* @kind other */;
 --motion-ease:var(--md-sys-motion-spring-default-effects) /* @kind other */;
 --transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
---transition-move:var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial);
---transition-shape:var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
---motion-duration-long:var(--md-sys-motion-duration-long2);
+--transition-move:var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial) /* @kind other */;
+--transition-shape:var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
+--motion-duration-long:var(--md-sys-motion-duration-long2) /* @kind other */;
 
 /* type: Roboto Flex is the Expressive sans. Mono stays for figures and
    instrument readouts, where tabular digits are the job */
@@ -261,7 +261,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#3b2d26 /* @kind color */;
 --text-quaternary:#997e70 /* @kind color */;
---glass-bg:rgba(28,17,11,.86);
+--glass-bg:rgba(28,17,11,.86) /* @kind color */;
 }
 :root[data-accent="violet"]{
 --md-sys-color-primary:#cbbeff;
@@ -299,7 +299,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#312f38 /* @kind color */;
 --text-quaternary:#868192 /* @kind color */;
---glass-bg:rgba(20,18,26,.86);
+--glass-bg:rgba(20,18,26,.86) /* @kind color */;
 }
 :root[data-accent="teal"]{
 --md-sys-color-primary:#59dbc7;
@@ -337,7 +337,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#2b3230 /* @kind color */;
 --text-quaternary:#798783 /* @kind color */;
---glass-bg:rgba(14,21,19,.86);
+--glass-bg:rgba(14,21,19,.86) /* @kind color */;
 }
 :root[data-accent="blue"]{
 --md-sys-color-primary:#adc6ff;
@@ -375,7 +375,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#2e3038 /* @kind color */;
 --text-quaternary:#7f8392 /* @kind color */;
---glass-bg:rgba(17,19,26,.86);
+--glass-bg:rgba(17,19,26,.86) /* @kind color */;
 }
 :root[data-accent="green"]{
 --md-sys-color-primary:#66dd8b;
@@ -413,7 +413,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#2b322c /* @kind color */;
 --text-quaternary:#7a877a /* @kind color */;
---glass-bg:rgba(15,21,15,.86);
+--glass-bg:rgba(15,21,15,.86) /* @kind color */;
 }
 :root[data-accent="rose"]{
 --md-sys-color-primary:#ffb1c2;
@@ -451,7 +451,7 @@
 --md-sys-color-scrim:#000000;
 --border-soft:#3a2d2f /* @kind color */;
 --text-quaternary:#977d82 /* @kind color */;
---glass-bg:rgba(27,16,19,.86);
+--glass-bg:rgba(27,16,19,.86) /* @kind color */;
 }
 /* ---- end generated ---- */
 
@@ -499,39 +499,39 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#e9e0e8 /* @kind color */;
 --text-quaternary:#706874 /* @kind color */;
---glass-bg:rgba(255,247,253,.86);
+--glass-bg:rgba(255,247,253,.86) /* @kind color */;
 /* ---- end generated ---- */
---surface-note:#f7ebd2;
+--surface-note:#f7ebd2 /* @kind color */;
 --text-note:#4a3812 /* @kind color */;
---shadow-panel:0 1px 2px rgba(31,20,40,.08);
---shadow-raised:0 1px 3px rgba(31,20,40,.14),0 4px 8px 3px rgba(31,20,40,.08);
---shadow-overlay:0 4px 8px 3px rgba(31,20,40,.1),0 1px 3px rgba(31,20,40,.16);
---status-success:#1f8a55;
---status-success-soft:color-mix(in srgb,#1f8a55 12%,transparent);
---status-success-line:color-mix(in srgb,#1f8a55 40%,transparent);
---status-danger:#b8342d;
---status-danger-soft:color-mix(in srgb,#b8342d 12%,transparent);
---status-danger-line:color-mix(in srgb,#b8342d 40%,transparent);
---status-warning:#8a6100;
---status-warning-soft:color-mix(in srgb,#8a6100 12%,transparent);
---status-warning-line:color-mix(in srgb,#8a6100 40%,transparent);
---status-info:#2a63c9;
---status-info-soft:color-mix(in srgb,#2a63c9 12%,transparent);
---status-info-line:color-mix(in srgb,#2a63c9 40%,transparent);
---status-pending:#5b48c9;
---status-pending-soft:color-mix(in srgb,#5b48c9 12%,transparent);
---status-pending-line:color-mix(in srgb,#5b48c9 40%,transparent);
---status-active:#0f8a8d;
---status-active-soft:color-mix(in srgb,#0f8a8d 12%,transparent);
---status-active-line:color-mix(in srgb,#0f8a8d 40%,transparent);
---status-review:#b03a6a;
---status-review-soft:color-mix(in srgb,#b03a6a 12%,transparent);
---status-review-line:color-mix(in srgb,#b03a6a 40%,transparent);
---status-neutral:#5e6875;
---status-neutral-soft:color-mix(in srgb,#5e6875 10%,transparent);
---status-neutral-line:color-mix(in srgb,#5e6875 30%,transparent);
+--shadow-panel:0 1px 2px rgba(31,20,40,.08) /* @kind other */;
+--shadow-raised:0 1px 3px rgba(31,20,40,.14),0 4px 8px 3px rgba(31,20,40,.08) /* @kind other */;
+--shadow-overlay:0 4px 8px 3px rgba(31,20,40,.1),0 1px 3px rgba(31,20,40,.16) /* @kind other */;
+--status-success:#1f8a55 /* @kind color */;
+--status-success-soft:color-mix(in srgb,#1f8a55 12%,transparent) /* @kind color */;
+--status-success-line:color-mix(in srgb,#1f8a55 40%,transparent) /* @kind color */;
+--status-danger:#b8342d /* @kind color */;
+--status-danger-soft:color-mix(in srgb,#b8342d 12%,transparent) /* @kind color */;
+--status-danger-line:color-mix(in srgb,#b8342d 40%,transparent) /* @kind color */;
+--status-warning:#8a6100 /* @kind color */;
+--status-warning-soft:color-mix(in srgb,#8a6100 12%,transparent) /* @kind color */;
+--status-warning-line:color-mix(in srgb,#8a6100 40%,transparent) /* @kind color */;
+--status-info:#2a63c9 /* @kind color */;
+--status-info-soft:color-mix(in srgb,#2a63c9 12%,transparent) /* @kind color */;
+--status-info-line:color-mix(in srgb,#2a63c9 40%,transparent) /* @kind color */;
+--status-pending:#5b48c9 /* @kind color */;
+--status-pending-soft:color-mix(in srgb,#5b48c9 12%,transparent) /* @kind color */;
+--status-pending-line:color-mix(in srgb,#5b48c9 40%,transparent) /* @kind color */;
+--status-active:#0f8a8d /* @kind color */;
+--status-active-soft:color-mix(in srgb,#0f8a8d 12%,transparent) /* @kind color */;
+--status-active-line:color-mix(in srgb,#0f8a8d 40%,transparent) /* @kind color */;
+--status-review:#b03a6a /* @kind color */;
+--status-review-soft:color-mix(in srgb,#b03a6a 12%,transparent) /* @kind color */;
+--status-review-line:color-mix(in srgb,#b03a6a 40%,transparent) /* @kind color */;
+--status-neutral:#5e6875 /* @kind color */;
+--status-neutral-soft:color-mix(in srgb,#5e6875 10%,transparent) /* @kind color */;
+--status-neutral-line:color-mix(in srgb,#5e6875 30%,transparent) /* @kind color */;
 /* the graph's categorical hues, darkened the same way so a dot reads on white */
---series-1:#b8342d;--series-2:#2a63c9;--series-3:#8a6100;--series-4:#5b48c9;--series-5:#1f8a55;--series-6:#0f8a8d;--series-7:#8d4bb5;
+--series-1:#b8342d /* @kind color */;--series-2:#2a63c9 /* @kind color */;--series-3:#8a6100 /* @kind color */;--series-4:#5b48c9 /* @kind color */;--series-5:#1f8a55 /* @kind color */;--series-6:#0f8a8d /* @kind color */;--series-7:#8d4bb5 /* @kind color */;
 }
 
 /* ---- accent choices, light ---- */
@@ -572,7 +572,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#f5ded3 /* @kind color */;
 --text-quaternary:#7f6558 /* @kind color */;
---glass-bg:rgba(255,248,246,.86);
+--glass-bg:rgba(255,248,246,.86) /* @kind color */;
 }
 :root[data-accent="violet"][data-theme="light"]{
 --md-sys-color-primary:#5f41cc;
@@ -610,7 +610,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#e6e0ec /* @kind color */;
 --text-quaternary:#6c6879 /* @kind color */;
---glass-bg:rgba(253,248,255,.86);
+--glass-bg:rgba(253,248,255,.86) /* @kind color */;
 }
 :root[data-accent="teal"][data-theme="light"]{
 --md-sys-color-primary:#006b5f;
@@ -648,7 +648,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#dee4e1 /* @kind color */;
 --text-quaternary:#606d6a /* @kind color */;
---glass-bg:rgba(245,251,248,.86);
+--glass-bg:rgba(245,251,248,.86) /* @kind color */;
 }
 :root[data-accent="blue"][data-theme="light"]{
 --md-sys-color-primary:#0058bd;
@@ -686,7 +686,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#e1e2ec /* @kind color */;
 --text-quaternary:#666a78 /* @kind color */;
---glass-bg:rgba(249,249,255,.86);
+--glass-bg:rgba(249,249,255,.86) /* @kind color */;
 }
 :root[data-accent="green"][data-theme="light"]{
 --md-sys-color-primary:#006d36;
@@ -724,7 +724,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#dee4db /* @kind color */;
 --text-quaternary:#616e62 /* @kind color */;
---glass-bg:rgba(245,251,241,.86);
+--glass-bg:rgba(245,251,241,.86) /* @kind color */;
 }
 :root[data-accent="rose"][data-theme="light"]{
 --md-sys-color-primary:#ab2d58;
@@ -762,7 +762,7 @@ color-scheme:light;
 --md-sys-color-scrim:#000000;
 --border-soft:#f3dde0 /* @kind color */;
 --text-quaternary:#7d6469 /* @kind color */;
---glass-bg:rgba(255,248,247,.86);
+--glass-bg:rgba(255,248,247,.86) /* @kind color */;
 }
 /* ---- end generated ---- */
 
@@ -817,7 +817,7 @@ button:not(:disabled):not([aria-disabled="true"]):active{transform:scale(.96);bo
 :where(button,a[href],summary,select,[role="button"],[role="tab"],[role="link"],[role="checkbox"],[role="switch"],[role="option"],[role="menuitem"],[tabindex]:not([tabindex="-1"]),input[type="time"],input[type="date"],input[type="checkbox"],input[type="radio"]):focus-visible{outline:2px solid var(--md-sys-color-primary)!important;outline-offset:2px!important}
 
 @media (prefers-reduced-motion:reduce){
-:root{--transition-press:none}
+:root{--transition-press:none /* @kind other */}
 /* Every animation and transition, inline ones included: the live dot's pulse,
    the drawer's slide, the rail's width. Run to their end state at once rather
    than removed, so anything waiting on animationend still hears it. */

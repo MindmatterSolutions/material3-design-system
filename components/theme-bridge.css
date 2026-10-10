@@ -59,7 +59,9 @@
   --md-sys-color-on-tertiary-fixed: color-mix(in oklab, var(--md-sys-color-tertiary-container) 45%, #000);
   --md-sys-color-on-tertiary-fixed-variant: var(--md-sys-color-tertiary-container);
 
-  /* The theme is dark only; m3-system.css says light dark. */
+  /* Dark unless the theme's light block says otherwise: m3-system.css says
+     `light dark`, and :root[data-theme="light"] in tokens/m3-expressive.css
+     outranks this rule by specificity, so a light page gets light furniture. */
   color-scheme: dark;
 
   /* --- type --------------------------------------------------------------- */
