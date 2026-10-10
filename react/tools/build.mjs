@@ -42,7 +42,10 @@ await build({
   logLevel: 'warning',
 });
 
-execFileSync(resolve(pkg, 'node_modules/.bin/tsc'), [
+// TypeScript's own JS entry, run by this Node: node_modules/.bin/tsc is a shell
+// script on macOS and Linux but a .cmd wrapper on Windows, which execFileSync
+// cannot start without a shell.
+execFileSync(process.execPath, [resolve(pkg, 'node_modules/typescript/bin/tsc'),
   'src/index.ts', '--declaration', '--emitDeclarationOnly', '--outDir', 'dist',
   '--target', 'es2022', '--module', 'esnext', '--moduleResolution', 'bundler',
   '--skipLibCheck', '--jsx', 'react-jsx',

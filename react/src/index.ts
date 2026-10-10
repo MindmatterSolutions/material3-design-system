@@ -83,7 +83,7 @@ import { MdCircularProgress as CircularProgressElement } from '@material/web/pro
 import { MdLinearProgress as LinearProgressElement } from '@material/web/progress/linear-progress.js';
 
 export { ThemeRoot } from './theme-root';
-export type { ThemeRootProps, Accent } from './theme-root';
+export type { ThemeRootProps, Accent, Mode } from './theme-root';
 
 /**
  * A Material Design button.

@@ -15,7 +15,7 @@ const STATUS = ['success', 'danger', 'warning', 'info', 'pending', 'active', 're
   .flatMap(s => [`--status-${s}`, `--status-${s}-soft`, `--status-${s}-line`]);
 const FIELDS = ['--field-fill', '--field-line', '--field-fill-overlay', '--field-line-overlay'];
 const INK_ALIASES = ['--bg-page', '--bg-raised', '--border-default', '--border-soft', '--text-quaternary', '--text-note'];
-const MOTION = ['--motion-duration', '--motion-ease', '--transition-fast', '--transition-press'];
+const MOTION = ['--motion-duration', '--motion-ease', '--transition-fast', '--transition-press', '--transition-move', '--transition-shape', '--motion-duration-long'];
 
 // file → [[token name or RegExp, kind]]
 export const SPEC = {
@@ -37,7 +37,10 @@ export const SPEC = {
   ],
   'tokens/m3-expressive.css': [
     [/^--md-sys-motion-/, 'other'],
-    ...[...INK_ALIASES, ...FIELDS, '--bg-grid-base'].map(t => [t, 'color']),
+    // The light block restates the status tints and series hues for a white ground.
+    ...[...INK_ALIASES, ...FIELDS, ...STATUS, '--bg-grid-base', '--glass-bg', '--surface-note'].map(t => [t, 'color']),
+    [/^--series-\d+$/, 'color'],
+    [/^--shadow-/, 'other'],
     ...MOTION.map(t => [t, 'other']),
   ],
   'components/m3-system.css': [

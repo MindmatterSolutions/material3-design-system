@@ -31,6 +31,14 @@
 --motion-ease:cubic-bezier(.22,.8,.28,1) /* @kind other */;
 --transition-fast:var(--motion-duration) var(--motion-ease) /* @kind other */;
 --transition-press:transform var(--motion-duration) var(--motion-ease) /* @kind other */;
+/* Three more, each a duration and a curve like --transition-fast, for the
+   jobs one pair cannot do: something MOVING or changing size (a rail sliding
+   in, a popover growing, a pill unfolding), a corner changing SHAPE, and the
+   long fade of a splash or a page arriving. The theme layer points them at
+   Material's spatial springs; here in Midnight they are the one curve. */
+--transition-move:var(--motion-duration) var(--motion-ease) /* @kind other */;
+--transition-shape:var(--motion-duration) var(--motion-ease) /* @kind other */;
+--motion-duration-long:.5s /* @kind other */;
 
 --bg-grid-line:rgba(255,122,26,.025);
 --bg-grid-size:48px;
@@ -41,14 +49,15 @@
 --bg-grid-wash:none /* @kind other */;
 /* the tint the resting ground sits on — a touch above bg-page, as in the rail */
 --bg-grid-base:var(--black-rail) /* @kind color */;
-/* lit-grid layers — all derived from the brand orange, kept low-alpha so the grid sits behind UI */
---bg-grid-line-lit:color-mix(in oklch,var(--accent-primary) 74%,white);
---bg-grid-line-edge:color-mix(in oklch,var(--accent-primary) 46%,black);
---bg-grid-line-glow:color-mix(in oklch,var(--accent-primary) 60%,transparent);
---bg-grid-shadow:rgba(0,0,0,.6);
+/* developer-mode canvas — a neutral dot field, no accent hue anywhere in it, so the
+   worked-on ground reads as drawing canvas rather than as a lit blueprint grid. Two
+   weights: a minor dot at every --bg-canvas-dot-size step, a major one every fourth. */
+--bg-canvas-dot:rgba(255,255,255,.17);
+--bg-canvas-dot-major:rgba(255,255,255,.40);
+--bg-canvas-dot-size:24px;
 --bg-grid-vignette:radial-gradient(120% 90% at 50% 45%,transparent 0%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.68) 100%);
-/* how strongly the raised grid reads — retuned soft to sit under rounded surfaces */
---bg-grid-raised-opacity:.22 /* @kind other */;
+/* how strongly the raised canvas reads — held soft so it sits under rounded surfaces */
+--bg-grid-raised-opacity:.9 /* @kind other */;
 /* keeps the grid off the edges of the frame so it fades into the surrounding UI */
 --bg-grid-fade:radial-gradient(115% 85% at 50% 42%,#000 0%,rgba(0,0,0,.55) 55%,transparent 100%);
 /* how deep a scroll region's content dissolves at each end */
@@ -62,19 +71,20 @@ background-size:var(--bg-grid-size) var(--bg-grid-size);
 /* Raised variant — the DEVELOPER-MODE background. Page shells carry this class permanently.
    With developer mode OFF it draws NO grid at all: the resting page is a plain ground with
    a flat rail-toned field, and the module only appears when it is being worked on. Turning
-   developer mode on fades the lit, embossed grid in. Developer mode is a single attribute
-   on the root element:
+   developer mode on fades a neutral dot canvas in — a 24px minor dot field with a major
+   dot every fourth intersection, the same read as the UML canvas, and no accent hue at
+   all. Developer mode is a single attribute on the root element:
      document.documentElement.dataset.devMode = 'on'   (Configuration owns the toggle)
-   Lit layers are held at --bg-grid-raised-opacity and masked toward the edges by
-   --bg-grid-fade, so the grid dissolves into the page instead of ending at a hard border. */
+   The dot layers are held at --bg-grid-raised-opacity and masked toward the edges by
+   --bg-grid-fade, so the canvas dissolves into the page instead of ending at a hard border. */
 .ds-grid-bg-raised{position:relative;isolation:isolate;background-color:var(--bg-grid-base);background-image:var(--bg-grid-wash);background-repeat:no-repeat;background-size:100% 100%;transition:background-color var(--transition-fast)}
-/* At rest there is no bloom layer — the ground is flat. The ::before/::after
+/* At rest there is no dot layer — the ground is flat. The ::before/::after
    layers exist only under developer mode, defined below. */
 .ds-grid-bg-raised>*{position:relative;z-index:3}
-[data-dev-mode="on"] .ds-grid-bg-raised,[data-dev-mode="on"].ds-grid-bg-raised{background-image:var(--bg-grid-vignette),linear-gradient(var(--bg-grid-shadow) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--bg-grid-shadow) 1.5px,transparent 1.5px);background-size:auto,var(--bg-grid-size) var(--bg-grid-size),var(--bg-grid-size) var(--bg-grid-size);background-position:0 0,1.5px 1.5px,1.5px 1.5px}
-[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::after{content:'';position:absolute;inset:-2px;pointer-events:none;background-size:var(--bg-grid-size) var(--bg-grid-size);opacity:var(--bg-grid-raised-opacity);-webkit-mask-image:var(--bg-grid-fade);mask-image:var(--bg-grid-fade);animation:ds-dev-grid-in var(--motion-duration) var(--motion-ease) both}
-[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::before{z-index:1;filter:blur(5px);background-image:linear-gradient(var(--bg-grid-line-glow) 2px,transparent 2px),linear-gradient(90deg,var(--bg-grid-line-glow) 2px,transparent 2px)}
-[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::after{z-index:2;filter:blur(.5px);background-image:linear-gradient(var(--bg-grid-line-lit) .75px,var(--bg-grid-line-edge) .75px,transparent 1.75px),linear-gradient(90deg,var(--bg-grid-line-lit) .75px,var(--bg-grid-line-edge) .75px,transparent 1.75px)}
+[data-dev-mode="on"] .ds-grid-bg-raised,[data-dev-mode="on"].ds-grid-bg-raised{background-image:var(--bg-grid-vignette);background-size:auto;background-position:0 0}
+[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::after{content:'';position:absolute;inset:0;pointer-events:none;background-repeat:repeat;background-position:center;opacity:var(--bg-grid-raised-opacity);-webkit-mask-image:var(--bg-grid-fade);mask-image:var(--bg-grid-fade);animation:ds-dev-grid-in var(--motion-duration) var(--motion-ease) both}
+[data-dev-mode="on"] .ds-grid-bg-raised::before,[data-dev-mode="on"].ds-grid-bg-raised::before{z-index:1;background-image:radial-gradient(var(--bg-canvas-dot) .9px,transparent 1.1px);background-size:var(--bg-canvas-dot-size) var(--bg-canvas-dot-size)}
+[data-dev-mode="on"] .ds-grid-bg-raised::after,[data-dev-mode="on"].ds-grid-bg-raised::after{z-index:2;background-image:radial-gradient(var(--bg-canvas-dot-major) 1.3px,transparent 1.6px);background-size:calc(var(--bg-canvas-dot-size) * 4) calc(var(--bg-canvas-dot-size) * 4)}
 @keyframes ds-dev-grid-in{from{opacity:0}to{opacity:var(--bg-grid-raised-opacity)}}
 
 /* the canonical surface: rounded, hairline-bordered, inset highlight, soft shadow */

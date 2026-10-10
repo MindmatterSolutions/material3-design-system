@@ -368,15 +368,16 @@ writeFileSync(resolve(docsDir, 'ThemeRoot.md'), `---
 category: Theme
 ---
 
-The root of every design built with this system. The theme is **dark only**: wrap the whole design in \`<ThemeRoot>\` so the page gets the dark surface, the on-surface ink and the theme's sans. Without it, light ink lands on a white page.
+The root of every design built with this system. Wrap the whole design in \`<ThemeRoot>\` so the page gets the theme's surface, the on-surface ink and the theme's sans. Without it the page has no ground of its own.
 
 ## Composition
 
-Wrap the entire design once: \`<ThemeRoot accent="teal">…</ThemeRoot>\`. Give it \`style={{ minHeight: '100vh' }}\` for a full page. \`accent\` sets \`data-accent\` on \`<html>\`, where the theme reads it — so it is **one accent per page**; two roots with different accents on one page would fight.
+Wrap the entire design once: \`<ThemeRoot>…</ThemeRoot>\` for the default NWU purple in dark, or \`<ThemeRoot accent="teal" mode="light">…</ThemeRoot>\`. Give it \`style={{ minHeight: '100vh' }}\` for a full page. \`accent\` and \`mode\` set \`data-accent\` and \`data-theme\` on \`<html>\`, where the theme reads them — so it is **one accent and one mode per page**; two roots that disagree on one page would fight.
 
 ## Props
 
-- \`accent\`: \`"orange" | "violet" | "teal" | "blue" | "green" | "rose"\` — only the accent roles move; surfaces, ink and outlines stay put. Default orange.
+- \`accent\`: \`"nwu" | "orange" | "violet" | "teal" | "blue" | "green" | "rose"\` — the whole scheme follows the seed, the ground included (Material tints its neutrals toward the accent); status colours stay put. Default \`nwu\`, the NWU purple (Pantone 2603 C) with the university's turquoise as the tertiary.
+- \`mode\`: \`"dark" | "light"\` — Material's dark or light scheme from the same seed. Default dark.
 - \`style\`, \`className\` — pass layout here; padding defaults to 16px.
 `);
 
@@ -387,7 +388,7 @@ import { createComponent } from '@lit/react';
 ${imports.join('\n')}
 
 export { ThemeRoot } from './theme-root';
-export type { ThemeRootProps, Accent } from './theme-root';
+export type { ThemeRootProps, Accent, Mode } from './theme-root';
 
 ${blocks.join('\n\n')}
 `;

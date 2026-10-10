@@ -1,8 +1,8 @@
 # Material Web, themed — how to build with it
 
 These are Google's official **@material/web** components (Material 3, including the
-**Expressive** set) as React components, wearing a **dark-only** Material 3 Expressive
-theme. Every colour, face and corner comes from CSS custom properties; nothing here
+**Expressive** set) as React components, wearing SigmaOS's Material 3 Expressive theme —
+the NWU purple by default, in dark or light. Every colour, face and corner comes from CSS custom properties; nothing here
 takes a colour prop.
 
 ## 1. Wrap every design in `ThemeRoot`
@@ -10,14 +10,17 @@ takes a colour prop.
 ```jsx
 const { ThemeRoot, ExpressiveButton, OutlinedTextField, Icon } = window.MaterialWeb;
 
-<ThemeRoot accent="orange" style={{ minHeight: '100vh', padding: 24 }}>
+<ThemeRoot style={{ minHeight: '100vh', padding: 24 }}>
   …your design…
 </ThemeRoot>
 ```
 
-`ThemeRoot` paints the dark surface, the on-surface ink and the theme's sans. The theme is
-dark only — there is no light mode. `accent` is one of `orange` (default) `violet` `teal`
-`blue` `green` `rose`; it sets `data-accent` on `<html>`, so it is one accent per page, and only the accent roles move.
+`ThemeRoot` paints the surface, the on-surface ink and the theme's sans. `accent` is one of
+`nwu` (default — the NWU purple, with the university's turquoise as the tertiary) `orange`
+`violet` `teal` `blue` `green` `rose`; `mode` is `dark` (default) or `light`. They set
+`data-accent` and `data-theme` on `<html>`, so it is one accent and one mode per page. The
+whole scheme follows the accent, the ground included — Material tints its neutrals toward the
+seed — while the status colours keep their meaning.
 
 ## 2. Two families — prefer Expressive
 
