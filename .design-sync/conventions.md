@@ -37,6 +37,8 @@ seed — while the status colours keep their meaning.
 
 `<Icon>name</Icon>` renders any **Material Symbols** ligature — the full set, 4,299 names (the names on fonts.google.com/icons, e.g. `home`, `shopping_cart`, `calendar_month`, `arrow_forward`). Three styles ship; **Rounded** is the theme's default. Switch with a class on the icon or any ancestor: `className="icon-outlined"` or `className="icon-sharp"` (`icon-rounded` switches back). Axes are CSS custom properties: `style={{ '--md-icon-size': '32px', '--md-icon-fill': 1, '--md-icon-wght': 500 }}`. Filled icons (`--md-icon-fill: 1`) suit selected/active states.
 
+**Static SVGs.** When a design needs an icon as a file rather than the `<Icon>` font — a website asset, an export, an `<img>` — pick it from the icon library on Drive: `My Drive/Assets/Icons/Material Design/<style>/<name>.svg`, where `<name>` is the same ligature name. One 24px SVG per icon (weight 400, grade 0) that scales from its viewBox and fills with `currentColor`. Styles: `Round` (matches the theme's default), `Outlined`, `Sharp` and `Material Icons` (filled), 4,157 icons each; `Two Tone`, 2,175 icons from the older Material Icons set — a name missing there has no two-tone version.
+
 ## 5. Your own layout: tokens only, never literals
 
 Colour roles: `var(--md-sys-color-surface)`, `--md-sys-color-surface-container-low|-container|-container-high|-container-highest`, `--md-sys-color-on-surface`, `--md-sys-color-on-surface-variant`, `--md-sys-color-outline-variant`, `--md-sys-color-primary`, `--md-sys-color-primary-container`, `--md-sys-color-on-primary-container`, `--md-sys-color-tertiary`. Semantic aliases: `--surface-card`, `--text-primary`, `--text-secondary`, `--border-default`, `--accent-primary`.

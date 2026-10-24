@@ -179,6 +179,11 @@ Three things worth knowing:
   from [google/material-design-icons](https://github.com/google/material-design-icons)
   by `python3 tools/fetch-symbols.py`. Link `components/icons-full.css` after the
   bridge to use it; the React package and its Claude Design sync always do.
+- **Static SVGs live on Drive, not in the repo.** For icons as files (website
+  assets, exports), use `My Drive/Assets/Icons/Material Design/`: flat
+  `Material Icons` (filled), `Outlined`, `Round` and `Sharp` folders of 4,157
+  Symbols each, plus `Two Tone` (2,175, from the older Material Icons set). One
+  24px `<name>.svg` per icon, `fill="currentColor"`, named like the ligatures.
 - **Only the `latin` and `latin-ext` subsets are vendored.** Cyrillic, Greek and
   Vietnamese are left out, which is what keeps the whole set near 1 MB. Widen a
   family's subset set in `tools/fetch-fonts.py` if you need them.
