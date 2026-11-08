@@ -2,7 +2,7 @@
 
 These are Google's official **@material/web** components (Material 3, including the
 **Expressive** set) as React components, wearing SigmaOS's Material 3 Expressive theme —
-the NWU purple by default, in dark or light. Every colour, face and corner comes from CSS custom properties; nothing here
+the SigmaOS icon's blue (`#3d8bff`) by default, in dark or light. Every colour, face and corner comes from CSS custom properties; nothing here
 takes a colour prop.
 
 ## 1. Wrap every design in `ThemeRoot`
@@ -16,8 +16,9 @@ const { ThemeRoot, ExpressiveButton, OutlinedTextField, Icon } = window.Material
 ```
 
 `ThemeRoot` paints the surface, the on-surface ink and the theme's sans. `accent` is one of
-`nwu` (default — the NWU purple, with the university's turquoise as the tertiary) `orange`
-`violet` `teal` `blue` `green` `rose`; `mode` is `dark` (default) or `light`. They set
+`neon-blue` (default — the SigmaOS icon's blue, with the mark's amber as the tertiary), `nwu`
+(the NWU purple, with the university's turquoise) `orange` `violet` `teal` `blue` `green` `rose`
+and the rest of the `Accent` type; `mode` is `dark` (default) or `light`. They set
 `data-accent` and `data-theme` on `<html>`, so it is one accent and one mode per page. The
 whole scheme follows the accent, the ground included — Material tints its neutrals toward the
 seed — while the status colours keep their meaning.
