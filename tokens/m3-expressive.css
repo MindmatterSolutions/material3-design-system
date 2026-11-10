@@ -1,15 +1,23 @@
+/* Roboto Flex, self-hosted: the variable font from Neall's Drive (Fonts › Roboto ›
+   Roboto Flex), re-wrapped as WOFF2, keeping only the axes the theme uses: wght,
+   wdth from 75 to 125 for the headlines' 110, and opsz. The other ten are pinned
+   at their defaults, which took the file from 748 KB to 404 KB. Licence in
+   fonts/OFL-RobotoFlex.txt. */
+@font-face{font-family:'Roboto Flex';src:url('./fonts/RobotoFlex.woff2') format('woff2');font-weight:100 1000;font-stretch:75% 125%;font-style:normal;font-display:swap}
 /* Material 3 Expressive — a theme layer over the SigmaOS tokens.
  *
- * Loaded LAST (see index.css), so it re-points the semantic layer and nothing
+ * Loaded LAST (see main.jsx), so it re-points the semantic layer and nothing
  * else: no component knows it exists, the same contract tokens/moods.css
  * keeps. Delete the import and the site is back to Midnight exactly.
  *
  * Colour is Material's dynamic scheme generated from a seed with
  * material-color-utilities' SchemeFidelity, which keeps the seed itself as the
  * primary container so the accent stays as saturated as the brand drew it.
- * The default seed is the NWU purple, #6c3d91 (Pantone 2603 C), with the
- * university's turquoise, #00889c (3145 C), as the tertiary palette; the
- * orange that was the brand before is kept as an accent choice. The scheme's
+ * The default seed is the SigmaOS icon's blue, #3d8bff (the mark's night
+ * rings), pinned exactly as the primary container in both modes, with the
+ * mark's amber Σ, #ffb000, as the tertiary palette. The NWU purple that was
+ * the default before (2026-10-09 to 2026-11-08), and the orange before it,
+ * are kept as accent choices. The scheme's
  * role tokens are GENERATED — see the 2026-10-09 entry in .design-sync/NOTES.md
  * for the script — and the blocks between the "generated" markers are not to
  * be edited by hand.
@@ -26,7 +34,213 @@
  * dark theme's pastel status colours would not read on white.
  */
 :root{
-/* ---- generated: M3 system colour roles, NWU purple, dark ---- */
+/* ---- generated: M3 system colour roles, SigmaOS blue, dark ---- */
+--md-sys-color-primary:#acc7ff;
+--md-sys-color-on-primary:#002f67;
+--md-sys-color-primary-container:#3d8bff;
+--md-sys-color-on-primary-container:#002554;
+--md-sys-color-secondary:#afc7fa;
+--md-sys-color-on-secondary:#15305a;
+--md-sys-color-secondary-container:#2e4672;
+--md-sys-color-on-secondary-container:#9db5e7;
+--md-sys-color-tertiary:#ffba43;
+--md-sys-color-on-tertiary:#432c00;
+--md-sys-color-tertiary-container:#c28500;
+--md-sys-color-on-tertiary-container:#372300;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#005cbd;
+--md-sys-color-surface:#10131a;
+--md-sys-color-surface-dim:#10131a;
+--md-sys-color-surface-bright:#363941;
+--md-sys-color-surface-container-lowest:#0b0e15;
+--md-sys-color-surface-container-low:#181c23;
+--md-sys-color-surface-container:#1d2027;
+--md-sys-color-surface-container-high:#272a31;
+--md-sys-color-surface-container-highest:#32353c;
+--md-sys-color-on-surface:#e0e2ec;
+--md-sys-color-on-surface-variant:#c1c6d6;
+--md-sys-color-outline:#8b919f;
+--md-sys-color-outline-variant:#414754;
+--md-sys-color-inverse-surface:#e0e2ec;
+--md-sys-color-inverse-on-surface:#2d3038;
+--md-sys-color-surface-tint:#acc7ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#2d3038;
+--text-quaternary:#7e8492;
+--glass-bg:rgba(16,19,26,.86);
+/* ---- end generated ---- */
+
+/* ---- M3 shape scale (Expressive adds the -increased steps) ---- */
+--md-sys-shape-corner-extra-small:4px;
+--md-sys-shape-corner-small:8px;
+--md-sys-shape-corner-medium:12px;
+--md-sys-shape-corner-large:16px;
+--md-sys-shape-corner-large-increased:20px;
+--md-sys-shape-corner-extra-large:28px;
+--md-sys-shape-corner-extra-large-increased:32px;
+--md-sys-shape-corner-extra-extra-large:48px;
+--md-sys-shape-corner-full:999px;
+
+/* ---- M3 motion ----
+   The duration scale and the easing set from m3.material.io/styles/motion,
+   then Expressive's springs, approximated as cubic-beziers. Spatial curves
+   overshoot, which is the point of Expressive. Only use them for transform,
+   size and shape. Effects curves don't overshoot, and they are the ones for
+   colour and opacity. Three speeds: fast for a control answering a press,
+   default for a component moving (a rail, a popover, a pill unfolding), slow
+   for something large arriving. */
+--md-sys-motion-duration-short1:50ms;
+--md-sys-motion-duration-short2:100ms;
+--md-sys-motion-duration-short3:150ms;
+--md-sys-motion-duration-short4:200ms;
+--md-sys-motion-duration-medium1:250ms;
+--md-sys-motion-duration-medium2:300ms;
+--md-sys-motion-duration-medium3:350ms;
+--md-sys-motion-duration-medium4:400ms;
+--md-sys-motion-duration-long1:450ms;
+--md-sys-motion-duration-long2:500ms;
+--md-sys-motion-duration-long3:550ms;
+--md-sys-motion-duration-long4:600ms;
+--md-sys-motion-easing-standard:cubic-bezier(.2,0,0,1);
+--md-sys-motion-easing-standard-decelerate:cubic-bezier(0,0,0,1);
+--md-sys-motion-easing-standard-accelerate:cubic-bezier(.3,0,1,1);
+--md-sys-motion-easing-emphasized:cubic-bezier(.2,0,0,1);
+--md-sys-motion-easing-emphasized-decelerate:cubic-bezier(.05,.7,.1,1);
+--md-sys-motion-easing-emphasized-accelerate:cubic-bezier(.3,0,.8,.15);
+--md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9);
+--md-sys-motion-spring-fast-spatial-duration:350ms;
+--md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1);
+--md-sys-motion-spring-default-spatial-duration:500ms;
+--md-sys-motion-spring-slow-spatial:cubic-bezier(.3,1.1,.2,1);
+--md-sys-motion-spring-slow-spatial-duration:650ms;
+--md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1);
+--md-sys-motion-spring-fast-effects-duration:150ms;
+--md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1);
+--md-sys-motion-spring-default-effects-duration:200ms;
+--md-sys-motion-spring-slow-effects:cubic-bezier(.34,.8,.34,1);
+--md-sys-motion-spring-slow-effects-duration:300ms;
+
+/* ---- the SigmaOS semantic layer, re-pointed ---- */
+/* The page is surface and a panel is surface-container-low, one tonal step
+   up, as m3.material.io lays its own pages out. A tile inside a panel steps
+   up to -high (--surface-well, data-display/Card.jsx's Well, follows it); the
+   rail (--surface-rail) stays a step below the page. */
+--bg-page:var(--md-sys-color-surface);
+--bg-raised:var(--md-sys-color-surface-container-low);
+--surface-card:var(--md-sys-color-surface-container-low);
+--surface-card-alt:var(--md-sys-color-surface-container-high);
+--surface-overlay:var(--md-sys-color-surface-container-highest);
+--surface-rail:var(--md-sys-color-surface-container-lowest);
+--border-default:var(--md-sys-color-outline-variant);
+--text-primary:var(--md-sys-color-on-surface);
+--text-secondary:var(--md-sys-color-on-surface-variant);
+--text-tertiary:var(--md-sys-color-outline);
+--accent-primary:var(--md-sys-color-primary-container);
+--accent-primary-hover:var(--md-sys-color-primary);
+/* The brand purple is kept exact as the container, so it is a fill: 2.2:1 as
+   text on a dark panel. Accent text takes the scheme's primary instead — the
+   same seed's readable tone in each mode, restated by every accent block. */
+--accent-text:var(--md-sys-color-primary);
+--link-color:var(--md-sys-color-tertiary);
+--link-color-hover:var(--md-sys-color-primary);
+--field-fill:var(--md-sys-color-surface-container-highest);
+--field-line:var(--md-sys-color-outline);
+--field-fill-overlay:var(--md-sys-color-surface-bright);
+--field-line-overlay:var(--md-sys-color-outline);
+--surface-note:#3a2a1c;
+--text-note:#f1dcc4;
+
+/* shape: big soft containers, fully round controls. Chips go to M3's 8px
+   rather than a pill, so a chip reads differently from a button */
+--radius-panel:var(--md-sys-shape-corner-extra-large);
+--radius-overlay:var(--md-sys-shape-corner-extra-large);
+--radius-inset:var(--md-sys-shape-corner-large-increased);
+--radius-control:var(--md-sys-shape-corner-full);
+--radius-chip:var(--md-sys-shape-corner-small);
+--radius-mark:var(--md-sys-shape-corner-large);
+/* Space. M3's expanded-window grid: 24dp margins and 24dp between panes;
+   panels pad 28 and sit 20 apart, up from 24 and 16, which read as a wall of
+   tiles once the Academics page grew. Controls take M3's 40dp. */
+--control-height:40px;
+--panel-padding:26px 28px 28px;
+--grid-gap:20px;
+
+/* elevation in M3 dark is tonal: the surface-container step already says
+   "raised", so shadows are small and only there to separate */
+--shadow-inset-top:none;
+--shadow-panel:0 1px 2px rgba(0,0,0,.3);
+--shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15);
+--shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3);
+/* The ground html and body paint (shell.css). It is the page's surface, not
+   a step below it, so the space between panels is the surface of the scheme
+   rather than a near-black the panels float over. */
+--bg-grid-base:var(--md-sys-color-surface);
+
+/* motion: colour and border transitions take the effects curve; a press, a
+   move and a change of shape take the springs, which is where Expressive
+   lives. The splash and a page arriving take Material's long duration on the
+   emphasized decelerate: in fast and settling, not a linear fade. */
+--motion-duration:var(--md-sys-motion-spring-default-effects-duration);
+--motion-ease:var(--md-sys-motion-spring-default-effects);
+--transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+--transition-move:var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial);
+--transition-shape:var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+--motion-duration-long:var(--md-sys-motion-duration-long2);
+
+/* type: Roboto Flex is the Expressive sans. Mono stays for figures and
+   instrument readouts, where tabular digits are the job */
+--font-sans:'Roboto Flex','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+/* One family for every role M3 names, display to label. The serif was a
+   second voice for panel titles and hero numbers; M3's display and headline
+   roles are the same sans at a larger size and a heavier weight, which is what
+   the primitives in components/data-display/Card.jsx now set. */
+--font-figure:var(--font-sans);
+
+/* The type scale, moved onto M3's steps. The instrument scale ran 10–12px for
+   most of the page, under M3's 12sp floor for anything read (body-small) and
+   11sp for labels, so the density came at the cost of legibility:
+   text-xs 11 label-small · text-sm 12 label-medium/body-small ·
+   text-base 13 · text-md 14 body-medium/label-large · text-lg 16 body-large/
+   title-medium · text-2xl 22 title-large · text-3xl 28 headline-small ·
+   text-4xl 36 display-small. text-2xs (9px) is lifted to label-small too:
+   nothing M3 sets is smaller than 11sp. */
+--text-2xs:11px;
+--text-xs:11px;
+--text-sm:12px;
+--text-base:13px;
+--text-md:14px;
+--text-md-lg:14px;
+--text-lg:16px;
+--text-xl:16px;
+--text-2xl:22px;
+--text-3xl:28px;
+--text-4xl:36px;
+/* display-large: what a hero title is set in (the module view's name). Under
+   Midnight the step is 46; M3's display-large is 57. */
+--text-5xl:57px;
+
+/* M3's layout grid for an expanded window: 24dp margins, and 24dp between
+   panes. Cards inside a pane keep the 16dp spacer. */
+--page-padding:24px;
+
+/* the accent's tints, derived rather than written out, so the accent choices
+   below only have to restate the M3 roles and every tint follows them */
+--accent-primary-soft:color-mix(in srgb,var(--md-sys-color-primary-container) 12%,transparent);
+--accent-primary-line:color-mix(in srgb,var(--md-sys-color-primary-container) 35%,transparent);
+--accent-primary-radial:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--md-sys-color-primary-container) 34%,transparent) 0%,color-mix(in srgb,var(--md-sys-color-primary-container) 16%,transparent) 52%,transparent 100%);
+--glow-accent-wide:0 0 14px color-mix(in srgb,var(--md-sys-color-primary-container) 8%,transparent);
+}
+
+/* ---- accent choices, dark ----
+   The accent picker on config.html sets data-accent on <html> (lib/accent.js).
+   No attribute, or "neon-blue", is the SigmaOS blue above. Each choice is the M3 dark
+   scheme generated from its seed with the seed kept as the primary container,
+   the same fidelity rule the default uses, and its own tinted ground. */
+/* ---- generated ---- */
+:root[data-accent="nwu"]{
 --md-sys-color-primary:#e1b6ff;
 --md-sys-color-on-primary:#47166c;
 --md-sys-color-primary-container:#6c3d91;
@@ -60,171 +274,10 @@
 --md-sys-color-inverse-on-surface:#332f35;
 --md-sys-color-surface-tint:#e1b6ff;
 --md-sys-color-scrim:#000000;
---border-soft:#332f35 /* @kind color */;
---text-quaternary:#8a818e /* @kind color */;
---glass-bg:rgba(22,18,24,.86) /* @kind color */;
-/* ---- end generated ---- */
-
-/* ---- M3 shape scale (Expressive adds the -increased steps) ---- */
---md-sys-shape-corner-extra-small:4px;
---md-sys-shape-corner-small:8px;
---md-sys-shape-corner-medium:12px;
---md-sys-shape-corner-large:16px;
---md-sys-shape-corner-large-increased:20px;
---md-sys-shape-corner-extra-large:28px;
---md-sys-shape-corner-extra-large-increased:32px;
---md-sys-shape-corner-extra-extra-large:48px;
---md-sys-shape-corner-full:999px;
-
-/* ---- M3 motion ----
-   The duration scale and the easing set from m3.material.io/styles/motion,
-   then Expressive's springs, approximated as cubic-beziers. Spatial curves
-   overshoot, which is the point of Expressive. Only use them for transform,
-   size and shape. Effects curves don't overshoot, and they are the ones for
-   colour and opacity. Three speeds: fast for a control answering a press,
-   default for a component moving (a rail, a popover, a pill unfolding), slow
-   for something large arriving. */
---md-sys-motion-duration-short1:50ms /* @kind other */;
---md-sys-motion-duration-short2:100ms /* @kind other */;
---md-sys-motion-duration-short3:150ms /* @kind other */;
---md-sys-motion-duration-short4:200ms /* @kind other */;
---md-sys-motion-duration-medium1:250ms /* @kind other */;
---md-sys-motion-duration-medium2:300ms /* @kind other */;
---md-sys-motion-duration-medium3:350ms /* @kind other */;
---md-sys-motion-duration-medium4:400ms /* @kind other */;
---md-sys-motion-duration-long1:450ms /* @kind other */;
---md-sys-motion-duration-long2:500ms /* @kind other */;
---md-sys-motion-duration-long3:550ms /* @kind other */;
---md-sys-motion-duration-long4:600ms /* @kind other */;
---md-sys-motion-easing-standard:cubic-bezier(.2,0,0,1) /* @kind other */;
---md-sys-motion-easing-standard-decelerate:cubic-bezier(0,0,0,1) /* @kind other */;
---md-sys-motion-easing-standard-accelerate:cubic-bezier(.3,0,1,1) /* @kind other */;
---md-sys-motion-easing-emphasized:cubic-bezier(.2,0,0,1) /* @kind other */;
---md-sys-motion-easing-emphasized-decelerate:cubic-bezier(.05,.7,.1,1) /* @kind other */;
---md-sys-motion-easing-emphasized-accelerate:cubic-bezier(.3,0,.8,.15) /* @kind other */;
---md-sys-motion-spring-fast-spatial:cubic-bezier(.42,1.67,.21,.9) /* @kind other */;
---md-sys-motion-spring-fast-spatial-duration:350ms /* @kind other */;
---md-sys-motion-spring-default-spatial:cubic-bezier(.38,1.21,.22,1) /* @kind other */;
---md-sys-motion-spring-default-spatial-duration:500ms /* @kind other */;
---md-sys-motion-spring-slow-spatial:cubic-bezier(.3,1.1,.2,1) /* @kind other */;
---md-sys-motion-spring-slow-spatial-duration:650ms /* @kind other */;
---md-sys-motion-spring-fast-effects:cubic-bezier(.31,.94,.34,1) /* @kind other */;
---md-sys-motion-spring-fast-effects-duration:150ms /* @kind other */;
---md-sys-motion-spring-default-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
---md-sys-motion-spring-default-effects-duration:200ms /* @kind other */;
---md-sys-motion-spring-slow-effects:cubic-bezier(.34,.8,.34,1) /* @kind other */;
---md-sys-motion-spring-slow-effects-duration:300ms /* @kind other */;
-
-/* ---- the SigmaOS semantic layer, re-pointed ---- */
-/* The page is surface and a panel is surface-container-low, one tonal step
-   up, as m3.material.io lays its own pages out. A tile inside a panel steps
-   up to -high; the recessed well (--surface-rail, see components/Card.jsx)
-   stays a step below the page. */
---bg-page:var(--md-sys-color-surface) /* @kind color */;
---bg-raised:var(--md-sys-color-surface-container-low) /* @kind color */;
---surface-card:var(--md-sys-color-surface-container-low);
---surface-card-alt:var(--md-sys-color-surface-container-high);
---surface-overlay:var(--md-sys-color-surface-container-highest);
---surface-rail:var(--md-sys-color-surface-container-lowest);
---border-default:var(--md-sys-color-outline-variant) /* @kind color */;
---text-primary:var(--md-sys-color-on-surface);
---text-secondary:var(--md-sys-color-on-surface-variant);
---text-tertiary:var(--md-sys-color-outline);
---accent-primary:var(--md-sys-color-primary-container);
---accent-primary-hover:var(--md-sys-color-primary);
---link-color:var(--md-sys-color-tertiary);
---link-color-hover:var(--md-sys-color-primary);
---field-fill:var(--md-sys-color-surface-container-highest) /* @kind color */;
---field-line:var(--md-sys-color-outline) /* @kind color */;
---field-fill-overlay:var(--md-sys-color-surface-bright) /* @kind color */;
---field-line-overlay:var(--md-sys-color-outline) /* @kind color */;
---surface-note:#3a2a1c /* @kind color */;
---text-note:#f1dcc4 /* @kind color */;
-
-/* shape: big soft containers, fully round controls. Chips go to M3's 8px
-   rather than a pill, so a chip reads differently from a button */
---radius-panel:var(--md-sys-shape-corner-extra-large);
---radius-overlay:var(--md-sys-shape-corner-extra-large);
---radius-inset:var(--md-sys-shape-corner-large-increased);
---radius-control:var(--md-sys-shape-corner-full);
---radius-chip:var(--md-sys-shape-corner-small);
---radius-mark:var(--md-sys-shape-corner-large);
-/* Space. M3's expanded-window grid: 24dp margins and 24dp between panes;
-   panels pad 28 and sit 20 apart, up from 24 and 16, which read as a wall of
-   tiles once the Academics page grew. Controls take M3's 40dp. */
---control-height:40px;
---panel-padding:26px 28px 28px;
---grid-gap:20px;
-
-/* elevation in M3 dark is tonal: the surface-container step already says
-   "raised", so shadows are small and only there to separate */
---shadow-inset-top:none /* @kind other */;
---shadow-panel:0 1px 2px rgba(0,0,0,.3) /* @kind other */;
---shadow-raised:0 1px 3px rgba(0,0,0,.3),0 4px 8px 3px rgba(0,0,0,.15) /* @kind other */;
---shadow-overlay:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.3) /* @kind other */;
-/* The ground html and body paint (shell.css). It is the page's surface, not
-   a step below it, so the space between panels is the surface of the scheme
-   rather than a near-black the panels float over. */
---bg-grid-base:var(--md-sys-color-surface) /* @kind color */;
-
-/* motion: colour and border transitions take the effects curve; a press, a
-   move and a change of shape take the springs, which is where Expressive
-   lives. The splash and a page arriving take Material's long duration on the
-   emphasized decelerate: in fast and settling, not a linear fade. */
---motion-duration:var(--md-sys-motion-spring-default-effects-duration) /* @kind other */;
---motion-ease:var(--md-sys-motion-spring-default-effects) /* @kind other */;
---transition-press:transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
---transition-move:var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial) /* @kind other */;
---transition-shape:var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) /* @kind other */;
---motion-duration-long:var(--md-sys-motion-duration-long2) /* @kind other */;
-
-/* type: Roboto Flex is the Expressive sans. Mono stays for figures and
-   instrument readouts, where tabular digits are the job */
---font-sans:'Roboto Flex','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-/* One family for every role M3 names, display to label. The serif was a
-   second voice for panel titles and hero numbers; M3's display and headline
-   roles are the same sans at a larger size and a heavier weight, which is what
-   the primitives in components/Card.jsx now set. */
---font-figure:var(--font-sans);
-
-/* The type scale, moved onto M3's steps. The instrument scale ran 10–12px for
-   most of the page, under M3's 12sp floor for anything read (body-small) and
-   11sp for labels, so the density came at the cost of legibility:
-   text-xs 11 label-small · text-sm 12 label-medium/body-small ·
-   text-base 13 · text-md 14 body-medium/label-large · text-lg 16 body-large/
-   title-medium · text-2xl 22 title-large · text-3xl 28 headline-small ·
-   text-4xl 36 display-small. text-2xs (9px) is lifted to label-small too:
-   nothing M3 sets is smaller than 11sp. */
---text-2xs:11px;
---text-xs:11px;
---text-sm:12px;
---text-base:13px;
---text-md:14px;
---text-md-lg:14px;
---text-lg:16px;
---text-xl:16px;
---text-2xl:22px;
---text-3xl:28px;
---text-4xl:36px;
-
-/* M3's layout grid for an expanded window: 24dp margins, and 24dp between
-   panes. Cards inside a pane keep the 16dp spacer. */
---page-padding:24px;
-
-/* the accent's tints, derived rather than written out, so the accent choices
-   below only have to restate the M3 roles and every tint follows them */
---accent-primary-soft:color-mix(in srgb,var(--md-sys-color-primary-container) 12%,transparent);
---accent-primary-line:color-mix(in srgb,var(--md-sys-color-primary-container) 35%,transparent);
---accent-primary-radial:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--md-sys-color-primary-container) 34%,transparent) 0%,color-mix(in srgb,var(--md-sys-color-primary-container) 16%,transparent) 52%,transparent 100%);
---glow-accent-wide:0 0 14px color-mix(in srgb,var(--md-sys-color-primary-container) 8%,transparent);
+--border-soft:#332f35;
+--text-quaternary:#8a818e;
+--glass-bg:rgba(22,18,24,.86);
 }
-
-/* ---- accent choices, dark ----
-   The accent picker on config.html sets data-accent on <html> (lib/accent.js).
-   No attribute, or "nwu", is the NWU purple above. Each choice is the M3 dark
-   scheme generated from its seed with the seed kept as the primary container,
-   the same fidelity rule the default uses, and its own tinted ground. */
-/* ---- generated ---- */
 :root[data-accent="orange"]{
 --md-sys-color-primary:#ffb68e;
 --md-sys-color-on-primary:#542200;
@@ -259,9 +312,9 @@
 --md-sys-color-inverse-on-surface:#3b2d26;
 --md-sys-color-surface-tint:#ffb68e;
 --md-sys-color-scrim:#000000;
---border-soft:#3b2d26 /* @kind color */;
---text-quaternary:#997e70 /* @kind color */;
---glass-bg:rgba(28,17,11,.86) /* @kind color */;
+--border-soft:#3b2d26;
+--text-quaternary:#997e70;
+--glass-bg:rgba(28,17,11,.86);
 }
 :root[data-accent="violet"]{
 --md-sys-color-primary:#cbbeff;
@@ -297,9 +350,9 @@
 --md-sys-color-inverse-on-surface:#312f38;
 --md-sys-color-surface-tint:#cbbeff;
 --md-sys-color-scrim:#000000;
---border-soft:#312f38 /* @kind color */;
---text-quaternary:#868192 /* @kind color */;
---glass-bg:rgba(20,18,26,.86) /* @kind color */;
+--border-soft:#312f38;
+--text-quaternary:#868192;
+--glass-bg:rgba(20,18,26,.86);
 }
 :root[data-accent="teal"]{
 --md-sys-color-primary:#59dbc7;
@@ -335,9 +388,9 @@
 --md-sys-color-inverse-on-surface:#2b3230;
 --md-sys-color-surface-tint:#59dbc7;
 --md-sys-color-scrim:#000000;
---border-soft:#2b3230 /* @kind color */;
---text-quaternary:#798783 /* @kind color */;
---glass-bg:rgba(14,21,19,.86) /* @kind color */;
+--border-soft:#2b3230;
+--text-quaternary:#798783;
+--glass-bg:rgba(14,21,19,.86);
 }
 :root[data-accent="blue"]{
 --md-sys-color-primary:#adc6ff;
@@ -373,9 +426,47 @@
 --md-sys-color-inverse-on-surface:#2e3038;
 --md-sys-color-surface-tint:#adc6ff;
 --md-sys-color-scrim:#000000;
---border-soft:#2e3038 /* @kind color */;
---text-quaternary:#7f8392 /* @kind color */;
---glass-bg:rgba(17,19,26,.86) /* @kind color */;
+--border-soft:#2e3038;
+--text-quaternary:#7f8392;
+--glass-bg:rgba(17,19,26,.86);
+}
+:root[data-accent="neon-amber"]{
+--md-sys-color-primary:#ffd597;
+--md-sys-color-on-primary:#432c00;
+--md-sys-color-primary-container:#ffb000;
+--md-sys-color-on-primary-container:#6a4700;
+--md-sys-color-secondary:#ecbf7e;
+--md-sys-color-on-secondary:#432c00;
+--md-sys-color-secondary-container:#62430c;
+--md-sys-color-on-secondary-container:#dcb171;
+--md-sys-color-tertiary:#a1e5ff;
+--md-sys-color-on-tertiary:#003543;
+--md-sys-color-tertiary-container:#00d0fe;
+--md-sys-color-on-tertiary-container:#00556a;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#805600;
+--md-sys-color-surface:#191209;
+--md-sys-color-surface-dim:#191209;
+--md-sys-color-surface-bright:#40382d;
+--md-sys-color-surface-container-lowest:#130d05;
+--md-sys-color-surface-container-low:#211a11;
+--md-sys-color-surface-container:#251e15;
+--md-sys-color-surface-container-high:#30291e;
+--md-sys-color-surface-container-highest:#3c3429;
+--md-sys-color-on-surface:#eee0d0;
+--md-sys-color-on-surface-variant:#d7c4ac;
+--md-sys-color-outline:#9f8e78;
+--md-sys-color-outline-variant:#524533;
+--md-sys-color-inverse-surface:#eee0d0;
+--md-sys-color-inverse-on-surface:#372f25;
+--md-sys-color-surface-tint:#ffba43;
+--md-sys-color-scrim:#000000;
+--border-soft:#372f25;
+--text-quaternary:#91816c;
+--glass-bg:rgba(25,18,9,.86);
 }
 :root[data-accent="green"]{
 --md-sys-color-primary:#66dd8b;
@@ -411,9 +502,9 @@
 --md-sys-color-inverse-on-surface:#2b322c;
 --md-sys-color-surface-tint:#66dd8b;
 --md-sys-color-scrim:#000000;
---border-soft:#2b322c /* @kind color */;
---text-quaternary:#7a877a /* @kind color */;
---glass-bg:rgba(15,21,15,.86) /* @kind color */;
+--border-soft:#2b322c;
+--text-quaternary:#7a877a;
+--glass-bg:rgba(15,21,15,.86);
 }
 :root[data-accent="rose"]{
 --md-sys-color-primary:#ffb1c2;
@@ -449,9 +540,731 @@
 --md-sys-color-inverse-on-surface:#3a2d2f;
 --md-sys-color-surface-tint:#ffb1c2;
 --md-sys-color-scrim:#000000;
---border-soft:#3a2d2f /* @kind color */;
---text-quaternary:#977d82 /* @kind color */;
---glass-bg:rgba(27,16,19,.86) /* @kind color */;
+--border-soft:#3a2d2f;
+--text-quaternary:#977d82;
+--glass-bg:rgba(27,16,19,.86);
+}
+:root[data-accent="lavender"]{
+--md-sys-color-primary:#d3bcfc;
+--md-sys-color-on-primary:#38265b;
+--md-sys-color-primary-container:#b39ddb;
+--md-sys-color-on-primary-container:#453268;
+--md-sys-color-secondary:#cec2de;
+--md-sys-color-on-secondary:#342d42;
+--md-sys-color-secondary-container:#4e455c;
+--md-sys-color-on-secondary-container:#bfb4cf;
+--md-sys-color-tertiary:#d2c973;
+--md-sys-color-on-tertiary:#353100;
+--md-sys-color-tertiary-container:#b2aa58;
+--md-sys-color-on-tertiary-container:#433e00;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#68548d;
+--md-sys-color-surface:#141316;
+--md-sys-color-surface-dim:#141316;
+--md-sys-color-surface-bright:#3b383d;
+--md-sys-color-surface-container-lowest:#0f0d11;
+--md-sys-color-surface-container-low:#1d1b1f;
+--md-sys-color-surface-container:#211f23;
+--md-sys-color-surface-container-high:#2b292d;
+--md-sys-color-surface-container-highest:#363438;
+--md-sys-color-on-surface:#e6e1e6;
+--md-sys-color-on-surface-variant:#cbc4d0;
+--md-sys-color-outline:#948e99;
+--md-sys-color-outline-variant:#49454f;
+--md-sys-color-inverse-surface:#e6e1e6;
+--md-sys-color-inverse-on-surface:#322f34;
+--md-sys-color-surface-tint:#d3bcfc;
+--md-sys-color-scrim:#000000;
+--border-soft:#322f34;
+--text-quaternary:#87828c;
+--glass-bg:rgba(20,19,22,.86);
+}
+:root[data-accent="indigo"]{
+--md-sys-color-primary:#bac3ff;
+--md-sys-color-on-primary:#15267b;
+--md-sys-color-primary-container:#5c6bc0;
+--md-sys-color-on-primary-container:#f8f6ff;
+--md-sys-color-secondary:#bfc4ec;
+--md-sys-color-on-secondary:#292e4e;
+--md-sys-color-secondary-container:#3f4566;
+--md-sys-color-on-secondary-container:#aeb3da;
+--md-sys-color-tertiary:#f6bd58;
+--md-sys-color-on-tertiary:#432c00;
+--md-sys-color-tertiary-container:#976900;
+--md-sys-color-on-tertiary-container:#fff6ee;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#4858ab;
+--md-sys-color-surface:#121318;
+--md-sys-color-surface-dim:#121318;
+--md-sys-color-surface-bright:#39393f;
+--md-sys-color-surface-container-lowest:#0d0e13;
+--md-sys-color-surface-container-low:#1b1b21;
+--md-sys-color-surface-container:#1f1f25;
+--md-sys-color-surface-container-high:#29292f;
+--md-sys-color-surface-container-highest:#34343a;
+--md-sys-color-on-surface:#e3e1e9;
+--md-sys-color-on-surface-variant:#c6c5d3;
+--md-sys-color-outline:#8f909d;
+--md-sys-color-outline-variant:#454651;
+--md-sys-color-inverse-surface:#e3e1e9;
+--md-sys-color-inverse-on-surface:#303036;
+--md-sys-color-surface-tint:#bac3ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#303036;
+--text-quaternary:#828390;
+--glass-bg:rgba(18,19,24,.86);
+}
+:root[data-accent="navy"]{
+--md-sys-color-primary:#abc7ff;
+--md-sys-color-on-primary:#002f65;
+--md-sys-color-primary-container:#2f5fa7;
+--md-sys-color-on-primary-container:#cadbff;
+--md-sys-color-secondary:#b7c7e9;
+--md-sys-color-on-secondary:#21304c;
+--md-sys-color-secondary-container:#3a4966;
+--md-sys-color-on-secondary-container:#a9b9da;
+--md-sys-color-tertiary:#ffb876;
+--md-sys-color-on-tertiary:#4b2700;
+--md-sys-color-tertiary-container:#8f5000;
+--md-sys-color-on-tertiary-container:#ffd2ad;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#2d5ea6;
+--md-sys-color-surface:#111318;
+--md-sys-color-surface-dim:#111318;
+--md-sys-color-surface-bright:#37393e;
+--md-sys-color-surface-container-lowest:#0c0e13;
+--md-sys-color-surface-container-low:#1a1c20;
+--md-sys-color-surface-container:#1e2024;
+--md-sys-color-surface-container-high:#282a2f;
+--md-sys-color-surface-container-highest:#33353a;
+--md-sys-color-on-surface:#e2e2e9;
+--md-sys-color-on-surface-variant:#c3c6d2;
+--md-sys-color-outline:#8d909c;
+--md-sys-color-outline-variant:#434751;
+--md-sys-color-inverse-surface:#e2e2e9;
+--md-sys-color-inverse-on-surface:#2e3035;
+--md-sys-color-surface-tint:#abc7ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#2e3035;
+--text-quaternary:#80848f;
+--glass-bg:rgba(17,19,24,.86);
+}
+:root[data-accent="sky"]{
+--md-sys-color-primary:#9adbff;
+--md-sys-color-on-primary:#003548;
+--md-sys-color-primary-container:#4fc3f7;
+--md-sys-color-on-primary-container:#004e69;
+--md-sys-color-secondary:#a6cce2;
+--md-sys-color-on-secondary:#083446;
+--md-sys-color-secondary-container:#274d60;
+--md-sys-color-on-secondary-container:#98bed4;
+--md-sys-color-tertiary:#ffc893;
+--md-sys-color-on-tertiary:#4a2800;
+--md-sys-color-tertiary-container:#faa443;
+--md-sys-color-on-tertiary-container:#6b3d00;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#006688;
+--md-sys-color-surface:#0f1417;
+--md-sys-color-surface-dim:#0f1417;
+--md-sys-color-surface-bright:#353a3d;
+--md-sys-color-surface-container-lowest:#0a0f12;
+--md-sys-color-surface-container-low:#171c1f;
+--md-sys-color-surface-container:#1b2023;
+--md-sys-color-surface-container-high:#262b2e;
+--md-sys-color-surface-container-highest:#303539;
+--md-sys-color-on-surface:#dfe3e7;
+--md-sys-color-on-surface-variant:#bdc8d0;
+--md-sys-color-outline:#889299;
+--md-sys-color-outline-variant:#3e484f;
+--md-sys-color-inverse-surface:#dfe3e7;
+--md-sys-color-inverse-on-surface:#2c3134;
+--md-sys-color-surface-tint:#75d1ff;
+--md-sys-color-scrim:#000000;
+--border-soft:#2c3134;
+--text-quaternary:#7b858c;
+--glass-bg:rgba(15,20,23,.86);
+}
+:root[data-accent="cyan"]{
+--md-sys-color-primary:#53d7ef;
+--md-sys-color-on-primary:#00363e;
+--md-sys-color-primary-container:#22b8cf;
+--md-sys-color-on-primary-container:#00444e;
+--md-sys-color-secondary:#a2ced8;
+--md-sys-color-on-secondary:#01363e;
+--md-sys-color-secondary-container:#204d55;
+--md-sys-color-on-secondary-container:#91bcc6;
+--md-sys-color-tertiary:#ffb77b;
+--md-sys-color-on-tertiary:#4c2700;
+--md-sys-color-tertiary-container:#eb9443;
+--md-sys-color-on-tertiary-container:#5f3200;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#006876;
+--md-sys-color-surface:#0e1416;
+--md-sys-color-surface-dim:#0e1416;
+--md-sys-color-surface-bright:#343a3c;
+--md-sys-color-surface-container-lowest:#090f10;
+--md-sys-color-surface-container-low:#171d1e;
+--md-sys-color-surface-container:#1b2122;
+--md-sys-color-surface-container-high:#252b2c;
+--md-sys-color-surface-container-highest:#303637;
+--md-sys-color-on-surface:#dee3e5;
+--md-sys-color-on-surface-variant:#bcc9cc;
+--md-sys-color-outline:#869396;
+--md-sys-color-outline-variant:#3d494c;
+--md-sys-color-inverse-surface:#dee3e5;
+--md-sys-color-inverse-on-surface:#2b3133;
+--md-sys-color-surface-tint:#53d7ef;
+--md-sys-color-scrim:#000000;
+--border-soft:#2b3133;
+--text-quaternary:#798689;
+--glass-bg:rgba(14,20,22,.86);
+}
+:root[data-accent="turquoise"]{
+--md-sys-color-primary:#71d4ea;
+--md-sys-color-on-primary:#00363f;
+--md-sys-color-primary-container:#319db2;
+--md-sys-color-on-primary-container:#001317;
+--md-sys-color-secondary:#a9cdd6;
+--md-sys-color-on-secondary:#10353c;
+--md-sys-color-secondary-container:#294c53;
+--md-sys-color-on-secondary-container:#98bbc4;
+--md-sys-color-tertiary:#ffb874;
+--md-sys-color-on-tertiary:#4b2800;
+--md-sys-color-tertiary-container:#c6813b;
+--md-sys-color-on-tertiary-container:#1d0c00;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#006878;
+--md-sys-color-surface:#0f1415;
+--md-sys-color-surface-dim:#0f1415;
+--md-sys-color-surface-bright:#353a3b;
+--md-sys-color-surface-container-lowest:#0a0f10;
+--md-sys-color-surface-container-low:#181c1e;
+--md-sys-color-surface-container:#1c2022;
+--md-sys-color-surface-container-high:#262b2c;
+--md-sys-color-surface-container-highest:#313637;
+--md-sys-color-on-surface:#dfe3e4;
+--md-sys-color-on-surface-variant:#bdc8cc;
+--md-sys-color-outline:#879396;
+--md-sys-color-outline-variant:#3e494b;
+--md-sys-color-inverse-surface:#dfe3e4;
+--md-sys-color-inverse-on-surface:#2c3132;
+--md-sys-color-surface-tint:#71d4ea;
+--md-sys-color-scrim:#000000;
+--border-soft:#2c3132;
+--text-quaternary:#7a8689;
+--glass-bg:rgba(15,20,21,.86);
+}
+:root[data-accent="mint"]{
+--md-sys-color-primary:#6feec0;
+--md-sys-color-on-primary:#003828;
+--md-sys-color-primary-container:#4fd1a5;
+--md-sys-color-on-primary-container:#00563f;
+--md-sys-color-secondary:#a2d1bb;
+--md-sys-color-on-secondary:#063829;
+--md-sys-color-secondary-container:#224f3e;
+--md-sys-color-on-secondary-container:#91bfaa;
+--md-sys-color-tertiary:#ffccb4;
+--md-sys-color-on-tertiary:#542100;
+--md-sys-color-tertiary-container:#ffa676;
+--md-sys-color-on-tertiary-container:#783912;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#006c50;
+--md-sys-color-surface:#0e1512;
+--md-sys-color-surface-dim:#0e1512;
+--md-sys-color-surface-bright:#343b37;
+--md-sys-color-surface-container-lowest:#09100d;
+--md-sys-color-surface-container-low:#171d1a;
+--md-sys-color-surface-container:#1b211e;
+--md-sys-color-surface-container-high:#252b28;
+--md-sys-color-surface-container-highest:#303633;
+--md-sys-color-on-surface:#dee4df;
+--md-sys-color-on-surface-variant:#bccac1;
+--md-sys-color-outline:#86948c;
+--md-sys-color-outline-variant:#3d4a43;
+--md-sys-color-inverse-surface:#dee4df;
+--md-sys-color-inverse-on-surface:#2b322e;
+--md-sys-color-surface-tint:#5cdcaf;
+--md-sys-color-scrim:#000000;
+--border-soft:#2b322e;
+--text-quaternary:#79877f;
+--glass-bg:rgba(14,21,18,.86);
+}
+:root[data-accent="pine"]{
+--md-sys-color-primary:#88d6af;
+--md-sys-color-on-primary:#003824;
+--md-sys-color-primary-container:#2e7d5b;
+--md-sys-color-on-primary-container:#d0ffe3;
+--md-sys-color-secondary:#aecebb;
+--md-sys-color-on-secondary:#1a3628;
+--md-sys-color-secondary-container:#314d3e;
+--md-sys-color-on-secondary-container:#9dbcaa;
+--md-sys-color-tertiary:#ffb3b3;
+--md-sys-color-on-tertiary:#591b1f;
+--md-sys-color-tertiary-container:#a7585a;
+--md-sys-color-on-tertiary-container:#fff1f0;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#176b4b;
+--md-sys-color-surface:#101412;
+--md-sys-color-surface-dim:#101412;
+--md-sys-color-surface-bright:#363a37;
+--md-sys-color-surface-container-lowest:#0b0f0d;
+--md-sys-color-surface-container-low:#181d1a;
+--md-sys-color-surface-container:#1c211e;
+--md-sys-color-surface-container-high:#272b28;
+--md-sys-color-surface-container-highest:#313633;
+--md-sys-color-on-surface:#e0e3df;
+--md-sys-color-on-surface-variant:#bec9c1;
+--md-sys-color-outline:#89938c;
+--md-sys-color-outline-variant:#3f4943;
+--md-sys-color-inverse-surface:#e0e3df;
+--md-sys-color-inverse-on-surface:#2d312e;
+--md-sys-color-surface-tint:#88d6af;
+--md-sys-color-scrim:#000000;
+--border-soft:#2d312e;
+--text-quaternary:#7c867f;
+--glass-bg:rgba(16,20,18,.86);
+}
+:root[data-accent="lime"]{
+--md-sys-color-primary:#b7e957;
+--md-sys-color-on-primary:#243600;
+--md-sys-color-primary-container:#9ccc3d;
+--md-sys-color-on-primary-container:#3a5400;
+--md-sys-color-secondary:#b8cf8c;
+--md-sys-color-on-secondary:#253503;
+--md-sys-color-secondary-container:#3b4d18;
+--md-sys-color-on-secondary-container:#a7bd7c;
+--md-sys-color-tertiary:#ffc7f8;
+--md-sys-color-on-tertiary:#5a005f;
+--md-sys-color-tertiary-container:#ff98fc;
+--md-sys-color-on-tertiary-container:#7d2381;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#496800;
+--md-sys-color-surface:#11140b;
+--md-sys-color-surface-dim:#11140b;
+--md-sys-color-surface-bright:#373a2f;
+--md-sys-color-surface-container-lowest:#0c0f07;
+--md-sys-color-surface-container-low:#1a1d13;
+--md-sys-color-surface-container:#1e2117;
+--md-sys-color-surface-container-high:#282b21;
+--md-sys-color-surface-container-highest:#33362b;
+--md-sys-color-on-surface:#e2e4d4;
+--md-sys-color-on-surface-variant:#c3c9b2;
+--md-sys-color-outline:#8d937e;
+--md-sys-color-outline-variant:#434937;
+--md-sys-color-inverse-surface:#e2e4d4;
+--md-sys-color-inverse-on-surface:#2e3227;
+--md-sys-color-surface-tint:#a5d646;
+--md-sys-color-scrim:#000000;
+--border-soft:#2e3227;
+--text-quaternary:#808671;
+--glass-bg:rgba(17,20,11,.86);
+}
+:root[data-accent="olive"]{
+--md-sys-color-primary:#c5cd72;
+--md-sys-color-on-primary:#2f3300;
+--md-sys-color-primary-container:#8f9642;
+--md-sys-color-on-primary-container:#272a00;
+--md-sys-color-secondary:#c7ca9e;
+--md-sys-color-on-secondary:#303213;
+--md-sys-color-secondary-container:#494b2a;
+--md-sys-color-on-secondary-container:#b9bb91;
+--md-sys-color-tertiary:#e3b6fa;
+--md-sys-color-on-tertiary:#442059;
+--md-sys-color-tertiary-container:#aa81c1;
+--md-sys-color-on-tertiary-container:#3a1750;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#5d6312;
+--md-sys-color-surface:#13140e;
+--md-sys-color-surface-dim:#13140e;
+--md-sys-color-surface-bright:#3a3a32;
+--md-sys-color-surface-container-lowest:#0e0f09;
+--md-sys-color-surface-container-low:#1c1c16;
+--md-sys-color-surface-container:#20201a;
+--md-sys-color-surface-container-high:#2a2a24;
+--md-sys-color-surface-container-highest:#35352e;
+--md-sys-color-on-surface:#e5e3d8;
+--md-sys-color-on-surface-variant:#c8c7b5;
+--md-sys-color-outline:#929281;
+--md-sys-color-outline-variant:#474839;
+--md-sys-color-inverse-surface:#e5e3d8;
+--md-sys-color-inverse-on-surface:#31312a;
+--md-sys-color-surface-tint:#c5cd72;
+--md-sys-color-scrim:#000000;
+--border-soft:#31312a;
+--text-quaternary:#858574;
+--glass-bg:rgba(19,20,14,.86);
+}
+:root[data-accent="peach"]{
+--md-sys-color-primary:#ffd2c4;
+--md-sys-color-on-primary:#54200f;
+--md-sys-color-primary-container:#ffab91;
+--md-sys-color-on-primary-container:#793d29;
+--md-sys-color-secondary:#e9bdaf;
+--md-sys-color-on-secondary:#452920;
+--md-sys-color-secondary-container:#5f3f35;
+--md-sys-color-on-secondary-container:#d7ab9f;
+--md-sys-color-tertiary:#9beadf;
+--md-sys-color-on-tertiary:#003732;
+--md-sys-color-tertiary-container:#7fcec3;
+--md-sys-color-on-tertiary-container:#005851;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#8d4d38;
+--md-sys-color-surface:#181210;
+--md-sys-color-surface-dim:#181210;
+--md-sys-color-surface-bright:#403735;
+--md-sys-color-surface-container-lowest:#130d0b;
+--md-sys-color-surface-container-low:#211a18;
+--md-sys-color-surface-container:#251e1c;
+--md-sys-color-surface-container-high:#302826;
+--md-sys-color-surface-container-highest:#3b3331;
+--md-sys-color-on-surface:#ede0dc;
+--md-sys-color-on-surface-variant:#d8c2bb;
+--md-sys-color-outline:#a18c87;
+--md-sys-color-outline-variant:#53433f;
+--md-sys-color-inverse-surface:#ede0dc;
+--md-sys-color-inverse-on-surface:#362f2c;
+--md-sys-color-surface-tint:#ffb59e;
+--md-sys-color-scrim:#000000;
+--border-soft:#362f2c;
+--text-quaternary:#93807a;
+--glass-bg:rgba(24,18,16,.86);
+}
+:root[data-accent="magenta"]{
+--md-sys-color-primary:#ffb0ce;
+--md-sys-color-on-primary:#63003a;
+--md-sys-color-primary-container:#fb4aa4;
+--md-sys-color-on-primary-container:#2a0016;
+--md-sys-color-secondary:#ffb0ce;
+--md-sys-color-on-secondary:#5f0b39;
+--md-sys-color-secondary-container:#7d2550;
+--md-sys-color-on-secondary-container:#ff94c0;
+--md-sys-color-tertiary:#70df54;
+--md-sys-color-on-tertiary:#063900;
+--md-sys-color-tertiary-container:#38a61f;
+--md-sys-color-on-tertiary-container:#011500;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#b70070;
+--md-sys-color-surface:#1d1015;
+--md-sys-color-surface-dim:#1d1015;
+--md-sys-color-surface-bright:#45353a;
+--md-sys-color-surface-container-lowest:#170a0f;
+--md-sys-color-surface-container-low:#25181d;
+--md-sys-color-surface-container:#2a1c21;
+--md-sys-color-surface-container-high:#35262b;
+--md-sys-color-surface-container-highest:#403036;
+--md-sys-color-on-surface:#f6dce3;
+--md-sys-color-on-surface-variant:#dfbec8;
+--md-sys-color-outline:#a68993;
+--md-sys-color-outline-variant:#584049;
+--md-sys-color-inverse-surface:#f6dce3;
+--md-sys-color-inverse-on-surface:#3c2c32;
+--md-sys-color-surface-tint:#ffb0ce;
+--md-sys-color-scrim:#000000;
+--border-soft:#3c2c32;
+--text-quaternary:#997c86;
+--glass-bg:rgba(29,16,21,.86);
+}
+:root[data-accent="fuchsia"]{
+--md-sys-color-primary:#f6adff;
+--md-sys-color-on-primary:#560068;
+--md-sys-color-primary-container:#d260ea;
+--md-sys-color-on-primary-container:#2f003a;
+--md-sys-color-secondary:#f0b1f7;
+--md-sys-color-on-secondary:#4c1b56;
+--md-sys-color-secondary-container:#65326f;
+--md-sys-color-on-secondary-container:#dda0e5;
+--md-sys-color-tertiary:#d1cb4e;
+--md-sys-color-on-tertiary:#343200;
+--md-sys-color-tertiary-container:#b5af35;
+--md-sys-color-on-tertiary-container:#444100;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#9825b2;
+--md-sys-color-surface:#181119;
+--md-sys-color-surface-dim:#181119;
+--md-sys-color-surface-bright:#40363f;
+--md-sys-color-surface-container-lowest:#130c14;
+--md-sys-color-surface-container-low:#211921;
+--md-sys-color-surface-container:#251d25;
+--md-sys-color-surface-container-high:#302730;
+--md-sys-color-surface-container-highest:#3b323b;
+--md-sys-color-on-surface:#eddeea;
+--md-sys-color-on-surface-variant:#d4c1d2;
+--md-sys-color-outline:#9d8b9c;
+--md-sys-color-outline-variant:#504251;
+--md-sys-color-inverse-surface:#eddeea;
+--md-sys-color-inverse-on-surface:#372e36;
+--md-sys-color-surface-tint:#f6adff;
+--md-sys-color-scrim:#000000;
+--border-soft:#372e36;
+--text-quaternary:#907f8f;
+--glass-bg:rgba(24,17,25,.86);
+}
+:root[data-accent="plum"]{
+--md-sys-color-primary:#ffabf0;
+--md-sys-color-on-primary:#561251;
+--md-sys-color-primary-container:#8e4585;
+--md-sys-color-on-primary-container:#ffccf2;
+--md-sys-color-secondary:#e4bad9;
+--md-sys-color-on-secondary:#44263f;
+--md-sys-color-secondary-container:#5c3c56;
+--md-sys-color-on-secondary-container:#d2a9c8;
+--md-sys-color-tertiary:#add36e;
+--md-sys-color-on-tertiary:#233600;
+--md-sys-color-tertiary-container:#4a6a0e;
+--md-sys-color-on-tertiary-container:#c2e981;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#8c4383;
+--md-sys-color-surface:#171216;
+--md-sys-color-surface-dim:#171216;
+--md-sys-color-surface-bright:#3f373c;
+--md-sys-color-surface-container-lowest:#120c11;
+--md-sys-color-surface-container-low:#201a1e;
+--md-sys-color-surface-container:#241e22;
+--md-sys-color-surface-container-high:#2f282d;
+--md-sys-color-surface-container-highest:#3a3337;
+--md-sys-color-on-surface:#ecdfe5;
+--md-sys-color-on-surface-variant:#d4c1cd;
+--md-sys-color-outline:#9c8c97;
+--md-sys-color-outline-variant:#50434c;
+--md-sys-color-inverse-surface:#ecdfe5;
+--md-sys-color-inverse-on-surface:#352e33;
+--md-sys-color-surface-tint:#ffabf0;
+--md-sys-color-scrim:#000000;
+--border-soft:#352e33;
+--text-quaternary:#8f7f8a;
+--glass-bg:rgba(23,18,22,.86);
+}
+:root[data-accent="mauve"]{
+--md-sys-color-primary:#e9b8de;
+--md-sys-color-on-primary:#472443;
+--md-sys-color-primary-container:#af83a7;
+--md-sys-color-on-primary-container:#371634;
+--md-sys-color-secondary:#d8bfd1;
+--md-sys-color-on-secondary:#3c2b39;
+--md-sys-color-secondary-container:#53414f;
+--md-sys-color-on-secondary-container:#c6aebf;
+--md-sys-color-tertiary:#bbce93;
+--md-sys-color-on-tertiary:#273509;
+--md-sys-color-tertiary-container:#869761;
+--md-sys-color-on-tertiary-container:#1a2700;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#795173;
+--md-sys-color-surface:#161215;
+--md-sys-color-surface-dim:#161215;
+--md-sys-color-surface-bright:#3c383b;
+--md-sys-color-surface-container-lowest:#100d0f;
+--md-sys-color-surface-container-low:#1e1a1d;
+--md-sys-color-surface-container:#221e21;
+--md-sys-color-surface-container-high:#2d292b;
+--md-sys-color-surface-container-highest:#383336;
+--md-sys-color-on-surface:#e9e0e3;
+--md-sys-color-on-surface-variant:#d1c3cb;
+--md-sys-color-outline:#9a8d95;
+--md-sys-color-outline-variant:#4e444b;
+--md-sys-color-inverse-surface:#e9e0e3;
+--md-sys-color-inverse-on-surface:#342f32;
+--md-sys-color-surface-tint:#e9b8de;
+--md-sys-color-scrim:#000000;
+--border-soft:#342f32;
+--text-quaternary:#8c8088;
+--glass-bg:rgba(22,18,21,.86);
+}
+:root[data-accent="graphite"]{
+--md-sys-color-primary:#c2c7d0;
+--md-sys-color-on-primary:#2c3138;
+--md-sys-color-primary-container:#8c919a;
+--md-sys-color-on-primary-container:#232830;
+--md-sys-color-secondary:#c6c6ca;
+--md-sys-color-on-secondary:#2f3034;
+--md-sys-color-secondary-container:#47494c;
+--md-sys-color-on-secondary-container:#b8b8bc;
+--md-sys-color-tertiary:#d7c3b5;
+--md-sys-color-on-tertiary:#3a2e25;
+--md-sys-color-tertiary-container:#9f8d81;
+--md-sys-color-on-tertiary-container:#31251c;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#595f67;
+--md-sys-color-surface:#131314;
+--md-sys-color-surface-dim:#131314;
+--md-sys-color-surface-bright:#393939;
+--md-sys-color-surface-container-lowest:#0e0e0f;
+--md-sys-color-surface-container-low:#1c1b1c;
+--md-sys-color-surface-container:#201f20;
+--md-sys-color-surface-container-high:#2a2a2a;
+--md-sys-color-surface-container-highest:#353535;
+--md-sys-color-on-surface:#e5e2e2;
+--md-sys-color-on-surface-variant:#c5c6cb;
+--md-sys-color-outline:#8f9195;
+--md-sys-color-outline-variant:#45474b;
+--md-sys-color-inverse-surface:#e5e2e2;
+--md-sys-color-inverse-on-surface:#313031;
+--md-sys-color-surface-tint:#c2c7d0;
+--md-sys-color-scrim:#000000;
+--border-soft:#313031;
+--text-quaternary:#828488;
+--glass-bg:rgba(19,19,20,.86);
+}
+:root[data-accent="slate"]{
+--md-sys-color-primary:#accae9;
+--md-sys-color-on-primary:#13334c;
+--md-sys-color-primary-container:#5b7894;
+--md-sys-color-on-primary-container:#fefdff;
+--md-sys-color-secondary:#bdc8d5;
+--md-sys-color-on-secondary:#27313c;
+--md-sys-color-secondary-container:#3d4853;
+--md-sys-color-on-secondary-container:#abb6c4;
+--md-sys-color-tertiary:#eabf8a;
+--md-sys-color-on-tertiary:#452b03;
+--md-sys-color-tertiary-container:#926f41;
+--md-sys-color-on-tertiary-container:#fffdff;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#44617c;
+--md-sys-color-surface:#121315;
+--md-sys-color-surface-dim:#121315;
+--md-sys-color-surface-bright:#38393b;
+--md-sys-color-surface-container-lowest:#0d0e10;
+--md-sys-color-surface-container-low:#1a1c1e;
+--md-sys-color-surface-container:#1e2022;
+--md-sys-color-surface-container-high:#292a2c;
+--md-sys-color-surface-container-highest:#343537;
+--md-sys-color-on-surface:#e3e2e4;
+--md-sys-color-on-surface-variant:#c3c7cd;
+--md-sys-color-outline:#8d9197;
+--md-sys-color-outline-variant:#43474d;
+--md-sys-color-inverse-surface:#e3e2e4;
+--md-sys-color-inverse-on-surface:#2f3032;
+--md-sys-color-surface-tint:#accae9;
+--md-sys-color-scrim:#000000;
+--border-soft:#2f3032;
+--text-quaternary:#80848a;
+--glass-bg:rgba(18,19,21,.86);
+}
+:root[data-accent="sand"]{
+--md-sys-color-primary:#decd99;
+--md-sys-color-on-primary:#3a3009;
+--md-sys-color-primary-container:#c2b280;
+--md-sys-color-on-primary-container:#4f441c;
+--md-sys-color-secondary:#d0c6ad;
+--md-sys-color-on-secondary:#36301f;
+--md-sys-color-secondary-container:#4f4936;
+--md-sys-color-on-secondary-container:#c1b8a0;
+--md-sys-color-tertiary:#d0c9ee;
+--md-sys-color-on-tertiary:#302d4a;
+--md-sys-color-tertiary-container:#b4aed2;
+--md-sys-color-on-tertiary-container:#45415f;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#6a5e33;
+--md-sys-color-surface:#151310;
+--md-sys-color-surface-dim:#151310;
+--md-sys-color-surface-bright:#3b3935;
+--md-sys-color-surface-container-lowest:#0f0e0b;
+--md-sys-color-surface-container-low:#1d1b18;
+--md-sys-color-surface-container:#211f1c;
+--md-sys-color-surface-container-high:#2c2a26;
+--md-sys-color-surface-container-highest:#373430;
+--md-sys-color-on-surface:#e7e2db;
+--md-sys-color-on-surface-variant:#cdc6b7;
+--md-sys-color-outline:#969083;
+--md-sys-color-outline-variant:#4b463b;
+--md-sys-color-inverse-surface:#e7e2db;
+--md-sys-color-inverse-on-surface:#32302c;
+--md-sys-color-surface-tint:#d6c692;
+--md-sys-color-scrim:#000000;
+--border-soft:#32302c;
+--text-quaternary:#898376;
+--glass-bg:rgba(21,19,16,.86);
+}
+:root[data-accent="cocoa"]{
+--md-sys-color-primary:#e4beb2;
+--md-sys-color-on-primary:#422b22;
+--md-sys-color-primary-container:#8d6e63;
+--md-sys-color-on-primary-container:#fffcff;
+--md-sys-color-secondary:#d6c2bc;
+--md-sys-color-on-secondary:#3a2e29;
+--md-sys-color-secondary-container:#52443f;
+--md-sys-color-on-secondary-container:#c4b1ab;
+--md-sys-color-tertiary:#b4cbca;
+--md-sys-color-on-tertiary:#1f3433;
+--md-sys-color-tertiary-container:#637978;
+--md-sys-color-on-tertiary-container:#f5fffe;
+--md-sys-color-error:#ffb4ab;
+--md-sys-color-on-error:#690005;
+--md-sys-color-error-container:#93000a;
+--md-sys-color-on-error-container:#ffdad6;
+--md-sys-color-inverse-primary:#75584d;
+--md-sys-color-surface:#161312;
+--md-sys-color-surface-dim:#161312;
+--md-sys-color-surface-bright:#3c3837;
+--md-sys-color-surface-container-lowest:#100e0d;
+--md-sys-color-surface-container-low:#1e1b1a;
+--md-sys-color-surface-container:#221f1e;
+--md-sys-color-surface-container-high:#2d2928;
+--md-sys-color-surface-container-highest:#383433;
+--md-sys-color-on-surface:#e8e1df;
+--md-sys-color-on-surface-variant:#d4c3be;
+--md-sys-color-outline:#9c8e89;
+--md-sys-color-outline-variant:#504441;
+--md-sys-color-inverse-surface:#e8e1df;
+--md-sys-color-inverse-on-surface:#33302e;
+--md-sys-color-surface-tint:#e4beb2;
+--md-sys-color-scrim:#000000;
+--border-soft:#33302e;
+--text-quaternary:#8f817c;
+--glass-bg:rgba(22,19,18,.86);
 }
 /* ---- end generated ---- */
 
@@ -463,7 +1276,80 @@
    darker set that reads on white, and a note is paper rather than a lamp. */
 :root[data-theme="light"]{
 color-scheme:light;
-/* ---- generated: NWU purple, light ---- */
+/* ---- generated: SigmaOS blue, light ---- */
+--md-sys-color-primary:#0059b9;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#3d8bff;
+--md-sys-color-on-primary-container:#002554;
+--md-sys-color-secondary:#475e8b;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#b5ccff;
+--md-sys-color-on-secondary-container:#3e5682;
+--md-sys-color-tertiary:#7c5400;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#9d6b00;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#acc7ff;
+--md-sys-color-surface:#f9f9ff;
+--md-sys-color-surface-dim:#d8d9e3;
+--md-sys-color-surface-bright:#f9f9ff;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f2f3fd;
+--md-sys-color-surface-container:#ecedf7;
+--md-sys-color-surface-container-high:#e6e8f2;
+--md-sys-color-surface-container-highest:#e0e2ec;
+--md-sys-color-on-surface:#181c23;
+--md-sys-color-on-surface-variant:#414754;
+--md-sys-color-outline:#727785;
+--md-sys-color-outline-variant:#c1c6d6;
+--md-sys-color-inverse-surface:#2d3038;
+--md-sys-color-inverse-on-surface:#eff0fa;
+--md-sys-color-surface-tint:#005cbd;
+--md-sys-color-scrim:#000000;
+--border-soft:#e0e2ec;
+--text-quaternary:#656a78;
+--glass-bg:rgba(249,249,255,.86);
+/* ---- end generated ---- */
+--surface-note:#f7ebd2;
+--text-note:#4a3812;
+--shadow-panel:0 1px 2px rgba(31,20,40,.08);
+--shadow-raised:0 1px 3px rgba(31,20,40,.14),0 4px 8px 3px rgba(31,20,40,.08);
+--shadow-overlay:0 4px 8px 3px rgba(31,20,40,.1),0 1px 3px rgba(31,20,40,.16);
+--status-success:#1f8a55;
+--status-success-soft:color-mix(in srgb,#1f8a55 12%,transparent);
+--status-success-line:color-mix(in srgb,#1f8a55 40%,transparent);
+--status-danger:#b8342d;
+--status-danger-soft:color-mix(in srgb,#b8342d 12%,transparent);
+--status-danger-line:color-mix(in srgb,#b8342d 40%,transparent);
+--status-warning:#8a6100;
+--status-warning-soft:color-mix(in srgb,#8a6100 12%,transparent);
+--status-warning-line:color-mix(in srgb,#8a6100 40%,transparent);
+--status-info:#2a63c9;
+--status-info-soft:color-mix(in srgb,#2a63c9 12%,transparent);
+--status-info-line:color-mix(in srgb,#2a63c9 40%,transparent);
+--status-pending:#5b48c9;
+--status-pending-soft:color-mix(in srgb,#5b48c9 12%,transparent);
+--status-pending-line:color-mix(in srgb,#5b48c9 40%,transparent);
+--status-active:#0f8a8d;
+--status-active-soft:color-mix(in srgb,#0f8a8d 12%,transparent);
+--status-active-line:color-mix(in srgb,#0f8a8d 40%,transparent);
+--status-review:#b03a6a;
+--status-review-soft:color-mix(in srgb,#b03a6a 12%,transparent);
+--status-review-line:color-mix(in srgb,#b03a6a 40%,transparent);
+--status-neutral:#5e6875;
+--status-neutral-soft:color-mix(in srgb,#5e6875 10%,transparent);
+--status-neutral-line:color-mix(in srgb,#5e6875 30%,transparent);
+/* the graph's categorical hues, darkened the same way so a dot reads on white */
+--series-1:#b8342d;--series-2:#2a63c9;--series-3:#8a6100;--series-4:#5b48c9;--series-5:#1f8a55;--series-6:#0f8a8d;--series-7:#8d4bb5;
+}
+
+/* ---- accent choices, light ---- */
+/* ---- generated ---- */
+:root[data-accent="nwu"][data-theme="light"]{
 --md-sys-color-primary:#532478;
 --md-sys-color-on-primary:#ffffff;
 --md-sys-color-primary-container:#6c3d91;
@@ -497,45 +1383,10 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#f7eef6;
 --md-sys-color-surface-tint:#78499e;
 --md-sys-color-scrim:#000000;
---border-soft:#e9e0e8 /* @kind color */;
---text-quaternary:#706874 /* @kind color */;
---glass-bg:rgba(255,247,253,.86) /* @kind color */;
-/* ---- end generated ---- */
---surface-note:#f7ebd2 /* @kind color */;
---text-note:#4a3812 /* @kind color */;
---shadow-panel:0 1px 2px rgba(31,20,40,.08) /* @kind other */;
---shadow-raised:0 1px 3px rgba(31,20,40,.14),0 4px 8px 3px rgba(31,20,40,.08) /* @kind other */;
---shadow-overlay:0 4px 8px 3px rgba(31,20,40,.1),0 1px 3px rgba(31,20,40,.16) /* @kind other */;
---status-success:#1f8a55 /* @kind color */;
---status-success-soft:color-mix(in srgb,#1f8a55 12%,transparent) /* @kind color */;
---status-success-line:color-mix(in srgb,#1f8a55 40%,transparent) /* @kind color */;
---status-danger:#b8342d /* @kind color */;
---status-danger-soft:color-mix(in srgb,#b8342d 12%,transparent) /* @kind color */;
---status-danger-line:color-mix(in srgb,#b8342d 40%,transparent) /* @kind color */;
---status-warning:#8a6100 /* @kind color */;
---status-warning-soft:color-mix(in srgb,#8a6100 12%,transparent) /* @kind color */;
---status-warning-line:color-mix(in srgb,#8a6100 40%,transparent) /* @kind color */;
---status-info:#2a63c9 /* @kind color */;
---status-info-soft:color-mix(in srgb,#2a63c9 12%,transparent) /* @kind color */;
---status-info-line:color-mix(in srgb,#2a63c9 40%,transparent) /* @kind color */;
---status-pending:#5b48c9 /* @kind color */;
---status-pending-soft:color-mix(in srgb,#5b48c9 12%,transparent) /* @kind color */;
---status-pending-line:color-mix(in srgb,#5b48c9 40%,transparent) /* @kind color */;
---status-active:#0f8a8d /* @kind color */;
---status-active-soft:color-mix(in srgb,#0f8a8d 12%,transparent) /* @kind color */;
---status-active-line:color-mix(in srgb,#0f8a8d 40%,transparent) /* @kind color */;
---status-review:#b03a6a /* @kind color */;
---status-review-soft:color-mix(in srgb,#b03a6a 12%,transparent) /* @kind color */;
---status-review-line:color-mix(in srgb,#b03a6a 40%,transparent) /* @kind color */;
---status-neutral:#5e6875 /* @kind color */;
---status-neutral-soft:color-mix(in srgb,#5e6875 10%,transparent) /* @kind color */;
---status-neutral-line:color-mix(in srgb,#5e6875 30%,transparent) /* @kind color */;
-/* the graph's categorical hues, darkened the same way so a dot reads on white */
---series-1:#b8342d /* @kind color */;--series-2:#2a63c9 /* @kind color */;--series-3:#8a6100 /* @kind color */;--series-4:#5b48c9 /* @kind color */;--series-5:#1f8a55 /* @kind color */;--series-6:#0f8a8d /* @kind color */;--series-7:#8d4bb5 /* @kind color */;
+--border-soft:#e9e0e8;
+--text-quaternary:#706874;
+--glass-bg:rgba(255,247,253,.86);
 }
-
-/* ---- accent choices, light ---- */
-/* ---- generated ---- */
 :root[data-accent="orange"][data-theme="light"]{
 --md-sys-color-primary:#9c4500;
 --md-sys-color-on-primary:#ffffff;
@@ -570,9 +1421,9 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#ffede5;
 --md-sys-color-surface-tint:#9c4500;
 --md-sys-color-scrim:#000000;
---border-soft:#f5ded3 /* @kind color */;
---text-quaternary:#7f6558 /* @kind color */;
---glass-bg:rgba(255,248,246,.86) /* @kind color */;
+--border-soft:#f5ded3;
+--text-quaternary:#7f6558;
+--glass-bg:rgba(255,248,246,.86);
 }
 :root[data-accent="violet"][data-theme="light"]{
 --md-sys-color-primary:#5f41cc;
@@ -608,9 +1459,9 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#f4eefb;
 --md-sys-color-surface-tint:#6244cf;
 --md-sys-color-scrim:#000000;
---border-soft:#e6e0ec /* @kind color */;
---text-quaternary:#6c6879 /* @kind color */;
---glass-bg:rgba(253,248,255,.86) /* @kind color */;
+--border-soft:#e6e0ec;
+--text-quaternary:#6c6879;
+--glass-bg:rgba(253,248,255,.86);
 }
 :root[data-accent="teal"][data-theme="light"]{
 --md-sys-color-primary:#006b5f;
@@ -646,9 +1497,9 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#ecf2ef;
 --md-sys-color-surface-tint:#006b5f;
 --md-sys-color-scrim:#000000;
---border-soft:#dee4e1 /* @kind color */;
---text-quaternary:#606d6a /* @kind color */;
---glass-bg:rgba(245,251,248,.86) /* @kind color */;
+--border-soft:#dee4e1;
+--text-quaternary:#606d6a;
+--glass-bg:rgba(245,251,248,.86);
 }
 :root[data-accent="blue"][data-theme="light"]{
 --md-sys-color-primary:#0058bd;
@@ -684,9 +1535,47 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#eff0fa;
 --md-sys-color-surface-tint:#005ac2;
 --md-sys-color-scrim:#000000;
---border-soft:#e1e2ec /* @kind color */;
---text-quaternary:#666a78 /* @kind color */;
---glass-bg:rgba(249,249,255,.86) /* @kind color */;
+--border-soft:#e1e2ec;
+--text-quaternary:#666a78;
+--glass-bg:rgba(249,249,255,.86);
+}
+:root[data-accent="neon-amber"][data-theme="light"]{
+--md-sys-color-primary:#805600;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#ffb000;
+--md-sys-color-on-primary-container:#6a4700;
+--md-sys-color-secondary:#7a5821;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#fed08d;
+--md-sys-color-on-secondary-container:#785720;
+--md-sys-color-tertiary:#00677f;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#00d0fe;
+--md-sys-color-on-tertiary-container:#00556a;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffba43;
+--md-sys-color-surface:#fff8f3;
+--md-sys-color-surface-dim:#e6d8c8;
+--md-sys-color-surface-bright:#fff8f3;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fff1e3;
+--md-sys-color-surface-container:#faecdc;
+--md-sys-color-surface-container-high:#f4e6d6;
+--md-sys-color-surface-container-highest:#eee0d0;
+--md-sys-color-on-surface:#211a11;
+--md-sys-color-on-surface-variant:#524533;
+--md-sys-color-outline:#847560;
+--md-sys-color-outline-variant:#d7c4ac;
+--md-sys-color-inverse-surface:#372f25;
+--md-sys-color-inverse-on-surface:#fdeede;
+--md-sys-color-surface-tint:#805600;
+--md-sys-color-scrim:#000000;
+--border-soft:#eee0d0;
+--text-quaternary:#776854;
+--glass-bg:rgba(255,248,243,.86);
 }
 :root[data-accent="green"][data-theme="light"]{
 --md-sys-color-primary:#006d36;
@@ -722,9 +1611,9 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#ecf3e9;
 --md-sys-color-surface-tint:#006d36;
 --md-sys-color-scrim:#000000;
---border-soft:#dee4db /* @kind color */;
---text-quaternary:#616e62 /* @kind color */;
---glass-bg:rgba(245,251,241,.86) /* @kind color */;
+--border-soft:#dee4db;
+--text-quaternary:#616e62;
+--glass-bg:rgba(245,251,241,.86);
 }
 :root[data-accent="rose"][data-theme="light"]{
 --md-sys-color-primary:#ab2d58;
@@ -760,9 +1649,731 @@ color-scheme:light;
 --md-sys-color-inverse-on-surface:#ffecee;
 --md-sys-color-surface-tint:#ab2d58;
 --md-sys-color-scrim:#000000;
---border-soft:#f3dde0 /* @kind color */;
---text-quaternary:#7d6469 /* @kind color */;
---glass-bg:rgba(255,248,247,.86) /* @kind color */;
+--border-soft:#f3dde0;
+--text-quaternary:#7d6469;
+--glass-bg:rgba(255,248,247,.86);
+}
+:root[data-accent="lavender"][data-theme="light"]{
+--md-sys-color-primary:#68548d;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#b39ddb;
+--md-sys-color-on-primary-container:#453268;
+--md-sys-color-secondary:#635a72;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#e7dbf8;
+--md-sys-color-on-secondary-container:#685e77;
+--md-sys-color-tertiary:#666015;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#b2aa58;
+--md-sys-color-on-tertiary-container:#433e00;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#d3bcfc;
+--md-sys-color-surface:#fef7fd;
+--md-sys-color-surface-dim:#ded8de;
+--md-sys-color-surface-bright:#fef7fd;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f8f2f7;
+--md-sys-color-surface-container:#f2ecf2;
+--md-sys-color-surface-container-high:#ece6ec;
+--md-sys-color-surface-container-highest:#e6e1e6;
+--md-sys-color-on-surface:#1d1b1f;
+--md-sys-color-on-surface-variant:#49454f;
+--md-sys-color-outline:#7a7580;
+--md-sys-color-outline-variant:#cbc4d0;
+--md-sys-color-inverse-surface:#322f34;
+--md-sys-color-inverse-on-surface:#f5eff4;
+--md-sys-color-surface-tint:#68548d;
+--md-sys-color-scrim:#000000;
+--border-soft:#e6e1e6;
+--text-quaternary:#6e6973;
+--glass-bg:rgba(254,247,253,.86);
+}
+:root[data-accent="indigo"][data-theme="light"]{
+--md-sys-color-primary:#4352a5;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#5c6bc0;
+--md-sys-color-on-primary-container:#f8f6ff;
+--md-sys-color-secondary:#575c7f;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#d0d5fd;
+--md-sys-color-on-secondary-container:#565b7d;
+--md-sys-color-tertiary:#775200;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#976900;
+--md-sys-color-on-tertiary-container:#fff6ee;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#bac3ff;
+--md-sys-color-surface:#fbf8ff;
+--md-sys-color-surface-dim:#dbd9e1;
+--md-sys-color-surface-bright:#fbf8ff;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f5f2fa;
+--md-sys-color-surface-container:#efedf5;
+--md-sys-color-surface-container-high:#e9e7ef;
+--md-sys-color-surface-container-highest:#e3e1e9;
+--md-sys-color-on-surface:#1b1b21;
+--md-sys-color-on-surface-variant:#454651;
+--md-sys-color-outline:#767683;
+--md-sys-color-outline-variant:#c6c5d3;
+--md-sys-color-inverse-surface:#303036;
+--md-sys-color-inverse-on-surface:#f2eff7;
+--md-sys-color-surface-tint:#4858ab;
+--md-sys-color-scrim:#000000;
+--border-soft:#e3e1e9;
+--text-quaternary:#696a76;
+--glass-bg:rgba(251,248,255,.86);
+}
+:root[data-accent="navy"][data-theme="light"]{
+--md-sys-color-primary:#0a478e;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#2f5fa7;
+--md-sys-color-on-primary-container:#cadbff;
+--md-sys-color-secondary:#4f5f7c;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#cbdafd;
+--md-sys-color-on-secondary-container:#505f7d;
+--md-sys-color-tertiary:#6d3c00;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#8f5000;
+--md-sys-color-on-tertiary-container:#ffd2ad;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#abc7ff;
+--md-sys-color-surface:#f9f9ff;
+--md-sys-color-surface-dim:#d9d9e0;
+--md-sys-color-surface-bright:#f9f9ff;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f3f3fa;
+--md-sys-color-surface-container:#ededf4;
+--md-sys-color-surface-container-high:#e8e8ee;
+--md-sys-color-surface-container-highest:#e2e2e9;
+--md-sys-color-on-surface:#1a1c20;
+--md-sys-color-on-surface-variant:#434751;
+--md-sys-color-outline:#737782;
+--md-sys-color-outline-variant:#c3c6d2;
+--md-sys-color-inverse-surface:#2e3035;
+--md-sys-color-inverse-on-surface:#f0f0f7;
+--md-sys-color-surface-tint:#2d5ea6;
+--md-sys-color-scrim:#000000;
+--border-soft:#e2e2e9;
+--text-quaternary:#666a75;
+--glass-bg:rgba(249,249,255,.86);
+}
+:root[data-accent="sky"][data-theme="light"]{
+--md-sys-color-primary:#006688;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#4fc3f7;
+--md-sys-color-on-primary-container:#004e69;
+--md-sys-color-secondary:#3e6377;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#bfe5fc;
+--md-sys-color-on-secondary-container:#42677b;
+--md-sys-color-tertiary:#8a5100;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#faa443;
+--md-sys-color-on-tertiary-container:#6b3d00;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#75d1ff;
+--md-sys-color-surface:#f6fafe;
+--md-sys-color-surface-dim:#d6dadf;
+--md-sys-color-surface-bright:#f6fafe;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f0f4f8;
+--md-sys-color-surface-container:#eaeef3;
+--md-sys-color-surface-container-high:#e4e9ed;
+--md-sys-color-surface-container-highest:#dfe3e7;
+--md-sys-color-on-surface:#171c1f;
+--md-sys-color-on-surface-variant:#3e484f;
+--md-sys-color-outline:#6e7980;
+--md-sys-color-outline-variant:#bdc8d0;
+--md-sys-color-inverse-surface:#2c3134;
+--md-sys-color-inverse-on-surface:#edf1f5;
+--md-sys-color-surface-tint:#006688;
+--md-sys-color-scrim:#000000;
+--border-soft:#dfe3e7;
+--text-quaternary:#626c73;
+--glass-bg:rgba(246,250,254,.86);
+}
+:root[data-accent="cyan"][data-theme="light"]{
+--md-sys-color-primary:#006876;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#22b8cf;
+--md-sys-color-on-primary-container:#00444e;
+--md-sys-color-secondary:#3a656d;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#bdeaf4;
+--md-sys-color-on-secondary-container:#406b74;
+--md-sys-color-tertiary:#8f4e00;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#eb9443;
+--md-sys-color-on-tertiary-container:#5f3200;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#53d7ef;
+--md-sys-color-surface:#f5fafc;
+--md-sys-color-surface-dim:#d5dbdc;
+--md-sys-color-surface-bright:#f5fafc;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#eff5f6;
+--md-sys-color-surface-container:#e9eff0;
+--md-sys-color-surface-container-high:#e4e9eb;
+--md-sys-color-surface-container-highest:#dee3e5;
+--md-sys-color-on-surface:#171d1e;
+--md-sys-color-on-surface-variant:#3d494c;
+--md-sys-color-outline:#6d797c;
+--md-sys-color-outline-variant:#bcc9cc;
+--md-sys-color-inverse-surface:#2b3133;
+--md-sys-color-inverse-on-surface:#ecf2f3;
+--md-sys-color-surface-tint:#006876;
+--md-sys-color-scrim:#000000;
+--border-soft:#dee3e5;
+--text-quaternary:#606d70;
+--glass-bg:rgba(245,250,252,.86);
+}
+:root[data-accent="turquoise"][data-theme="light"]{
+--md-sys-color-primary:#006575;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#008093;
+--md-sys-color-on-primary-container:#f8fdff;
+--md-sys-color-secondary:#42646c;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#c4e9f2;
+--md-sys-color-on-secondary-container:#486a72;
+--md-sys-color-tertiary:#884e06;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#a56621;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#71d4ea;
+--md-sys-color-surface:#f6fafb;
+--md-sys-color-surface-dim:#d6dbdc;
+--md-sys-color-surface-bright:#f6fafb;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f0f4f6;
+--md-sys-color-surface-container:#eaeef0;
+--md-sys-color-surface-container-high:#e5e9ea;
+--md-sys-color-surface-container-highest:#dfe3e4;
+--md-sys-color-on-surface:#181c1e;
+--md-sys-color-on-surface-variant:#3e494b;
+--md-sys-color-outline:#6e797c;
+--md-sys-color-outline-variant:#bdc8cc;
+--md-sys-color-inverse-surface:#2c3132;
+--md-sys-color-inverse-on-surface:#edf1f3;
+--md-sys-color-surface-tint:#006878;
+--md-sys-color-scrim:#000000;
+--border-soft:#dfe3e4;
+--text-quaternary:#616c6f;
+--glass-bg:rgba(246,250,251,.86);
+}
+:root[data-accent="mint"][data-theme="light"]{
+--md-sys-color-primary:#006c50;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#4fd1a5;
+--md-sys-color-on-primary-container:#00563f;
+--md-sys-color-secondary:#3b6755;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#baead4;
+--md-sys-color-on-secondary-container:#3f6b59;
+--md-sys-color-tertiary:#904c24;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#ffa676;
+--md-sys-color-on-tertiary-container:#783912;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#5cdcaf;
+--md-sys-color-surface:#f5fbf5;
+--md-sys-color-surface-dim:#d5dcd6;
+--md-sys-color-surface-bright:#f5fbf5;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#eff5f0;
+--md-sys-color-surface-container:#e9efea;
+--md-sys-color-surface-container-high:#e3eae4;
+--md-sys-color-surface-container-highest:#dee4df;
+--md-sys-color-on-surface:#171d1a;
+--md-sys-color-on-surface-variant:#3d4a43;
+--md-sys-color-outline:#6d7a73;
+--md-sys-color-outline-variant:#bccac1;
+--md-sys-color-inverse-surface:#2b322e;
+--md-sys-color-inverse-on-surface:#ecf2ed;
+--md-sys-color-surface-tint:#006c50;
+--md-sys-color-scrim:#000000;
+--border-soft:#dee4df;
+--text-quaternary:#606e67;
+--glass-bg:rgba(245,251,245,.86);
+}
+:root[data-accent="pine"][data-theme="light"]{
+--md-sys-color-primary:#096444;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#2e7d5b;
+--md-sys-color-on-primary-container:#d0ffe3;
+--md-sys-color-secondary:#486555;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#caead6;
+--md-sys-color-on-secondary-container:#4e6b5b;
+--md-sys-color-tertiary:#894043;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#a7585a;
+--md-sys-color-on-tertiary-container:#fff1f0;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#88d6af;
+--md-sys-color-surface:#f7faf5;
+--md-sys-color-surface-dim:#d7dbd6;
+--md-sys-color-surface-bright:#f7faf5;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f1f5ef;
+--md-sys-color-surface-container:#ebefea;
+--md-sys-color-surface-container-high:#e6e9e4;
+--md-sys-color-surface-container-highest:#e0e3df;
+--md-sys-color-on-surface:#181d1a;
+--md-sys-color-on-surface-variant:#3f4943;
+--md-sys-color-outline:#6f7a72;
+--md-sys-color-outline-variant:#bec9c1;
+--md-sys-color-inverse-surface:#2d312e;
+--md-sys-color-inverse-on-surface:#eef2ed;
+--md-sys-color-surface-tint:#176b4b;
+--md-sys-color-scrim:#000000;
+--border-soft:#e0e3df;
+--text-quaternary:#636d66;
+--glass-bg:rgba(247,250,245,.86);
+}
+:root[data-accent="lime"][data-theme="light"]{
+--md-sys-color-primary:#496800;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#9ccc3d;
+--md-sys-color-on-primary-container:#3a5400;
+--md-sys-color-secondary:#52652e;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#d1e8a3;
+--md-sys-color-on-secondary-container:#566931;
+--md-sys-color-tertiary:#933895;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#ff98fc;
+--md-sys-color-on-tertiary-container:#7d2381;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#a5d646;
+--md-sys-color-surface:#f9fbea;
+--md-sys-color-surface-dim:#d9dbcc;
+--md-sys-color-surface-bright:#f9fbea;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f3f5e5;
+--md-sys-color-surface-container:#edefdf;
+--md-sys-color-surface-container-high:#e7eada;
+--md-sys-color-surface-container-highest:#e2e4d4;
+--md-sys-color-on-surface:#1a1d13;
+--md-sys-color-on-surface-variant:#434937;
+--md-sys-color-outline:#747965;
+--md-sys-color-outline-variant:#c3c9b2;
+--md-sys-color-inverse-surface:#2e3227;
+--md-sys-color-inverse-on-surface:#f0f2e2;
+--md-sys-color-surface-tint:#496800;
+--md-sys-color-scrim:#000000;
+--border-soft:#e2e4d4;
+--text-quaternary:#676d59;
+--glass-bg:rgba(249,251,234,.86);
+}
+:root[data-accent="olive"][data-theme="light"]{
+--md-sys-color-primary:#5a6010;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#737a28;
+--md-sys-color-on-primary-container:#feffd9;
+--md-sys-color-secondary:#5e613d;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#e1e3b6;
+--md-sys-color-on-secondary-container:#626541;
+--md-sys-color-tertiary:#724d89;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#8c65a3;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#c5cd72;
+--md-sys-color-surface:#fcf9ef;
+--md-sys-color-surface-dim:#dcdad0;
+--md-sys-color-surface-bright:#fcf9ef;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f6f4e9;
+--md-sys-color-surface-container:#f1eee3;
+--md-sys-color-surface-container-high:#ebe8de;
+--md-sys-color-surface-container-highest:#e5e3d8;
+--md-sys-color-on-surface:#1c1c16;
+--md-sys-color-on-surface-variant:#474839;
+--md-sys-color-outline:#787868;
+--md-sys-color-outline-variant:#c8c7b5;
+--md-sys-color-inverse-surface:#31312a;
+--md-sys-color-inverse-on-surface:#f3f1e6;
+--md-sys-color-surface-tint:#5d6312;
+--md-sys-color-scrim:#000000;
+--border-soft:#e5e3d8;
+--text-quaternary:#6b6c5c;
+--glass-bg:rgba(252,249,239,.86);
+}
+:root[data-accent="peach"][data-theme="light"]{
+--md-sys-color-primary:#8d4d38;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#ffab91;
+--md-sys-color-on-primary-container:#793d29;
+--md-sys-color-secondary:#79564c;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#fed0c2;
+--md-sys-color-on-secondary-container:#79574c;
+--md-sys-color-tertiary:#096a61;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#7fcec3;
+--md-sys-color-on-tertiary-container:#005851;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffb59e;
+--md-sys-color-surface:#fff8f6;
+--md-sys-color-surface-dim:#e5d7d4;
+--md-sys-color-surface-bright:#fff8f6;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fff1ed;
+--md-sys-color-surface-container:#f9ebe7;
+--md-sys-color-surface-container-high:#f3e5e2;
+--md-sys-color-surface-container-highest:#ede0dc;
+--md-sys-color-on-surface:#211a18;
+--md-sys-color-on-surface-variant:#53433f;
+--md-sys-color-outline:#86736e;
+--md-sys-color-outline-variant:#d8c2bb;
+--md-sys-color-inverse-surface:#362f2c;
+--md-sys-color-inverse-on-surface:#fceeea;
+--md-sys-color-surface-tint:#8d4d38;
+--md-sys-color-scrim:#000000;
+--border-soft:#ede0dc;
+--text-quaternary:#796761;
+--glass-bg:rgba(255,248,246,.86);
+}
+:root[data-accent="magenta"][data-theme="light"]{
+--md-sys-color-primary:#b3006d;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#d62987;
+--md-sys-color-on-primary-container:#fffbff;
+--md-sys-color-secondary:#9a3d69;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#fd8dbc;
+--md-sys-color-on-secondary-container:#78214d;
+--md-sys-color-tertiary:#136b00;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#1b8700;
+--md-sys-color-on-tertiary-container:#f8ffef;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffb0ce;
+--md-sys-color-surface:#fff8f8;
+--md-sys-color-surface-dim:#edd4db;
+--md-sys-color-surface-bright:#fff8f8;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fff0f3;
+--md-sys-color-surface-container:#ffe8ee;
+--md-sys-color-surface-container-high:#fbe2e9;
+--md-sys-color-surface-container-highest:#f6dce3;
+--md-sys-color-on-surface:#25181d;
+--md-sys-color-on-surface-variant:#584049;
+--md-sys-color-outline:#8b7079;
+--md-sys-color-outline-variant:#dfbec8;
+--md-sys-color-inverse-surface:#3c2c32;
+--md-sys-color-inverse-on-surface:#ffecf1;
+--md-sys-color-surface-tint:#b70070;
+--md-sys-color-scrim:#000000;
+--border-soft:#f6dce3;
+--text-quaternary:#7e636d;
+--glass-bg:rgba(255,248,248,.86);
+}
+:root[data-accent="fuchsia"][data-theme="light"]{
+--md-sys-color-primary:#9522af;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#b241cb;
+--md-sys-color-on-primary-container:#fffbff;
+--md-sys-color-secondary:#7f4a88;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#f9b9ff;
+--md-sys-color-on-secondary-container:#784481;
+--md-sys-color-tertiary:#656100;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#b5af35;
+--md-sys-color-on-tertiary-container:#444100;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#f6adff;
+--md-sys-color-surface:#fff7fa;
+--md-sys-color-surface-dim:#e5d6e2;
+--md-sys-color-surface-bright:#fff7fa;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#ffeffb;
+--md-sys-color-surface-container:#f9e9f6;
+--md-sys-color-surface-container-high:#f3e4f0;
+--md-sys-color-surface-container-highest:#eddeea;
+--md-sys-color-on-surface:#211921;
+--md-sys-color-on-surface-variant:#504251;
+--md-sys-color-outline:#827282;
+--md-sys-color-outline-variant:#d4c1d2;
+--md-sys-color-inverse-surface:#372e36;
+--md-sys-color-inverse-on-surface:#fcecf8;
+--md-sys-color-surface-tint:#9825b2;
+--md-sys-color-scrim:#000000;
+--border-soft:#eddeea;
+--text-quaternary:#756675;
+--glass-bg:rgba(255,247,250,.86);
+}
+:root[data-accent="plum"][data-theme="light"]{
+--md-sys-color-primary:#722d6c;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#8e4585;
+--md-sys-color-on-primary-container:#ffccf2;
+--md-sys-color-secondary:#76546f;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#ffd3f3;
+--md-sys-color-on-secondary-container:#7a5873;
+--md-sys-color-tertiary:#365100;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#4a6a0e;
+--md-sys-color-on-tertiary-container:#c2e981;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#ffabf0;
+--md-sys-color-surface:#fff7f9;
+--md-sys-color-surface-dim:#e3d7dd;
+--md-sys-color-surface-bright:#fff7f9;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#fdf0f6;
+--md-sys-color-surface-container:#f7eaf1;
+--md-sys-color-surface-container-high:#f2e5eb;
+--md-sys-color-surface-container-highest:#ecdfe5;
+--md-sys-color-on-surface:#201a1e;
+--md-sys-color-on-surface-variant:#50434c;
+--md-sys-color-outline:#82737d;
+--md-sys-color-outline-variant:#d4c1cd;
+--md-sys-color-inverse-surface:#352e33;
+--md-sys-color-inverse-on-surface:#faedf4;
+--md-sys-color-surface-tint:#8c4383;
+--md-sys-color-scrim:#000000;
+--border-soft:#ecdfe5;
+--text-quaternary:#756670;
+--glass-bg:rgba(255,247,249,.86);
+}
+:root[data-accent="mauve"][data-theme="light"]{
+--md-sys-color-primary:#774f70;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#91678a;
+--md-sys-color-on-primary-container:#fffbff;
+--md-sys-color-secondary:#6c5967;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#f5dbed;
+--md-sys-color-on-secondary-container:#725e6d;
+--md-sys-color-tertiary:#526232;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#6a7b48;
+--md-sys-color-on-tertiary-container:#faffe7;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#e9b8de;
+--md-sys-color-surface:#fff7f9;
+--md-sys-color-surface-dim:#e0d8db;
+--md-sys-color-surface-bright:#fff7f9;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#faf1f4;
+--md-sys-color-surface-container:#f4ecef;
+--md-sys-color-surface-container-high:#efe6e9;
+--md-sys-color-surface-container-highest:#e9e0e3;
+--md-sys-color-on-surface:#1e1a1d;
+--md-sys-color-on-surface-variant:#4e444b;
+--md-sys-color-outline:#7f747b;
+--md-sys-color-outline-variant:#d1c3cb;
+--md-sys-color-inverse-surface:#342f32;
+--md-sys-color-inverse-on-surface:#f7eef2;
+--md-sys-color-surface-tint:#795173;
+--md-sys-color-scrim:#000000;
+--border-soft:#e9e0e3;
+--text-quaternary:#72676f;
+--glass-bg:rgba(255,247,249,.86);
+}
+:root[data-accent="graphite"][data-theme="light"]{
+--md-sys-color-primary:#575c65;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#70757d;
+--md-sys-color-on-primary-container:#fdfcff;
+--md-sys-color-secondary:#5d5e62;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#dfdfe3;
+--md-sys-color-on-secondary-container:#616266;
+--md-sys-color-tertiary:#68594e;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#827166;
+--md-sys-color-on-tertiary-container:#fffbff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#c2c7d0;
+--md-sys-color-surface:#fcf8f9;
+--md-sys-color-surface-dim:#dcd9da;
+--md-sys-color-surface-bright:#fcf8f9;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f6f3f3;
+--md-sys-color-surface-container:#f0eded;
+--md-sys-color-surface-container-high:#eae7e8;
+--md-sys-color-surface-container-highest:#e5e2e2;
+--md-sys-color-on-surface:#1c1b1c;
+--md-sys-color-on-surface-variant:#45474b;
+--md-sys-color-outline:#75777b;
+--md-sys-color-outline-variant:#c5c6cb;
+--md-sys-color-inverse-surface:#313031;
+--md-sys-color-inverse-on-surface:#f3f0f0;
+--md-sys-color-surface-tint:#595f67;
+--md-sys-color-scrim:#000000;
+--border-soft:#e5e2e2;
+--text-quaternary:#696b6f;
+--glass-bg:rgba(252,248,249,.86);
+}
+:root[data-accent="slate"][data-theme="light"]{
+--md-sys-color-primary:#425f7a;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#5b7894;
+--md-sys-color-on-primary-container:#fefdff;
+--md-sys-color-secondary:#555f6b;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#d6e1ef;
+--md-sys-color-on-secondary-container:#596470;
+--md-sys-color-tertiary:#77572b;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#926f41;
+--md-sys-color-on-tertiary-container:#fffdff;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#accae9;
+--md-sys-color-surface:#faf9fb;
+--md-sys-color-surface-dim:#dadadc;
+--md-sys-color-surface-bright:#faf9fb;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f4f3f5;
+--md-sys-color-surface-container:#eeedf0;
+--md-sys-color-surface-container-high:#e9e8ea;
+--md-sys-color-surface-container-highest:#e3e2e4;
+--md-sys-color-on-surface:#1a1c1e;
+--md-sys-color-on-surface-variant:#43474d;
+--md-sys-color-outline:#73777e;
+--md-sys-color-outline-variant:#c3c7cd;
+--md-sys-color-inverse-surface:#2f3032;
+--md-sys-color-inverse-on-surface:#f1f0f3;
+--md-sys-color-surface-tint:#44617c;
+--md-sys-color-scrim:#000000;
+--border-soft:#e3e2e4;
+--text-quaternary:#666b71;
+--glass-bg:rgba(250,249,251,.86);
+}
+:root[data-accent="sand"][data-theme="light"]{
+--md-sys-color-primary:#6a5e33;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#c2b280;
+--md-sys-color-on-primary-container:#4f441c;
+--md-sys-color-secondary:#655e4a;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#ece2c8;
+--md-sys-color-on-secondary-container:#6b644f;
+--md-sys-color-tertiary:#5f5b7a;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#b4aed2;
+--md-sys-color-on-tertiary-container:#45415f;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#d6c692;
+--md-sys-color-surface:#fef8f2;
+--md-sys-color-surface-dim:#ded9d3;
+--md-sys-color-surface-bright:#fef8f2;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#f8f3ec;
+--md-sys-color-surface-container:#f3ede7;
+--md-sys-color-surface-container-high:#ede7e1;
+--md-sys-color-surface-container-highest:#e7e2db;
+--md-sys-color-on-surface:#1d1b18;
+--md-sys-color-on-surface-variant:#4b463b;
+--md-sys-color-outline:#7c776a;
+--md-sys-color-outline-variant:#cdc6b7;
+--md-sys-color-inverse-surface:#32302c;
+--md-sys-color-inverse-on-surface:#f5f0ea;
+--md-sys-color-surface-tint:#6a5e33;
+--md-sys-color-scrim:#000000;
+--border-soft:#e7e2db;
+--text-quaternary:#6f6a5e;
+--glass-bg:rgba(254,248,242,.86);
+}
+:root[data-accent="cocoa"][data-theme="light"]{
+--md-sys-color-primary:#72564c;
+--md-sys-color-on-primary:#ffffff;
+--md-sys-color-primary-container:#8d6e63;
+--md-sys-color-on-primary-container:#fffcff;
+--md-sys-color-secondary:#6a5b56;
+--md-sys-color-on-secondary:#ffffff;
+--md-sys-color-secondary-container:#f3ded7;
+--md-sys-color-on-secondary-container:#70615c;
+--md-sys-color-tertiary:#4b605f;
+--md-sys-color-on-tertiary:#ffffff;
+--md-sys-color-tertiary-container:#637978;
+--md-sys-color-on-tertiary-container:#f5fffe;
+--md-sys-color-error:#ba1a1a;
+--md-sys-color-on-error:#ffffff;
+--md-sys-color-error-container:#ffdad6;
+--md-sys-color-on-error-container:#93000a;
+--md-sys-color-inverse-primary:#e4beb2;
+--md-sys-color-surface:#fff8f6;
+--md-sys-color-surface-dim:#e0d8d6;
+--md-sys-color-surface-bright:#fff8f6;
+--md-sys-color-surface-container-lowest:#ffffff;
+--md-sys-color-surface-container-low:#faf2f0;
+--md-sys-color-surface-container:#f4ecea;
+--md-sys-color-surface-container-high:#eee6e4;
+--md-sys-color-surface-container-highest:#e8e1df;
+--md-sys-color-on-surface:#1e1b1a;
+--md-sys-color-on-surface-variant:#504441;
+--md-sys-color-outline:#827470;
+--md-sys-color-outline-variant:#d4c3be;
+--md-sys-color-inverse-surface:#33302e;
+--md-sys-color-inverse-on-surface:#f7efed;
+--md-sys-color-surface-tint:#75584d;
+--md-sys-color-scrim:#000000;
+--border-soft:#e8e1df;
+--text-quaternary:#756864;
+--glass-bg:rgba(255,248,246,.86);
 }
 /* ---- end generated ---- */
 
@@ -817,7 +2428,7 @@ button:not(:disabled):not([aria-disabled="true"]):active{transform:scale(.96);bo
 :where(button,a[href],summary,select,[role="button"],[role="tab"],[role="link"],[role="checkbox"],[role="switch"],[role="option"],[role="menuitem"],[tabindex]:not([tabindex="-1"]),input[type="time"],input[type="date"],input[type="checkbox"],input[type="radio"]):focus-visible{outline:2px solid var(--md-sys-color-primary)!important;outline-offset:2px!important}
 
 @media (prefers-reduced-motion:reduce){
-:root{--transition-press:none /* @kind other */}
+:root{--transition-press:none}
 /* Every animation and transition, inline ones included: the live dot's pulse,
    the drawer's slide, the rail's width. Run to their end state at once rather
    than removed, so anything waiting on animationend still hears it. */
