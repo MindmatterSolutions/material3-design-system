@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-/** `nwu` is the default — the NWU purple the theme draws with no attribute set. */
-export type Accent = 'nwu' | 'orange' | 'violet' | 'teal' | 'blue' | 'green' | 'rose';
+/** `sigmaos` is the default — the SigmaOS blue the theme draws with no attribute set; `nwu` is the NWU purple that was the default before. */
+export type Accent = 'sigmaos' | 'nwu' | 'orange' | 'violet' | 'teal' | 'blue' | 'green' | 'rose';
 
 /** The colour mode. Dark is the default; light is Material's light scheme from the same seed. */
 export type Mode = 'dark' | 'light';
@@ -13,7 +13,7 @@ export type Mode = 'dark' | 'light';
  * sets them for you.
  */
 export interface ThemeRootProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** The accent. The ground is tinted by it, the way Material tints its neutrals; status colours stay put. Default `nwu`, the NWU purple. */
+  /** The accent. The ground is tinted by it, the way Material tints its neutrals; status colours stay put. Default `sigmaos`, the SigmaOS blue; `nwu` is the NWU purple. */
   accent?: Accent;
   /** Dark (default) or light. Every accent carries both. */
   mode?: Mode;
@@ -45,8 +45,9 @@ function useRootAttribute(name: string, value: string | null, active: boolean) {
  */
 export function ThemeRoot({ accent, mode, style, children, ...rest }: ThemeRootProps) {
   // One accent and one mode per page: the theme reads both from <html>. The
-  // defaults are no attribute at all, so `nwu` and `dark` clear it.
-  useRootAttribute('data-accent', accent && accent !== 'nwu' ? accent : null, accent !== undefined);
+  // defaults are no attribute at all, so `sigmaos` and `dark` clear it; `nwu`
+  // is an accent block of its own since the blue became the default.
+  useRootAttribute('data-accent', accent && accent !== 'sigmaos' ? accent : null, accent !== undefined);
   useRootAttribute('data-theme', mode === 'light' ? 'light' : null, mode !== undefined);
   return (
     <div
